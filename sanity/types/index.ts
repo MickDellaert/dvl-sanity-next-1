@@ -1,3 +1,5 @@
+import { PortableTextBlock } from "sanity";
+
 export type HomePage = {
   _id: string;
   homepageTitle: string;
@@ -7,6 +9,10 @@ export type HomePage = {
 
 export type Project = {
   _id: string;
+  projectImage: string;
   projectTitle: string;
-  projectDescription: string;
+  projectDescription: PortableTextBlock[];
+  date: string;
+  material: string;
+  size: string;
 };
