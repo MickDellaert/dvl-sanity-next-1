@@ -4,7 +4,7 @@ export type HomePage = {
   _id: string;
   homepageTitle: string;
   homepageDescription: string;
-  homepageTest: string;
+  homepageMainImage: string;
 };
 
 export type Project = {
@@ -15,4 +15,10 @@ export type Project = {
   date: string;
   material: string;
   size: string;
+};
+
+export type Category = {
+  _id: string;
+  name: string;
+  project: string[]
 };

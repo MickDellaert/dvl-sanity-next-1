@@ -2,19 +2,17 @@ import Image from "next/image";
 import { getProjectsData } from "@/sanity/lib/queryLoaders";
 import { PortableText } from "@portabletext/react";
 
-const projects = await getProjectsData();
-console.log
 
+const projects = await getProjectsData();
 export function Project() {
   return (
-    <div className="flex flex-row w-screen justify-between px-10">
+    <div className="flex flex-row justify-between gap-8">
       {projects.map((project) => (
-        <div key={project._id} className="flex flex-col items-center">
-                    <Image src={project.projectImage} alt="alt" width={200} height={200} />
+        <div key={project._id} className="prose flex flex-col items-center">
+          <Image src={project.projectImage} alt="alt" width={400} height={400} />
 
-          <h1>{project.projectTitle}</h1>
-          {/* <p>{project.projectDescription}</p> */}
-          <PortableText value={project.projectDescription}/>
+          <h2>{project.projectTitle}</h2>
+          <PortableText value={project.projectDescription} />
           <p>{project.date}</p>
           <p>{project.material}</p>
           <p>{project.size}</p>
