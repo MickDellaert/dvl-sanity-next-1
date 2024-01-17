@@ -5,7 +5,15 @@ const homepage = defineType({
   title: "Homepage",
   type: "document",
   fields: [
-    defineField({ name: "homepageTitle", title: "Homepage Title", type: "string" }),
+    defineField({ name: "title", title: "Homepage Title", type: "string" }),
+    defineField({
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: {
+        source: "title",
+      },
+    }),
     defineField({ name: "homepageDescription", title: "Homepage Description", type: "string" }),
     defineField({
       name: "homepageMainImage",
@@ -21,5 +29,3 @@ const homepage = defineType({
 });
 
 export default homepage;
-
-
