@@ -4,6 +4,11 @@ import { PortableText } from "@portabletext/react";
 
 
 const projects = await getProjectsData();
+
+// console.log(projects)
+
+// const {_id, projectTitle ,projectDescription, projectImage} = projects
+
 export function Project() {
   return (
     <div className="flex flex-row justify-between gap-8">

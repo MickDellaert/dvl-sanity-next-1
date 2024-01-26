@@ -1,5 +1,6 @@
 import { getPageData } from "@/sanity/lib/queryLoaders";
 import { PortableText } from "@portabletext/react";
+import { todo } from "node:test";
 
 type paramProps = {
   params: {
@@ -8,13 +9,10 @@ type paramProps = {
 };
 
 export default async function Page({ params }: paramProps) {
-
-  // console.log(params.slug);
   const slug = params.slug;
-
   const pageData = await getPageData(slug);
 
-  console.log(pageData);
+  const { slug: pageSlug, title, content } = pageData ?? {};
 
   return (
     <>
@@ -25,9 +23,12 @@ export default async function Page({ params }: paramProps) {
           <PortableText value={page.content} />
         </div>
       ))} */}
-     <h2> {pageData.title}</h2>
-     {/* <h3>{pageData.slug}</h3> */}
-     <PortableText value={pageData.content} />
+      <h2> {title}</h2>
+
+      {/* //TODO: slug hier veranderd naar kleine S, ook in type */}
+      <h3>{pageSlug}</h3>
+
+      <PortableText value={content} />
     </>
   );
 }

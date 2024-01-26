@@ -10,11 +10,26 @@ const category = defineType({
       title: "Title",
       type: "string",
     }),
+
     defineField({
-      name: "project",
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: { source: "name" },
+    }),
+
+    defineField({
+      name: "seriesDescription",
+      title: "Series Description",
+      type: "array",
+      of: [{type: "block"}]
+    }),
+
+    defineField({
+      name: "projects",
       title: "Projects",
       type: "array",
-      of: [{type: "reference", to: { type: "project"}}]
+      of: [{ type: "reference", to: { type: "project" } }],
     }),
   ],
 });

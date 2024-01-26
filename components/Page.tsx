@@ -7,12 +7,12 @@ export default async function Page() {
   
   return (
     <div className="prose">
-      {pageData.map((page) => (
+      {/* {pageData.map((page) => (
         <div key={page._id}>
           <h2>{page.title}</h2>
            <PortableText value={page.content} />
         </div>
-      ))}
+      ))} */}
     </div>
   );
 }

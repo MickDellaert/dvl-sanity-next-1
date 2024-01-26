@@ -1,11 +1,24 @@
 import { PortableTextBlock, Slug } from "sanity";
+import type { Image } from "sanity";
+
+export type HomePageCategory = {
+  _id: string;
+  name: string;
+  slug: string;
+  projects: {
+    projectImage: Image;
+    width: number;
+    height: number;
+  };
+};
 
 export type HomePage = {
   _id: string;
   title: string;
-  slug: Slug;
+  slug: string;
   homepageDescription: string;
   homepageMainImage: string;
+  homepageCategories: HomePageCategory[];
 };
 
 export type Project = {
@@ -16,18 +29,24 @@ export type Project = {
   date: string;
   material: string;
   size: string;
+  projectImageDimensions: {
+    width: string;
+    height: string;
+  };
 };
 
 export type Category = {
   _id: string;
   name: string;
-  project: string[];
+  seriesDescription: PortableTextBlock[];
+  slug: string;
+  projects: Project[];
 };
 
 export type Page = {
   _id: string;
   title: string;
-  slug: Slug;
+  slug: string;
   content: PortableTextBlock[];
 };
 

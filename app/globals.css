@@ -30,3 +30,7 @@ body {
   display: flex;
   gap: 20px;
 }
+
+.pswp__bg{
+  background-color: white !important;
+}
