@@ -1,11 +1,11 @@
 // import Category from "@/components/Category";
-import HomePage from "@/app/pages/HomePage";
+import HomePage from "@/app/(site)/pages/HomePage";
 import NavBar from "@/components/NavBar";
 import Page from "@/components/Page";
 import Project from "@/components/Project";
 import ProjectList from "@/components/ProjectList";
-import Test from "@/components/Test";
-import TestElement from "@/components/TestElement";
+import Test from "@/app/unused/Test";
+import TestElement from "@/app/unused/TestElement";
 import { getHomePageData } from "@/sanity/lib/queryLoaders";
 import Image from "next/image";
 

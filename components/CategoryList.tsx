@@ -9,7 +9,7 @@ type Props = {
 };
 
 export default function CategoryList({ homepageCategories }: Props) {
-  console.log(homepageCategories);
+  // console.log(homepageCategories);
 
   const [name, projects] = homepageCategories
 

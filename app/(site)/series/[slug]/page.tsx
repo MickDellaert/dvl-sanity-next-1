@@ -1,3 +1,4 @@
+import ButtonTest from "@/components/ButtonTest";
 import ProjectGallery from "@/components/ProjectGallery";
 import { getCategoriesData, getCategoryData } from "@/sanity/lib/queryLoaders";
 import { PortableText } from "@portabletext/react";
@@ -29,20 +30,22 @@ export default async function Page({ params }: paramProps) {
     // const { slug: pageSlug, title, content } = pageData ?? {};
   const { _id, name, seriesDescription, projects } = categoryData ?? {};
 
-  // console.log(categoryData);
+  // console.log(seriesDescription)
 
   return (
     <>
-      <section className=" flex flex-col justify-center px-16">
+    <ButtonTest/>
+    
+      <section className="flex flex-col justify-center">
         {/* <div>{`${slug} page`}</div> */}
         <div className="flex flex-row justify-between mt-36">
-          <div className="w-1/5">
+          <div className="w-2/6 pr-20">
             <h2 className="font-semibold tracking-widest text-4xl mb-8"> {name}</h2>
             <div className="text-sm">
             <PortableText value={seriesDescription} />
             </div>
           </div>
-          <div className="w-3/5">
+          <div className="w-4/6 -mr-[80px]">
             <DynamicProjectGallery projects={projects} />
           </div>
         </div>

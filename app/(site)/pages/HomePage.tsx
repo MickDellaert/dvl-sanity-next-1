@@ -1,5 +1,5 @@
 import CategoryList from "@/components/CategoryList";
-import ImageTest from "@/components/ImageTest";
+import ImageTest from "@/app/unused/ImageTest";
 import ProjectList from "@/components/ProjectList";
 import HomePageCategory from "@/components/HomePageCategory";
 import { getCategoriesData, getHomePageData } from "@/sanity/lib/queryLoaders";
@@ -27,7 +27,7 @@ export default async function HomePage() {
       <h1>{title}</h1>
       {/* <p>{homepageDescription}</p> */}
       <div className="relative ">
-        <h1 className="font-sans w-full text-center text-8xl font-semibold uppercase tracking-widest text-white absolute left-1/2 top-1/2 -translate-y-24 -translate-x-1/2">
+        <h1 className="font-sans w-full text-center text-9xl font-semibold uppercase tracking-widest text-white absolute left-1/2 top-1/2 -translate-y-24 -translate-x-1/2">
           David Van Loon
         </h1>
         <Image

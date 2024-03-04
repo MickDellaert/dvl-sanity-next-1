@@ -1,6 +1,6 @@
 import { client } from "./client";
 import { Category, HomePage, Page, Project, Setting, Test } from "../types";
-import { homePageQuery, projectsQuery, categoryQuery,pageQuery, pagesQuery, settingsQuery, testQuery, singleCategory } from "./queries";
+import { homePageQuery, projectsQuery, categoryQuery,pageQuery, pagesQuery, settingsQuery, testQuery, singleCategory, singleCategoryOrder } from "./queries";
 
 export async function getHomePageData(): Promise<HomePage> {
   return client.fetch(homePageQuery);
@@ -12,6 +12,10 @@ export async function getProjectsData(): Promise<Project[]> {
 
 export async function getCategoryData(slug: string): Promise<Category> {
   return client.fetch(singleCategory, {slug} );
+}
+
+export async function getCategoryDataOrder(slug: string): Promise<Category[]> {
+  return client.fetch(singleCategoryOrder, {slug} );
 }
 
 export async function getCategoriesData(): Promise<Category[]> {

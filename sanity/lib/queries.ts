@@ -6,12 +6,10 @@ export const homePageQuery = groq`
   "slug": slug.current, 
   homepageDescription, 
   "homepageMainImage": homepageMainImage.asset->url, 
-  // homepageCategories[]->{name, "slug": slug.current, "project": project[]->projectImage.asset->url}
   "homepageCategories": homepageCategories[]->{
-    name,
+    name, 
     "slug": slug.current,
-   projects[0]->{projectImage,     "projectImageDimensions": projectImage.asset->metadata.dimensions,
-  }
+    projects[0]->{projectImage, "projectImageDimensions": projectImage.asset->metadata.dimensions}
   }
 }`;
 
@@ -44,6 +42,24 @@ export const categoryQuery = groq`
 
 export const singleCategory = groq`
 *[_type == "category" && slug.current == $slug][0]{
+  _id, 
+  name, 
+  seriesDescription, 
+  "slug": slug.current, 
+  "projects" : projects[]->{
+    "projectImage" : projectImage.asset->url, 
+    "projectImageDimensions": projectImage.asset->metadata.dimensions,
+    projectTitle,
+    projectDescription, 
+    date, 
+    material, 
+    size
+  }
+}`;
+
+
+export const singleCategoryOrder = groq`
+*[_type == "category" ] | order((slug.current match $slug) desc){
   _id, 
   name, 
   seriesDescription, 

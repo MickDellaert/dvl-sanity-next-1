@@ -16,23 +16,23 @@ export default function HomePageCategory({ homepageCategories }: Props) {
     return builder.image(source);
   }
 
-  console.log(homepageCategories[0].projects);
+  // console.log(homepageCategories[0].projects);
 
   return (
     <>
-      <div>HomePageCategory</div>
+      {/* <div>HomePageCategory</div> */}
 
-      <div className="flex flex-row gap-10">
+      <div className="grid grid-cols-2 gap-x-20 justify-center mt-20 mb-80">
         {homepageCategories.map((category, index) => {
           // TODO: check _id: is niet altijd uniek komende van een array
 
           return (
             <>
-              <Link href={`series/${category.slug}`} key={index}>
-                <div className="mb-20">
-                  <h2>{category.name}</h2>
+              <Link className="w-[calc(50% - 2.5rem)] odd:mt-0 even:mt-24" href={`work/${category.slug}`} key={index}>
+                <div className="">
+                  <h2 className="font-semibold tracking-widest text-3xl mt-8 mb-8">{category.name}</h2>
                   <Image
-                    className=""
+                    className="w-full"
                     src={urlFor(category.projects.projectImage)
                       .width(category.projects.width)
                       .height(category.projects.width)
