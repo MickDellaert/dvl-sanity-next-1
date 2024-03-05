@@ -5,7 +5,8 @@ export const homePageQuery = groq`
   _id, homepageTitle, 
   "slug": slug.current, 
   homepageDescription, 
-  "homepageMainImage": homepageMainImage.asset->url, 
+  // "homepageMainImage": homepageMainImage.asset->url, 
+  homepageMainImage{alt, "url": asset->url},
   "homepageCategories": homepageCategories[]->{
     name, 
     "slug": slug.current,
@@ -32,6 +33,7 @@ export const categoryQuery = groq`
   "slug": slug.current, 
   "projects" : projects[]->{
   "projectImage" : projectImage.asset->url, 
+  "projectImageDimensions": projectImage.asset->metadata.dimensions,
   projectTitle,
   projectDescription, 
   date, 

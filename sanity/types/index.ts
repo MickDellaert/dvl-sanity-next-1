@@ -1,4 +1,4 @@
-import { PortableTextBlock, Slug } from "sanity";
+import { PortableTextBlock } from "sanity";
 import type { Image } from "sanity";
 
 export type HomePageCategory = {
@@ -17,7 +17,7 @@ export type HomePage = {
   title: string;
   slug: string;
   homepageDescription: string;
-  homepageMainImage: string;
+  homepageMainImage: { url: string; alt: string };
   homepageCategories: HomePageCategory[];
 };
 

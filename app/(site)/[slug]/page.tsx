@@ -1,5 +1,6 @@
 import { getPageData } from "@/sanity/lib/queryLoaders";
 import { PortableText } from "@portabletext/react";
+import { notFound } from 'next/navigation'
 import { todo } from "node:test";
 
 type paramProps = {
@@ -14,8 +15,13 @@ export default async function Page({ params }: paramProps) {
 
   const { slug: pageSlug, title, content } = pageData ?? {};
 
+  if (!pageData) {
+    notFound()
+  }
+
   return (
     <>
+    <section className="px-16 min-h-screen">
       <div>{`${slug} page`}</div>
       {/* {pageData.map((page) => (
         <div key={page._id}>
@@ -29,6 +35,7 @@ export default async function Page({ params }: paramProps) {
       <h3>{pageSlug}</h3>
 
       <PortableText value={content} />
+      </section>
     </>
   );
 }

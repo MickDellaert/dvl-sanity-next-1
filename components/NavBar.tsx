@@ -26,7 +26,7 @@ export default async function NavBar() {
   }
 
   return (
-    <div className="flex flex-row items-center justify-between gap-8 h-24">
+    <div className="flex flex-row items-center justify-between gap-8 h-16 px-16">
       
       <Link href="/" className="text-3xl font-semibold uppercase tracking-widest">David Van Loon</Link>
       <div className=" text-lg font-medium uppercase tracking-widest flex gap-8">

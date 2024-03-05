@@ -4,6 +4,7 @@ import { Montserrat} from "next/font/google"
 
 import "../globals.css";
 import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 
 // const Inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -23,11 +24,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={montserrat.variable}>
-      <body className={`px-16`}>
+      <body className={`overflow-x-hidden`}>
         {/* <body className={inter.className}> */}
         <>
           <NavBar />
           {children}
+          <Footer/>
         </>
       </body>
     </html>
