@@ -1,8 +1,5 @@
-import CategoryList from "@/components/CategoryList";
-import ImageTest from "@/app/unused/ImageTest";
-import ProjectList from "@/components/ProjectList";
 import HomePageCategory from "@/components/HomePageCategory";
-import { getCategoriesData, getHomePageData } from "@/sanity/lib/queryLoaders";
+import { getHomePageData } from "@/sanity/lib/queryLoaders";
 
 import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
@@ -22,7 +19,7 @@ export default async function HomePage() {
 
   const { title, homepageDescription, homepageMainImage, homepageCategories } = homePageData;
 
-  console.log(homePageData)
+  console.log(homePageData);
 
   return (
     <div className="flex flex-col items-center">
