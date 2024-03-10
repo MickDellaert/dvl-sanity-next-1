@@ -21,6 +21,7 @@ export function Project() {
           <p>{project.date}</p>
           <p>{project.material}</p>
           <p>{project.size}</p>
+          
         </div>
       ))}
     </div>

@@ -26,9 +26,9 @@ export default async function HomePage() {
       <h1>{title}</h1>
       {/* <p>{homepageDescription}</p> */}
       <div className="relative ">
-        <h1 className="font-sans w-full text-center text-8xl font-semibold uppercase tracking-widest text-white absolute left-1/2 top-1/2 -translate-y-24 -translate-x-1/2">
+        {/* <h1 className="font-sans w-full text-center text-8xl font-semibold uppercase tracking-widest text-white absolute left-1/2 top-1/2 -translate-y-24 -translate-x-1/2">
           David Van Loon
-        </h1>
+        </h1> */}
         <Image
           className="h-screen w-screen object-cover"
           src={urlFor(homepageMainImage.url).width(1000).height(1000).url()}

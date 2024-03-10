@@ -52,7 +52,7 @@ export default function ProjectGallery({ projects }: Props) {
               <div className="mt-4 text-xs">
                 <h2 className="text-sm font-medium mb-1">{project.projectTitle}</h2>
                 {/* <PortableText value={project.projectDescription} /> */}
-                <p>{project.date}</p>
+                {/* <p>{project.date}</p> */}
                 <p>{project.material}</p>
                 <p>{project.size}</p>
               </div>

@@ -14,9 +14,11 @@ export default async function Page({ params }: paramProps) {
 
   const { slug: pageSlug, title, content } = pageData ?? {};
 
-  if (!pageData) {
-    notFound()
-  }
+  // if (!pageData) {
+  //   notFound()
+  // }
+
+  console.log(pageData)
 
   return (
     <>

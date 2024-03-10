@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import { Analytics } from '@vercel/analytics/react';
 
+import type { Metadata } from "next";
 import { Montserrat} from "next/font/google"
 
 import "../globals.css";
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <>
           <NavBar />
           {children}
+          <Analytics/>
           <Footer/>
         </>
       </body>
