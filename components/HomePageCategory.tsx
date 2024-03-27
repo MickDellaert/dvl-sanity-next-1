@@ -16,7 +16,7 @@ export default function HomePageCategory({ homepageCategories }: Props) {
     return builder.image(source);
   }
 
-  // console.log(homepageCategories[0].projects);
+  console.log(homepageCategories[0].projects);
 
   return (
     <>

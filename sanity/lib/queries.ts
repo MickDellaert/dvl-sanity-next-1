@@ -6,7 +6,7 @@ export const homePageQuery = groq`
   "slug": slug.current, 
   homepageDescription, 
   // "homepageMainImage": homepageMainImage.asset->url, 
-  homepageMainImage{alt, "url": asset->url},
+  homepageMainImage,
   "homepageCategories": homepageCategories[]->{
     name, 
     "slug": slug.current,

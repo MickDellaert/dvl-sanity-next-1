@@ -12,6 +12,7 @@ export default async function HomePage() {
   function urlFor(source: SanityImageSource) {
     return builder.image(source);
   }
+  
 
   const homePageData = await getHomePageData();
 
@@ -30,8 +31,8 @@ export default async function HomePage() {
           David Van Loon
         </h1> */}
         <Image
-          className="h-screen w-screen object-cover"
-          src={urlFor(homepageMainImage.url).width(1000).height(1000).url()}
+          className="h-[calc(100vh-64px)] w-screen object-cover"
+          src={urlFor(homepageMainImage).width(1000).height(1000).fit("crop").url()}
           alt={homepageMainImage.alt}
           width={1000}
           height={1000}
