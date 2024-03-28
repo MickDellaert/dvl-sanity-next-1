@@ -2,7 +2,7 @@ import ButtonTest from "@/components/ButtonTest";
 import { getCategoriesData, getCategoryDataOrder } from "@/sanity/lib/queryLoaders";
 import { PortableText } from "@portabletext/react";
 import dynamic from "next/dynamic";
-import ProjectGallery from "@/components/ProjectGallery";
+import ProjectsGallery from "@/components/ProjectsGallery";
 
 const DynamicProjectsGallery = dynamic(() => import("@/components/ProjectsGallery"), { ssr: false });
 
@@ -48,7 +48,7 @@ export default async function Page({ params }: paramProps) {
                   </div>
                 </div>
                 <div className="w-4/6 -mr-[80px]">
-                  <ProjectGallery projects={category.projects} />
+                  <ProjectsGallery projects={category.projects} />
                 </div>
               </div>
             </section>

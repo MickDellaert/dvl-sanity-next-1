@@ -33,20 +33,21 @@ export default async function Page() {
 
   return (
     <>
-      <section className="px-16">
+      <section className="px-20 max-w-screen-3xl mx-auto">
         <ButtonTest />
         {categoryData.map((category) => (
           <>
-            <section className="flex flex-col justify-center">
+            {/* flex flex-col justify-center relative h-200 */}
+            <section className="">
               {/* <div>{`${slug} page`}</div> */}
-              <div className="flex flex-row justify-between mt-12">
-                <div className="w-2/6 pr-20">
-                  <h2 className="font-semibold tracking-widest text-3xl mb-8"> {category.name}</h2>
+              <div className="md:flex md:flex-row justify-between pb-40">
+                <div className="w-full md:w-4/12 xl:w-3/12 sticky top-16 self-start">
+                  {/* <h2 className="font-semibold tracking-widest text-3xl mb-4"> {category.name}</h2> */}
                   <div className="text-sm leading-relaxed">
                     <PortableText value={category.seriesDescription} />
                   </div>
                 </div>
-                <div className="w-4/6 -mr-[80px]">
+                <div className="w-full md:w-7/12 xl:-mr-[80px]">
                   <DynamicProjectsGallery projects={category.projects} />
                 </div>
               </div>

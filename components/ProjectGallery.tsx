@@ -34,8 +34,9 @@ export default function ProjectGallery({ projects }: Props) {
 
   return (
     <div className="">
-      <Gallery options={galleryOptions}>
-        <Masonry columns={2} spacing={10} defaultHeight={1200} defaultColumns={2} defaultSpacing={10}>
+      {/* <Gallery options={galleryOptions}> */}
+        {/* <Masonry columns={2} spacing={10} defaultHeight={1200} defaultColumns={2} defaultSpacing={10}> */}
+
           {projects?.map((project, i) => (
             <div key={i} className="">
               <Item
@@ -58,8 +59,8 @@ export default function ProjectGallery({ projects }: Props) {
               </div>
             </div>
           ))}
-        </Masonry>
-      </Gallery>
+        {/* </Masonry> */}
+      {/* </Gallery> */}
     </div>
   );
 }
