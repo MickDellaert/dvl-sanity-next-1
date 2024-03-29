@@ -15,37 +15,37 @@ type paramProps = {
 };
 
 export async function generateStaticParams() {
-
+  
   const categories = await getCategoriesData();
 
-  console.log(categories)
+  console.log(categories);
 
   return categories.map((category) => ({
-    slug: category.slug,
+    slug: [category.slug],
   }));
 }
 
 export default async function Page({ params }: paramProps) {
   const { slug } = params;
 
-  console.log(params)
+  console.log(params);
   console.log(slug);
 
-  // let data;
+  let data;
 
-  // if (slug) {
-  //   const categoryDataOrder = await getCategoryDataOrder(slug);
-  //   data = categoryDataOrder;
-  // } else {
-  //   const categoryData = await getCategoriesData();
-  //   data = categoryData;
-  // }
-
-  const categoryData = await getCategoryDataOrder(slug);
-
-  if (!categoryData) {
-    notFound();
+  if (slug) {
+    const categoryDataOrder = await getCategoryDataOrder(slug);
+    data = categoryDataOrder;
+  } else {
+    const categoryData = await getCategoriesData();
+    data = categoryData;
   }
+
+  // const categoryData = await getCategoryDataOrder(slug);
+
+  // if (!categoryData) {
+  //   notFound();
+  // }
 
   // const { slug: pageSlug, title, content } = pageData ?? {};
   // const { _id, name, seriesDescription, projects } = categoryData ?? {};
@@ -56,7 +56,7 @@ export default async function Page({ params }: paramProps) {
     <>
       <section className="px-16">
         <ButtonTest />
-        <Series categoryData={categoryData} />
+        <Series categoryData={data} />
       </section>
     </>
   );
