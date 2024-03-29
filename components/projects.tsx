@@ -9,7 +9,7 @@ const projects = await getProjectsData();
 
 // const {_id, projectTitle ,projectDescription, projectImage} = projects
 
-export function Project() {
+export function Projects() {
   return (
     <div className="flex flex-row justify-between gap-8">
       {projects.map((project) => (
@@ -28,4 +28,4 @@ export function Project() {
   );
 }
 
-export default Project;
+export default Projects;

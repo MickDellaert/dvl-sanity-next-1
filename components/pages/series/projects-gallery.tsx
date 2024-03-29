@@ -5,11 +5,9 @@ import "photoswipe/dist/photoswipe.css";
 import Image from "next/image";
 import "photoswipe/dist/photoswipe.css";
 import "lightgallery/css/lightgallery.css";
-import { Category, Project } from "@/sanity/types";
+import { Project } from "@/sanity/types";
 import { useId } from "react";
-import { PortableText } from "@portabletext/react";
 import { Gallery, Item } from "react-photoswipe-gallery";
-// import Masonry from "react-smart-masonry";
 import { Masonry } from "@mui/lab";
 
 const galleryOptions = {
@@ -27,16 +25,15 @@ type Props = {
   projects: Project[];
 };
 
-export default function ProjectGallery({ projects }: Props) {
+export default function ProjectsGallery({ projects }: Props) {
   const id = useId();
 
-  // console.log(projects);
+  console.log(projects);
 
   return (
     <div className="">
-      {/* <Gallery options={galleryOptions}> */}
-        {/* <Masonry columns={2} spacing={10} defaultHeight={1200} defaultColumns={2} defaultSpacing={10}> */}
-
+      <Gallery options={galleryOptions}>
+        <Masonry columns={{ xs: 1, lg: 2 }} spacing={{xs: 0, lg: 10}} defaultHeight={1200} defaultColumns={2} defaultSpacing={10}>
           {projects?.map((project, i) => (
             <div key={i} className="">
               <Item
@@ -46,21 +43,20 @@ export default function ProjectGallery({ projects }: Props) {
                 height={project.projectImageDimensions.height}
               >
                 {({ ref, open }) => (
-                  <Image ref={ref} onClick={open} src={project.projectImage} alt="" width={1000} height={1000} />
+                  <Image className="bg-gray-50" ref={ref} onClick={open} src={project.projectImage} alt="" width={1000} height={1000} />
                 )}
               </Item>
 
               <div className="mt-4 text-xs">
                 <h2 className="text-sm font-medium mb-1">{project.projectTitle}</h2>
-                {/* <PortableText value={project.projectDescription} /> */}
                 {/* <p>{project.date}</p> */}
                 <p>{project.material}</p>
                 <p>{project.size}</p>
               </div>
             </div>
           ))}
-        {/* </Masonry> */}
-      {/* </Gallery> */}
+        </Masonry>
+      </Gallery>
     </div>
   );
 }

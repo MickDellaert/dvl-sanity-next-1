@@ -1,9 +1,9 @@
-import ButtonTest from "@/components/ButtonTest";
+import ButtonTest from "@/components/pages/series/button-test";
 import { getCategoriesData, getCategoryData } from "@/sanity/lib/queryLoaders";
 import { PortableText } from "@portabletext/react";
 import dynamic from "next/dynamic";
 
-const DynamicProjectGallery = dynamic(() => import("@/components/ProjectGallery"), { ssr: false });
+const DynamicProjectGallery = dynamic(() => import("@/app/unused/ProjectGalleryUnused"), { ssr: false });
 
 type paramProps = {
   params: {

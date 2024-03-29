@@ -19,7 +19,7 @@ const DynamicProjectGallery = dynamic(() => import("@/components/pages/series/pr
 //   }));
 // }
 
-export default async function Page() {
+export default async function Series() {
   // const { slug } = params;
 
   // console.log(slug);
