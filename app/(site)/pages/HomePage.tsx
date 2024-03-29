@@ -25,7 +25,6 @@ export default async function HomePage() {
   return (
     <div className="flex flex-col items-center">
       <h1>{title}</h1>
-      <h4>wth</h4>
       {/* <p>{homepageDescription}</p> */}
       <div className="relative ">
         {/* <h1 className="font-sans w-full text-center text-8xl font-semibold uppercase tracking-widest text-white absolute left-1/2 top-1/2 -translate-y-24 -translate-x-1/2">
