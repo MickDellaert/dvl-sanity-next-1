@@ -3,7 +3,7 @@ import { getCategoriesData, getCategoryData } from "@/sanity/lib/queryLoaders";
 import { PortableText } from "@portabletext/react";
 import dynamic from "next/dynamic";
 
-const DynamicProjectGallery = dynamic(() => import("@/app/unused/ProjectGalleryUnused"), { ssr: false });
+// const DynamicProjectGallery = dynamic(() => import("@/app/unused/ProjectGalleryUnused"), { ssr: false });
 
 type paramProps = {
   params: {
@@ -45,7 +45,7 @@ export default async function Page({ params }: paramProps) {
             </div>
           </div>
           <div className="w-4/6 -mr-[80px]">
-            <DynamicProjectGallery projects={projects} />
+            {/* <DynamicProjectGallery projects={projects} /> */}
           </div>
         </div>
       </section>

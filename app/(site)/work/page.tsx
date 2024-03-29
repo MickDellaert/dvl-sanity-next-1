@@ -4,6 +4,7 @@ import { PortableText } from "@portabletext/react";
 import dynamic from "next/dynamic";
 import ProjectGallery from "@/components/pages/series/projects-gallery";
 import Series from "@/components/pages/series/series";
+import { notFound } from "next/navigation";
 
 // const DynamicProjectsGallery = dynamic(() => import("@/components/pages/series/projects-gallery"), { ssr: false });
 
@@ -22,16 +23,25 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }: paramProps) {
-  const { slug } = params;
+  // const { slug } = params;
 
-  console.log(slug);
+  // console.log(slug);
 
   const categoryData = await getCategoriesData();
+  // const categoryDataOrder = await getCategoryDataOrder(slug);
+
+  if (!categoryData) {
+    notFound()
+  }
 
   // const { slug: pageSlug, title, content } = pageData ?? {};
   // const { _id, name, seriesDescription, projects } = categoryData ?? {};
 
-  console.log(categoryData);
+  // console.log(categoryData);
+
+  if (!categoryData) {
+    notFound()
+  }
 
   return (
     <>

@@ -3,7 +3,7 @@ import { getCategoriesData, getCategoryDataOrder } from "@/sanity/lib/queryLoade
 import { PortableText } from "@portabletext/react";
 import dynamic from "next/dynamic";
 
-const DynamicProjectGallery = dynamic(() => import("@/components/pages/series/projects-gallery"), { ssr: false });
+// const DynamicProjectGallery = dynamic(() => import("@/components/pages/series/projects-gallery"), { ssr: false });
 
 // type paramProps = {
 //   params: {
@@ -48,7 +48,7 @@ export default async function Page() {
                   </div>
                 </div>
                 <div className="w-full md:w-7/12 xl:-mr-[80px]">
-                  <DynamicProjectGallery projects={category.projects} />
+                  {/* <DynamicProjectGallery projects={category.projects} /> */}
                 </div>
               </div>
             </section>
