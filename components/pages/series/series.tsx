@@ -1,9 +1,11 @@
-import ButtonTest from "@/components/pages/series/button-test";
 import { getCategoriesData, getCategoryDataOrder } from "@/sanity/lib/queryLoaders";
 import { PortableText } from "@portabletext/react";
 import dynamic from "next/dynamic";
+import ProjectsGallery from "@/components/pages/series/projects-gallery";
+import { Category } from "@/sanity/types";
+import { Masonry } from "@mui/lab";
 
-const DynamicProjectGallery = dynamic(() => import("@/components/pages/series/projects-gallery"), { ssr: false });
+const DynamicProjectsGallery = dynamic(() => import("@/components/pages/series/projects-gallery"), { ssr: false });
 
 // type paramProps = {
 //   params: {
@@ -11,20 +13,24 @@ const DynamicProjectGallery = dynamic(() => import("@/components/pages/series/pr
 //   };
 // };
 
-// export async function generateStaticParams() {
-//   const categories = await getCategoriesData();
+type CategoryData = {
+  categoryData: Category[];
+};
 
-//   return categories.map((category) => ({
-//     slug: category.slug,
-//   }));
-// }
+export async function generateStaticParams() {
+  const categories = await getCategoriesData();
 
-export default async function Series() {
+  return categories.map((category) => ({
+    slug: category.slug,
+  }));
+}
+
+export default async function Series({ categoryData }: CategoryData) {
   // const { slug } = params;
 
   // console.log(slug);
 
-  const categoryData = await getCategoriesData();
+  // const categoryData = await getCategoryDataOrder(slug);
 
   // const { slug: pageSlug, title, content } = pageData ?? {};
   // const { _id, name, seriesDescription, projects } = categoryData ?? {};
@@ -33,28 +39,31 @@ export default async function Series() {
 
   return (
     <>
-      <section className="px-20 max-w-screen-3xl mx-auto">
-        <ButtonTest />
-        {categoryData.map((category) => (
-          <>
-            {/* flex flex-col justify-center relative h-200 */}
-            <section className="">
-              {/* <div>{`${slug} page`}</div> */}
-              <div className="md:flex md:flex-row justify-between pb-40">
-                <div className="w-full md:w-4/12 xl:w-3/12 sticky top-16 self-start">
-                  {/* <h2 className="font-semibold tracking-widest text-3xl mb-4"> {category.name}</h2> */}
-                  <div className="text-sm leading-relaxed">
-                    <PortableText value={category.seriesDescription} />
-                  </div>
-                </div>
-                <div className="w-full md:w-7/12 xl:-mr-[80px]">
-                  <DynamicProjectGallery projects={category.projects} />
+      {categoryData.map((category) => (
+        <>
+          <section className="flex flex-col justify-center">
+            <div className="md:flex md:flex-row justify-between pb-40">
+              <div className="w-full md:w-4/12 xl:w-3/12 sticky top-16 self-start">
+                <h2 className="font-semibold tracking-widest text-3xl mb-4"> {category.name}</h2>
+                <div className="text-sm leading-relaxed">
+                  <PortableText value={category.seriesDescription} />
                 </div>
               </div>
-            </section>
-          </>
-        ))}
-      </section>
+              <div className="w-full md:w-7/12 xl:-mr-[80px]">
+                <Masonry
+                  columns={{ xs: 1, lg: 2 }}
+                  spacing={{ xs: 0, lg: 10 }}
+                  defaultHeight={1200}
+                  defaultColumns={2}
+                  defaultSpacing={10}
+                >
+                  <ProjectsGallery projects={category.projects} />
+                </Masonry>
+              </div>
+            </div>
+          </section>
+        </>
+      ))}
     </>
   );
 }

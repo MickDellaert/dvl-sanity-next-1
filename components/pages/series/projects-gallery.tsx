@@ -8,7 +8,6 @@ import "lightgallery/css/lightgallery.css";
 import { Project } from "@/sanity/types";
 import { useId } from "react";
 import { Gallery, Item } from "react-photoswipe-gallery";
-import { Masonry } from "@mui/lab";
 
 const galleryOptions = {
   // arrowPrev: false,
@@ -31,32 +30,36 @@ export default function ProjectsGallery({ projects }: Props) {
   console.log(projects);
 
   return (
-    <div className="">
-      <Gallery options={galleryOptions}>
-        <Masonry columns={{ xs: 1, lg: 2 }} spacing={{xs: 0, lg: 10}} defaultHeight={1200} defaultColumns={2} defaultSpacing={10}>
-          {projects?.map((project, i) => (
-            <div key={i} className="">
-              <Item
-                original={project.projectImage}
-                thumbnail={project.projectImage}
-                width={project.projectImageDimensions.width}
-                height={project.projectImageDimensions.height}
-              >
-                {({ ref, open }) => (
-                  <Image className="bg-gray-50" ref={ref} onClick={open} src={project.projectImage} alt="" width={1000} height={1000} />
-                )}
-              </Item>
+    <Gallery options={galleryOptions}>
+      {projects?.map((project, i) => (
+        <div key={i} className="">
+          <Item
+            original={project.projectImage}
+            thumbnail={project.projectImage}
+            width={project.projectImageDimensions.width}
+            height={project.projectImageDimensions.height}
+          >
+            {({ ref, open }) => (
+              <Image
+                className="bg-gray-50"
+                ref={ref}
+                onClick={open}
+                src={project.projectImage}
+                alt=""
+                width={1000}
+                height={1000}
+              />
+            )}
+          </Item>
 
-              <div className="mt-4 text-xs">
-                <h2 className="text-sm font-medium mb-1">{project.projectTitle}</h2>
-                {/* <p>{project.date}</p> */}
-                <p>{project.material}</p>
-                <p>{project.size}</p>
-              </div>
-            </div>
-          ))}
-        </Masonry>
-      </Gallery>
-    </div>
+          <div className="mt-4 text-xs">
+            <h2 className="text-sm font-medium mb-1">{project.projectTitle}</h2>
+            {/* <p>{project.date}</p> */}
+            <p>{project.material}</p>
+            <p>{project.size}</p>
+          </div>
+        </div>
+      ))}
+    </Gallery>
   );
 }

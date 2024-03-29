@@ -3,9 +3,8 @@ import { getCategoriesData, getCategoryDataOrder } from "@/sanity/lib/queryLoade
 import { PortableText } from "@portabletext/react";
 import dynamic from "next/dynamic";
 import ProjectGallery from "@/components/pages/series/projects-gallery";
-import Series from "@/components/pages/series/series";
 
-// const DynamicProjectsGallery = dynamic(() => import("@/components/pages/series/projects-gallery"), { ssr: false });
+const DynamicProjectsGallery = dynamic(() => import("@/components/pages/series/projects-gallery"), { ssr: false });
 
 type paramProps = {
   params: {
@@ -37,7 +36,24 @@ export default async function Page({ params }: paramProps) {
     <>
       <section className="px-16">
         <ButtonTest />
-        <Series categoryData={categoryData} />
+        {categoryData.map((category) => (
+          <>
+            <section className="flex flex-col justify-center">
+              {/* <div>{`${slug} page`}</div> */}
+              <div className="flex flex-row justify-between mt-12">
+                <div className="w-2/6 pr-20">
+                  <h2 className="font-semibold tracking-widest text-3xl mb-8"> {category.name}</h2>
+                  <div className="text-sm leading-relaxed">
+                    <PortableText value={category.seriesDescription} />
+                  </div>
+                </div>
+                <div className="w-4/6 -mr-[80px]">
+                  <ProjectGallery projects={category.projects} />
+                </div>
+              </div>
+            </section>
+          </>
+        ))}
       </section>
     </>
   );
