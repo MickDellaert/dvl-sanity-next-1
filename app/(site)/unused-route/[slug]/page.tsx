@@ -1,9 +1,9 @@
-import ButtonTest from "@/components/ButtonTest";
+import ButtonTest from "@/components/pages/series/button-test";
 import { getCategoriesData, getCategoryData } from "@/sanity/lib/queryLoaders";
 import { PortableText } from "@portabletext/react";
 import dynamic from "next/dynamic";
 
-const DynamicProjectGallery = dynamic(() => import("@/components/ProjectGallery"), { ssr: false });
+// const DynamicProjectGallery = dynamic(() => import("@/app/unused/ProjectGalleryUnused"), { ssr: false });
 
 type paramProps = {
   params: {
@@ -22,14 +22,12 @@ export async function generateStaticParams() {
 export default async function Page({ params }: paramProps) {
   const { slug } = params;
 
-  console.log(slug);
 
   const categoryData = await getCategoryData(slug);
 
     // const { slug: pageSlug, title, content } = pageData ?? {};
   const { _id, name, seriesDescription, projects } = categoryData ?? {};
 
-  // console.log(seriesDescription)
 
   return (
     <>
@@ -45,7 +43,7 @@ export default async function Page({ params }: paramProps) {
             </div>
           </div>
           <div className="w-4/6 -mr-[80px]">
-            <DynamicProjectGallery projects={projects} />
+            {/* <DynamicProjectGallery projects={projects} /> */}
           </div>
         </div>
       </section>

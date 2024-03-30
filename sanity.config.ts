@@ -16,7 +16,7 @@ const singletonActions = new Set(["publish", "discardChanges", "restore"]);
 const singletonTypes = new Set([""]);
 
 export default defineConfig({
-  basePath: "/studio",
+  basePath: "/admin",
   projectId,
   dataset,
   // Add and edit the content schema in the './sanity/schema' folder

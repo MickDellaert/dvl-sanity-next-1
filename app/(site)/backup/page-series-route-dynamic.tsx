@@ -1,10 +1,10 @@
-import ButtonTest from "@/components/ButtonTest";
+import ButtonTest from "@/components/pages/series/button-test";
 import { getCategoriesData, getCategoryDataOrder } from "@/sanity/lib/queryLoaders";
 import { PortableText } from "@portabletext/react";
 import dynamic from "next/dynamic";
-import ProjectsGallery from "@/components/ProjectsGallery";
+import ProjectGallery from "@/components/pages/series/projects-gallery";
 
-const DynamicProjectsGallery = dynamic(() => import("@/components/ProjectsGallery"), { ssr: false });
+const DynamicProjectsGallery = dynamic(() => import("@/components/pages/series/projects-gallery"), { ssr: false });
 
 type paramProps = {
   params: {
@@ -23,18 +23,16 @@ export async function generateStaticParams() {
 export default async function Page({ params }: paramProps) {
   const { slug } = params;
 
-  console.log(slug);
 
   const categoryData = await getCategoryDataOrder(slug);
 
   // const { slug: pageSlug, title, content } = pageData ?? {};
   // const { _id, name, seriesDescription, projects } = categoryData ?? {};
 
-  console.log(categoryData);
 
   return (
     <>
-      <section className="px-16">
+      <section className="px-8 md:px-16">
         <ButtonTest />
         {categoryData.map((category) => (
           <>
@@ -48,7 +46,7 @@ export default async function Page({ params }: paramProps) {
                   </div>
                 </div>
                 <div className="w-4/6 -mr-[80px]">
-                  <ProjectsGallery projects={category.projects} />
+                  <ProjectGallery projects={category.projects} />
                 </div>
               </div>
             </section>
