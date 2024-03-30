@@ -22,14 +22,12 @@ export async function generateStaticParams() {
 export default async function Page({ params }: paramProps) {
   const { slug } = params;
 
-  console.log(slug);
 
   const categoryData = await getCategoryData(slug);
 
     // const { slug: pageSlug, title, content } = pageData ?? {};
   const { _id, name, seriesDescription, projects } = categoryData ?? {};
 
-  // console.log(seriesDescription)
 
   return (
     <>

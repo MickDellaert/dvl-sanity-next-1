@@ -25,7 +25,6 @@ export async function generateStaticParams() {
 export default async function Page({ params }: paramProps) {
   // const { slug } = params;
 
-  // console.log(slug);
 
   const categoryData = await getCategoriesData();
   // const categoryDataOrder = await getCategoryDataOrder(slug);
@@ -37,7 +36,6 @@ export default async function Page({ params }: paramProps) {
   // const { slug: pageSlug, title, content } = pageData ?? {};
   // const { _id, name, seriesDescription, projects } = categoryData ?? {};
 
-  // console.log(categoryData);
 
   if (!categoryData) {
     notFound()
@@ -45,7 +43,7 @@ export default async function Page({ params }: paramProps) {
 
   return (
     <>
-      <section className="px-16">
+      <section className="px-8 md:px-16">
         <ButtonTest />
         <Series categoryData={categoryData} />
       </section>

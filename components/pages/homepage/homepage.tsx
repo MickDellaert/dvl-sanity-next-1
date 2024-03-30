@@ -13,14 +13,9 @@ export default async function HomePage() {
     return builder.image(source);
   }
   
-
   const homePageData = await getHomePageData();
 
-  // console.log(homePageData);
-
   const { title, homepageDescription, homepageMainImage, homepageCategories } = homePageData;
-
-  console.log(homePageData);
 
   return (
     <div className="flex flex-col items-center">

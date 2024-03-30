@@ -18,6 +18,7 @@ export const projectsQuery = groq`
 *[_type == "project"]
    {_id,
    "projectImage": projectImage.asset->url, 
+   "projectImageDimensions": projectImage.asset->metadata.dimensions,
    projectTitle, 
    projectDescription, 
    date, 

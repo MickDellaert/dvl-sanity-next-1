@@ -5,7 +5,6 @@ import { PortableText } from "@portabletext/react";
 
 const projects = await getProjectsData();
 
-// console.log(projects)
 
 // const {_id, projectTitle ,projectDescription, projectImage} = projects
 

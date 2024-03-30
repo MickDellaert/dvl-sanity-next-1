@@ -23,18 +23,16 @@ export async function generateStaticParams() {
 export default async function Page({ params }: paramProps) {
   const { slug } = params;
 
-  console.log(slug);
 
   const categoryData = await getCategoryDataOrder(slug);
 
   // const { slug: pageSlug, title, content } = pageData ?? {};
   // const { _id, name, seriesDescription, projects } = categoryData ?? {};
 
-  console.log(categoryData);
 
   return (
     <>
-      <section className="px-16">
+      <section className="px-8 md:px-16">
         <ButtonTest />
         {categoryData.map((category) => (
           <>

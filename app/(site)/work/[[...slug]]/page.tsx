@@ -15,10 +15,7 @@ type paramProps = {
 };
 
 export async function generateStaticParams() {
-  
   const categories = await getCategoriesData();
-
-  console.log(categories);
 
   return categories.map((category) => ({
     slug: [category.slug],
@@ -28,33 +25,36 @@ export async function generateStaticParams() {
 export default async function Page({ params }: paramProps) {
   const { slug } = params;
 
-  console.log(params);
-  console.log(slug);
-
   let data;
 
   if (slug) {
     const categoryDataOrder = await getCategoryDataOrder(slug);
+
+    if (!categoryDataOrder.find((e) => e.slug === slug.toString())) {
+      notFound();
+    }
     data = categoryDataOrder;
   } else {
     const categoryData = await getCategoriesData();
+
+    if (!categoryData) {
+      notFound();
+    }
     data = categoryData;
   }
 
   // const categoryData = await getCategoryDataOrder(slug);
 
-  // if (!categoryData) {
+  // if (!data) {
   //   notFound();
   // }
 
   // const { slug: pageSlug, title, content } = pageData ?? {};
   // const { _id, name, seriesDescription, projects } = categoryData ?? {};
 
-  // console.log(categoryData);
-
   return (
     <>
-      <section className="px-16">
+      <section className="px-8 md:px-16">
         <ButtonTest />
         <Series categoryData={data} />
       </section>

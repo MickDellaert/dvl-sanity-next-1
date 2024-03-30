@@ -5,13 +5,11 @@ import React from "react";
 export default async function NavBar() {
   const settingsData = await getSettings();
 
-  // console.log(settingsData.menuItems[0]._type);
   // const hrefType = settingsData.menuItems[0]._type;
   // const slug = settingsData.menuItems[0].slug;
   
   const menuItems = settingsData.menuItems;
   
-  // console.log(menuItems);
 
   function resolveHref(hrefType: string, slug: string) {
     switch (hrefType) {
@@ -26,9 +24,9 @@ export default async function NavBar() {
   }
 
   return (
-    <div className="flex flex-row items-center justify-between gap-8 h-16 px-16 mt-6">
+    <div className="flex flex-row items-center justify-between gap-8 h-16 px-8 md:px-16 mt-6">
       
-      <Link href="/" className="text-3xl font-semibold uppercase tracking-widest">David Van Loon</Link>
+      <Link href="/" className="text-3xl font-semibold uppercase tracking-widest">DVL</Link>
       <div className=" text-lg font-medium uppercase tracking-widest flex gap-8">
         {menuItems.map((setting) => {
           const href = resolveHref(setting._type, setting.slug);

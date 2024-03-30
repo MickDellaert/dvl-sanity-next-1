@@ -22,14 +22,12 @@ import dynamic from "next/dynamic";
 export default async function Page() {
   // const { slug } = params;
 
-  // console.log(slug);
 
   const categoryData = await getCategoriesData();
 
   // const { slug: pageSlug, title, content } = pageData ?? {};
   // const { _id, name, seriesDescription, projects } = categoryData ?? {};
 
-  console.log(categoryData);
 
   return (
     <>

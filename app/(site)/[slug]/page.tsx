@@ -1,6 +1,6 @@
 import { getPageData } from "@/sanity/lib/queryLoaders";
 import { PortableText } from "@portabletext/react";
-import { notFound } from 'next/navigation'
+import { notFound } from "next/navigation";
 
 type paramProps = {
   params: {
@@ -15,27 +15,26 @@ export default async function Page({ params }: paramProps) {
   const { slug: pageSlug, title, content } = pageData ?? {};
 
   if (!pageData) {
-    notFound()
+    notFound();
   }
-
-  console.log(pageData)
 
   return (
     <>
-    <section className="px-16 min-h-screen">
-      <div>{`${slug} page`}</div>
-      {/* {pageData.map((page) => (
+      <section className="px-8 md:px-16 min-h-screen">
+        <div>{`${slug} page`}</div>
+        {/* {pageData.map((page) => (
         <div key={page._id}>
           <h2>{page.title}</h2>
           <PortableText value={page.content} />
         </div>
       ))} */}
-      <h2> {title}</h2>
+        {/* <h2> {title}</h2> */}
 
-      {/* //TODO: slug hier veranderd naar kleine S, ook in type */}
-      <h3>{pageSlug}</h3>
-
-      <PortableText value={content} />
+        {/* //TODO: slug hier veranderd naar kleine S, ook in type */}
+        {/* <h3>{pageSlug}</h3> */}
+        <div className="prose">
+          <PortableText value={content} />
+        </div>
       </section>
     </>
   );

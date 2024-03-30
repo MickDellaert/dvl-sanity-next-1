@@ -3,7 +3,7 @@ import { PortableText } from "@portabletext/react";
 import dynamic from "next/dynamic";
 import ProjectsGallery from "@/components/pages/series/projects-gallery";
 import { Category } from "@/sanity/types";
-import { Masonry } from "@mui/lab";
+import Masonry from "@mui/lab/Masonry";
 
 const DynamicProjectsGallery = dynamic(() => import("@/components/pages/series/projects-gallery"), { ssr: false });
 
@@ -28,14 +28,11 @@ export async function generateStaticParams() {
 export default async function Series({ categoryData }: CategoryData) {
   // const { slug } = params;
 
-  // console.log(slug);
 
   // const categoryData = await getCategoryDataOrder(slug);
 
   // const { slug: pageSlug, title, content } = pageData ?? {};
   // const { _id, name, seriesDescription, projects } = categoryData ?? {};
-
-  console.log(categoryData);
 
   return (
     <>
@@ -43,7 +40,7 @@ export default async function Series({ categoryData }: CategoryData) {
         <>
           <section className="flex flex-col justify-center">
             <div className="md:flex md:flex-row justify-between pb-40">
-              <div className="w-full md:w-4/12 xl:w-3/12 sticky top-16 self-start">
+              <div className="w-full md:w-4/12 xl:w-3/12 md:sticky top-16 self-start mb-16 md:mb-0">
                 <h2 className="font-semibold tracking-widest text-3xl mb-4"> {category.name}</h2>
                 <div className="text-sm leading-relaxed">
                   <PortableText value={category.seriesDescription} />

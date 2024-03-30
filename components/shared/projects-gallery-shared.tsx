@@ -8,7 +8,6 @@ import "lightgallery/css/lightgallery.css";
 import { Project } from "@/sanity/types";
 import { useId } from "react";
 import { Gallery, Item } from "react-photoswipe-gallery";
-import { PortableText } from "@portabletext/react";
 
 const galleryOptions = {
   // arrowPrev: false,
@@ -31,7 +30,7 @@ export default function ProjectsGallery({ projects }: Props) {
   return (
     <Gallery options={galleryOptions}>
       {projects?.map((project, i) => (
-        <div key={i} className="mb-16 md:mb-0">
+        <div key={i} className="">
           <Item
             original={project.projectImage}
             thumbnail={project.projectImage}
@@ -56,8 +55,6 @@ export default function ProjectsGallery({ projects }: Props) {
             {/* <p>{project.date}</p> */}
             <p>{project.material}</p>
             <p>{project.size}</p>
-            {/* <PortableText value={project.projectDescription}/> */}
-            
           </div>
         </div>
       ))}
