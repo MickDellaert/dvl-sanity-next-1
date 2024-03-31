@@ -4,7 +4,7 @@ import "photoswipe/dist/photoswipe.css";
 
 import Image from "next/image";
 import "photoswipe/dist/photoswipe.css";
-import "lightgallery/css/lightgallery.css";
+// import "lightgallery/css/lightgallery.css";
 import { Project } from "@/sanity/types";
 import { useId } from "react";
 import { Gallery, Item } from "react-photoswipe-gallery";
@@ -18,7 +18,8 @@ const galleryOptions = {
   // counter: false,
   // bgOpacity: 0.2,
   spacing: 0.1,
-  padding: { top: 40, bottom: 40, left: 0, right: 0 },
+  padding: { top: 40, bottom: 40, left: 40, right: 40 },
+  
 };
 
 type Props = {
@@ -29,7 +30,7 @@ export default function ProjectsGallery({ projects }: Props) {
   const id = useId();
 
   return (
-    <Gallery options={galleryOptions}>
+    <Gallery withCaption options={galleryOptions}>
       {projects?.map((project, i) => (
         <div key={i} className="mb-16 md:mb-0">
           <Item
@@ -37,6 +38,8 @@ export default function ProjectsGallery({ projects }: Props) {
             thumbnail={project.projectImage}
             width={project.projectImageDimensions.width}
             height={project.projectImageDimensions.height}
+            alt={project.projectTitle}
+            caption={`<p style='color:white; text-shadow:none;'>${project.projectTitle}</p>`}
           >
             {({ ref, open }) => (
               <Image
