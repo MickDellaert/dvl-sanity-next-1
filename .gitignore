@@ -37,4 +37,6 @@ next-env.d.ts
 
 # folders
 /app/unused
+app/(site)/lightbox
+app/(site)/lightgallery
 

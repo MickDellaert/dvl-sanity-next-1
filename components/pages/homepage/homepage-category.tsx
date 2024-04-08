@@ -1,4 +1,4 @@
-import { HomePageCategory } from "@/sanity/types";
+import { type HomePageCategory } from "@/sanity/types";
 import Link from "next/link";
 import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
@@ -26,7 +26,11 @@ export default function HomePageCategory({ homepageCategories }: Props) {
 
           return (
             <>
-              <Link className="w-[calc(50% - 2.5rem)] mb-12 md:mb-0 md:odd:mt-0 md:even:mt-24" href={`work/${category.slug}`} key={index}>
+              <Link
+                className="w-[calc(50% - 2.5rem)] mb-12 md:mb-0 md:odd:mt-0 md:even:mt-24"
+                href={`series/${category.slug}`}
+                key={index}
+              >
                 <div className="">
                   <h2 className="font-semibold tracking-widest text-3xl mt-8 mb-8">{category.name}</h2>
                   <Image
