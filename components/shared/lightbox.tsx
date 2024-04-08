@@ -1,10 +1,15 @@
 "use client";
 
-import { useSwipeable } from 'react-swipeable';
+import { useSwipeable } from "react-swipeable";
 
 import { Project } from "@/sanity/types";
 import Image from "next/image";
 import React, { useState } from "react";
+
+import Slider from "react-slick";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 type projects = {
   projects: Project[];
@@ -47,21 +52,32 @@ export default function Lightbox({ projects }: projects) {
   };
 
   const handlers = useSwipeable({
-    onSwiped: (eventData) => console.log("User Swiped!", eventData)  });
+    onSwiped: (eventData) => console.log("User Swiped!", eventData),
+  });
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
 
   return (
     <>
       <div className="grid grid-cols-3 gap-4 items-center mx-auto max-w-screen-md">
-        {projects.map((project) => (
-          <Image
-            key={project._id}
-            src={project.projectImage}
-            width={500}
-            height={500}
-            alt=""
-            onClick={() => getImage(project)}
-          />
-        ))}
+        {/* <Slider {...settings}> */}
+          {projects.map((project) => (
+            <Image
+              key={project._id}
+              src={project.projectImage}
+              width={500}
+              height={500}
+              alt=""
+              onClick={() => getImage(project)}
+            />
+          ))}
+        {/* </Slider> */}
       </div>
       {visible && (
         <>

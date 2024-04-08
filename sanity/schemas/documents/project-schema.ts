@@ -50,7 +50,9 @@ const project = defineType({
   ],
 
   initialValue: {
+    projectTitle: "Artwork title",
     material: "oil on canvas",
+    date: "1912-12-12"
   },
 });
 
