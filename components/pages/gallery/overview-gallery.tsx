@@ -45,7 +45,6 @@ export const OverviewGallery = ({ projects }: Projects) => {
 
   const lightbox = useRef<ILightGallery | null>(null);
 
-
   const breakpointColumnsObj = {
     default: 4,
     1100: 3,
