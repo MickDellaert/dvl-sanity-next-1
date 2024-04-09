@@ -28,7 +28,6 @@ export async function generateStaticParams() {
 export default async function Series({ categoryData }: CategoryData) {
   // const { slug } = params;
 
-
   // const categoryData = await getCategoryDataOrder(slug);
 
   // const { slug: pageSlug, title, content } = pageData ?? {};
@@ -46,8 +45,25 @@ export default async function Series({ categoryData }: CategoryData) {
                   <PortableText value={category.seriesDescription} />
                 </div>
               </div>
-              <div className="w-full md:w-7/12 xl:-mr-[80px]">
+              <div className="w-full md:w-7/12 -mr-0 lg:-mr-[80px]">
                 <Masonry
+                  // sx={{
+                  //   sm: 640,
+                  //   md: 768,
+                  //   lg: 1024,
+                  //   xl: 1280,
+                  //   xxl: 1536,
+                  // }}
+
+                  sx={{
+                    breakpoints: { values: { lg: 1280 } },
+                  }}
+                  // xs, extra-small: 0px
+                  // sm, small: 600px
+                  // md, medium: 900px
+                  // lg, large: 1200px
+                  // xl, extra-large: 1536px
+
                   columns={{ xs: 1, lg: 2 }}
                   spacing={{ xs: 0, lg: 10 }}
                   defaultHeight={1200}

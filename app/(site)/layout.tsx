@@ -1,11 +1,13 @@
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from "@vercel/analytics/react";
 
 import type { Metadata } from "next";
-import { Montserrat} from "next/font/google"
+import { Montserrat } from "next/font/google";
 
 import "../globals.css";
-import NavBar from "@/components/global/navbar";
+import NavBar from "@/components/global/navigation/navbar";
 import Footer from "@/components/global/footer";
+import NavbarContainer from "@/components/global/navigation/navbar-container";
+import NavbarWrapper from "@/components/global/navigation/navbar-wrapper";
 
 // const Inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -14,7 +16,7 @@ const montserrat = Montserrat({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   // style: ["normal", "italic"],
   display: "swap",
-  variable: "--font-montserrat"
+  variable: "--font-montserrat",
 });
 
 export const metadata: Metadata = {
@@ -28,10 +30,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`overflow-x-hidden`}>
         {/* <body className={inter.className}> */}
         <>
-          <NavBar />
+          <NavbarWrapper />
           {children}
-          <Analytics/>
-          <Footer/>
+          <Analytics />
+          <Footer />
         </>
       </body>
     </html>
