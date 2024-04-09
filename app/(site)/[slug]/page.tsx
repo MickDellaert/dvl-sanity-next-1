@@ -20,7 +20,7 @@ export default async function Page({ params }: paramProps) {
 
   return (
     <>
-      <section className="px-8 md:px-16 min-h-screen">
+      <main className="px-8 md:px-16 min-h-screen mt-40">
         <div>{`${slug} page`}</div>
         {/* {pageData.map((page) => (
         <div key={page._id}>
@@ -35,7 +35,7 @@ export default async function Page({ params }: paramProps) {
         <div className="prose">
           <PortableText value={content} />
         </div>
-      </section>
+      </main>
     </>
   );
 }

@@ -39,7 +39,7 @@ export default async function Series({ categoryData }: CategoryData) {
         <>
           <section className="flex flex-col justify-center">
             <div className="md:flex md:flex-row justify-between pb-40">
-              <div className="w-full md:w-4/12 xl:w-3/12 md:sticky top-24 self-start mb-16 md:mb-0">
+              <div className="w-full md:w-4/12 xl:w-3/12 md:sticky top-28 self-start mb-16 md:mb-0">
                 <h2 className="font-semibold tracking-widest text-3xl mb-4"> {category.name}</h2>
                 <div className="text-sm leading-relaxed">
                   <PortableText value={category.seriesDescription} />

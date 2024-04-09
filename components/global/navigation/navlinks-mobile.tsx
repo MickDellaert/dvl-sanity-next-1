@@ -23,13 +23,19 @@ export default function NavLinksMobile({ menuItems }: NavProps) {
 
   return (
     <>
-      <button className="w-8 h-8 text-3xl z-10" style={openMenu ? { opacity: 1 } : { opacity: 1 }} onClick={toggleMenu}>
+      <button
+        className="z-10 h-8 w-8 pb-1 text-3xl leading-[8px]"
+        style={openMenu ? { opacity: 1 } : { opacity: 1 }}
+        onClick={toggleMenu}
+      >
         x
       </button>
       <div
-        className={`flex flex-col text-lg font-medium uppercase tracking-widest gap-8 bg-white w-full pb-12 text-center justify-center pt-24`}
+        className={`flex w-full flex-col justify-center gap-8 bg-white pb-12 pt-24 text-center text-lg font-medium uppercase tracking-widest`}
         style={
-          openMenu ? { display: "flex", position: "fixed", top: 0, left: 0 } : { display: "none", position: "static" }
+          openMenu
+            ? { display: "flex", position: "fixed", top: 0, left: 0 }
+            : { display: "none", position: "static" }
         }
       >
         {menuItems.map((setting) => {
@@ -41,7 +47,7 @@ export default function NavLinksMobile({ menuItems }: NavProps) {
 
           return (
             <Link
-              className={`${pathname === href ? "underline underline-offset-4 decoration-2" : ""}`}
+              className={`${pathname === href ? "underline decoration-2 underline-offset-4" : ""}`}
               key={setting.title}
               href={href}
             >

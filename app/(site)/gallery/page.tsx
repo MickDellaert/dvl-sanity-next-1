@@ -6,7 +6,7 @@ import { getProjectsData } from "@/sanity/lib/queryLoaders";
 export default async function page() {
   const projects = await getProjectsData();
   return (
-    <section className="mt-20 px-8 max-w-[1800px] mx-auto">
+    <main className="mt-40 px-8 max-w-[1800px] mx-auto">
       {/* <Masonry
         columns={{ xs: 1, md: 3, lg: 4 }}
         spacing={{ xs: 0, md: 3, lg: 4 }}
@@ -18,6 +18,6 @@ export default async function page() {
       </Masonry> */}
 
       <OverviewGallery projects={projects}/>
-    </section>
+    </main>
   );
 }

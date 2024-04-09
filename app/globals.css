@@ -57,7 +57,7 @@ body {
 }
 
 .lg-backdrop {
-  background-color: white;
+  background-color: white !important;
 }
 
 .pswp__content {
@@ -79,11 +79,11 @@ body {
   display: -webkit-box; /* Not needed if autoprefixing */
   display: -ms-flexbox; /* Not needed if autoprefixing */
   display: flex;
-  margin-left: -4%; /* gutter size offset */
+  margin-left: -5%; /* gutter size offset */
   width: auto;
 }
 .my-masonry-grid_column {
-  padding-left: 4%; /* gutter size */
+  padding-left: 5%; /* gutter size */
   background-clip: padding-box;
 }
 
@@ -100,7 +100,7 @@ body {
 
 @media screen and (max-width: 600px) {
   .lg-components {
-    bottom: 10%;
+    bottom: 80px;
     width: 100%;
     top: unset !important;
     /* left: unset !important; */
