@@ -55,10 +55,10 @@ export default async function Page({ params }: paramProps) {
 
   return (
     <>
-      <section className="px-8 md:px-16 max-w-screen-2xl mx-auto">
+      <main className="px-8 md:px-16 max-w-screen-2xl mx-auto mt-32">
         <ButtonTest />
         <Series categoryData={data} />
-      </section>
+      </main>
     </>
   );
 }

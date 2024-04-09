@@ -6,7 +6,7 @@ export default async function NavbarWrapper() {
   const menuItems = settingsData.menuItems;
 
   return (
-    <div className="fixed top-0 w-full h-16 bg-white">
+    <div className="fixed top-0 w-full h-20 bg-white z-20">
       <NavbarContainer menuItems={menuItems} />
     </div>
   );

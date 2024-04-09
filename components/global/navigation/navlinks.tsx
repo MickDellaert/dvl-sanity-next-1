@@ -10,13 +10,13 @@ type NavProps = {
 };
 
 export default function NavLinks({ menuItems }: NavProps) {
-
   const pathname = usePathname();
 
   return (
     <>
-
-      <div className={` text-lg font-medium uppercase tracking-widest flex gap-8`}>
+      <div
+        className={`flex gap-8 text-lg font-medium uppercase tracking-widest`}
+      >
         {menuItems.map((setting) => {
           const href = resolveHref(setting._type, setting.slug);
 
@@ -26,7 +26,7 @@ export default function NavLinks({ menuItems }: NavProps) {
 
           return (
             <Link
-              className={`${pathname === href ? "underline underline-offset-4 decoration-2" : ""}`}
+              className={`${pathname === href ? "underline decoration-2 underline-offset-4" : ""}`}
               key={setting.title}
               href={href}
             >
