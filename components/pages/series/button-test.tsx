@@ -14,7 +14,7 @@ export default function ButtonTest() {
         <button
           className="text-lg md:text-xl text-left"
           onClick={() => {
-            router.push("/work/forgotten-inventions");
+            router.push("/series/forgotten-inventions");
           }}
         >
           Forgotten Inventions
@@ -22,7 +22,7 @@ export default function ButtonTest() {
         <button
           className="text-lg md:text-xl text-left"
           onClick={() => {
-            router.push("/work/bygone-toys");
+            router.push("/series/bygone-toys");
           }}
         >
           Bygone Toys
@@ -30,7 +30,7 @@ export default function ButtonTest() {
         <button
           className="text-lg md:text-xl text-left"
           onClick={() => {
-            router.push("/work/future-inventions");
+            router.push("/series/future-inventions");
           }}
         >
           Future Inventions

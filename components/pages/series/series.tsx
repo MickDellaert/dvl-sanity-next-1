@@ -1,11 +1,34 @@
-import { getCategoriesData, getCategoryDataOrder } from "@/sanity/lib/queryLoaders";
+"use client";
+import {
+  getCategoriesData,
+  getCategoryDataOrder,
+} from "@/sanity/lib/queryLoaders";
 import { PortableText } from "@portabletext/react";
 import dynamic from "next/dynamic";
 import ProjectsGallery from "@/components/pages/series/projects-gallery";
 import { Category } from "@/sanity/types";
 import Masonry from "@mui/lab/Masonry";
+import { Theme, ThemeOptions, useTheme } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material";
 
-const DynamicProjectsGallery = dynamic(() => import("@/components/pages/series/projects-gallery"), { ssr: false });
+const DynamicProjectsGallery = dynamic(
+  () => import("@/components/pages/series/projects-gallery"),
+  { ssr: false },
+);
+
+const breakpointsOverrides = {
+  xs: 0,
+  sm: 640,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+};
+
+const getCustomTheme = (theme: Theme | ThemeOptions | undefined) =>
+  createTheme({
+    ...theme,
+    breakpoints: { values: { ...breakpointsOverrides } },
+  });
 
 // type paramProps = {
 //   params: {
@@ -25,7 +48,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function Series({ categoryData }: CategoryData) {
+export default function Series({ categoryData }: CategoryData) {
   // const { slug } = params;
 
   // const categoryData = await getCategoryDataOrder(slug);
@@ -33,50 +56,40 @@ export default async function Series({ categoryData }: CategoryData) {
   // const { slug: pageSlug, title, content } = pageData ?? {};
   // const { _id, name, seriesDescription, projects } = categoryData ?? {};
 
+  const theme = useTheme();
+
   return (
     <>
-      {categoryData.map((category) => (
-        <>
-          <section className="flex flex-col justify-center">
-            <div className="md:flex md:flex-row justify-between pb-40">
-              <div className="w-full md:w-4/12 xl:w-3/12 md:sticky top-28 self-start mb-16 md:mb-0">
-                <h2 className="font-semibold tracking-widest text-3xl mb-4"> {category.name}</h2>
-                <div className="text-sm leading-relaxed">
-                  <PortableText value={category.seriesDescription} />
+      <ThemeProvider theme={getCustomTheme(theme)}>
+        {categoryData.map((category) => (
+          <>
+            <section className="flex flex-col justify-center">
+              <div className="justify-between pb-40 md:flex md:flex-row">
+                <div className="top-28 mb-16 w-full self-start md:sticky md:mb-0 md:w-4/12 xl:w-3/12">
+                  <h2 className="mb-4 text-3xl font-semibold tracking-widest">
+                    {" "}
+                    {category.name}
+                  </h2>
+                  <div className="text-sm leading-relaxed">
+                    <PortableText value={category.seriesDescription} />
+                  </div>
+                </div>
+                <div className="-mr-0 w-full md:w-7/12 lg:-mr-[80px]">
+                  <Masonry
+                    columns={{ xs: 1, lg: 2 }}
+                    spacing={{ xs: 0, lg: 10 }}
+                    defaultHeight={1200}
+                    defaultColumns={2}
+                    defaultSpacing={10}
+                  >
+                    <ProjectsGallery projects={category.projects} />
+                  </Masonry>
                 </div>
               </div>
-              <div className="w-full md:w-7/12 -mr-0 lg:-mr-[80px]">
-                <Masonry
-                  // sx={{
-                  //   sm: 640,
-                  //   md: 768,
-                  //   lg: 1024,
-                  //   xl: 1280,
-                  //   xxl: 1536,
-                  // }}
-
-                  sx={{
-                    breakpoints: { values: { lg: 1280 } },
-                  }}
-                  // xs, extra-small: 0px
-                  // sm, small: 600px
-                  // md, medium: 900px
-                  // lg, large: 1200px
-                  // xl, extra-large: 1536px
-
-                  columns={{ xs: 1, lg: 2 }}
-                  spacing={{ xs: 0, lg: 10 }}
-                  defaultHeight={1200}
-                  defaultColumns={2}
-                  defaultSpacing={10}
-                >
-                  <ProjectsGallery projects={category.projects} />
-                </Masonry>
-              </div>
-            </div>
-          </section>
-        </>
-      ))}
+            </section>
+          </>
+        ))}
+      </ThemeProvider>
     </>
   );
 }
