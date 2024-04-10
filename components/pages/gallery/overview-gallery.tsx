@@ -75,6 +75,7 @@ export const OverviewGallery = ({ projects }: Projects) => {
 
       <LightGallery
         mode="lg-fade"
+        hideScrollbar={true} 
         fullScreen={true}
         plugins={[lgZoom, lgFullscreen]}
         // Once the component initializes, we'll assign the instance to our React ref.  This is used in the onClick() handler of each image in the Masonry layout
