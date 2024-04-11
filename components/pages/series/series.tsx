@@ -10,6 +10,7 @@ import { Category } from "@/sanity/types";
 import Masonry from "@mui/lab/Masonry";
 import { Theme, ThemeOptions, useTheme } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material";
+import React from "react";
 
 const DynamicProjectsGallery = dynamic(
   () => import("@/components/pages/series/projects-gallery"),
@@ -62,7 +63,7 @@ export default function Series({ categoryData }: CategoryData) {
     <>
       <ThemeProvider theme={getCustomTheme(theme)}>
         {categoryData.map((category) => (
-          <>
+          <React.Fragment key={category._id}>
             <section className="flex flex-col justify-center">
               <div className="justify-between pb-40 md:flex md:flex-row">
                 <div className="top-28 mb-16 w-full self-start md:sticky md:mb-0 md:w-4/12 xl:w-3/12">
@@ -87,7 +88,7 @@ export default function Series({ categoryData }: CategoryData) {
                 </div>
               </div>
             </section>
-          </>
+          </React.Fragment>
         ))}
       </ThemeProvider>
     </>

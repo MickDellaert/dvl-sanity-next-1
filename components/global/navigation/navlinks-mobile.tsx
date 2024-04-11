@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { resolveHref } from "@/sanity/lib/utils";
 import { useState } from "react";
+import Hamburger from "./hamburger";
 
 type NavProps = {
   menuItems: MenuItem[];
@@ -23,13 +24,22 @@ export default function NavLinksMobile({ menuItems }: NavProps) {
 
   return (
     <>
-      <button
-        className="z-10 h-8 w-8 pb-1 text-3xl leading-[8px]"
-        style={openMenu ? { opacity: 1 } : { opacity: 1 }}
-        onClick={toggleMenu}
-      >
-        x
-      </button>
+      {!openMenu && (
+        <button
+          className="relative z-50 h-8 w-8 pb-1 text-3xl leading-[8px]"
+          onClick={toggleMenu}
+        >
+          <Hamburger />
+        </button>
+      )}
+      {openMenu && (
+        <button
+          className="relative z-50 h-8 w-8 pb-1 text-3xl leading-[8px]"
+          onClick={toggleMenu}
+        >
+          x
+        </button>
+      )}
       <div
         className={`flex w-full flex-col justify-center gap-8 bg-white pb-12 pt-24 text-center text-lg font-medium uppercase tracking-widest`}
         style={

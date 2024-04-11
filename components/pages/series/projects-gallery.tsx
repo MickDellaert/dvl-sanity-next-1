@@ -34,7 +34,7 @@ export default function ProjectsGallery({ projects }: Props) {
     <>
       <Gallery withCaption options={galleryOptions}>
         {projects?.map((project, i) => (
-          <div key={i} className="mb-16 md:mb-0">
+          <div key={i} className="mb-16 lg:mb-0">
             <FullScreen handle={handle}>
               <Item
                 original={project.projectImage}

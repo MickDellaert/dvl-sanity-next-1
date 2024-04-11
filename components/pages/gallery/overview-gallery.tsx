@@ -57,7 +57,7 @@ export const OverviewGallery = ({ projects }: Projects) => {
     <>
       {/* <div ref={containerRef} /> */}
 
-      <div className="mt-20 max-w-screen-3xl mx-auto">
+      <div className="mt-20 mx-auto">
         {/* <Masonry columns={{ xs: 1, md: 3, lg: 4 }}
         spacing={{ xs: 0, md: 3, lg: 8 }}
         defaultHeight={1200}
