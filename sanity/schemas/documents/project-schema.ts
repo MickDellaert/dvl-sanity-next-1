@@ -23,19 +23,16 @@ const project = defineType({
       options: { source: "projectTitle" },
       // validation: (rule) => rule.required(),
     }),
-    defineField({
-      name: "projectDescription",
-      title: "Project Description",
-      type: "array",
-      of: [{type: "block"}]
-    }),
+    // defineField({
+    //   name: "projectDescription",
+    //   title: "Project Description",
+    //   type: "array",
+    //   of: [{ type: "block" }],
+    // }),
     defineField({
       name: "date",
       title: "Project Date",
-      type: "date",
-      options: {
-        dateFormat: "YYYY",
-      },
+      type: "string",
     }),
     defineField({
       name: "material",
@@ -52,7 +49,7 @@ const project = defineType({
   initialValue: {
     projectTitle: "Artwork title",
     material: "oil on canvas",
-    date: "1912-12-12"
+    date: "1912-12-12",
   },
 });
 

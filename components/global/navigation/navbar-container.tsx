@@ -18,8 +18,14 @@ export default function NavbarContainer({ menuItems }: NavProps) {
   return (
     <div className="flex flex-row items-center justify-between px-8 pt-6 md:px-16">
       <Logo />
-      {!isMobile && <NavLinks menuItems={menuItems} />}
-      {isMobile && <NavLinksMobile menuItems={menuItems} />}
+      {/* {!isMobile && <NavLinks menuItems={menuItems} />}
+      {isMobile && <NavLinksMobile menuItems={menuItems} />} */}
+      <div className="hidden lg:block">
+        <NavLinks menuItems={menuItems} />
+      </div>
+      <div className="block lg:hidden">
+        <NavLinksMobile menuItems={menuItems} />
+      </div>
     </div>
   );
 }
