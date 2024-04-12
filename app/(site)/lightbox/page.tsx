@@ -1,6 +1,6 @@
 import Lightbox from "@/components/shared/lightbox";
 import LightboxLightGallery from "@/components/shared/lightboxLightGallery";
-import LightboxWithChildren from "@/components/shared/lightboxWithChildren";
+import LightboxWithChildren from "@/app/unused/lightboxWithChildren";
 import { getProjectsData } from "@/sanity/lib/queryLoaders";
 import Masonry from "@mui/lab/Masonry";
 import Image from "next/image";

@@ -26,49 +26,10 @@ body {
     rgb(var(--background-start-rgb)); */
 }
 
-.lg-react-element {
-  /* display: flex;
-  gap: 20px; */
-}
-
-/* .pswp__bg{
-  background-color: white !important;
-} */
-
-.lg-content {
-  width: 70%;
-}
-
-.lg-components {
-  width: 30%;
-  top: 15%;
-  left: unset !important;
-  right: 0;
-}
-
-.lg-sub-html {
-  text-align: left !important;
-  color: black !important;
-}
-
-.lg-img-wrap {
-  width: 80% !important;
-  margin: auto;
-}
-
-.lg-backdrop {
+.pswp__bg{
   background-color: white !important;
 }
 
-.lg-next,
-.lg-prev {
-  background-color: none !important;
-}
-
-.lg-next:hover::before,
-.lg-prev:hover::after {
-  color: black !important;
-}
 
 /* .pswp__content {
   width: 100vw !important;
@@ -84,6 +45,22 @@ body {
   display: flex;
   flex-direction: column;
 } */
+
+
+/* 
+.pswp__zoom-wrap > img{
+  padding-bottom: 60px !important;
+} */
+
+/* 
+.pswp__dynamic-caption > p {
+  color: black !important;
+}
+
+.pswp__dynamic-caption {
+  color: black !important;
+} */
+
 
 .my-masonry-grid {
   display: -webkit-box; /* Not needed if autoprefixing */
@@ -107,64 +84,8 @@ body {
   /* change div to reference your elements you put in <Masonry> */
   margin-bottom: 16px;
 }
-/* 
-.pswp__zoom-wrap > img{
-  padding-bottom: 60px !important;
-} */
-
-/* 
-.pswp__dynamic-caption > p {
-  color: black !important;
-}
-
-.pswp__dynamic-caption {
-  color: black !important;
-} */
 
 @media screen and (max-width: 600px) {
-  .lg-components {
-    bottom: 80px;
-    width: 100%;
-    top: unset !important;
-    /* left: unset !important; */
-    left: 10% !important;
-  }
-
-  .lg-content {
-    width: 100%;
-  }
-
-  .lg-sub-html {
-    padding: 0 !important;
-    padding-bottom: 40px !important;
-  }
-
-  .lg-img-wrap {
-    width: 90% !important;
-    margin-top: 20px !important;
-  }
-
-  .lg-img-wrap::before {
-    vertical-align: top !important;
-  }
+ 
 }
 
-/* .lg-content {
-  display: block !important;
-  position: static !important;
-  width: 100%;
-}
-
-.lg-sub-html {
-  width: 100% !important;
-}
-
-.lg-outer {
-  display: flex !important;
-  flex-direction: column;
-}
-
-.lg-img-wrap {
-  display: block !important;
-  position: static !important;
-} */
