@@ -1,16 +1,17 @@
 "use client";
+
 import {
   getCategoriesData,
   getCategoryDataOrder,
 } from "@/sanity/lib/queryLoaders";
 import { PortableText } from "@portabletext/react";
 import dynamic from "next/dynamic";
-import ProjectsGallery from "@/components/pages/series/projects-gallery";
 import { Category } from "@/sanity/types";
 import Masonry from "@mui/lab/Masonry";
 import { Theme, ThemeOptions, useTheme } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material";
 import React from "react";
+import ProjectsGalleryPhotoswipeSeries from "@/components/pages/series/projects-gallery-photoswipe-series";
 
 const DynamicProjectsGallery = dynamic(
   () => import("@/components/pages/series/projects-gallery"),
@@ -83,7 +84,9 @@ export default function Series({ categoryData }: CategoryData) {
                     defaultColumns={2}
                     defaultSpacing={10}
                   >
-                    <ProjectsGallery projects={category.projects} />
+                    <ProjectsGalleryPhotoswipeSeries
+                      projects={category.projects}
+                    />
                   </Masonry>
                 </div>
               </div>

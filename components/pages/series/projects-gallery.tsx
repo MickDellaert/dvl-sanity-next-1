@@ -11,8 +11,8 @@ import { Gallery, Item } from "react-photoswipe-gallery";
 import { PortableText } from "@portabletext/react";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
-import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css'
-import PhotoSwipeDynamicCaption from 'photoswipe-dynamic-caption-plugin'
+import "photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css";
+import PhotoSwipeDynamicCaption from "photoswipe-dynamic-caption-plugin";
 
 const galleryOptions = {
   // arrowPrev: false,
@@ -35,19 +35,19 @@ export default function ProjectsGallery({ projects }: Props) {
 
   return (
     <>
-      <Gallery options={galleryOptions} 
-      
-      plugins={(pswpLightbox) => {
-        // register plugin
-        const captionPlugin = new PhotoSwipeDynamicCaption(pswpLightbox, {
-          captionContent: (slide: { data: { caption: string; }; }) => slide.data.caption,
-        })
+      <Gallery
+        options={galleryOptions}
+        plugins={(pswpLightbox) => {
+          // register plugin
+          const captionPlugin = new PhotoSwipeDynamicCaption(pswpLightbox, {
+            captionContent: (slide: { data: { caption: string } }) =>
+              slide.data.caption,
+          });
 
-        // register another plugin
-        // ...
-      }}>
-
-        
+          // register another plugin
+          // ...
+        }}
+      >
         {projects?.map((project, i) => (
           <div key={i} className="mb-16 lg:mb-0">
             <FullScreen handle={handle}>
@@ -100,7 +100,9 @@ export default function ProjectsGallery({ projects }: Props) {
             </FullScreen>
 
             <div className="mt-4 text-xs">
-              <h2 className="text-sm font-medium mb-1">{project.projectTitle}</h2>
+              <h2 className="mb-1 text-sm font-medium">
+                {project.projectTitle}
+              </h2>
               {/* <p>{project.date}</p> */}
               <p>{project.material}</p>
               <p>{project.size}</p>

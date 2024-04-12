@@ -18,7 +18,7 @@ export default function NavLinksMobile({ menuItems }: NavProps) {
     setOpenMenu(!openMenu);
   };
 
-  console.log(openMenu);
+  // console.log(openMenu);
 
   const pathname = usePathname();
 
