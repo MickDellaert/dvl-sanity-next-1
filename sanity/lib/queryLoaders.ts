@@ -1,21 +1,32 @@
 import { client } from "./client";
 import { Category, HomePage, Page, Project, Setting, Test } from "../types";
-import { homePageQuery, projectsQuery, categoryQuery,pageQuery, pagesQuery, settingsQuery, testQuery, singleCategory, singleCategoryOrder } from "./queries";
+import {
+  homePageQuery,
+  projectsQuery,
+  categoryQuery,
+  pageQuery,
+  pagesQuery,
+  settingsQuery,
+  testQuery,
+  singleCategory,
+  singleCategoryOrder,
+} from "./queries";
+import next from "next";
 
 export async function getHomePageData(): Promise<HomePage> {
   return client.fetch(homePageQuery);
 }
 
 export async function getProjectsData(): Promise<Project[]> {
-  return client.fetch(projectsQuery);
+  return client.fetch(projectsQuery, {}, { next: { tags: ["projects"] } });
 }
 
 export async function getCategoryData(slug: string): Promise<Category> {
-  return client.fetch(singleCategory, {slug} );
+  return client.fetch(singleCategory, { slug });
 }
 
 export async function getCategoryDataOrder(slug: string): Promise<Category[]> {
-  return client.fetch(singleCategoryOrder, {slug} );
+  return client.fetch(singleCategoryOrder, { slug });
 }
 
 export async function getCategoriesData(): Promise<Category[]> {
@@ -23,7 +34,7 @@ export async function getCategoriesData(): Promise<Category[]> {
 }
 
 export async function getPageData(slug: string): Promise<Page> {
-  return client.fetch(pageQuery, {slug});
+  return client.fetch(pageQuery, { slug });
 }
 
 export async function getPagesData(): Promise<Page[]> {

@@ -70,9 +70,9 @@ body {
   color: black !important;
 }
 
-.pswp__content {
+/* .pswp__content {
   width: 100vw !important;
-}
+} */
 
 .inline-gallery-container {
   width: 100%;
@@ -80,10 +80,10 @@ body {
   padding-bottom: 65%;
 }
 
-.pswp__default-caption {
+/* .pswp__default-caption {
   display: flex;
   flex-direction: column;
-}
+} */
 
 .my-masonry-grid {
   display: -webkit-box; /* Not needed if autoprefixing */
@@ -107,6 +107,19 @@ body {
   /* change div to reference your elements you put in <Masonry> */
   margin-bottom: 16px;
 }
+/* 
+.pswp__zoom-wrap > img{
+  padding-bottom: 60px !important;
+} */
+
+/* 
+.pswp__dynamic-caption > p {
+  color: black !important;
+}
+
+.pswp__dynamic-caption {
+  color: black !important;
+} */
 
 @media screen and (max-width: 600px) {
   .lg-components {
