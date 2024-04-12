@@ -1,5 +1,5 @@
 
-import { LightGalleryMasonry } from "@/app/unused/lightGalleryMasonry";
+// import { LightGalleryMasonry } from "@/app/unused/lightGalleryMasonry";
 import { getProjectsData } from "@/sanity/lib/queryLoaders";
 
 export default async function Page() {
@@ -8,7 +8,7 @@ export default async function Page() {
   return (
     <>
    
-      <LightGalleryMasonry projects={projects}/>
+      {/* <LightGalleryMasonry projects={projects}/> */}
     </>
   );
 }
