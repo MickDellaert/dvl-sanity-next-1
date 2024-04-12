@@ -1,6 +1,6 @@
 "use client";
 
-import ProjectsGallery from "@/app/unused/projects-gallery";
+import ProjectsGallery from "@/components/pages/series/projects-gallery";
 import {
   getCategoriesData,
   getCategoryDataOrder,
@@ -15,7 +15,7 @@ import React from "react";
 import ProjectsGalleryPhotoswipeSeries from "@/components/pages/series/projects-gallery-photoswipe-series";
 
 const DynamicProjectsGallery = dynamic(
-  () => import("@/app/unused/projects-gallery"),
+  () => import("@/components/pages/series/projects-gallery"),
   { ssr: false },
 );
 
