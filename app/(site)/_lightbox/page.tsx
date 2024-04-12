@@ -1,4 +1,4 @@
-import LightboxWithChildren from "@/app/unused/lightboxWithChildren";
+// import LightboxWithChildren from "@/app/unused/lightboxWithChildren";
 import { getProjectsData } from "@/sanity/lib/queryLoaders";
 import Masonry from "@mui/lab/Masonry";
 import Image from "next/image";

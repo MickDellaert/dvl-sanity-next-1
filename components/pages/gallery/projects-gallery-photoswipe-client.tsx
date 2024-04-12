@@ -2,7 +2,6 @@
 
 import PhotoswipeGallery from "@/components/shared/photoswipe-gallery";
 import PhotoswipeItem from "@/components/shared/photoswipe-item";
-import ProjectsGalleryPhotoswipe from "@/app/unused/projects-gallery-photoswipe";
 import { Project } from "@/sanity/types";
 import React from "react";
 

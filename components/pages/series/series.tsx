@@ -1,6 +1,5 @@
 "use client";
 
-import ProjectsGallery from "@/components/pages/series/projects-gallery";
 import {
   getCategoriesData,
   getCategoryDataOrder,
