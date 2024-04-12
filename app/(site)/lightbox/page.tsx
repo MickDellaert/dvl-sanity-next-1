@@ -1,5 +1,3 @@
-import Lightbox from "@/components/shared/lightbox";
-import LightboxLightGallery from "@/components/shared/lightboxLightGallery";
 import LightboxWithChildren from "@/app/unused/lightboxWithChildren";
 import { getProjectsData } from "@/sanity/lib/queryLoaders";
 import Masonry from "@mui/lab/Masonry";
@@ -29,7 +27,7 @@ export default async function Page() {
                   defaultColumns={2}
                   defaultSpacing={10}
                 > */}
-      <LightboxLightGallery projects={projects}/>
+      {/* <LightboxLightGallery projects={projects}/> */}
       {/* </Masonry> */}
     </>
   );

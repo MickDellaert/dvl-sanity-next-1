@@ -1,8 +1,6 @@
 import ButtonTest from "@/components/pages/series/button-test";
 import { getCategoriesData, getCategoryDataOrder } from "@/sanity/lib/queryLoaders";
-import { PortableText } from "@portabletext/react";
 import dynamic from "next/dynamic";
-import ProjectGallery from "@/app/unused/projects-gallery";
 import Series from "@/components/pages/series/series";
 import { notFound } from "next/navigation";
 import Masonry from "@mui/lab/Masonry";
