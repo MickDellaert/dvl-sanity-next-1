@@ -1,4 +1,6 @@
 "use client";
+
+import ProjectsGallery from "@/app/unused/projects-gallery";
 import {
   getCategoriesData,
   getCategoryDataOrder,
@@ -83,7 +85,9 @@ export default function Series({ categoryData }: CategoryData) {
                     defaultColumns={2}
                     defaultSpacing={10}
                   >
-                    <ProjectsGalleryPhotoswipeSeries projects={category.projects} />
+                    <ProjectsGalleryPhotoswipeSeries
+                      projects={category.projects}
+                    />
                   </Masonry>
                 </div>
               </div>
