@@ -45,8 +45,8 @@ export default defineConfig({
 
             // Regular document types
             S.documentTypeListItem("homepage").title("Homepage"),
-            S.documentTypeListItem("project").title("Project"),
-            S.documentTypeListItem("category").title("Category"),
+            S.documentTypeListItem("project").title("Artwork"),
+            S.documentTypeListItem("category").title("Serie"),
             S.documentTypeListItem("page").title("Page"),
             S.documentTypeListItem("settings").title("Settings"),
             // S.documentTypeListItem("settingsTest").title("SettingsTest"),

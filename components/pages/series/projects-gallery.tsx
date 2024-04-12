@@ -11,6 +11,9 @@ import { Gallery, Item } from "react-photoswipe-gallery";
 import { PortableText } from "@portabletext/react";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
+import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css'
+import PhotoSwipeDynamicCaption from 'photoswipe-dynamic-caption-plugin'
+
 const galleryOptions = {
   // arrowPrev: false,
   // arrowNext: false,
@@ -32,7 +35,19 @@ export default function ProjectsGallery({ projects }: Props) {
 
   return (
     <>
-      <Gallery withCaption options={galleryOptions}>
+      <Gallery options={galleryOptions} 
+      
+      plugins={(pswpLightbox) => {
+        // register plugin
+        const captionPlugin = new PhotoSwipeDynamicCaption(pswpLightbox, {
+          captionContent: (slide: { data: { caption: string; }; }) => slide.data.caption,
+        })
+
+        // register another plugin
+        // ...
+      }}>
+
+        
         {projects?.map((project, i) => (
           <div key={i} className="mb-16 lg:mb-0">
             <FullScreen handle={handle}>
@@ -41,6 +56,9 @@ export default function ProjectsGallery({ projects }: Props) {
                 thumbnail={project.projectImage}
                 width={project.projectImageDimensions.width}
                 height={project.projectImageDimensions.height}
+                // alt={`<p style='color:white; text-shadow:none;'>${project.projectTitle}</p>
+                // <p style='color:white; text-shadow:none;'>${project.date}</p>
+                // <p style='color:white; text-shadow:none;'>${project.material}</p>`}
                 alt={project.projectTitle}
                 caption={`<p style='color:white; text-shadow:none;'>${project.projectTitle}</p>
                 <p style='color:white; text-shadow:none;'>${project.date}</p>

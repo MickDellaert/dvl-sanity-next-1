@@ -2,7 +2,7 @@ import { defineType, defineField } from "sanity";
 
 const category = defineType({
   name: "category",
-  title: "Category",
+  title: "Serie",
   type: "document",
   fields: [
     defineField({
@@ -22,12 +22,12 @@ const category = defineType({
       name: "seriesDescription",
       title: "Series Description",
       type: "array",
-      of: [{type: "block"}]
+      of: [{ type: "block" }],
     }),
 
     defineField({
       name: "projects",
-      title: "Projects",
+      title: "Artworks",
       type: "array",
       of: [{ type: "reference", to: { type: "project" } }],
     }),
