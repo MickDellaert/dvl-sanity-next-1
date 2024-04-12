@@ -39,4 +39,5 @@ next-env.d.ts
 /app/unused
 app/(site)/lightbox
 app/(site)/lightgallery
+app\(site)\backup
 
