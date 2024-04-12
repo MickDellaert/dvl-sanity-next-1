@@ -67,9 +67,8 @@ export default function Series({ categoryData }: CategoryData) {
           <React.Fragment key={category._id}>
             <section className="flex flex-col justify-center">
               <div className="justify-between pb-40 md:flex md:flex-row">
-                <div className="top-28 mb-16 w-full self-start md:sticky md:mb-0 md:w-4/12 xl:w-3/12">
+                <div className="top-28 !mb-16 w-full self-start md:sticky md:mb-0 md:w-4/12 xl:w-3/12">
                   <h2 className="mb-4 text-3xl font-semibold tracking-widest">
-                    {" "}
                     {category.name}
                   </h2>
                   <div className="text-sm leading-relaxed">
