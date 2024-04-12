@@ -29,6 +29,7 @@ export default function NavLinks({ menuItems }: NavProps) {
               className={`${pathname === href ? "underline decoration-2 underline-offset-4" : ""}`}
               key={setting.title}
               href={href}
+              prefetch={true}
             >
               {setting.title}
             </Link>

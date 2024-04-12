@@ -61,6 +61,7 @@ export default function NavLinksMobile({ menuItems }: NavProps) {
               key={setting.title}
               href={href}
               onClick={toggleMenu}
+              prefetch={true}
             >
               {setting.title}
             </Link>
