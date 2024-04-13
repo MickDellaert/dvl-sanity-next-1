@@ -12,7 +12,6 @@ type NavProps = {
 };
 
 export default function NavLinksMobile({ menuItems }: NavProps) {
-
   const [openMenu, setOpenMenu] = useState(false);
   const pathname = usePathname();
 
@@ -20,6 +19,11 @@ export default function NavLinksMobile({ menuItems }: NavProps) {
     setOpenMenu(!openMenu);
   };
 
+  const onRoute = (href: string) => {
+    if (pathname === href) {
+      setOpenMenu(false);
+    }
+  };
 
   useEffect(() => {
     setOpenMenu(false);
@@ -63,7 +67,7 @@ export default function NavLinksMobile({ menuItems }: NavProps) {
               className={`${pathname === href ? "underline decoration-2 underline-offset-4" : ""}`}
               key={setting.title}
               href={href}
-              // onClick={toggleMenu}
+              onClick={() => onRoute(href)}
               prefetch={true}
             >
               {setting.title}
