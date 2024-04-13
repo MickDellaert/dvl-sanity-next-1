@@ -4,7 +4,7 @@ import { MenuItem } from "@/sanity/types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { resolveHref } from "@/sanity/lib/utils";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Hamburger from "./hamburger";
 
 type NavProps = {
@@ -12,15 +12,18 @@ type NavProps = {
 };
 
 export default function NavLinksMobile({ menuItems }: NavProps) {
+
   const [openMenu, setOpenMenu] = useState(false);
+  const pathname = usePathname();
 
   const toggleMenu = () => {
     setOpenMenu(!openMenu);
   };
 
-  // console.log(openMenu);
 
-  const pathname = usePathname();
+  useEffect(() => {
+    setOpenMenu(false);
+  }, [pathname]);
 
   return (
     <>
@@ -60,7 +63,7 @@ export default function NavLinksMobile({ menuItems }: NavProps) {
               className={`${pathname === href ? "underline decoration-2 underline-offset-4" : ""}`}
               key={setting.title}
               href={href}
-              onClick={toggleMenu}
+              // onClick={toggleMenu}
               prefetch={true}
             >
               {setting.title}

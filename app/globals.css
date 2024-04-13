@@ -26,10 +26,9 @@ body {
     rgb(var(--background-start-rgb)); */
 }
 
-.pswp__bg{
+.pswp__bg {
   background-color: white !important;
 }
-
 
 /* .pswp__content {
   width: 100vw !important;
@@ -46,7 +45,6 @@ body {
   flex-direction: column;
 } */
 
-
 /* 
 .pswp__zoom-wrap > img{
   padding-bottom: 60px !important;
@@ -60,7 +58,6 @@ body {
 .pswp__dynamic-caption {
   color: black !important;
 } */
-
 
 .my-masonry-grid {
   display: -webkit-box; /* Not needed if autoprefixing */
@@ -85,7 +82,17 @@ body {
   margin-bottom: 16px;
 }
 
-@media screen and (max-width: 600px) {
- 
-}
+@media screen and (max-width: 640px) {
+  .pswp__dynamic-caption--mobile {
+    background: none !important;
+    padding: 20px !important;
+  }
 
+  .pswp__button {
+    display: none !important;
+  }
+
+  .pswp__img{
+    /* top: -20px !important */
+  }
+}
