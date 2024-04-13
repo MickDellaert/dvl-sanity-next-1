@@ -89,7 +89,11 @@ body {
   }
 
   .pswp__button {
-    display: none !important;
+    /* display: none !important; */
+  }
+
+  .pswp__button--arrow{
+    visibility: hidden !important;
   }
 
   .pswp__img{

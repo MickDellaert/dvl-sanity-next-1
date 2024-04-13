@@ -20,7 +20,7 @@ const galleryOptions = {
   zoom: true,
   // close: false,
   // counter: false,
-  bgOpacity: 0.9,
+  bgOpacity: 0.98,
   spacing: 0,
   // padding: { top: 40, bottom: 40, left: 40, right: 40 },
   paddingFn: (viewportSize: any, itemData: any, index: number) => {
