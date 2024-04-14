@@ -4,9 +4,11 @@ import project from './documents/project-schema'
 import category from './documents/category-schema'
 import page from './documents/page-schema'
 import settings from './singletons/settings-schema'
+import person from './documents/person-schema'
+import contact from './documents/contact-schema'
 import testSchema from './singletons/test'
 
 
 export const schemaTypes: { types: SchemaTypeDefinition[] } = {
-  types: [homepage, project, category, page, settings, testSchema],
+  types: [homepage, project, category, page, settings, person, contact],
 }
