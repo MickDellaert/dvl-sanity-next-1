@@ -20,33 +20,46 @@ export default function HomePageCategory({ homepageCategories }: Props) {
     <>
       {/* <div>HomePageCategory</div> */}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 justify-center px-8 md:px-16">
+      <div className="grid grid-cols-12 items-center justify-center gap-x-0">
         {homepageCategories.map((category, index) => {
           // TODO: check _id: is niet altijd uniek komende van een array
 
           return (
-            <>
+            // <div key={index} className="odd:col-span-6 odd:col-start-1 even:col-start-9 even:col-span-4 mt-28">
+            <div
+              key={index}
+              className="mb-12 mt-12 col-span-12 md:col-span-6 md:last:col-span-6 
+              md:last:col-start-3 md:[&:nth-child(4n+2)]:col-span-4 md:[&:nth-child(4n+2)]:col-start-9 md:[&:nth-child(4n+3)]:col-span-5 md:[&:nth-child(4n+4)]:col-start-8"
+            >
               <Link
-                className="w-[calc(50% - 2.5rem)] mb-12 md:mb-0 md:odd:mt-0 md:even:mt-24"
+                // className="w-[calc(50% - 2.5rem)] mb-12 md:mb-0 md:odd:mt-0 md:even:mt-24"
+                className=""
                 href={`series/${category.slug}`}
-                key={index}
               >
-                <div className="">
-                  <h2 className="font-semibold tracking-widest text-3xl mt-8 mb-8">{category.name}</h2>
-                  <Image
-                    className="w-full"
-                    src={urlFor(category.projects.projectImage)
-                      .width(category.projects.width)
-                      .height(category.projects.width)
-                      .fit("crop")
-                      .url()}
-                    alt="alt"
-                    width={400}
-                    height={400}
-                  />
+                <div className="group cursor-crosshair">
+                  <div className="overflow-hidden">
+                    <Image
+                      className="w-full transition-all duration-500 group-hover:scale-105 group-hover:blur-sm"
+                      src={urlFor(category.projects.projectImage)
+                        .width(category.projects.width)
+                        .height(category.projects.width)
+                        .fit("crop")
+                        .url()}
+                      alt="alt"
+                      width={400}
+                      height={400}
+                    />
+                  </div>
+                  <h2
+                    className="relative mt-4 mb-4 md:mb-8 md:mt-8 w-fit text-2xl md:text-3xl font-medium
+                  transition-all duration-500 after:absolute after:left-0 after:top-12 after:h-0.5 after:w-24 after:bg-black after:content-[''] 
+                  group-hover:after:w-full"
+                  >
+                    {category.name}
+                  </h2>
                 </div>
               </Link>
-            </>
+            </div>
           );
         })}
       </div>

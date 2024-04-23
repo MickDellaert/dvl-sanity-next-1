@@ -1,4 +1,4 @@
-import { CogIcon } from '@sanity/icons';
+import { CogIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
 
 const settings = defineType({
@@ -13,25 +13,28 @@ const settings = defineType({
     //   title: "empty",
     //   type: "string"
     // })
-    defineField({
-      name: "menuItems",
-      title: "Menu Item List",
-      type: "array",
-      of: [
-        {
-          title: "Reference",
-          type: "reference",
-          to: [
-            {
-              type: "homepage",
-            },
-            {
-              type: "page",
-            },
-          ],
-        },
-      ],
-    }),
+    defineField(
+      {
+        name: "menuItems",
+        title: "Menu Item List",
+        type: "array",
+        of: [
+          {
+            title: "Reference",
+            type: "reference",
+            to: [
+              {
+                type: "homepage",
+              },
+              {
+                type: "page",
+              },
+            ],
+          },
+        ],
+      },
+      { strict: false },
+    ),
   ],
   preview: {
     // select: {
