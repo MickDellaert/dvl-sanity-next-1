@@ -68,7 +68,7 @@ export default function NavLinksMobile({ menuItems }: NavProps) {
 
           return (
             <Link
-              className={`${pathname === href  ? "underline decoration-2 underline-offset-4" : ""}`}
+              className={`${pathname === href  ? "underline decoration-2 underline-offset-8" : ""} `}
               key={setting.title}
               href={href}
               onClick={() => onRoute(href)}

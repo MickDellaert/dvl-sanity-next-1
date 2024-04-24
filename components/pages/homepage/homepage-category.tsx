@@ -51,8 +51,8 @@ export default function HomePageCategory({ homepageCategories }: Props) {
                     />
                   </div>
                   <h2
-                    className="relative mt-4 mb-4 md:mb-8 md:mt-8 w-fit text-2xl md:text-3xl font-medium
-                  transition-all duration-500 after:absolute after:left-0 after:top-12 after:h-0.5 after:w-24 after:bg-black after:content-[''] 
+                    className="relative mt-4 mb-4 md:mb-6 md:mt-6 w-fit text-2xl md:text-3xl font-medium
+                  transition-all duration-500 after:absolute after:left-0 after:top-12 md:after:top-16 after:h-0.5 after:bg-black after:content-[''] 
                   group-hover:after:w-full"
                   >
                     {category.name}
