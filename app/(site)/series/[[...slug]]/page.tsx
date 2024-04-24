@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import Series from "@/components/pages/series/series";
 import { notFound } from "next/navigation";
 import Masonry from "@mui/lab/Masonry";
+import SeriesFilter from "@/components/pages/series/series-filter";
 
 // const DynamicProjectsGallery = dynamic(() => import("@/components/pages/series/projects-gallery"), { ssr: false });
 
@@ -53,8 +54,9 @@ export default async function Page({ params }: paramProps) {
 
   return (
     <>
-      <main className="px-8 md:px-16 max-w-screen-2xl mx-auto mt-32">
-        <ButtonTest />
+      <main className="px-8 md:px-16 max-w-screen-2xl mx-auto">
+        {/* <ButtonTest /> */}
+        <SeriesFilter categoryData={data}/>
         <Series categoryData={data} />
       </main>
     </>

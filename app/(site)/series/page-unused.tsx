@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import ProjectGallery from "@/components/pages/series/projects-gallery";
 import Series from "@/components/pages/series/series";
 import { notFound } from "next/navigation";
+import SeriesFilter from "@/components/pages/series/series-filter";
 
 // const DynamicProjectsGallery = dynamic(() => import("@/components/pages/series/projects-gallery"), { ssr: false });
 
