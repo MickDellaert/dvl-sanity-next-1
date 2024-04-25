@@ -54,7 +54,7 @@ export default async function Page({ params }: paramProps) {
 
   return (
     <>
-      <main className="px-8 md:px-16 max-w-screen-2xl mx-auto">
+      <main className="w-[90%] md:max-w-screen-2xl mx-auto">
         {/* <ButtonTest /> */}
         <SeriesFilter categoryData={data}/>
         <Series categoryData={data} />

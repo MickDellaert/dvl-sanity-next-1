@@ -65,8 +65,8 @@ export default function Series({ categoryData }: CategoryData) {
       <ThemeProvider theme={getCustomTheme(theme)}>
         {categoryData.map((category) => (
           <React.Fragment key={category._id}>
-            <section className="flex flex-col justify-center mt-32">
-              <div className="justify-between pb-40 md:flex md:flex-row">
+            <section className="flex flex-col justify-center mt:0 md:mt-32">
+              <div className="justify-between pb-8 md:pb-40 md:flex md:flex-row">
                 <div className="top-32 mb-16 w-full self-start md:sticky md:mb-0 md:w-4/12 xl:w-3/12">
                   <h2 className="mb-4 text-3xl font-semibold tracking-widest">
                     {category.name}
