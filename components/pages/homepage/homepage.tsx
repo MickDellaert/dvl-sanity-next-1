@@ -27,10 +27,10 @@ export default async function HomePage() {
   console.log(homepageMainImageSingle);
 
   return (
-    <div className="max-w-screen-2xl pt-8">
+    <div className="pt-8">
       <h1>{title}</h1>
-      {/* <h2 className="self-start text-4xl">{homepageDescription}</h2> */}
 
+      {/* <h2 className="self-start text-4xl">{homepageDescription}</h2> */}
       <h2 className="self-start text-4xl font-medium leading-snug md:text-5xl md:leading-snug lg:w-2/3">
         Antwerp and Mortehan based contemporary artist.
       </h2>
@@ -80,22 +80,7 @@ export default async function HomePage() {
       {/* </div> */}
 
       <Subtitle subtitle={"Painting Series"} />
-
-      {/* <Image className="h-screen object-cover" src={homepageMainImage} alt={title} width={1000} height={1000} /> */}
-      {/* <ImageTest imageTestData={homepageMainImage} /> */}
-      {/* <CategoryList homepageCategories={homepageCategories} /> */}
       <HomePageCategory homepageCategories={homepageCategories} />
-
-      {/* <ProjectList/> */}
-
-      {/* {homePageData.map((info) => (
-        <div key={info._id} className="w-full my-20">
-          <h1 className="mb-8 text-8xl font-bold">{info.homepageTitle}</h1>
-          <p>{info.homepageDescription}</p>
-          <Image className="" src={info.homepageMainImage} alt={info.homepageTitle} width={2000} height={2000} />
-        </div>
-      ))} */}
-
       <Subtitle subtitle={"Upcoming Exhibitions"} />
     </div>
   );

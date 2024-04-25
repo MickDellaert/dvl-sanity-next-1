@@ -20,7 +20,7 @@ export default function HomePageCategory({ homepageCategories }: Props) {
     <>
       {/* <div>HomePageCategory</div> */}
 
-      <div className="grid grid-cols-12 items-center justify-center gap-12">
+      <div className="grid grid-cols-12 items-center justify-center gap-x-2 md:gap-x-12 gap-y-20 md:gap-y-28">
         {homepageCategories.map((category, index) => {
           // TODO: check _id: is niet altijd uniek komende van een array
 
@@ -28,7 +28,7 @@ export default function HomePageCategory({ homepageCategories }: Props) {
             // <div key={index} className="odd:col-span-6 odd:col-start-1 even:col-start-9 even:col-span-4 mt-28">
             <div
               key={index}
-              className="mb-12 mt-12 col-span-12 md:col-span-6 md:last:col-span-6 
+              className="col-span-12 md:col-span-6 md:last:col-span-6 
               md:last:col-start-3 md:[&:nth-child(4n+2)]:col-span-4 md:[&:nth-child(4n+2)]:col-start-9 md:[&:nth-child(4n+3)]:col-span-5 md:[&:nth-child(4n+4)]:col-start-7"
             >
               <Link
