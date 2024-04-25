@@ -18,19 +18,25 @@ const category = defineType({
       options: { source: "name" },
     }),
 
-    defineField({
-      name: "seriesDescription",
-      title: "Series Description",
-      type: "array",
-      of: [{ type: "block" }],
-    }),
+    defineField(
+      {
+        name: "seriesDescription",
+        title: "Series Description",
+        type: "array",
+        of: [{ type: "block" }],
+      },
+      { strict: false },
+    ),
 
-    defineField({
-      name: "projects",
-      title: "Artworks",
-      type: "array",
-      of: [{ type: "reference", to: { type: "project" } }],
-    }),
+    defineField(
+      {
+        name: "projects",
+        title: "Artworks",
+        type: "array",
+        of: [{ type: "reference", to: { type: "project" } }],
+      },
+      { strict: false },
+    ),
   ],
 });
 

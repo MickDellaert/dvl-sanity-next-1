@@ -1,10 +1,14 @@
 import ButtonTest from "@/components/pages/series/button-test";
-import { getCategoriesData, getCategoryDataOrder } from "@/sanity/lib/queryLoaders";
+import {
+  getCategoriesData,
+  getCategoryDataOrder,
+} from "@/sanity/lib/queryLoaders";
 import { PortableText } from "@portabletext/react";
 import dynamic from "next/dynamic";
 import ProjectGallery from "@/components/pages/series/projects-gallery";
 import Series from "@/components/pages/series/series";
 import { notFound } from "next/navigation";
+import SeriesFilter from "@/components/pages/series/series-filter";
 
 // const DynamicProjectsGallery = dynamic(() => import("@/components/pages/series/projects-gallery"), { ssr: false });
 
@@ -25,20 +29,18 @@ export async function generateStaticParams() {
 export default async function Page({ params }: paramProps) {
   // const { slug } = params;
 
-
   const categoryData = await getCategoriesData();
   // const categoryDataOrder = await getCategoryDataOrder(slug);
 
   if (!categoryData) {
-    notFound()
+    notFound();
   }
 
   // const { slug: pageSlug, title, content } = pageData ?? {};
   // const { _id, name, seriesDescription, projects } = categoryData ?? {};
 
-
   if (!categoryData) {
-    notFound()
+    notFound();
   }
 
   return (

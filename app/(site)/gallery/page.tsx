@@ -6,10 +6,10 @@ import ProjectsGalleryPhotoswipeClient from "../../../components/pages/gallery/p
 export default async function page() {
 
   const projects = await getProjectsData();
-  revalidateTag("projects");
+  // revalidateTag("projects");
 
   return (
-    <main className="mx-auto mt-40 max-w-screen-2xl px-8">
+    <main className="mx-auto mt-40 w-[90%] md:max-w-screen-2xl">
       <ProjectsGalleryPhotoswipeClient projects={projects} />
     </main>
   );

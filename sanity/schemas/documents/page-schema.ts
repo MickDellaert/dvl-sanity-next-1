@@ -18,12 +18,15 @@ const page = defineType({
         source: "title",
       },
     }),
-    defineField({
-      name: "content",
-      title: "Content",
-      type: "array",
-      of: [{ type: "block" }],
-    }),
+    defineField(
+      {
+        name: "content",
+        title: "Content",
+        type: "array",
+        of: [{ type: "block" }],
+      },
+      { strict: false },
+    ),
   ],
 });
 

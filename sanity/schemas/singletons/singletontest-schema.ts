@@ -1,9 +1,9 @@
 import { CogIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
 
-const settings = defineType({
-  name: "settings",
-  title: "Settings",
+const singletonTest = defineType({
+  name: "singletonTest",
+  title: "singletonTestTitleFromSchema",
   type: "document",
   icon: CogIcon,
 
@@ -48,4 +48,4 @@ const settings = defineType({
   },
 });
 
-export default settings;
+export default singletonTest;

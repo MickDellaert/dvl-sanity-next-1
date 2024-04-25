@@ -5,13 +5,16 @@ const project = defineType({
   title: "Project",
   type: "document",
   fields: [
-    defineField({
-      name: "projectImage",
-      title: "Project Image",
-      type: "image",
-      options: { hotspot: true },
-      fields: [{ name: "alt", title: "Alt", type: "string" }],
-    }),
+    defineField(
+      {
+        name: "projectImage",
+        title: "Project Image",
+        type: "image",
+        options: { hotspot: true },
+        fields: [{ name: "alt", title: "Alt", type: "string" }],
+      },
+      { strict: false },
+    ),
     defineField({
       name: "projectTitle",
       title: "Project Title",

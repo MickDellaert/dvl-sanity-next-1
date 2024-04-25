@@ -39,16 +39,27 @@ export default defineConfig({
             //   .icon(CogIcon)
             //   .id("settings")
             //   .child(S.document().schemaType("settings").documentId("settings")),
+
             // S.listItem().title("SettingsTest").id("settingsTest").child(
             //   S.document().schemaType("settingsTest").documentId("settingsTest")
             // ),
+            S.listItem().title("SingletonTest").id("singletonTest").child(
+              S.document().title("documentTitleTest").schemaType("singletonTest").documentId("singletonTestDocumentId")
+            ),
+
+            // 4612500c-17eb-4b4c-9f2f-ada4a653d7eb
 
             // Regular document types
-            S.documentTypeListItem("homepage").title("Homepage"),
-            S.documentTypeListItem("project").title("Artwork"),
-            S.documentTypeListItem("category").title("Serie"),
-            S.documentTypeListItem("page").title("Page"),
             S.documentTypeListItem("settings").title("Settings"),
+            S.divider(),
+            S.documentTypeListItem("homepage").title("Homepage"),
+            S.documentTypeListItem("page").title("Page"),
+            S.divider(),
+            S.documentTypeListItem("project").title("Artwork"),
+            S.documentTypeListItem("category").title("Series"),
+            S.documentTypeListItem("person").title("Person"),
+            S.documentTypeListItem("contact").title("Contact"),
+            S.documentTypeListItem("aboutpage").title("About"),
             // S.documentTypeListItem("settingsTest").title("SettingsTest"),
           ]),
     }),

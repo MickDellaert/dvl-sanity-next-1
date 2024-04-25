@@ -16,7 +16,7 @@ export default function NavbarContainer({ menuItems }: NavProps) {
   const isMobile = useMediaQuery({ maxWidth: DeviceSize.lg });
 
   return (
-    <div className="flex flex-row items-center justify-between px-8 pt-6 md:px-16">
+    <div className="flex flex-row items-center justify-between pt-6 mx-auto sm:mx-8 lg:mx-16 md:pr-0 w-[90%] sm:pr-0">
       <Logo />
       {/* {!isMobile && <NavLinks menuItems={menuItems} />}
       {isMobile && <NavLinksMobile menuItems={menuItems} />} */}

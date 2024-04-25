@@ -7,8 +7,8 @@ export default async function NavbarWrapper() {
   const menuItems = settingsData.menuItems;
 
   return (
-    <div className="fixed top-0 z-50 h-20 w-full bg-white">
+    <nav className="fixed top-0 z-50 h-20 w-full bg-white">
       <NavbarContainer menuItems={menuItems} />
-    </div>
+    </nav>
   );
 }

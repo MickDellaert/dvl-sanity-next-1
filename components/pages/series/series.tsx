@@ -65,9 +65,9 @@ export default function Series({ categoryData }: CategoryData) {
       <ThemeProvider theme={getCustomTheme(theme)}>
         {categoryData.map((category) => (
           <React.Fragment key={category._id}>
-            <section className="flex flex-col justify-center">
-              <div className="justify-between pb-40 md:flex md:flex-row">
-                <div className="top-28 mb-16 w-full self-start md:sticky md:mb-0 md:w-4/12 xl:w-3/12">
+            <section className="flex flex-col justify-center mt:0 md:mt-32">
+              <div className="justify-between pb-8 md:pb-40 md:flex md:flex-row">
+                <div className="top-32 mb-16 w-full self-start md:sticky md:mb-0 md:w-4/12 xl:w-3/12">
                   <h2 className="mb-4 text-3xl font-semibold tracking-widest">
                     {category.name}
                   </h2>
@@ -75,7 +75,7 @@ export default function Series({ categoryData }: CategoryData) {
                     <PortableText value={category.seriesDescription} />
                   </div>
                 </div>
-                <div className="-mr-0 w-full md:w-7/12 lg:-mr-[80px]">
+                <div className="-mr-0 w-full md:w-8/12 lg:-mr-[80px] top-32 md:sticky">
                   <Masonry
                     columns={{ xs: 1, lg: 2 }}
                     spacing={{ xs: 0, lg: 10 }}

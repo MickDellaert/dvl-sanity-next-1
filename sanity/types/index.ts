@@ -18,6 +18,7 @@ export type HomePage = {
   slug: string;
   homepageDescription: string;
   homepageMainImage: { url: string; alt: string };
+  homepageMainImageSingle: { url: string; alt: string };
   homepageCategories: HomePageCategory[];
 };
 

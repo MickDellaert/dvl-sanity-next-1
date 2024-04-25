@@ -17,8 +17,12 @@ export async function getHomePageData(): Promise<HomePage> {
   return client.fetch(homePageQuery);
 }
 
+// export async function getProjectsData(): Promise<Project[]> {
+//   return client.fetch(projectsQuery, {}, { next: { tags: ["projects"] } });
+// }
+
 export async function getProjectsData(): Promise<Project[]> {
-  return client.fetch(projectsQuery, {}, { next: { tags: ["projects"] } });
+  return client.fetch(projectsQuery);
 }
 
 export async function getCategoryData(slug: string): Promise<Category> {
