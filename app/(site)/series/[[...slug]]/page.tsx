@@ -1,9 +1,8 @@
-import ButtonTest from "@/components/pages/series/button-test";
 import { getCategoriesData, getCategoryDataOrder } from "@/sanity/lib/queryLoaders";
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 import Series from "@/components/pages/series/series";
 import { notFound } from "next/navigation";
-import Masonry from "@mui/lab/Masonry";
+// import Masonry from "@mui/lab/Masonry";
 import SeriesFilter from "@/components/pages/series/series-filter";
 
 // const DynamicProjectsGallery = dynamic(() => import("@/components/pages/series/projects-gallery"), { ssr: false });

@@ -1,10 +1,10 @@
-import ButtonTest from "@/components/pages/series/button-test";
+import ButtonTest from "@/components/unused/button-test";
 import { getCategoriesData, getCategoryDataOrder } from "@/sanity/lib/queryLoaders";
 import { PortableText } from "@portabletext/react";
 import dynamic from "next/dynamic";
-import ProjectGallery from "@/components/pages/series/projects-gallery";
+import ProjectGallery from "@/components/unused/series-gallery";
 
-const DynamicProjectsGallery = dynamic(() => import("@/components/pages/series/projects-gallery"), { ssr: false });
+const DynamicProjectsGallery = dynamic(() => import("@/components/unused/series-gallery"), { ssr: false });
 
 type paramProps = {
   params: {

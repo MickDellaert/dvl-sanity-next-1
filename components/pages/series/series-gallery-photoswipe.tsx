@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import PhotoswipeGallery from "@/components/shared/photoswipe-gallery";
 import PhotoswipeItem from "@/components/shared/photoswipe-item";
@@ -9,7 +9,7 @@ type Projects = {
   projects: Project[];
 };
 
-export default function ProjectsGalleryPhotoswipeSeries({
+export default function SeriesGalleryPhotoswipe({
   projects,
 }: Projects) {
   return (

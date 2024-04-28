@@ -1,4 +1,4 @@
-import ButtonTest from "@/components/pages/series/button-test";
+import ButtonTest from "@/components/unused/button-test";
 import { getCategoriesData, getCategoryData } from "@/sanity/lib/queryLoaders";
 import { PortableText } from "@portabletext/react";
 import dynamic from "next/dynamic";

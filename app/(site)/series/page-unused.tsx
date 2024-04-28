@@ -1,14 +1,13 @@
-import ButtonTest from "@/components/pages/series/button-test";
 import {
   getCategoriesData,
   getCategoryDataOrder,
 } from "@/sanity/lib/queryLoaders";
-import { PortableText } from "@portabletext/react";
-import dynamic from "next/dynamic";
-import ProjectGallery from "@/components/pages/series/projects-gallery";
+// import { PortableText } from "@portabletext/react";
+// import dynamic from "next/dynamic";
+// import ProjectGallery from "@/components/unused/series-gallery";
 import Series from "@/components/pages/series/series";
 import { notFound } from "next/navigation";
-import SeriesFilter from "@/components/pages/series/series-filter";
+// import SeriesFilter from "@/components/pages/series/series-filter";
 
 // const DynamicProjectsGallery = dynamic(() => import("@/components/pages/series/projects-gallery"), { ssr: false });
 
@@ -46,7 +45,7 @@ export default async function Page({ params }: paramProps) {
   return (
     <>
       <section className="px-8 md:px-16">
-        <ButtonTest />
+        {/* <ButtonTest /> */}
         <Series categoryData={categoryData} />
       </section>
     </>
