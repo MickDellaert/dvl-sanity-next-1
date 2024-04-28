@@ -48,7 +48,7 @@ export default function SeriesMasonry({ category }: CategoryType) {
 
   return (
     <>
-      {isClient ? (
+      {/* {isClient ? (
         <div key={category._id}>
           <ThemeProvider theme={getCustomTheme(theme)}>
             <Masonry
@@ -64,7 +64,20 @@ export default function SeriesMasonry({ category }: CategoryType) {
         </div>
       ) : (
         <SeriesSkeleton />
-      )}
+      )} */}
+      <div key={category._id}>
+        <ThemeProvider theme={getCustomTheme(theme)}>
+          <Masonry
+            columns={{ xs: 1, lg: 2 }}
+            spacing={{ xs: 0, lg: 10 }}
+            defaultHeight={1200}
+            // defaultColumns={2}
+            defaultSpacing={10}
+          >
+            <ProjectsGalleryPhotoswipeSeries projects={category.projects} />
+          </Masonry>
+        </ThemeProvider>
+      </div>
     </>
   );
 }
