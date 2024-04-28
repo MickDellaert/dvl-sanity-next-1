@@ -12,6 +12,8 @@ import Masonry from "@mui/lab/Masonry";
 import { Theme, ThemeOptions, useTheme } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material";
 import ProjectsGalleryPhotoswipeSeries from "@/components/pages/series/series-gallery-photoswipe";
+import { useState, useEffect } from "react";
+import SeriesSkeleton from "./series-skeleton";
 
 // const DynamicProjectsGallery = dynamic(
 //   () => import("@/components/pages/series/projects-gallery"),
@@ -37,21 +39,32 @@ type CategoryType = {
 };
 
 export default function SeriesMasonry({ category }: CategoryType) {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
   const theme = useTheme();
 
   return (
-    <div key={category._id}>
-      <ThemeProvider theme={getCustomTheme(theme)}>
-        <Masonry
-          columns={{ xs: 1, lg: 2 }}
-          spacing={{ xs: 0, lg: 10 }}
-          defaultHeight={1200}
-          // defaultColumns={2}
-          defaultSpacing={10}
-        >
-          <ProjectsGalleryPhotoswipeSeries projects={category.projects} />
-        </Masonry>
-      </ThemeProvider>
-    </div>
+    <>
+      {isClient ? (
+        <div key={category._id}>
+          <ThemeProvider theme={getCustomTheme(theme)}>
+            <Masonry
+              columns={{ xs: 1, lg: 2 }}
+              spacing={{ xs: 0, lg: 10 }}
+              defaultHeight={1200}
+              // defaultColumns={2}
+              defaultSpacing={10}
+            >
+              <ProjectsGalleryPhotoswipeSeries projects={category.projects} />
+            </Masonry>
+          </ThemeProvider>
+        </div>
+      ) : (
+        <SeriesSkeleton />
+      )}
+    </>
   );
 }

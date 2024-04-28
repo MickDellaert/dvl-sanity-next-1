@@ -20,7 +20,7 @@ export default function SeriesFilter({ categoryData }: CategoryData) {
         {categoryData.map((category) => (
           <button
             key={category._id}
-            className=" h-1 md:h-auto"
+            className="h-1 md:h-auto"
             onClick={() => {
               router.push(`/series/${category.slug}`);
             }}

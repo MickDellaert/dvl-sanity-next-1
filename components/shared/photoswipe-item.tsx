@@ -30,7 +30,7 @@ export default function PhotoswipeItem({ project }: Props) {
     >
       {({ ref, open }) => (
         <Image
-          className="bg-gray-50"
+          className="bg-gray-100"
           ref={ref}
           onClick={open}
           src={project.projectImage}
