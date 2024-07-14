@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={montserrat.variable}>
-      <body className={`overflow-x-hidden`}>
+      <body className={`overflow-x-hidden bg-gray-100`}>
         {/* <body className={inter.className}> */}
         <>
           <NavbarWrapper />

@@ -9,7 +9,7 @@ export default async function page() {
   // revalidateTag("projects");
 
   return (
-    <main className="mx-auto mt-40 w-[90%] md:max-w-screen-2xl">
+    <main className="mx-auto mt-40 w-[96%] px-4">
       <ProjectsGalleryPhotoswipeClient projects={projects} />
     </main>
   );

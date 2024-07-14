@@ -53,7 +53,8 @@ export default async function Page({ params }: paramProps) {
 
   return (
     <>
-      <main className="w-[90%] md:max-w-screen-2xl mx-auto">
+      {/* <main className="w-[90%] md:max-w-screen-2xl mx-auto"> */}
+      <main className="w-[92%] mx-auto">
         {/* <ButtonTest /> */}
         <SeriesFilter categoryData={data}/>
         <Series categoryData={data} />

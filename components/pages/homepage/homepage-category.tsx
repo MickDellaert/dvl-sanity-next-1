@@ -17,10 +17,14 @@ export default function HomePageCategory({ homepageCategories }: Props) {
   }
 
   return (
-    <>
+    <div>
       {/* <div>HomePageCategory</div> */}
+      <div className="sticky top-16 z-20 -mt-8 flex flex-row items-center text-2xl font-medium mix-blend-difference invert">
+        <h2 className="">Painting Series</h2>
+        <h2 className="pb-1 pl-3 text-4xl">↓</h2>
+      </div>
 
-      <div className="grid grid-cols-12 items-center justify-center gap-x-2 md:gap-x-12 gap-y-20 md:gap-y-28">
+      <div className="mt-40 grid grid-cols-12 content-center justify-center gap-x-2 gap-y-20 md:gap-x-4 md:gap-y-28 px-12">
         {homepageCategories.map((category, index) => {
           // TODO: check _id: is niet altijd uniek komende van een array
 
@@ -28,8 +32,9 @@ export default function HomePageCategory({ homepageCategories }: Props) {
             // <div key={index} className="odd:col-span-6 odd:col-start-1 even:col-start-9 even:col-span-4 mt-28">
             <div
               key={index}
-              className="col-span-12 md:col-span-6 md:last:col-span-6 
-              md:last:col-start-3 md:[&:nth-child(4n+2)]:col-span-4 md:[&:nth-child(4n+2)]:col-start-9 md:[&:nth-child(4n+3)]:col-span-5 md:[&:nth-child(4n+4)]:col-start-7"
+              className="col-span-12 md:col-span-5 md:col-start-2 md:last:col-span-6 
+              md:last:col-start-4 md:[&:nth-child(4n+2)]:col-span-3 md:[&:nth-child(4n+2)]:col-start-9 md:[&:nth-child(4n+3)]:col-span-5 md:[&:nth-child(4n+3)]:col-start-1
+              md:[&:nth-child(4n+4)]:col-span-5 md:[&:nth-child(4n+4)]:col-start-8"
             >
               <Link
                 // className="w-[calc(50% - 2.5rem)] mb-12 md:mb-0 md:odd:mt-0 md:even:mt-24"
@@ -37,7 +42,13 @@ export default function HomePageCategory({ homepageCategories }: Props) {
                 href={`series/${category.slug}`}
               >
                 <div className="group cursor-crosshair">
-                  <div className="overflow-hidden">
+                  <div className="relative overflow-hidden">
+                    <h2
+                      className="absolute left-1/2 top-1/2 z-50 mb-4 mt-4 w-fit -translate-x-1/2 -translate-y-1/2 text-center text-5xl font-medium
+                     text-white opacity-0 mix-blend-difference transition-all duration-500 group-hover:opacity-100"
+                    >
+                      {category.name}
+                    </h2>
                     <Image
                       className="w-full transition-all duration-500 group-hover:scale-105 group-hover:blur-sm"
                       src={urlFor(category.projects.projectImage)
@@ -50,11 +61,12 @@ export default function HomePageCategory({ homepageCategories }: Props) {
                       height={400}
                     />
                   </div>
-                  <h2
-                    className="relative mt-4 mb-4 md:mb-6 md:mt-6 w-fit text-2xl md:text-3xl font-medium
-                  transition-all duration-500 after:absolute after:left-0 after:top-12 md:after:top-16 after:h-0.5 after:bg-black after:content-[''] 
-                  group-hover:after:w-full"
-                  >
+                  {/* <h2
+                    className="relative mb-4 mt-4 w-fit text-2xl font-medium transition-all duration-500 after:absolute
+                  after:left-0 after:top-12 after:h-0.5 after:bg-black after:content-[''] group-hover:after:w-full md:mb-6 md:mt-6 md:text-3xl 
+                  md:after:top-16"
+                  > */}
+                  <h2 className="relative mb-4 mt-4 w-fit text-3xl font-medium transition-all duration-500  group-hover:opacity-0 group-hover:invert">
                     {category.name}
                   </h2>
                 </div>
@@ -63,6 +75,6 @@ export default function HomePageCategory({ homepageCategories }: Props) {
           );
         })}
       </div>
-    </>
+    </div>
   );
 }
