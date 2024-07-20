@@ -1,9 +1,12 @@
+"use client";
+
 import { type HomePageCategory } from "@/sanity/types";
 import Link from "next/link";
 import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
 import { client } from "@/sanity/lib/client";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 type Props = {
   homepageCategories: HomePageCategory[];
@@ -16,15 +19,27 @@ export default function HomePageCategory({ homepageCategories }: Props) {
     return builder.image(source);
   }
 
+  const { scrollYProgress } = useScroll({
+    // target: ref,
+    offset: ["start start", "end start"],
+  });
+
+  const opacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
+  // const fontSize = useTransform(scrollYProgress, [0, 0.1], ["52px", "36px"]);
+
   return (
     <div>
       {/* <div>HomePageCategory</div> */}
-      <div className="sticky top-16 z-20 -mt-8 flex flex-row items-center text-2xl font-medium mix-blend-difference invert">
-        <h2 className="">Painting Series</h2>
-        <h2 className="pb-1 pl-3 text-4xl">↓</h2>
+      {/* <div className="sticky top-14 z-20 -mt-6 flex flex-row items-center text-2xl font-medium mix-blend-difference invert"> */}
+      <div className="sticky top-10 z-20 -mt-10 flex flex-row items-center text-2xl font-normal ">
+        <div className="flex flex-col">
+          <motion.h2 className="leading-5" style={{ opacity: opacity }}>Scroll down for</motion.h2>
+          <h2 className="">Painting Series</h2>
+        </div>
+        {/* <h2 className="pb pl-2 text-3xl">↓</h2> */}
       </div>
 
-      <div className="mt-40 grid grid-cols-12 content-center justify-center gap-x-2 gap-y-20 md:gap-x-4 md:gap-y-28 px-12">
+      <div className="mt-44 grid grid-cols-12 content-center justify-center gap-x-2 gap-y-20 md:gap-x-4 md:gap-y-44">
         {homepageCategories.map((category, index) => {
           // TODO: check _id: is niet altijd uniek komende van een array
 
