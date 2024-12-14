@@ -37,7 +37,7 @@ export default async function StickyTest() {
 
         <Image
           // className="h-[calc(100vh-64px)] w-screen object-cover"
-          className="col-span-8 col-start-5 xl:col-span-7 xl:col-start-6 w-full self-end"
+          className="col-span-8 col-start-5 w-full self-end xl:col-span-7 xl:col-start-6"
           src={urlFor(homepageMainImageSingle).url()}
           alt={homepageMainImageSingle.alt}
           width={1000}

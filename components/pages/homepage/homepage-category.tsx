@@ -24,17 +24,17 @@ export default function HomePageCategory({ homepageCategories }: Props) {
     offset: ["start start", "end start"],
   });
 
-  const opacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.1], [0.65, 0]);
   // const fontSize = useTransform(scrollYProgress, [0, 0.1], ["52px", "36px"]);
 
   return (
     <div>
       {/* <div>HomePageCategory</div> */}
       {/* <div className="sticky top-14 z-20 -mt-6 flex flex-row items-center text-2xl font-medium mix-blend-difference invert"> */}
-      <div className="sticky top-10 z-20 -mt-10 flex flex-row items-center text-2xl font-normal ">
+      <div className="sticky top-10 z-20 -mt-10 flex flex-row items-center text-2xl font-normal tracking-tight">
         <div className="flex flex-col">
           <motion.h2 className="leading-5" style={{ opacity: opacity }}>Scroll down for</motion.h2>
-          <h2 className="">Painting Series</h2>
+          <h2 className="opacity-65">Painting Series</h2>
         </div>
         {/* <h2 className="pb pl-2 text-3xl">↓</h2> */}
       </div>

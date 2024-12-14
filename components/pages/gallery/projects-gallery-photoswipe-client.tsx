@@ -28,16 +28,16 @@ export default function ProjectsGalleryPhotoswipeClient({
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
       >
-          {projects?.map((project, i) => (
-            <div key={i} className="mb-16 inline-block lg:mb-0">
-              <PhotoswipeItem project={project} />
-              <div className="mt-4 text-xs">
-                <h2 className="mb-1 text-sm font-medium">
-                  {project.projectTitle}
-                </h2>
-              </div>
+        {projects?.map((project, i) => (
+          <div key={i} className="mb-16 inline-block lg:mb-0">
+            <PhotoswipeItem project={project} />
+            <div className="mt-4 text-xs">
+              <h2 className="mb-1 text-sm font-medium">
+                {project.projectTitle}
+              </h2>
             </div>
-          ))}
+          </div>
+        ))}
       </Masonry>
     </PhotoswipeGallery>
   );

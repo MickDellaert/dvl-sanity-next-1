@@ -30,15 +30,15 @@ export default async function HomePage() {
 
   return (
     <div className="">
-      <StickyTest/>
+      <StickyTest />
       {/* <HomePageHeader /> */}
       <HomePageCategory homepageCategories={homepageCategories} />
       {/* <Subtitle subtitle={"Upcoming Exhibitions"} /> */}
-      <div className="bg-green-200 h-screen mt-40">
-      <div className="sticky top-16 z-20 -mt-8 flex flex-row items-center text-2xl font-medium mix-blend-difference invert">
-        <h2 className="">Expo</h2>
-        {/* <h2 className="pb-1 pl-3 text-4xl">↓</h2> */}
-      </div>
+      <div className="mt-40 h-screen bg-green-200">
+        <div className="sticky top-16 z-20 -mt-8 flex flex-row items-center text-2xl font-medium mix-blend-difference invert">
+          <h2 className="">Expo</h2>
+          {/* <h2 className="pb-1 pl-3 text-4xl">↓</h2> */}
+        </div>
       </div>
     </div>
   );

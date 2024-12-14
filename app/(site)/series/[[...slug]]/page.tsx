@@ -1,4 +1,7 @@
-import { getCategoriesData, getCategoryDataOrder } from "@/sanity/lib/queryLoaders";
+import {
+  getCategoriesData,
+  getCategoryDataOrder,
+} from "@/sanity/lib/queryLoaders";
 // import dynamic from "next/dynamic";
 import Series from "@/components/pages/series/series";
 import { notFound } from "next/navigation";
@@ -54,9 +57,9 @@ export default async function Page({ params }: paramProps) {
   return (
     <>
       {/* <main className="w-[90%] md:max-w-screen-2xl mx-auto"> */}
-      <main className="w-[92%] mx-auto">
+      <main className="mx-auto w-[96%] px-4">
         {/* <ButtonTest /> */}
-        <SeriesFilter categoryData={data}/>
+        {/* <SeriesFilter categoryData={data}/> */}
         <Series categoryData={data} />
       </main>
     </>
