@@ -61,7 +61,6 @@ export const singleCategory = groq`
   }
 }`;
 
-
 export const singleCategoryOrder = groq`
 *[_type == "category" ] | order((slug.current match $slug) desc){
   _id, 
@@ -107,5 +106,3 @@ export const testQuery = groq`
     }
   }
 `;
-
-

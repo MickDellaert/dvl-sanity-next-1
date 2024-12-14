@@ -33,8 +33,8 @@ export default function HomePageCategory({ homepageCategories }: Props) {
       {/* <div className="sticky top-14 z-20 -mt-6 flex flex-row items-center text-2xl font-medium mix-blend-difference invert"> */}
       <div className="sticky top-10 z-20 -mt-10 flex flex-row items-center text-2xl font-normal tracking-tight">
         <div className="flex flex-col">
-          <motion.h2 className="leading-5" style={{ opacity: opacity }}>Scroll down for</motion.h2>
-          <h2 className="opacity-65">Painting Series</h2>
+          <motion.h2 style={{ opacity: opacity }}>Scroll down for</motion.h2>
+          <h2 className="leading-5 opacity-65">Painting Series</h2>
         </div>
         {/* <h2 className="pb pl-2 text-3xl">↓</h2> */}
       </div>
