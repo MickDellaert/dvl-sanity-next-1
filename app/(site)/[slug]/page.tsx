@@ -8,8 +8,9 @@ type paramProps = {
   };
 };
 
-export default async function Page({ params }: paramProps) {
-  const slug = params.slug;
+export default async function Page( props : paramProps) {
+  const params =  await props.params;
+  const slug = params.slug
   const pageData = await getPageData(slug);
 
   const { slug: pageSlug, title, content } = pageData ?? {};
