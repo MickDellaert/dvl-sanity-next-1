@@ -16,6 +16,8 @@ type paramProps = {
   };
 };
 
+type Params = Promise<{ slug: string }>;
+
 export async function generateStaticParams() {
   const categories = await getCategoriesData();
 
@@ -24,8 +26,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function Page({ params }: paramProps) {
-  const { slug } = params;
+export default async function Page(props: { params: Params }) {
+  const params = await props.params;
+  const slug = params.slug;
 
   let data;
 

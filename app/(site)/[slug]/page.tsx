@@ -8,7 +8,10 @@ type paramProps = {
   };
 };
 
-export default async function Page({ params }: paramProps) {
+type Params = Promise<{ slug: string }>;
+
+export default async function Page(props: { params: Params }) {
+  const params = await props.params;
   const slug = params.slug;
   const pageData = await getPageData(slug);
 
@@ -20,7 +23,7 @@ export default async function Page({ params }: paramProps) {
 
   return (
     <>
-      <main className="px-8 md:px-16 min-h-screen mt-40">
+      <main className="mt-40 min-h-screen px-8 md:px-16">
         <div>{`${slug} page`}</div>
         {/* {pageData.map((page) => (
         <div key={page._id}>

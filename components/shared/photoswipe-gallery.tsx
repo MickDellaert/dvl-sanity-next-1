@@ -1,6 +1,6 @@
 "use client";
 
-import "photoswipe/dist/photoswipe.css";
+// import "photoswipe/dist/photoswipe.css";
 
 import Image from "next/image";
 import "photoswipe/dist/photoswipe.css";
