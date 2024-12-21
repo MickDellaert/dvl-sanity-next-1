@@ -7,13 +7,17 @@ import { Category } from "@/sanity/types";
 import React from "react";
 import SeriesDescription from "./series-description";
 import SeriesMasonry from "./series-masonry";
+import { CategoryQueryResult } from "@/sanity.types";
 
 type CategoryData = {
   categoryData: Category[];
 };
 
-
-export default function Series({ categoryData }: CategoryData) {
+export default function Series({
+  categoryData,
+}: {
+  categoryData: CategoryQueryResult;
+}) {
   return (
     <>
       <div className="mt:0 flex flex-col justify-center md:mt-32">

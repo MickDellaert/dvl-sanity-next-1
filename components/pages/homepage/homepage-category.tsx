@@ -7,12 +7,21 @@ import imageUrlBuilder from "@sanity/image-url";
 import { client } from "@/sanity/lib/client";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { notFound } from "next/navigation";
+import { HomePageQueryResult } from "@/sanity.types";
 
-type Props = {
-  homepageCategories: HomePageCategory[];
-};
+// type Props = {
+//   homepageCategories: HomePageCategory[];
+// };
 
-export default function HomePageCategory({ homepageCategories }: Props) {
+type HomepageCategories =
+  NonNullable<HomePageQueryResult>["homepageCategories"];
+
+export default function HomePageCategory({
+  homepageCategories,
+}: {
+  homepageCategories: HomepageCategories;
+}) {
   const builder = imageUrlBuilder(client);
 
   function urlFor(source: SanityImageSource) {
@@ -26,6 +35,10 @@ export default function HomePageCategory({ homepageCategories }: Props) {
 
   const opacity = useTransform(scrollYProgress, [0, 0.1], [0.65, 0]);
   // const fontSize = useTransform(scrollYProgress, [0, 0.1], ["52px", "36px"]);
+
+  if (!homepageCategories) {
+    notFound();
+  }
 
   return (
     <div>
@@ -66,11 +79,21 @@ export default function HomePageCategory({ homepageCategories }: Props) {
                     </h2>
                     <Image
                       className="w-full transition-all duration-500 group-hover:scale-105 group-hover:blur-sm"
-                      src={urlFor(category.projects.projectImage)
-                        .width(category.projects.width)
-                        .height(category.projects.width)
-                        .fit("crop")
-                        .url()}
+                      src={
+                        category.projects?.projectImage
+                          ? urlFor(category.projects.projectImage)
+                              .width(
+                                category.projects.projectImageDimensions
+                                  ?.width || 400,
+                              )
+                              .height(
+                                category.projects.projectImageDimensions
+                                  ?.height || 400,
+                              )
+                              .fit("crop")
+                              .url()
+                          : "https://placehold.co/400x400/png"
+                      }
                       alt="alt"
                       width={400}
                       height={400}

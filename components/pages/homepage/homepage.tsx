@@ -8,6 +8,7 @@ import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import Subtitle from "@/components/shared/subtitle";
 import HomePageHeader from "./homepage-header";
 import StickyTest from "./sticky-test";
+import { notFound } from "next/navigation";
 
 export default async function HomePage() {
   const builder = imageUrlBuilder(client);
@@ -18,15 +19,17 @@ export default async function HomePage() {
 
   const homePageData = await getHomePageData();
 
+  if (!homePageData) {
+    notFound();
+  }
+
   const {
-    title,
+    // title,
     homepageDescription,
     homepageMainImage,
     homepageMainImageSingle,
     homepageCategories,
   } = homePageData;
-
-  console.log(homepageMainImageSingle);
 
   return (
     <div className="">

@@ -13,6 +13,7 @@ import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 import "photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css";
 import PhotoSwipeDynamicCaption from "photoswipe-dynamic-caption-plugin";
+import { ProjectsQueryResult } from "@/sanity.types";
 
 const galleryOptions = {
   // arrowPrev: false,
@@ -43,7 +44,7 @@ const galleryOptions = {
 };
 
 type Props = {
-  projects: Project[];
+  projects: ProjectsQueryResult;
   children: React.ReactElement;
 };
 

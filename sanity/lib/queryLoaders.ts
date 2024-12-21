@@ -13,27 +13,31 @@ import {
 } from "./queries";
 import next from "next";
 
-export async function getHomePageData(): Promise<HomePage> {
+export async function getHomePageData() {
   return client.fetch(homePageQuery);
 }
+
+// export async function getHomePageDataTest() {
+//   return client.fetch(homePageQueryTest);
+// }
 
 // export async function getProjectsData(): Promise<Project[]> {
 //   return client.fetch(projectsQuery, {}, { next: { tags: ["projects"] } });
 // }
 
-export async function getProjectsData(): Promise<Project[]> {
+export async function getProjectsData() {
   return client.fetch(projectsQuery);
 }
 
-export async function getCategoryData(slug: string): Promise<Category> {
+export async function getCategoryData(slug: string) {
   return client.fetch(singleCategory, { slug });
 }
 
-export async function getCategoryDataOrder(slug: string): Promise<Category[]> {
+export async function getCategoryDataOrder(slug: string) {
   return client.fetch(singleCategoryOrder, { slug });
 }
 
-export async function getCategoriesData(): Promise<Category[]> {
+export async function getCategoriesData() {
   return client.fetch(categoryQuery);
 }
 

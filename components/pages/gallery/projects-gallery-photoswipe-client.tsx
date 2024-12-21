@@ -2,6 +2,7 @@
 
 import PhotoswipeGallery from "@/components/shared/photoswipe-gallery";
 import PhotoswipeItem from "@/components/shared/photoswipe-item";
+import { ProjectsQueryResult } from "@/sanity.types";
 import { Project } from "@/sanity/types";
 import React from "react";
 
@@ -13,13 +14,19 @@ type Projects = {
 
 export default function ProjectsGalleryPhotoswipeClient({
   projects,
-}: Projects) {
+}: {
+  projects: ProjectsQueryResult;
+}) {
   const breakpointColumnsObj = {
     default: 4,
     1100: 3,
     700: 2,
     500: 1,
   };
+
+  if (!projects) {
+    return null;
+  }
 
   return (
     <PhotoswipeGallery projects={projects}>
