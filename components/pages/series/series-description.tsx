@@ -5,20 +5,29 @@
 
 import { PortableText } from "@portabletext/react";
 import { Category } from "@/sanity/types";
+import { SingleCategoryResult } from "@/sanity.types";
 
 type CategoryType = {
   category: Category;
 };
 
-export default function SeriesDescription({ category }: CategoryType) {
+export default function SeriesDescription({
+  category,
+}: {
+  category: SingleCategoryResult;
+}) {
   return (
+    category && (
       <div key={category._id}>
         <h2 className="mb-4 text-3xl font-semibold tracking-widest">
           {category.name}
         </h2>
         <div className="text-sm leading-relaxed">
-          <PortableText value={category.seriesDescription} />
+          {category.seriesDescription && (
+            <PortableText value={category.seriesDescription} />
+          )}
         </div>
       </div>
+    )
   );
 }

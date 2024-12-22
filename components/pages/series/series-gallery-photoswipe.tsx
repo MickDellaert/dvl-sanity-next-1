@@ -2,7 +2,9 @@
 
 import PhotoswipeGallery from "@/components/shared/photoswipe-gallery";
 import PhotoswipeItem from "@/components/shared/photoswipe-item";
+import { ProjectsQueryResult } from "@/sanity.types";
 import { Project } from "@/sanity/types";
+import { notFound } from "next/navigation";
 import React from "react";
 
 type Projects = {
@@ -11,7 +13,12 @@ type Projects = {
 
 export default function SeriesGalleryPhotoswipe({
   projects,
-}: Projects) {
+}: {
+  projects: ProjectsQueryResult;
+}) {
+  if (!projects) {
+    notFound;
+  }
   return (
     <PhotoswipeGallery projects={projects}>
       <>

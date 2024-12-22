@@ -1,6 +1,6 @@
-import { groq } from "next-sanity";
+import { groq, defineQuery } from "next-sanity";
 
-export const homePageQuery = groq`
+export const homePageQuery = defineQuery(`
 *[_type == "homepage"][0]{
   _id, homepageTitle, 
   "slug": slug.current, 
@@ -13,9 +13,9 @@ export const homePageQuery = groq`
     "slug": slug.current,
     projects[0]->{projectImage, "projectImageDimensions": projectImage.asset->metadata.dimensions}
   }
-}`;
+}`);
 
-export const projectsQuery = groq`
+export const projectsQuery = defineQuery(`
 *[_type == "project"]
    {_id,
    "projectImage": projectImage.asset->url, 
@@ -25,15 +25,16 @@ export const projectsQuery = groq`
    date, 
    material, 
    size
-  }`;
+  }`);
 
-export const categoryQuery = groq`
+export const categoryQuery = defineQuery(`
 *[_type == "category"]{
   _id, 
   name,
   seriesDescription, 
   "slug": slug.current, 
   "projects" : projects[]->{
+  _id,
   "projectImage" : projectImage.asset->url, 
   "projectImageDimensions": projectImage.asset->metadata.dimensions,
   projectTitle,
@@ -42,15 +43,16 @@ export const categoryQuery = groq`
   material, 
   size
   }
-}`;
+}`);
 
-export const singleCategory = groq`
+export const singleCategory = defineQuery(`
 *[_type == "category" && slug.current == $slug][0]{
   _id, 
   name, 
   seriesDescription, 
   "slug": slug.current, 
   "projects" : projects[]->{
+    _id,
     "projectImage" : projectImage.asset->url, 
     "projectImageDimensions": projectImage.asset->metadata.dimensions,
     projectTitle,
@@ -59,15 +61,16 @@ export const singleCategory = groq`
     material, 
     size
   }
-}`;
+}`);
 
-export const singleCategoryOrder = groq`
+export const singleCategoryOrder = defineQuery(`
 *[_type == "category" ] | order((slug.current match $slug) desc){
   _id, 
   name, 
   seriesDescription, 
   "slug": slug.current, 
   "projects" : projects[]->{
+    _id,
     "projectImage" : projectImage.asset->url, 
     "projectImageDimensions": projectImage.asset->metadata.dimensions,
     projectTitle,
@@ -76,7 +79,7 @@ export const singleCategoryOrder = groq`
     material, 
     size
   }
-}`;
+}`);
 
 export const pagesQuery = groq`
 *[_type == "page"]{

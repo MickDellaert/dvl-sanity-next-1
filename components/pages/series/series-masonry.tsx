@@ -14,6 +14,8 @@ import { createTheme, ThemeProvider } from "@mui/material";
 import ProjectsGalleryPhotoswipeSeries from "@/components/pages/series/series-gallery-photoswipe";
 import { useState, useEffect } from "react";
 import SeriesSkeleton from "./series-skeleton";
+import { SingleCategoryResult } from "@/sanity.types";
+import project from "@/sanity/schemas/documents/project-schema";
 
 // const DynamicProjectsGallery = dynamic(
 //   () => import("@/components/pages/series/projects-gallery"),
@@ -38,7 +40,11 @@ type CategoryType = {
   category: Category;
 };
 
-export default function SeriesMasonry({ category }: CategoryType) {
+export default function SeriesMasonry({
+  category,
+}: {
+  category: SingleCategoryResult;
+}) {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -47,8 +53,9 @@ export default function SeriesMasonry({ category }: CategoryType) {
   const theme = useTheme();
 
   return (
-    <>
-      {/* {isClient ? (
+    category && (
+      <>
+        {/* {isClient ? (
         <div key={category._id}>
           <ThemeProvider theme={getCustomTheme(theme)}>
             <Masonry
@@ -58,26 +65,33 @@ export default function SeriesMasonry({ category }: CategoryType) {
               // defaultColumns={2}
               defaultSpacing={10}
             >
-              <ProjectsGalleryPhotoswipeSeries projects={category.projects} />
+              {category.projects && (
+                <ProjectsGalleryPhotoswipeSeries projects={category.projects} />
+              )}
             </Masonry>
           </ThemeProvider>
         </div>
       ) : (
         <SeriesSkeleton />
       )} */}
-      <div key={category._id}>
-        <ThemeProvider theme={getCustomTheme(theme)}>
-          <Masonry
-            columns={{ xs: 1, lg: 2 }}
-            spacing={{ xs: 0, lg: 10 }}
-            defaultHeight={1200}
-            // defaultColumns={2}
-            defaultSpacing={10}
-          >
-            <ProjectsGalleryPhotoswipeSeries projects={category.projects} />
-          </Masonry>
-        </ThemeProvider>
-      </div>
-    </>
+        <div key={category._id}>
+          <ThemeProvider theme={getCustomTheme(theme)}>
+            <Masonry
+              columns={{ xs: 1, lg: 2 }}
+              spacing={{ xs: 0, lg: 10 }}
+              defaultHeight={1200}
+              // defaultColumns={2}
+              defaultSpacing={10}
+            >
+              {category.projects ? (
+                <ProjectsGalleryPhotoswipeSeries projects={category.projects} />
+              ) : (
+                <p>No projects available</p>
+              )}
+            </Masonry>
+          </ThemeProvider>
+        </div>
+      </>
+    )
   );
 }

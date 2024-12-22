@@ -6,6 +6,7 @@ import imageUrlBuilder from "@sanity/image-url";
 import { client } from "@/sanity/lib/client";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import Subtitle from "@/components/shared/subtitle";
+import { notFound } from "next/navigation";
 
 export default async function HomePageHeader() {
   const builder = imageUrlBuilder(client);
@@ -16,8 +17,11 @@ export default async function HomePageHeader() {
 
   const homePageData = await getHomePageData();
 
+  if (!homePageData) {
+    notFound();
+  }
+
   const {
-    title,
     homepageDescription,
     homepageMainImage,
     homepageMainImageSingle,
@@ -38,8 +42,10 @@ export default async function HomePageHeader() {
         <Image
           // className="h-[calc(100vh-64px)] w-screen object-cover"
           className="col-span-9 col-start-4  w-full self-end"
-          src={urlFor(homepageMainImageSingle).url()}
-          alt={homepageMainImageSingle.alt}
+          src={
+            homepageMainImageSingle ? urlFor(homepageMainImageSingle).url() : ""
+          }
+          alt={homepageMainImageSingle?.alt || "default alt text"}
           width={1000}
           height={1000}
         />
