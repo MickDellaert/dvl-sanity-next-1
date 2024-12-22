@@ -12,7 +12,6 @@ const project = defineType({
         type: "image",
         options: { hotspot: true },
         fields: [{ name: "alt", title: "Alt", type: "string" }],
-        validation: (rule) => rule.required(),
       },
       { strict: false },
     ),
