@@ -7,6 +7,8 @@ import { client } from "@/sanity/lib/client";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import Subtitle from "@/components/shared/subtitle";
 import { notFound } from "next/navigation";
+import { sanityFetch } from "@/sanity/lib/live";
+import { homePageQuery } from "@/sanity/lib/queries";
 
 export default async function HomePageHeader() {
   const builder = imageUrlBuilder(client);
@@ -15,7 +17,8 @@ export default async function HomePageHeader() {
     return builder.image(source);
   }
 
-  const homePageData = await getHomePageData();
+  // const homePageData = await getHomePageData();
+  const { data: homePageData } = await sanityFetch({ query: homePageQuery });
 
   if (!homePageData) {
     notFound();

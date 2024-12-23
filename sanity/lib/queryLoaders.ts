@@ -12,9 +12,10 @@ import {
   singleCategoryOrder,
 } from "./queries";
 import next from "next";
+import { sanityFetch } from "./live";
 
 export async function getHomePageData() {
-  return client.fetch(homePageQuery);
+  return sanityFetch({ query: homePageQuery, params: {} });
 }
 
 // export async function getHomePageDataTest() {
