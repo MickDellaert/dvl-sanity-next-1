@@ -14,9 +14,9 @@ import {
 import next from "next";
 import { sanityFetch } from "./live";
 
-export async function getHomePageData() {
-  return sanityFetch({ query: homePageQuery, params: {} });
-}
+// export async function getHomePageData() {
+//   return sanityFetch({ query: homePageQuery, params: {} });
+// }
 
 // export async function getHomePageDataTest() {
 //   return client.fetch(homePageQueryTest);

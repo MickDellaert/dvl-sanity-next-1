@@ -9,6 +9,7 @@ export const homePageQuery = defineQuery(`
   homepageMainImage,
   homepageMainImageSingle,
   "homepageCategories": homepageCategories[]->{
+    _id,
     name, 
     "slug": slug.current,
     projects[0]->{projectImage, "projectImageDimensions": projectImage.asset->metadata.dimensions}

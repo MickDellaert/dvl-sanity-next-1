@@ -1,5 +1,5 @@
 import HomePageCategory from "@/components/pages/homepage/homepage-category";
-import { getHomePageData } from "@/sanity/lib/queryLoaders";
+// import { getHomePageData } from "@/sanity/lib/queryLoaders";
 
 import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
@@ -51,6 +51,7 @@ export default async function StickyTest() {
           alt={homepageMainImageSingle?.alt || "default alt text"}
           width={1000}
           height={1000}
+          key={homepageMainImageSingle?.asset?._ref}
         />
       </div>
 

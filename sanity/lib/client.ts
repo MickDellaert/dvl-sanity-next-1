@@ -1,5 +1,4 @@
 import { createClient } from "next-sanity";
-
 import { apiVersion, dataset, projectId, useCdn } from "../env";
 
 export const client = createClient({
@@ -7,5 +6,5 @@ export const client = createClient({
   dataset,
   projectId,
   useCdn,
-  stega: { studioUrl: "http://localhost:3000/admin" },
+  stega: { studioUrl: process.env.NEXT_PUBLIC_SANITY_STUDIO_URL },
 });

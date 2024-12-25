@@ -53,13 +53,13 @@ export default function HomePageCategory({
       </div>
 
       <div className="mt-44 grid grid-cols-12 content-center justify-center gap-x-2 gap-y-20 md:gap-x-4 md:gap-y-44">
-        {homepageCategories.map((category, index) => {
+        {homepageCategories.map((category) => {
           // TODO: check _id: is niet altijd uniek komende van een array
 
           return (
             // <div key={index} className="odd:col-span-6 odd:col-start-1 even:col-start-9 even:col-span-4 mt-28">
             <div
-              key={index}
+              key={category._id}
               className="col-span-12 md:col-span-5 md:col-start-2 md:last:col-span-6 
               md:last:col-start-4 md:[&:nth-child(4n+2)]:col-span-3 md:[&:nth-child(4n+2)]:col-start-9 md:[&:nth-child(4n+3)]:col-span-5 md:[&:nth-child(4n+3)]:col-start-1
               md:[&:nth-child(4n+4)]:col-span-5 md:[&:nth-child(4n+4)]:col-start-8"

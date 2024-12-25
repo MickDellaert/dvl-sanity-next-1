@@ -1,3 +1,5 @@
+"use client";
+
 import { structure } from "./sanity/lib/structure";
 import { CogIcon } from "@sanity/icons";
 /**
@@ -5,12 +7,12 @@ import { CogIcon } from "@sanity/icons";
  */
 
 import { visionTool } from "@sanity/vision";
-import { presentationTool } from "sanity/presentation";
 import { defineConfig } from "sanity";
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { apiVersion, dataset, projectId } from "./sanity/env";
 import { schemaTypes } from "./sanity/schemas";
 import { structureTool } from "sanity/structure";
+import { presentationTool } from "sanity/presentation";
 
 const singletonActions = new Set(["publish", "discardChanges", "restore"]);
 const singletonTypes = new Set([""]);
