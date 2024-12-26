@@ -1,11 +1,9 @@
 import HomePageCategory from "@/components/pages/homepage/homepage-category";
-import { getHomePageData } from "@/sanity/lib/queryLoaders";
 
 import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
 import { client } from "@/sanity/lib/client";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import Subtitle from "@/components/shared/subtitle";
 import { notFound } from "next/navigation";
 import { sanityFetch } from "@/sanity/lib/live";
 import { homePageQuery } from "@/sanity/lib/queries";
@@ -24,12 +22,7 @@ export default async function HomePageHeader() {
     notFound();
   }
 
-  const {
-    homepageDescription,
-    homepageMainImage,
-    homepageMainImageSingle,
-    homepageCategories,
-  } = homePageData;
+  const { homepageMainImageSingle } = homePageData;
 
   console.log(homepageMainImageSingle);
 

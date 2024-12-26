@@ -1,5 +1,4 @@
 import HomePageCategory from "@/components/pages/homepage/homepage-category";
-// import { getHomePageData } from "@/sanity/lib/queryLoaders";
 
 import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
@@ -19,7 +18,6 @@ export default async function HomePage() {
     return builder.image(source);
   }
 
-  // const { homePageData } = await getHomePageData();
   const { data: homePageData } = await sanityFetch({ query: homePageQuery });
 
   if (!homePageData) {
