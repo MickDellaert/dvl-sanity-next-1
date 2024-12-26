@@ -6,5 +6,9 @@ export const client = createClient({
   dataset,
   projectId,
   useCdn,
-  stega: { studioUrl: process.env.NEXT_PUBLIC_SANITY_STUDIO_URL },
+  stega: {
+    studioUrl: process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}/admin`
+      : process.env.NEXT_PUBLIC_SANITY_STUDIO_URL,
+  },
 });

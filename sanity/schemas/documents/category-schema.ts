@@ -1,4 +1,4 @@
-import { defineType, defineField } from "sanity";
+import { defineType, defineField, Preview } from "sanity";
 
 const category = defineType({
   name: "category",
@@ -38,6 +38,12 @@ const category = defineType({
       { strict: false },
     ),
   ],
+  preview: {
+    select: {
+      title: "name",
+      media: "projects.0.projectImage",
+    },
+  },
 });
 
 export default category;

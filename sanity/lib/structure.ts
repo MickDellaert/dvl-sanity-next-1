@@ -35,6 +35,20 @@ export const structure: StructureResolver = (S) =>
       // Regular document types
       S.documentTypeListItem("settings").title("Settings"),
       S.divider(),
+      S.listItem()
+        .title("Artwork")
+        .child(
+          S.list()
+            .title("Artwork content")
+            .items([
+              S.listItem()
+                .title("Paintings")
+                .child(S.documentTypeList("project").title("Paintings")),
+              S.listItem()
+                .title("Series")
+                .child(S.documentTypeList("category").title("Series")),
+            ]),
+        ),
       S.documentTypeListItem("homepage").title("Homepage"),
       S.documentTypeListItem("page").title("Page"),
       S.divider(),

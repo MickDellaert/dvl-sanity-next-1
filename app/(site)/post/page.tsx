@@ -4,7 +4,7 @@ import { Posts } from "@/components/Posts";
 import { sanityFetch } from "@/sanity/lib/live";
 import { defineQuery } from "next-sanity";
 
-export const POSTS_QUERY =
+const POSTS_QUERY =
   defineQuery(`*[_type == "post" && defined(slug.current)][0...12]{
   _id, title, slug
 }`);

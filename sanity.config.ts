@@ -13,6 +13,7 @@ import { apiVersion, dataset, projectId } from "./sanity/env";
 import { schemaTypes } from "./sanity/schemas";
 import { structureTool } from "sanity/structure";
 import { presentationTool } from "sanity/presentation";
+import { resolve } from "./sanity/presentation/resolve";
 
 const singletonActions = new Set(["publish", "discardChanges", "restore"]);
 const singletonTypes = new Set([""]);
@@ -27,6 +28,7 @@ export default defineConfig({
     structureTool({ structure }),
     visionTool({ defaultApiVersion: apiVersion }),
     presentationTool({
+      resolve,
       previewUrl: {
         previewMode: {
           enable: "/api/draft-mode/enable",
