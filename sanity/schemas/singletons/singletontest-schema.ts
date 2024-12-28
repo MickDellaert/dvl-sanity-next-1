@@ -6,6 +6,9 @@ const singletonTest = defineType({
   title: "singletonTestTitleFromSchema",
   type: "document",
   icon: CogIcon,
+  options: {
+    singleton: true,
+  },
 
   fields: [
     // defineField({

@@ -3,8 +3,8 @@
 import { type HomePageCategory } from "@/sanity/types";
 import Link from "next/link";
 import Image from "next/image";
-import imageUrlBuilder from "@sanity/image-url";
 import { client } from "@/sanity/lib/client";
+import imageUrlBuilder from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { notFound } from "next/navigation";

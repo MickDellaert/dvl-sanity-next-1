@@ -14,9 +14,10 @@ import { schemaTypes } from "./sanity/schemas";
 import { structureTool } from "sanity/structure";
 import { presentationTool } from "sanity/presentation";
 import { resolve } from "./sanity/presentation/resolve";
+import { singletonTools } from "sanity-plugin-singleton-tools";
 
 const singletonActions = new Set(["publish", "discardChanges", "restore"]);
-const singletonTypes = new Set([""]);
+const singletonTypes = new Set(["singletonTest", "settings"]);
 
 export default defineConfig({
   basePath: "/admin",
@@ -25,6 +26,7 @@ export default defineConfig({
   // Add and edit the content schema in the './sanity/schema' folder
   // schema,
   plugins: [
+    singletonTools(),
     structureTool({ structure }),
     visionTool({ defaultApiVersion: apiVersion }),
     presentationTool({

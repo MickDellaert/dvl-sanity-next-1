@@ -10,7 +10,13 @@ import aboutpage from "./documents/aboutpage-schema";
 import contactObject from "./documents/contact-schema-object";
 import singletonTest from "./singletons/singletontest-schema";
 import testSchema from "./singletons/test";
-import { postType } from "./postType";
+import { addressObject } from "./objects/addressObject";
+import { personType } from "./documents/personType";
+import { contactObjectNew } from "./objects/contactObject";
+import { identityObject } from "./objects/identityObject";
+import { exhibitionType } from "./documents/exhibitionType";
+import duration from "./objects/duration";
+import { educationObject } from "./objects/educationObject";
 
 export const schemaTypes: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -24,6 +30,12 @@ export const schemaTypes: { types: SchemaTypeDefinition[] } = {
     aboutpage,
     contactObject,
     singletonTest,
-    postType,
+    personType,
+    addressObject,
+    contactObjectNew,
+    identityObject,
+    exhibitionType,
+    duration,
+    educationObject,
   ],
 };
