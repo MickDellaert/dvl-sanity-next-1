@@ -1,5 +1,4 @@
 import HomePageCategory from "@/components/pages/homepage/homepage-category";
-import { getHomePageData } from "@/sanity/lib/queryLoaders";
 
 import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
@@ -9,6 +8,8 @@ import Subtitle from "@/components/shared/subtitle";
 import HomePageHeader from "./homepage-header";
 import StickyTest from "./sticky-test";
 import { notFound } from "next/navigation";
+import { sanityFetch } from "@/sanity/lib/live";
+import { homePageQuery } from "@/sanity/lib/queries";
 
 export default async function HomePage() {
   const builder = imageUrlBuilder(client);
@@ -17,7 +18,7 @@ export default async function HomePage() {
     return builder.image(source);
   }
 
-  const homePageData = await getHomePageData();
+  const { data: homePageData } = await sanityFetch({ query: homePageQuery });
 
   if (!homePageData) {
     notFound();
