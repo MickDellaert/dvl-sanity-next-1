@@ -7,6 +7,7 @@ import Image from "next/image";
 import { client } from "@/sanity/lib/client";
 import imageUrlBuilder from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { env } from "process";
 
 type ProjectImageDimensions = {
   width: number;
@@ -123,15 +124,13 @@ export default function CategoryListen() {
 
   return matchingCategory ? (
     <Link
-      href={`http://localhost:3000/admin/structure/artwork;category;${matchingCategory._id}`}
+      href={
+        process.env.VERCEL_URL
+          ? `https://${process.env.VERCEL_URL}/admin/structure/artwork;category;${matchingCategory._id}`
+          : `http://localhost:3000/admin/structure/artwork;category;${matchingCategory._id}`
+      }
     >
       <Card padding={1} flex={1} border radius={2}>
-        {/* <Image
-            src={`${matchingProject?.projectImage.asset._ref}`}
-            alt=""
-            width={100}
-            height={100}
-            /> */}
         <Button mode="bleed" padding={1} width="fill">
           <Flex direction="row" gap={3} align="center">
             <Image
@@ -164,9 +163,43 @@ export default function CategoryListen() {
       </Card>
     </Link>
   ) : (
-    <Card border radius={2} padding={3}>
-      <Text size={1}>Not part of any series</Text>
-    </Card>
+    <Link
+      href={
+        process.env.VERCEL_URL
+          ? `https://${process.env.VERCEL_URL}/admin/structure/artwork;category`
+          : `http://localhost:3000/admin/structure/artwork;category`
+      }
+    >
+      <Card padding={1} flex={1} border radius={2}>
+        <Button mode="bleed" padding={[3, 3, 4]} width="fill">
+          <Flex direction="row" gap={3} align="center">
+            {/* <Image
+            className=" transition-all duration-500 group-hover:scale-105 group-hover:blur-sm"
+            src={
+              matchingCategory?.projects[0].projectImage
+                ? urlFor(matchingCategory?.projects[0].projectImage)
+                    .width(
+                      matchingCategory?.projects[0].projectImageDimensions
+                        ?.width || 400,
+                    )
+                    .height(
+                      matchingCategory?.projects[0].projectImageDimensions
+                        ?.height || 400,
+                    )
+                    .fit("crop")
+                    .url()
+                : "https://placehold.co/400x400/png"
+            }
+            alt="alt"
+            width={33}
+            height={33}
+          /> */}
+
+            <Text size={1}>Not part of any series. Click to manage.</Text>
+          </Flex>
+        </Button>
+      </Card>
+    </Link>
   );
 }
 
