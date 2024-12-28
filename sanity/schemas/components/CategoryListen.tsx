@@ -122,6 +122,8 @@ export default function CategoryListen() {
   // console.log(projectData);
   // console.log(matchingProject?.projectImage.asset._ref);
 
+  console.log(process.env.VERCEL_URL);
+
   return matchingCategory ? (
     <Link
       href={
