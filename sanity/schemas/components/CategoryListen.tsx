@@ -122,13 +122,13 @@ export default function CategoryListen() {
   // console.log(projectData);
   // console.log(matchingProject?.projectImage.asset._ref);
 
-  console.log(process.env.VERCEL_URL);
+  console.log(process.env.NEXT_PUBLIC_VERCEL_URL);
 
   return matchingCategory ? (
     <Link
       href={
-        process.env.VERCEL_URL
-          ? `https://${process.env.VERCEL_URL}/admin/structure/artwork;category;${matchingCategory._id}`
+        process.env.NEXT_PUBLIC_VERCEL_URL
+          ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/admin/structure/artwork;category;${matchingCategory._id}`
           : `http://localhost:3000/admin/structure/artwork;category;${matchingCategory._id}`
       }
     >
@@ -167,8 +167,8 @@ export default function CategoryListen() {
   ) : (
     <Link
       href={
-        process.env.VERCEL_URL
-          ? `https://${process.env.VERCEL_URL}/admin/structure/artwork;category`
+        process.env.NEXT_PUBLIC_VERCEL_URL
+          ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/admin/structure/artwork;category`
           : `http://localhost:3000/admin/structure/artwork;category`
       }
     >
