@@ -70,9 +70,17 @@ const project = defineType({
     }),
     defineField({
       name: "size",
-      title: "Size",
-      type: "string",
+      title: "Dimensions",
+      type: "object",
       fieldset: "artworkData",
+      description: "Just the numbers in cm.",
+      fields: [
+        { name: "width", type: "string" },
+        { name: "height", type: "string" },
+      ],
+      options: {
+        columns: 2,
+      },
     }),
     defineField({
       name: "soldStatus",
@@ -91,14 +99,17 @@ const project = defineType({
   preview: {
     select: {
       title: "projectTitle",
-      subtitle: "material",
+      material: "material",
+      size: "size",
+      date: "date",
+      soldStatus: "soldStatus",
       image: "projectImage",
     },
     prepare(selection) {
-      const { title, image, subtitle } = selection;
+      const { title, image, material, size, date, soldStatus } = selection;
       return {
         title: title,
-        subtitle: subtitle,
+        subtitle: `${material} - ${size} - ${date} ${soldStatus ? "- sold" : ""}`,
         media: image,
       };
     },

@@ -41,7 +41,21 @@ const category = defineType({
   preview: {
     select: {
       title: "name",
+      projects: "projects",
       media: "projects.0.projectImage",
+    },
+
+    prepare(selection) {
+      const { title, projects, media } = selection;
+
+      return {
+        title,
+        subtitle:
+          Object.keys(projects).length === 1
+            ? `${Object.keys(projects).length} painting in series`
+            : `${Object.keys(projects).length} paintings in series`,
+        media,
+      };
     },
   },
 });
