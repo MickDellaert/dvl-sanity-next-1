@@ -42,6 +42,8 @@ export default async function Page(props: { params: Params }) {
   } else {
     const categoryData = await getCategoriesData();
 
+    console.log(categoryData[0].projects);
+
     if (!categoryData) {
       notFound();
     }
