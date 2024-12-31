@@ -73,9 +73,9 @@ const project = defineType({
       title: "Dimensions",
       type: "object",
       fieldset: "artworkData",
-      description: "Just the numbers in cm.",
+      description: "Only numbers in cm.",
       fields: [
-        { name: "width", type: "string" },
+        { name: "width", type: "string", initialValue: "100" },
         { name: "height", type: "string" },
       ],
       options: {
@@ -101,15 +101,17 @@ const project = defineType({
       title: "projectTitle",
       material: "material",
       size: "size",
+      width: "size.width",
       date: "date",
       soldStatus: "soldStatus",
       image: "projectImage",
     },
     prepare(selection) {
-      const { title, image, material, size, date, soldStatus } = selection;
+      const { title, image, material, size, width, date, soldStatus } =
+        selection;
       return {
         title: title,
-        subtitle: `${material} - ${size} - ${date} ${soldStatus ? "- sold" : ""}`,
+        subtitle: `${material} - ${width} x ${size.height} cm - ${date} ${soldStatus ? "- sold" : ""}`,
         media: image,
       };
     },

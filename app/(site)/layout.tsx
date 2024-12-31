@@ -13,7 +13,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className={`overflow-x-hidden bg-gray-100 tracking-tight`}>
+    <div className={` bg-gray-100 tracking-tight`}>
       <NavbarWrapper />
       {children}
       <Footer />
