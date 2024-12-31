@@ -2,7 +2,7 @@ import { SanityDocument } from "sanity";
 import { useListeningQuery } from "sanity-plugin-utils";
 import { useFormValue } from "sanity";
 import Link from "next/link";
-import { Text, Card, Flex, Button } from "@sanity/ui";
+import { Text, Card, Flex, Button, Box } from "@sanity/ui";
 import Image from "next/image";
 
 import useImageUrlBuilder from "@/app/hooks/useImageUrlBuilder";
@@ -60,7 +60,7 @@ export default function CategoryListen() {
     category.projects.some((project) => project._id === currentDoc),
   );
 
-  console.log(process.env.NEXT_PUBLIC_VERCEL_URL);
+  // console.log(process.env.NEXT_PUBLIC_VERCEL_URL);
 
   return matchingCategory ? (
     <Link
@@ -74,14 +74,9 @@ export default function CategoryListen() {
         <Button mode="bleed" padding={1} width="fill">
           <Flex direction="row" gap={3} align="center">
             <Image
-              className=" transition-all duration-500 group-hover:scale-105 group-hover:blur-sm"
               src={urlFor(matchingCategory.projects[0].projectImage)
-                .width(
-                  matchingCategory.projects[0].projectImageDimensions.width,
-                )
-                .height(
-                  matchingCategory.projects[0].projectImageDimensions.height,
-                )
+                .width(33)
+                .height(33)
                 .fit("crop")
                 .url()}
               alt="alt"
@@ -105,7 +100,7 @@ export default function CategoryListen() {
       }
     >
       <Card padding={1} flex={1} border radius={2}>
-        <Button mode="bleed" padding={[3, 3, 4]} width="fill">
+        <Button mode="bleed" padding={2} width="fill">
           <Flex direction="row" gap={3} align="center">
             <Text size={1}>Not part of any series. Click to manage.</Text>
           </Flex>

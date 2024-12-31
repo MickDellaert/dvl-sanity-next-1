@@ -1,4 +1,5 @@
 import { defineField, defineType, defineArrayMember } from "sanity";
+import ExhibitionListen from "../components/ExhibitionListen";
 
 export const personType = defineType({
   name: "personType",
@@ -48,6 +49,7 @@ export const personType = defineType({
       of: [
         defineArrayMember({ type: "reference", to: { type: "exhibition" } }),
       ],
+      components: { input: ExhibitionListen },
     }),
     defineField({
       name: "education",

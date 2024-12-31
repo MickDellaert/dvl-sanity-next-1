@@ -7,7 +7,7 @@ export const exhibitionType = defineType({
   fields: [
     defineField({
       type: "string",
-      name: "title",
+      name: "name",
       title: "Title",
       validation: (rule) => rule.required(),
       description: "Please provide a title for the exhibition",
