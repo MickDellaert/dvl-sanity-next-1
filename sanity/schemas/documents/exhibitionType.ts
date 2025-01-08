@@ -1,3 +1,5 @@
+// import { defineArrayMember, defineField, defineType } from "sanity";
+
 import { defineArrayMember, defineField, defineType } from "sanity";
 
 export const exhibitionType = defineType({
@@ -9,17 +11,17 @@ export const exhibitionType = defineType({
       type: "string",
       name: "name",
       title: "Title",
-      validation: (rule) => rule.required(),
       description: "Please provide a title for the exhibition",
+      validation: (rule) => rule.required(),
     }),
     defineField({
       type: "text",
       name: "tagLine",
       title: "Tagline",
-      validation: (rule) => rule.max(100),
       rows: 2,
       description:
         "A concise description of the exhibition, max 100 characters",
+      validation: (rule) => rule.max(100),
     }),
     defineField({
       type: "array",

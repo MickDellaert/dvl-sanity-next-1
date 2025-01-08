@@ -22,7 +22,7 @@ type ProjectQueryResult = {
   projectDescription: null;
   date: string | null;
   material: string | null;
-  size: string | null;
+  // size: string | null;
 };
 
 export default function PhotoswipeItem({
