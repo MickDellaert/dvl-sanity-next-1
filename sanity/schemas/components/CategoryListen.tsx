@@ -23,7 +23,7 @@ export type Category = {
   }[];
 };
 
-export default function CategoryListen(props) {
+export default function CategoryListen() {
   const { urlFor } = useImageUrlBuilder();
   const currentDoc = useFormValue(["_id"]);
 
