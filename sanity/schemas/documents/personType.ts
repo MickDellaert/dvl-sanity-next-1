@@ -2,10 +2,15 @@ import { defineField, defineType, defineArrayMember } from "sanity";
 import ExhibitionListen from "../components/ExhibitionListen";
 
 export const personType = defineType({
-  name: "personType",
-  title: "person",
+  name: "person",
+  title: "Person",
   type: "document",
   fields: [
+    defineField({
+      name: "portrait",
+      title: "Portrait",
+      type: "image",
+    }),
     defineField({
       name: "identity",
       title: "Identity",
@@ -25,11 +30,6 @@ export const personType = defineType({
       title: "Description",
       of: [defineArrayMember({ type: "block" })],
       description: "A longer bio of the artist, here you can use rich text",
-    }),
-    defineField({
-      name: "portrait",
-      title: "Portrait",
-      type: "image",
     }),
     defineField({
       name: "address",
@@ -59,11 +59,16 @@ export const personType = defineType({
     }),
   ],
   preview: {
-    select: { firstName: "identity.firstName", lastName: "identity.lastName" },
+    select: {
+      firstName: "identity.firstName",
+      lastName: "identity.lastName",
+      portrait: "portrait",
+    },
     prepare(selection) {
-      const { firstName, lastName } = selection;
+      const { firstName, lastName, portrait } = selection;
       return {
         title: `${firstName} ${lastName}`,
+        media: portrait,
       };
     },
   },

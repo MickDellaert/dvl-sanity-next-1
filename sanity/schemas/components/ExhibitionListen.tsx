@@ -6,6 +6,7 @@ import { Text, Card, Flex, Button, Stack } from "@sanity/ui";
 import Image from "next/image";
 
 import useImageUrlBuilder from "@/app/hooks/useImageUrlBuilder";
+import React from "react";
 
 type Indentity = {
   firstName: string;
@@ -85,9 +86,8 @@ export default function ExhibitionListen() {
                   height={33}
                   /> */}
       {matchingExhibition.map((expo) => (
-        <>
+        <React.Fragment key={expo._id}>
           <Link
-            key={expo._id}
             href={
               process.env.NEXT_PUBLIC_VERCEL_URL
                 ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/admin/structure/exhibition;${expo._id}`
@@ -102,7 +102,7 @@ export default function ExhibitionListen() {
               </Button>
             </Card>
           </Link>
-        </>
+        </React.Fragment>
       ))}
     </Stack>
   ) : (

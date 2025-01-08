@@ -38,12 +38,12 @@ export const exhibitionType = defineType({
       type: "array",
       name: "artist",
       title: "Artist",
-      of: [{ type: "reference", to: { type: "personType" } }],
+      of: [{ type: "reference", to: { type: "person" } }],
     }),
     defineField({
       type: "array",
       name: "artwork",
-      title: "Artworks",
+      title: "Artworks on Display",
       of: [{ type: "reference", to: { type: "project" } }],
       description: "Images of the actual artworks",
     }),
@@ -59,17 +59,24 @@ export const exhibitionType = defineType({
       title: "Photos",
       of: [defineArrayMember({ type: "image" })],
       description:
-        "Photos of the exhibition installation, opening, atmosphere, crowd, ...",
+        "Photos of the exhibition installation, opening, atmosphere, crowd,...",
     }),
+
     defineField({
-      type: "addressObject",
-      name: "address",
-      title: "Address",
+      name: "gallery",
+      title: "Gallery",
+      type: "reference",
+      to: { type: "gallery" },
     }),
-    defineField({
-      type: "contactObjectNew",
-      name: "contact",
-      title: "Contact",
-    }),
+    // defineField({
+    //   type: "addressObject",
+    //   name: "address",
+    //   title: "Address",
+    // }),
+    // defineField({
+    //   type: "contactObjectNew",
+    //   name: "contact",
+    //   title: "Contact",
+    // }),
   ],
 });

@@ -1,4 +1,4 @@
-import { SanityDocument } from "sanity";
+import { Preview, SanityDocument, useSchema } from "sanity";
 import { useListeningQuery } from "sanity-plugin-utils";
 import { useFormValue } from "sanity";
 import Link from "next/link";
@@ -6,6 +6,7 @@ import { Text, Card, Flex, Button, Box } from "@sanity/ui";
 import Image from "next/image";
 
 import useImageUrlBuilder from "@/app/hooks/useImageUrlBuilder";
+import { usePaneRouter } from "sanity/structure";
 
 type ProjectImageDimensions = {
   width: number;
@@ -23,9 +24,25 @@ export type Category = {
   }[];
 };
 
-export default function CategoryListen(props) {
+export default function CategoryListenCopy({
+  document,
+  documentId,
+  options,
+}: {
+  document: SanityDocument;
+  documentId: string;
+  options: {};
+}) {
   const { urlFor } = useImageUrlBuilder();
-  const currentDoc = useFormValue(["_id"]);
+  // const currentDoc = useFormValue(["_id"]);
+  const currentDoc = documentId;
+  // console.log(document);
+  // console.log(options);
+
+  const schema = useSchema();
+  const { routerPanesState, groupIndex, handleEditReference } = usePaneRouter();
+
+  console.log(routerPanesState);
 
   const {
     data: categoryData,
@@ -52,16 +69,10 @@ export default function CategoryListen(props) {
     data: categoryDataTest,
     loading: categoryLoadingTest,
     error: categoryErrorTest,
-  } = useListeningQuery(
-    `*[_type == $type && _id == $currentDoc][0]{
-    _id, projectTitle, 
-    "series": *[_type=='category' && references(^._id) ][0]{_id, name }
-    }`,
-    {
-      params: { type: "project", currentDoc: currentDoc as string },
-      initialValue: [],
-    },
-  ) as { data: Category[]; loading: boolean; error: Error | null };
+  } = useListeningQuery(`*[references($currentDoc) && _type == "category"]`, {
+    params: { type: "project", currentDoc: currentDoc as string },
+    initialValue: [],
+  }) as { data: Category[]; loading: boolean; error: Error | null };
 
   if (categoryLoading) {
     return <p>Loading...</p>;
@@ -75,6 +86,11 @@ export default function CategoryListen(props) {
     category.projects.some((project) => project._id === currentDoc),
   );
 
+  // console.log(process.env.NEXT_PUBLIC_VERCEL_URL);
+  console.log(categoryDataTest);
+
+  // const schemaType = schema.get(categoryDataTest[0]._type);
+
   return matchingCategory ? (
     <Link
       href={
@@ -83,6 +99,7 @@ export default function CategoryListen(props) {
           : `http://localhost:3000/admin/structure/artwork;category;${matchingCategory._id}`
       }
     >
+      {/* <Preview value={categoryDataTest[0]} schemaType={schemaType}></Preview> */}
       <Card padding={1} flex={1} border radius={2}>
         <Button mode="bleed" padding={1} width="fill">
           <Flex direction="row" gap={3} align="center">

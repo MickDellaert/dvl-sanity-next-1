@@ -4,7 +4,7 @@ import project from "./documents/project-schema";
 import category from "./documents/category-schema";
 import page from "./documents/page-schema";
 import settings from "./singletons/settings-schema";
-import person from "./documents/person-schema";
+// import person from "./documents/person-schema";
 import contact from "./documents/contact-schema";
 import aboutpage from "./documents/aboutpage-schema";
 import contactObject from "./documents/contact-schema-object";
@@ -17,6 +17,7 @@ import { identityObject } from "./objects/identityObject";
 import { exhibitionType } from "./documents/exhibitionType";
 import duration from "./objects/duration";
 import { educationObject } from "./objects/educationObject";
+import { galleryType } from "./documents/galleryType";
 
 export const schemaTypes: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -25,7 +26,7 @@ export const schemaTypes: { types: SchemaTypeDefinition[] } = {
     category,
     page,
     settings,
-    person,
+    // person,
     contact,
     aboutpage,
     contactObject,
@@ -37,5 +38,6 @@ export const schemaTypes: { types: SchemaTypeDefinition[] } = {
     exhibitionType,
     duration,
     educationObject,
+    galleryType,
   ],
 };

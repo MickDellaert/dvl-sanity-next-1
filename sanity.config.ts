@@ -1,6 +1,6 @@
 "use client";
 
-import { structure } from "./sanity/lib/structure";
+import { structure } from "./sanity/structure/structure";
 import { CogIcon } from "@sanity/icons";
 /**
  * This configuration is used to for the Sanity Studio that’s mounted on the `\app\studio\[[...index]]\page.tsx` route
