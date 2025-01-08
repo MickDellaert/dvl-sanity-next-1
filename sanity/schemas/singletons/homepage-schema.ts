@@ -63,6 +63,12 @@ const homepage = defineType({
       },
       { strict: false },
     ),
+    defineField({
+      name: "exhibitions",
+      title: "Home Page Exhibitions",
+      type: "array",
+      of: [{ type: "reference", to: { type: "exhibition" } }],
+    }),
   ],
   initialValue: {
     homepageTitle: "initial value test",

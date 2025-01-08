@@ -68,6 +68,204 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type Education = {
+  _type: "education";
+  schoolName?: string;
+  schoolDirection?: string;
+  schoolAddress?: AddressObject;
+  duration?: Duration;
+};
+
+export type Exhibition = {
+  _id: string;
+  _type: "exhibition";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  tagLine?: string;
+  description?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  date?: Duration;
+  artist?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "person";
+  }>;
+  artwork?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "project";
+  }>;
+  poster?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  photos?: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+    _key: string;
+  }>;
+  gallery?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "gallery";
+  };
+};
+
+export type Gallery = {
+  _id: string;
+  _type: "gallery";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  tagLine?: string;
+  description?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  address?: AddressObject;
+  contact?: ContactObjectNew;
+};
+
+export type Duration = {
+  _type: "duration";
+  start?: string;
+  end?: string;
+};
+
+export type AddressObject = {
+  _type: "addressObject";
+  street?: string;
+  number?: number;
+  city?: string;
+  postalCode?: string;
+  country?: string;
+};
+
+export type Person = {
+  _id: string;
+  _type: "person";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  portrait?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  identity?: IdentityObject;
+  tagLine?: string;
+  description?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  address?: Array<
+    {
+      _key: string;
+    } & AddressObject
+  >;
+  contact?: ContactObjectNew;
+  personExhibitions?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "exhibition";
+  }>;
+  education?: Array<
+    {
+      _key: string;
+    } & Education
+  >;
+};
+
+export type ContactObjectNew = {
+  _type: "contactObjectNew";
+  email?: string;
+  phoneNumber?: string;
+  mobileNumber?: string;
+};
+
+export type IdentityObject = {
+  _type: "identityObject";
+  firstName?: string;
+  lastName?: string;
+  gender?: "Male" | "Female" | "Other";
+  birthDate?: string;
+  birthPlace?: string;
+};
+
 export type SingletonTest = {
   _id: string;
   _type: "singletonTest";
@@ -135,48 +333,6 @@ export type Contact = {
   }>;
 };
 
-export type Person = {
-  _id: string;
-  _type: "person";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  picture?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  firstName?: string;
-  lastName?: string;
-  birthDate?: string;
-  birthPlace?: string;
-  description?: string;
-  bio?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }>;
-};
-
 export type Settings = {
   _id: string;
   _type: "settings";
@@ -227,6 +383,48 @@ export type Page = {
   }>;
 };
 
+export type Project = {
+  _id: string;
+  _type: "project";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  category?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "category";
+  };
+  projectImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  projectTitle?: string;
+  slug?: Slug;
+  artist?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "person";
+  }>;
+  date?: string;
+  material?: string;
+  size?: {
+    width?: string;
+    height?: string;
+  };
+  soldStatus?: boolean;
+};
+
 export type Category = {
   _id: string;
   _type: "category";
@@ -260,31 +458,6 @@ export type Category = {
     _key: string;
     [internalGroqTypeReferenceTo]?: "project";
   }>;
-};
-
-export type Project = {
-  _id: string;
-  _type: "project";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  projectImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  };
-  projectTitle?: string;
-  slug?: Slug;
-  date?: string;
-  material?: string;
-  size?: string;
 };
 
 export type Homepage = {
@@ -327,6 +500,13 @@ export type Homepage = {
     _weak?: boolean;
     _key: string;
     [internalGroqTypeReferenceTo]?: "category";
+  }>;
+  exhibitions?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "exhibition";
   }>;
 };
 
@@ -399,15 +579,22 @@ export type AllSanitySchemaTypes =
   | SanityImageDimensions
   | SanityFileAsset
   | Geopoint
+  | Education
+  | Exhibition
+  | Gallery
+  | Duration
+  | AddressObject
+  | Person
+  | ContactObjectNew
+  | IdentityObject
   | SingletonTest
   | ContactObject
   | Aboutpage
   | Contact
-  | Person
   | Settings
   | Page
-  | Category
   | Project
+  | Category
   | Homepage
   | SanityImageCrop
   | SanityImageHotspot
@@ -480,7 +667,10 @@ export type ProjectsQueryResult = Array<{
   projectDescription: null;
   date: string | null;
   material: string | null;
-  size: string | null;
+  size: {
+    width?: string;
+    height?: string;
+  } | null;
 }>;
 // Variable: categoryQuery
 // Query: *[_type == "category"]{  _id,   name,  seriesDescription,   "slug": slug.current,   "projects" : projects[]->{  _id,  "projectImage" : projectImage.asset->url,   "projectImageDimensions": projectImage.asset->metadata.dimensions,  projectTitle,  projectDescription,   date,   material,   size  }}
@@ -514,7 +704,10 @@ export type CategoryQueryResult = Array<{
     projectDescription: null;
     date: string | null;
     material: string | null;
-    size: string | null;
+    size: {
+      width?: string;
+      height?: string;
+    } | null;
   }> | null;
 }>;
 // Variable: singleCategory
@@ -549,7 +742,10 @@ export type SingleCategoryResult = {
     projectDescription: null;
     date: string | null;
     material: string | null;
-    size: string | null;
+    size: {
+      width?: string;
+      height?: string;
+    } | null;
   }> | null;
 } | null;
 // Variable: singleCategoryOrder
@@ -584,7 +780,10 @@ export type SingleCategoryOrderResult = Array<{
     projectDescription: null;
     date: string | null;
     material: string | null;
-    size: string | null;
+    size: {
+      width?: string;
+      height?: string;
+    } | null;
   }> | null;
 }>;
 // Variable: pagesQuery

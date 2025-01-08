@@ -7,7 +7,12 @@ export const educationObject = defineType({
   fields: [
     defineField({
       name: "schoolName",
-      title: "Title",
+      title: "School Name",
+      type: "string",
+    }),
+    defineField({
+      name: "schoolDirection",
+      title: "School Direction",
       type: "string",
     }),
     defineField({

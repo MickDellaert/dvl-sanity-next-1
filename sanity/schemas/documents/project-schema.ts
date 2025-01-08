@@ -5,7 +5,7 @@ import CategoryListen from "../components/CategoryListen";
 
 const project = defineType({
   name: "project",
-  title: "Project",
+  title: "Artwork",
   type: "document",
   fieldsets: [
     { name: "artworkData", title: "Artwork Data", options: { columns: 2 } },
@@ -17,13 +17,13 @@ const project = defineType({
       type: "reference",
       to: [{ type: "category" }],
       components: {
-        input: CategoryListen,
+        field: CategoryListen,
       },
     }),
     defineField(
       {
         name: "projectImage",
-        title: "Project Image",
+        title: "Artwork Image",
         type: "image",
         options: { hotspot: true },
         fields: [
@@ -39,7 +39,7 @@ const project = defineType({
     ),
     defineField({
       name: "projectTitle",
-      title: "Project Title",
+      title: "Artwork Title",
       type: "string",
     }),
     defineField({
@@ -50,6 +50,12 @@ const project = defineType({
       description: "Used in the url of the page for navigation",
       // validation: (rule) => rule.required(),
     }),
+    defineField({
+      name: "artist",
+      title: "Artist",
+      type: "array",
+      of: [{ type: "reference", to: { type: "person" } }],
+    }),
     // defineField({
     //   name: "projectDescription",
     //   title: "Project Description",
@@ -58,7 +64,7 @@ const project = defineType({
     // }),
     defineField({
       name: "date",
-      title: "Project Date",
+      title: "Artwork Date",
       type: "string",
       fieldset: "artworkData",
     }),
@@ -99,6 +105,8 @@ const project = defineType({
   preview: {
     select: {
       title: "projectTitle",
+      artistFirstName: "artist.0.identity.firstName",
+      artistLastName: "artist.0.identity.lastName",
       material: "material",
       size: "size",
       width: "size.width",
@@ -107,10 +115,19 @@ const project = defineType({
       image: "projectImage",
     },
     prepare(selection) {
-      const { title, image, material, size, width, date, soldStatus } =
-        selection;
+      const {
+        title,
+        artistFirstName,
+        artistLastName,
+        image,
+        material,
+        size,
+        width,
+        date,
+        soldStatus,
+      } = selection;
       return {
-        title: title,
+        title: `${title} by ${artistFirstName} ${artistLastName}`,
         subtitle: `${material} - ${width} x ${size.height} cm - ${date} ${soldStatus ? "- sold" : ""}`,
         media: image,
       };

@@ -28,7 +28,7 @@ export function Projects() {
           )}
           <p>{project.date}</p>
           <p>{project.material}</p>
-          <p>{project.size}</p>
+          {/* <p>{project.size}</p> */}
         </div>
       ))}
     </div>

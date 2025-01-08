@@ -5,6 +5,8 @@ import {
   singletonDocumentListItems,
   filteredDocumentListItems,
 } from "sanity-plugin-singleton-tools";
+import CategoryListen from "../schemas/components/CategoryListen";
+import CategoryListenCopy from "../schemas/components/CategoryListenCopy";
 
 const options = {
   query: `*[references($id)]`,
@@ -71,20 +73,67 @@ export const structure: StructureResolver = (S, context) =>
                         S.view
                           .component(DocumentsPane)
                           .options({
-                            query: `*[references($id)]`,
+                            query: `*[references($id) && _type == "category"]`,
                             params: { id: `_id` },
                             options: { perspective: "previewDrafts" },
                           })
                           .title("Used in series"),
+                        S.view
+                          .component(DocumentsPane)
+                          .options({
+                            query: `*[references($id) && _type == "exhibition"]`,
+                            params: { id: `_id` },
+                            options: { perspective: "previewDrafts" },
+                          })
+                          .title("Used in exhibition"),
                       ]),
                   ),
                 ),
               S.documentTypeListItem("category").title("Series"),
             ]),
         ),
-      S.documentTypeListItem("personType").title("Artist"),
+      S.documentTypeListItem("person").title("Artist"),
       S.documentTypeListItem("exhibition").title("Exhibition"),
       S.divider(),
+      S.listItem()
+        .title("dvl")
+        // .id("dvl")
+        // .schemaType("project")
+        .child(
+          S.documentList()
+            .title("paintings")
+            .filter(
+              '_type == "project" && artist[]->identity.firstName match "David" && artist[]->identity.lastName match "Van Loon"',
+            ),
+        ),
+      S.listItem()
+        .title("others")
+        // .id("dvl")
+        // .schemaType("project")
+        .child(
+          S.documentList()
+            .title("paintings")
+            .filter(
+              '_type == "project" && !(artist[]->identity.firstName match "David") && !(artist[]->identity.lastName match "Van Loon")',
+            ),
+        ),
+
+      S.documentTypeListItem("project")
+        .title("componentTest")
+        .child(
+          S.documentTypeList("project").child((id) =>
+            S.document()
+              .documentId(id)
+              .schemaType("project")
+              .views([
+                S.view.form(),
+                S.view
+                  .component(CategoryListenCopy)
+                  .title("componentTest")
+                  .options({ testProp: "Im a test prop" }),
+              ]),
+          ),
+        ),
 
       // S.documentTypeListItem("homepage").title("Homepage"),
       // S.documentTypeListItem("page").title("Page"),
