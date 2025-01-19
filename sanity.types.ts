@@ -605,7 +605,7 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries.ts
 // Variable: homePageQuery
-// Query: *[_type == "homepage"][0]{  _id, homepageTitle,   "slug": slug.current,   homepageDescription,   // "homepageMainImage": homepageMainImage.asset->url,   homepageMainImage,  homepageMainImageSingle,  "homepageCategories": homepageCategories[]->{    _id,    name,     "slug": slug.current,    projects[0]->{projectImage, "projectImageDimensions": projectImage.asset->metadata.dimensions}  }}
+// Query: *[_type == "homepage"][0]{  _id, homepageTitle,   "slug": slug.current,   homepageDescription,   // "homepageMainImage": homepageMainImage.asset->url,   homepageMainImage,  homepageMainImageSingle,  "homepageCategories": homepageCategories[]->{    _id,    name,     "slug": slug.current,    projects[0]->{projectImage, "projectImageDimensions": projectImage.asset->metadata.dimensions}  },  "homepageExpo": exhibitions[]->{  _id,  name,  poster,  "posterDimensions": poster.asset->metadata.dimensions  }}
 export type HomePageQueryResult = {
   _id: string;
   homepageTitle: null;
@@ -655,6 +655,22 @@ export type HomePageQueryResult = {
       } | null;
       projectImageDimensions: SanityImageDimensions | null;
     } | null;
+  }> | null;
+  homepageExpo: Array<{
+    _id: string;
+    name: string | null;
+    poster: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    } | null;
+    posterDimensions: SanityImageDimensions | null;
   }> | null;
 } | null;
 // Variable: projectsQuery
@@ -860,7 +876,7 @@ export type TestQueryResult = Array<never>;
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '\n*[_type == "homepage"][0]{\n  _id, homepageTitle, \n  "slug": slug.current, \n  homepageDescription, \n  // "homepageMainImage": homepageMainImage.asset->url, \n  homepageMainImage,\n  homepageMainImageSingle,\n  "homepageCategories": homepageCategories[]->{\n    _id,\n    name, \n    "slug": slug.current,\n    projects[0]->{projectImage, "projectImageDimensions": projectImage.asset->metadata.dimensions}\n  }\n}': HomePageQueryResult;
+    '\n*[_type == "homepage"][0]{\n  _id, homepageTitle, \n  "slug": slug.current, \n  homepageDescription, \n  // "homepageMainImage": homepageMainImage.asset->url, \n  homepageMainImage,\n  homepageMainImageSingle,\n  "homepageCategories": homepageCategories[]->{\n    _id,\n    name, \n    "slug": slug.current,\n    projects[0]->{projectImage, "projectImageDimensions": projectImage.asset->metadata.dimensions}\n  },\n  "homepageExpo": exhibitions[]->{\n  _id,\n  name,\n  poster,\n  "posterDimensions": poster.asset->metadata.dimensions\n\n  }\n}': HomePageQueryResult;
     '\n*[_type == "project"]\n   {_id,\n   "projectImage": projectImage.asset->url, \n   "projectImageDimensions": projectImage.asset->metadata.dimensions,\n   projectTitle, \n   projectDescription, \n   date, \n   material, \n   size\n  }': ProjectsQueryResult;
     '\n*[_type == "category"]{\n  _id, \n  name,\n  seriesDescription, \n  "slug": slug.current, \n  "projects" : projects[]->{\n  _id,\n  "projectImage" : projectImage.asset->url, \n  "projectImageDimensions": projectImage.asset->metadata.dimensions,\n  projectTitle,\n  projectDescription, \n  date, \n  material, \n  size\n  }\n}': CategoryQueryResult;
     '\n*[_type == "category" && slug.current == $slug][0]{\n  _id, \n  name, \n  seriesDescription, \n  "slug": slug.current, \n  "projects" : projects[]->{\n    _id,\n    "projectImage" : projectImage.asset->url, \n    "projectImageDimensions": projectImage.asset->metadata.dimensions,\n    projectTitle,\n    projectDescription, \n    date, \n    material, \n    size\n  }\n}': SingleCategoryResult;

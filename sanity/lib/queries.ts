@@ -13,6 +13,12 @@ export const homePageQuery = defineQuery(`
     name, 
     "slug": slug.current,
     projects[0]->{projectImage, "projectImageDimensions": projectImage.asset->metadata.dimensions}
+  },
+  "homepageExpo": exhibitions[]->{
+  _id,
+  name,
+  poster,
+  "posterDimensions": poster.asset->metadata.dimensions
   }
 }`);
 
