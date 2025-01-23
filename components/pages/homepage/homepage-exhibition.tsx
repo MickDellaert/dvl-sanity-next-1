@@ -69,8 +69,8 @@ export default function HomepageExhibition({
           className="mb-20 self-end"
         />
 
-        {homepageExpo[0].images.map((image) => (
-          <div key={image._id} className=" self-end">
+        {homepageExpo[0].images.map((image, i) => (
+          <div key={i} className=" self-end">
             <Image
               src={urlFor(image.asset)
                 .width(image.asset.metadata.dimensions.width)
