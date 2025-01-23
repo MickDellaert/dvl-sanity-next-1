@@ -15,23 +15,37 @@ export default function HomepageExhibition({
   const { urlFor } = useImageUrlBuilder();
 
   // console.log(homepageExpo);
-  console.log(homepageExpo[0].images[0].asset.metadata.dimensions.height);
+  // console.log(homepageExpo[0].images[0].asset.metadata.dimensions.height);
 
   return (
     <div className="relative flex justify-between">
-      {homepageExpo.map((expo) => (
-        <React.Fragment key={expo._id}>
+      {homepageExpo?.map((expo, i) => (
+        <React.Fragment key={i}>
           <div className="sticky top-40 flex w-1/2 flex-col gap-4 self-start">
             <div className="flex">
               <h2 className="flex text-5xl">{expo.name}</h2>
             </div>
             <div className="flex gap-4 text-3xl">
-              <h2>{expo.date.start}</h2> <h3>---</h3>
-              <h2>{expo.date.end}</h2>
+              <h2>{expo.date?.start}</h2> <h3>---</h3>
+              <h2>{expo.date?.end}</h2>
             </div>
             <div className="text-xl">
-              <PortableText value={expo.description} />
+              {expo.description && <PortableText value={expo.description} />}
             </div>
+            {/* <Image
+              src={
+                expo.poster
+                  ? urlFor(expo.poster)
+                      .width(expo.posterDimensions?.width || 400)
+                      .height(expo.posterDimensions?.height || 400)
+                      .fit("crop")
+                      .url()
+                  : "https://placehold.co/400x400/png"
+              }
+              alt=""
+              width={400}
+              height={400}
+            /> */}
           </div>
           {/* <div className="left-auto w-1/2">
             <Image
@@ -52,34 +66,38 @@ export default function HomepageExhibition({
         </React.Fragment>
       ))}
 
-      <div className="flex w-1/2 flex-col gap-8">
+      <div className="flex w-8/12 flex-col gap-8">
         <Image
           src={
-            homepageExpo[0].poster
+            homepageExpo?.[0]?.poster
               ? urlFor(homepageExpo[0].poster)
-                  .width(homepageExpo[0].posterDimensions?.width || 400)
-                  .height(homepageExpo[0].posterDimensions?.height || 400)
+                  .width(homepageExpo[0].posterDimensions?.width || 500)
+                  .height(homepageExpo[0]?.posterDimensions?.height || 500)
                   .fit("crop")
                   .url()
               : "https://placehold.co/400x400/png"
           }
           alt=""
-          width={400}
-          height={400}
-          className="mb-20 self-end"
+          width={500}
+          height={500}
+          className="mb-20 self-start"
         />
 
-        {homepageExpo[0].images.map((image, i) => (
-          <div key={i} className=" self-end">
+        {homepageExpo?.[0]?.images?.map((image) => (
+          <div key={image.asset?._id} className=" self-end">
             <Image
-              src={urlFor(image.asset)
-                .width(image.asset.metadata.dimensions.width)
-                .height(image.asset.metadata.dimensions.height)
-                .fit("crop")
-                .url()}
+              src={
+                image.asset
+                  ? urlFor({ ...image.asset, url: image.asset.url || "" })
+                      .width(image.asset?.metadata?.dimensions?.width || 400)
+                      .height(image.asset?.metadata?.dimensions?.height || 400)
+                      .fit("crop")
+                      .url()
+                  : ""
+              }
               alt=""
-              width={image.asset.metadata.dimensions.width}
-              height={image.asset.metadata.dimensions.height}
+              width={image.asset?.metadata?.dimensions?.width || 400}
+              height={image.asset?.metadata?.dimensions?.height || 400}
               className=""
             />
           </div>

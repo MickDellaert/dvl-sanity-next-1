@@ -814,7 +814,7 @@
                 "type": "objectAttribute",
                 "value": {
                   "type": "string",
-                  "value": "homepagePhoto"
+                  "value": "image"
                 }
               }
             },
