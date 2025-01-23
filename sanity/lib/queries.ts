@@ -18,8 +18,19 @@ export const homePageQuery = defineQuery(`
   _id,
   name,
   poster,
-  "posterDimensions": poster.asset->metadata.dimensions
-  }
+  "posterDimensions": poster.asset->metadata.dimensions,
+  description,
+  date,
+  gallery,
+  photos,
+  "images": photos[]{
+  asset->{
+  _id,
+  url,
+  metadata{ dimensions} }
+  },
+  "dimensions": photos[].asset->metadata.dimensions,
+  },
 }`);
 
 export const projectsQuery = defineQuery(`

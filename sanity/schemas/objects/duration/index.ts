@@ -1,24 +1,30 @@
-import { defineField } from 'sanity'
+import { defineField } from "sanity";
 
-import { DurationInput } from './DurationInput'
+import { DurationInput } from "./DurationInput";
 
 export default defineField({
-  type: 'object',
-  name: 'duration',
-  title: 'Duration',
+  type: "object",
+  name: "duration",
+  title: "Duration",
   components: {
     input: DurationInput,
   },
   fields: [
     defineField({
-      type: 'datetime',
-      name: 'start',
-      title: 'Start',
+      type: "date",
+      name: "start",
+      title: "Start",
+      options: {
+        dateFormat: "DD-MM-YYYY",
+      },
     }),
     defineField({
-      type: 'datetime',
-      name: 'end',
-      title: 'End',
+      type: "date",
+      name: "end",
+      title: "End",
+      options: {
+        dateFormat: "DD-MM-YYYY",
+      },
     }),
   ],
-})
+});

@@ -24,8 +24,6 @@ export default async function HomePageHeader() {
 
   const { homepageMainImageSingle } = homePageData;
 
-  console.log(homepageMainImageSingle);
-
   return (
     <>
       <div className="grid min-h-[calc(100vh-32px)] auto-rows-auto grid-cols-12 pt-16">

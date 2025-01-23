@@ -40,10 +40,12 @@ export default async function HomePage() {
       {/* <HomePageHeader /> */}
       <HomePageCategory homepageCategories={homepageCategories} />
       {/* <Subtitle subtitle={"Upcoming Exhibitions"} /> */}
-      <div className="mt-40 h-screen">
+      <div className="mt-60">
         <div className="sticky top-16 z-20 -mt-8 flex flex-row items-center text-2xl font-medium mix-blend-difference invert">
           <div className="flex flex-col">
-            <h2 className="pb-8">Expo</h2>
+            <h2 className="pb-8 text-4xl font-normal tracking-tight">
+              Exposition
+            </h2>
           </div>
           {/* <h2 className="pb-1 pl-3 text-4xl">↓</h2> */}
         </div>
