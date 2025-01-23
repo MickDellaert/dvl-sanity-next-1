@@ -4,7 +4,7 @@ import { Suspense } from "react";
 export default async function Home() {
   return (
     // <main className="mx-auto mt-32 w-[90%] md:max-w-screen-2xl">
-    <main className="relative mx-auto w-[96%] px-4">
+    <main className="relative mx-auto w-[98%] px-4">
       {/* <Suspense fallback={<h2 className="text-red-800">loading home</h2>}> */}
       <HomePage />
       {/* </Suspense> */}

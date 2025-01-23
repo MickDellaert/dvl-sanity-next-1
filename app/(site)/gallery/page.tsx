@@ -17,7 +17,7 @@ export default async function page() {
   }
 
   return (
-    <main className="mx-auto mt-40 w-[96%] px-4">
+    <main className="mx-auto mt-40 w-[98%] px-4">
       <ProjectsGalleryPhotoswipeClient projects={projects} />
     </main>
   );

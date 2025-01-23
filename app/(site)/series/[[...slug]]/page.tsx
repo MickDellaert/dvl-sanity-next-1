@@ -7,6 +7,8 @@ import Series from "@/components/pages/series/series";
 import { notFound } from "next/navigation";
 // import Masonry from "@mui/lab/Masonry";
 import SeriesFilter from "@/components/pages/series/series-filter";
+import { sanityFetch } from "@/sanity/lib/live";
+import { categoryQuery, singleCategoryOrder } from "@/sanity/lib/queries";
 
 // const DynamicProjectsGallery = dynamic(() => import("@/components/pages/series/projects-gallery"), { ssr: false });
 
@@ -33,14 +35,26 @@ export default async function Page(props: { params: Params }) {
   let data;
 
   if (slug) {
-    const categoryDataOrder = await getCategoryDataOrder(slug);
+    // const categoryDataOrder = await getCategoryDataOrder(slug);
+    const { data: categoryDataOrder } = await sanityFetch({
+      query: singleCategoryOrder,
+      params: { slug },
+    });
+
+    console.log(categoryDataOrder);
 
     if (!categoryDataOrder.find((e) => e.slug === slug.toString())) {
       notFound();
     }
     data = categoryDataOrder;
   } else {
-    const categoryData = await getCategoriesData();
+    // const categoryData = await getCategoriesData();
+
+    const { data: categoryData } = await sanityFetch({
+      query: categoryQuery,
+    });
+
+    console.log(categoryData);
 
     console.log(categoryData[0].projects);
 
@@ -62,7 +76,7 @@ export default async function Page(props: { params: Params }) {
   return (
     <>
       {/* <main className="w-[90%] md:max-w-screen-2xl mx-auto"> */}
-      <main className="mx-auto w-[96%] px-4">
+      <main className="mx-auto w-[98%] px-4">
         {/* <ButtonTest /> */}
         {/* <SeriesFilter categoryData={data}/> */}
         <Series categoryData={data} />

@@ -33,7 +33,7 @@ export default function HomePageCategory({
     offset: ["start start", "end start"],
   });
 
-  const opacity = useTransform(scrollYProgress, [0, 0.1], [0.65, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
   // const fontSize = useTransform(scrollYProgress, [0, 0.1], ["52px", "36px"]);
 
   if (!homepageCategories) {
@@ -44,15 +44,15 @@ export default function HomePageCategory({
     <div>
       {/* <div>HomePageCategory</div> */}
       {/* <div className="sticky top-14 z-20 -mt-6 flex flex-row items-center text-2xl font-medium mix-blend-difference invert"> */}
-      <div className="sticky top-10 z-20 -mt-10 flex flex-row items-center text-2xl font-normal tracking-tight">
-        <div className="flex flex-col">
+      <div className="sticky top-6 z-20 -mt-16 flex flex-row items-center text-2xl font-normal tracking-tight">
+        <div className="flex flex-col text-4xl font-normal tracking-tight">
           <motion.h2 style={{ opacity: opacity }}>Scroll down for</motion.h2>
-          <h2 className="leading-5 opacity-65">Painting Series</h2>
+          <h2 className="leading-8">Painting Series</h2>
         </div>
         {/* <h2 className="pb pl-2 text-3xl">↓</h2> */}
       </div>
 
-      <div className="mt-44 grid grid-cols-12 content-center justify-center gap-x-2 gap-y-20 md:gap-x-4 md:gap-y-44">
+      <div className="mt-44 grid grid-cols-12 content-center justify-center gap-x-2 gap-y-20 md:gap-x-4 md:gap-y-52">
         {homepageCategories.map((category) => {
           // TODO: check _id: is niet altijd uniek komende van een array
 
@@ -72,8 +72,8 @@ export default function HomePageCategory({
                 <div className="group cursor-crosshair">
                   <div className="relative overflow-hidden">
                     <h2
-                      className="absolute left-1/2 top-1/2 z-50 mb-4 mt-4 w-fit -translate-x-1/2 -translate-y-1/2 text-center text-5xl font-medium
-                     text-white opacity-0 mix-blend-difference transition-all duration-500 group-hover:opacity-100"
+                      className="absolute left-1/2 top-1/2 z-50 mb-4 mt-4 w-fit -translate-x-1/2 -translate-y-1/2 text-center text-4xl font-normal
+                     text-gray-100 opacity-0 mix-blend-difference transition-all duration-500 group-hover:opacity-100"
                     >
                       {category.name}
                     </h2>
@@ -104,9 +104,9 @@ export default function HomePageCategory({
                   after:left-0 after:top-12 after:h-0.5 after:bg-black after:content-[''] group-hover:after:w-full md:mb-6 md:mt-6 md:text-3xl 
                   md:after:top-16"
                   > */}
-                  <h2 className="relative mb-4 mt-4 w-fit text-3xl font-medium transition-all duration-500  group-hover:opacity-0 group-hover:invert">
+                  {/* <h2 className="relative mb-4 mt-4 w-fit text-3xl font-medium text-gray-400 transition-all duration-500  group-hover:opacity-0 group-hover:invert">
                     {category.name}
-                  </h2>
+                  </h2> */}
                 </div>
               </Link>
             </div>

@@ -10,6 +10,7 @@ import StickyTest from "./sticky-test";
 import { notFound } from "next/navigation";
 import { sanityFetch } from "@/sanity/lib/live";
 import { homePageQuery } from "@/sanity/lib/queries";
+import HomepageExhibition from "./homepage-exhibition";
 
 export default async function HomePage() {
   const builder = imageUrlBuilder(client);
@@ -30,6 +31,7 @@ export default async function HomePage() {
     homepageMainImage,
     homepageMainImageSingle,
     homepageCategories,
+    homepageExpo,
   } = homePageData;
 
   return (
@@ -38,11 +40,16 @@ export default async function HomePage() {
       {/* <HomePageHeader /> */}
       <HomePageCategory homepageCategories={homepageCategories} />
       {/* <Subtitle subtitle={"Upcoming Exhibitions"} /> */}
-      <div className="mt-40 h-screen bg-green-200">
+      <div className="mt-60">
         <div className="sticky top-16 z-20 -mt-8 flex flex-row items-center text-2xl font-medium mix-blend-difference invert">
-          <h2 className="">Expo</h2>
+          <div className="flex flex-col">
+            <h2 className="pb-8 text-4xl font-normal tracking-tight">
+              Exposition
+            </h2>
+          </div>
           {/* <h2 className="pb-1 pl-3 text-4xl">↓</h2> */}
         </div>
+        <HomepageExhibition homepageExpo={homepageExpo} />
       </div>
     </div>
   );
