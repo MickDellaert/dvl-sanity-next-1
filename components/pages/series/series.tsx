@@ -21,6 +21,10 @@ export default function Series({
   return (
     <>
       <div className="mt:0 flex flex-col justify-center md:mt-32">
+        <h1 className="sticky top-14 col-span-2 self-start text-4xl">
+          — Series
+        </h1>
+
         {categoryData.map((category) => (
           <section
             key={category._id}

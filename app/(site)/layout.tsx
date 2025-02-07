@@ -13,9 +13,9 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className={` bg-gray-100 tracking-tight`}>
+    <div className={`tracking-tight`}>
       <NavbarWrapper />
-      {children}
+      <main className="mx-auto w-[98%] px-4">{children}</main>
       <Footer />
       <SanityLive />
       {(await draftMode()).isEnabled && (

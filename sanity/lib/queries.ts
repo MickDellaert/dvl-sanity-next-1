@@ -99,6 +99,10 @@ export const singleCategoryOrder = defineQuery(`
   }
 }`);
 
+export const aboutDavidQuery = defineQuery(
+  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, identity, description, portrait, educationText}`,
+);
+
 export const pagesQuery = groq`
 *[_type == "page"]{
   _id, 

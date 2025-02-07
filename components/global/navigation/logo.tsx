@@ -23,7 +23,7 @@ export default function Logo() {
     offset: ["start start", "end start"],
   });
 
-  const opacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
   const fontSize = useTransform(scrollYProgress, [0, 0.1], ["52px", "36px"]);
 
   return (
@@ -36,7 +36,21 @@ export default function Logo() {
         href="/"
         className="leading-12 z-20 text-5xl font-normal tracking-tight"
       >
-        <motion.h1 style={{ fontSize: fontSize }}>David Van Loon</motion.h1>
+        {path === "/" ? (
+          <motion.h1
+            initial={{ fontSize: "52px" }}
+            style={{ fontSize: fontSize }}
+          >
+            David Van Loon
+          </motion.h1>
+        ) : (
+          <motion.h1
+            initial={{ fontSize: "52px" }}
+            animate={{ fontSize: "36px" }}
+          >
+            David Van Loon
+          </motion.h1>
+        )}
       </Link>
       {path === "/" && (
         <motion.h2
