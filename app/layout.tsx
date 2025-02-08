@@ -33,7 +33,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={dmSans.variable}>
-      <body className="mt-0 min-h-screen bg-gray-50">{children}</body>
+      <body className="mx-auto mt-0 min-h-screen bg-gray-50 px-4 tracking-tight md:px-8">
+        {children}
+      </body>
     </html>
   );
 }

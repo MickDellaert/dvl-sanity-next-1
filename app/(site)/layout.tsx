@@ -13,9 +13,10 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className={`tracking-tight`}>
+    // <div className={`tracking-tight`}>
+    <>
       <NavbarWrapper />
-      <main className="mx-auto w-[98%] px-4">{children}</main>
+      <main className="pt-20">{children}</main>
       <Footer />
       <SanityLive />
       {(await draftMode()).isEnabled && (
@@ -25,6 +26,7 @@ export default async function RootLayout({
         </>
       )}
       <Analytics />
-    </div>
+    </>
+    // </div>
   );
 }

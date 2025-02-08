@@ -41,11 +41,11 @@ export default function HomePageCategory({
   }
 
   return (
-    <div>
+    <section>
       {/* <div>HomePageCategory</div> */}
       {/* <div className="sticky top-14 z-20 -mt-6 flex flex-row items-center text-2xl font-medium mix-blend-difference invert"> */}
-      <div className="sticky top-6 z-20 -mt-16 flex flex-row items-center text-2xl font-normal tracking-tight">
-        <div className="flex flex-col text-4xl font-normal tracking-tight">
+      <div className="sticky top-8 z-20 -mt-[104px] flex flex-row items-center mix-blend-difference invert">
+        <div className="flex flex-col text-4xl ">
           <motion.h2 style={{ opacity: opacity }}>Scroll down for</motion.h2>
           <h2 className="leading-8">Painting Series</h2>
         </div>
@@ -113,6 +113,6 @@ export default function HomePageCategory({
           );
         })}
       </div>
-    </div>
+    </section>
   );
 }

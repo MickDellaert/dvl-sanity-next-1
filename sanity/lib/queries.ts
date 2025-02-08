@@ -33,6 +33,13 @@ export const homePageQuery = defineQuery(`
   },
 }`);
 
+export const homepageHeaderQuery = defineQuery(`
+  *[_type == "homepage"][0]{
+    "homepageMainImageAsset": homepageMainImageSingle.asset->metadata, 
+    homepageMainImage,
+    homepageMainImageSingle,
+  }`);
+
 export const projectsQuery = defineQuery(`
 *[_type == "project"]
    {_id,
