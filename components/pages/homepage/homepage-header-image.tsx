@@ -27,9 +27,9 @@ export default async function HomePageHeaderImage() {
 
   return (
     <>
-      <div className="grid min-h-[calc(100vh-80px)] auto-rows-auto grid-cols-12 pb-8">
+      <div className="flex min-h-[calc(100vh-64px)] w-full auto-rows-auto grid-cols-12 pb-8">
         <Image
-          className="col-span-8 col-start-5 w-full self-end xl:col-span-7 xl:col-start-6"
+          className="ml-auto w-7/12 self-end"
           src={
             homepageMainImageSingle ? urlFor(homepageMainImageSingle).url() : ""
           }

@@ -15,6 +15,16 @@ export default function HomepageExhibition({
 }) {
   const { urlFor } = useImageUrlBuilder();
 
+  const formatDate = (dateString: string | undefined) => {
+    if (!dateString) return ""; // Handle empty or undefined dates
+    const date = new Date(dateString);
+    return new Intl.DateTimeFormat("nl-BE", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    }).format(date);
+  };
+
   // console.log(homepageExpo);
   // console.log(homepageExpo[0].images[0].asset.metadata.dimensions.height);
 
@@ -39,15 +49,20 @@ export default function HomepageExhibition({
       <div className="relative flex justify-between gap-x-24">
         {homepageExpo?.map((expo, i) => (
           <React.Fragment key={i}>
-            <div className="sticky top-28 flex w-5/12 flex-col gap-4 self-start ">
-              <div className="flex w-fit flex-col ">
-                <h2 className="py-4 text-5xl">—</h2>
+            <div className="sticky top-40 flex w-5/12 flex-col gap-4 self-start ">
+              <div className="flex w-fit flex-col">
+                {/* <h2 className="py-4 text-5xl">—</h2> */}
 
-                <h2 className="flex flex-row  text-5xl">{expo.name}</h2>
+                <h2
+                  className="relative mt-8 flex flex-row text-5xl
+                before:absolute before:-top-8 before:left-0 before:h-1 before:w-12 before:bg-black before:content-['']"
+                >
+                  {expo.name}
+                </h2>
               </div>
               <div className="flex gap-4 text-4xl">
-                <h2>{expo.date?.start}</h2> <h3>—</h3>
-                <h2>{expo.date?.end}</h2>
+                <h2>{formatDate(expo.date?.start)}</h2> <h3>—</h3>
+                <h2>{formatDate(expo.date?.end)}</h2>
               </div>
               {/* <h2 className="text-5xl">—</h2> */}
               <div className="mt-4 text-2xl leading-9">
