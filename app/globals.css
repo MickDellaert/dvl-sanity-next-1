@@ -30,6 +30,31 @@ body {
   background-color: white !important;
 }
 
+.pswp--custom-icons {
+  --pswp-icon-color: #00fffc !important; /* Primary icon color */
+  --pswp-icon-color-secondary: #ff0000; /* Secondary color */
+}
+
+/* Hide the default shadow */
+.pswp__icn-shadow {
+  display: none;
+}
+
+/* Resize the icons */
+.pswp__button {
+  width: 50px;
+  height: 50px;
+}
+
+/* Style the arrows */
+.pswp__button--arrow {
+  opacity: 0.8;
+}
+
+.pswp__button--arrow:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
 /* .pswp__content {
   width: 100vw !important;
 } */

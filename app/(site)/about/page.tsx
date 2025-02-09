@@ -13,6 +13,5 @@ export default async function Page() {
     notFound();
   }
 
-  console.log(aboutDavidData);
   return <About aboutDavidData={aboutDavidData} />;
 }
