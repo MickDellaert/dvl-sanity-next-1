@@ -8,6 +8,7 @@ import React from "react";
 import SeriesDescription from "./series-description";
 import SeriesMasonry from "./series-masonry";
 import { CategoryQueryResult } from "@/sanity.types";
+import StickyTitle from "../homepage/sticky-title";
 
 type CategoryData = {
   categoryData: Category[];
@@ -20,16 +21,21 @@ export default function Series({
 }) {
   return (
     <>
-      <div className="mt:0 flex flex-col justify-center md:mt-32">
+      <div className="flex flex-col justify-center">
+        {/* <h1 className="sticky top-14 col-span-2 self-start text-4xl">
+          — Series
+        </h1> */}
+        <StickyTitle stickyTitle="Series" />
+
         {categoryData.map((category) => (
           <section
             key={category._id}
-            className="justify-between pb-8 md:flex md:flex-row md:pb-40"
+            className="mb-40 mt-16 h-fit justify-between md:flex md:flex-row"
           >
-            <div className="top-32 mb-16 w-full self-start md:sticky md:mb-0 md:w-4/12 xl:w-3/12">
+            <div className="top-32 w-full self-start md:sticky md:mb-0 md:w-4/12 xl:w-3/12">
               <SeriesDescription category={category} />
             </div>
-            <div className="top-32 -mr-0 w-full md:sticky md:w-8/12 lg:-mr-[80px]">
+            <div className="top-32 -mb-20 -mr-0 w-full md:sticky md:w-8/12 lg:-mr-[80px]">
               <SeriesMasonry category={category} />
             </div>
           </section>

@@ -76,11 +76,11 @@ export default async function Page(props: { params: Params }) {
   return (
     <>
       {/* <main className="w-[90%] md:max-w-screen-2xl mx-auto"> */}
-      <main className="mx-auto w-[98%] px-4">
-        {/* <ButtonTest /> */}
-        {/* <SeriesFilter categoryData={data}/> */}
-        <Series categoryData={data} />
-      </main>
+      {/* <main className="mx-auto w-[98%] px-4"> */}
+      {/* <ButtonTest /> */}
+      {/* <SeriesFilter categoryData={data}/> */}
+      <Series categoryData={data} />
+      {/* </main> */}
     </>
   );
 }

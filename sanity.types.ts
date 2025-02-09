@@ -248,6 +248,24 @@ export type Person = {
       _key: string;
     } & Education
   >;
+  educationText?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
 };
 
 export type ContactObjectNew = {
@@ -849,6 +867,59 @@ export type SingleCategoryOrderResult = Array<{
     } | null;
   }> | null;
 }>;
+// Variable: aboutDavidQuery
+// Query: *[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, identity, description, portrait, educationText}
+export type AboutDavidQueryResult = {
+  _id: string;
+  identity: IdentityObject | null;
+  description: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }> | null;
+  portrait: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  educationText: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }> | null;
+} | null;
 // Variable: pagesQuery
 // Query: *[_type == "page"]{  _id,   title,   "slug":slug.current,   content}
 export type PagesQueryResult = Array<{
@@ -928,6 +999,7 @@ declare module "@sanity/client" {
     '\n*[_type == "category"]{\n  _id, \n  name,\n  seriesDescription, \n  "slug": slug.current, \n  "projects" : projects[]->{\n  _id,\n  "projectImage" : projectImage.asset->url, \n  "projectImageDimensions": projectImage.asset->metadata.dimensions,\n  projectTitle,\n  projectDescription, \n  date, \n  material, \n  size\n  }\n}': CategoryQueryResult;
     '\n*[_type == "category" && slug.current == $slug][0]{\n  _id, \n  name, \n  seriesDescription, \n  "slug": slug.current, \n  "projects" : projects[]->{\n    _id,\n    "projectImage" : projectImage.asset->url, \n    "projectImageDimensions": projectImage.asset->metadata.dimensions,\n    projectTitle,\n    projectDescription, \n    date, \n    material, \n    size\n  }\n}': SingleCategoryResult;
     '\n*[_type == "category" ] | order((slug.current match $slug) desc){\n  _id, \n  name, \n  seriesDescription, \n  "slug": slug.current, \n  "projects" : projects[]->{\n    _id,\n    "projectImage" : projectImage.asset->url, \n    "projectImageDimensions": projectImage.asset->metadata.dimensions,\n    projectTitle,\n    projectDescription, \n    date, \n    material, \n    size\n  }\n}': SingleCategoryOrderResult;
+    '*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, identity, description, portrait, educationText}': AboutDavidQueryResult;
     '\n*[_type == "page"]{\n  _id, \n  title, \n  "slug":slug.current, \n  content\n}': PagesQueryResult;
     '\n*[_type == "page" && slug.current == $slug][0]{\n  _id, \n  title, \n  "slug":slug.current, \n  content\n}': PageQueryResult;
     '\n*[_type == "settings"][0]{\n  menuItems[]->{_type, "slug": slug.current, title}\n}': SettingsQueryResult;

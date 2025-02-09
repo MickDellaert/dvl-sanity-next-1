@@ -50,7 +50,7 @@ export default function NavLinksMobile({ menuItems }: NavProps) {
         </button>
       )}
       <div
-        className={`flex w-full flex-col justify-center gap-8 bg-white pb-12 pt-24 text-center text-lg font-medium uppercase tracking-widest`}
+        className={`flex w-full flex-col justify-center gap-8 pb-12 pt-24 text-center text-lg font-medium uppercase tracking-widest`}
         style={
           openMenu
             ? { display: "flex", position: "fixed", top: 0, left: 0 }
@@ -68,7 +68,7 @@ export default function NavLinksMobile({ menuItems }: NavProps) {
 
           return (
             <Link
-              className={`${pathname === href  ? "underline decoration-2 underline-offset-8" : ""} `}
+              className={`${pathname === href ? "underline decoration-2 underline-offset-8" : ""} `}
               key={setting.title}
               href={href}
               onClick={() => onRoute(href)}

@@ -7,6 +7,7 @@ import { Project } from "@/sanity/types";
 import React from "react";
 
 import Masonry from "react-masonry-css";
+import StickyTitle from "../homepage/sticky-title";
 
 type Projects = {
   projects: Project[];
@@ -29,23 +30,26 @@ export default function ProjectsGalleryPhotoswipeClient({
   }
 
   return (
-    <PhotoswipeGallery projects={projects}>
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
-      >
-        {projects?.map((project, i) => (
-          <div key={i} className="mb-16 inline-block lg:mb-0">
-            <PhotoswipeItem project={project} />
-            <div className="mt-4 text-xs">
-              <h2 className="mb-1 text-sm font-medium">
-                {project.projectTitle}
-              </h2>
+    <div>
+      <StickyTitle stickyTitle="Gallery" />
+      <PhotoswipeGallery projects={projects}>
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="my-masonry-grid mt-20"
+          columnClassName="my-masonry-grid_column"
+        >
+          {projects?.map((project, i) => (
+            <div key={i} className="mb-16 inline-block lg:mb-0">
+              <PhotoswipeItem project={project} />
+              <div className="mt-4 text-xs">
+                <h2 className="mb-1 text-sm font-medium">
+                  {project.projectTitle}
+                </h2>
+              </div>
             </div>
-          </div>
-        ))}
-      </Masonry>
-    </PhotoswipeGallery>
+          ))}
+        </Masonry>
+      </PhotoswipeGallery>
+    </div>
   );
 }

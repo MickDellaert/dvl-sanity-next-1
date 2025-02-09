@@ -18,11 +18,10 @@ export default function SeriesDescription({
 }) {
   return (
     category && (
-      <div key={category._id}>
-        <h2 className="mb-4 text-3xl font-semibold tracking-widest">
-          {category.name}
-        </h2>
-        <div className="text-sm leading-relaxed">
+      <div key={category._id} className="">
+        <h2 className="h-fit align-text-top text-5xl">—</h2>
+        <h2 className="mb-4 text-3xl uppercase">{category.name}</h2>
+        <div className="text-lg leading-relaxed">
           {category.seriesDescription && (
             <PortableText value={category.seriesDescription} />
           )}

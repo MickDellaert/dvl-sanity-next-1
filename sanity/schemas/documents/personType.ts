@@ -57,6 +57,13 @@ export const personType = defineType({
       type: "array",
       of: [defineArrayMember({ type: "education" })],
     }),
+    defineField({
+      name: "educationText",
+      title: "Education Text",
+      type: "array",
+      of: [defineArrayMember({ type: "block" })],
+      description: "Education history, but in rich text",
+    }),
   ],
   preview: {
     select: {

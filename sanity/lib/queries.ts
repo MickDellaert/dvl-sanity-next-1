@@ -33,6 +33,13 @@ export const homePageQuery = defineQuery(`
   },
 }`);
 
+export const homepageHeaderQuery = defineQuery(`
+  *[_type == "homepage"][0]{
+    "homepageMainImageAsset": homepageMainImageSingle.asset->metadata, 
+    homepageMainImage,
+    homepageMainImageSingle,
+  }`);
+
 export const projectsQuery = defineQuery(`
 *[_type == "project"]
    {_id,
@@ -98,6 +105,22 @@ export const singleCategoryOrder = defineQuery(`
     size
   }
 }`);
+
+export const aboutDavidQuery = defineQuery(
+  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, identity, description, portrait, educationText}`,
+);
+
+export const bioDavidQuery = defineQuery(
+  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, description, portrait}`,
+);
+
+export const contactDavidQuery = defineQuery(
+  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, contact, address}`,
+);
+
+export const educationDavidQuery = defineQuery(
+  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, educationText}`,
+);
 
 export const pagesQuery = groq`
 *[_type == "page"]{

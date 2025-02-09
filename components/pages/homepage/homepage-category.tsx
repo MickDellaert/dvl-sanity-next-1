@@ -33,7 +33,7 @@ export default function HomePageCategory({
     offset: ["start start", "end start"],
   });
 
-  const opacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.06], [1, 0]);
   // const fontSize = useTransform(scrollYProgress, [0, 0.1], ["52px", "36px"]);
 
   if (!homepageCategories) {
@@ -41,18 +41,18 @@ export default function HomePageCategory({
   }
 
   return (
-    <div>
+    <section>
       {/* <div>HomePageCategory</div> */}
       {/* <div className="sticky top-14 z-20 -mt-6 flex flex-row items-center text-2xl font-medium mix-blend-difference invert"> */}
-      <div className="sticky top-6 z-20 -mt-16 flex flex-row items-center text-2xl font-normal tracking-tight">
-        <div className="flex flex-col text-4xl font-normal tracking-tight">
+      <div className="sticky top-8 z-20 -mt-[104px] flex flex-row items-center mix-blend-difference invert">
+        <div className="flex flex-col text-4xl ">
           <motion.h2 style={{ opacity: opacity }}>Scroll down for</motion.h2>
           <h2 className="leading-8">Painting Series</h2>
         </div>
         {/* <h2 className="pb pl-2 text-3xl">↓</h2> */}
       </div>
 
-      <div className="mt-44 grid grid-cols-12 content-center justify-center gap-x-2 gap-y-20 md:gap-x-4 md:gap-y-52">
+      <div className="mt-44 grid grid-cols-12 content-center justify-center gap-x-2 gap-y-20 md:gap-x-4 md:gap-y-48">
         {homepageCategories.map((category) => {
           // TODO: check _id: is niet altijd uniek komende van een array
 
@@ -69,16 +69,16 @@ export default function HomePageCategory({
                 className=""
                 href={`series/${category.slug}`}
               >
-                <div className="group cursor-crosshair">
-                  <div className="relative overflow-hidden">
+                <div className="group cursor-pointer">
+                  <div className="relative overflow-hidden bg-gray-900">
                     <h2
-                      className="absolute left-1/2 top-1/2 z-50 mb-4 mt-4 w-fit -translate-x-1/2 -translate-y-1/2 text-center text-4xl font-normal
-                     text-gray-100 opacity-0 mix-blend-difference transition-all duration-500 group-hover:opacity-100"
+                      className="absolute left-1/2 top-1/2 z-50 mb-4 mt-4 w-fit -translate-x-1/2 -translate-y-1/2 text-center text-5xl uppercase
+                     text-white opacity-0 transition-all duration-500 group-hover:opacity-80"
                     >
                       {category.name}
                     </h2>
                     <Image
-                      className="w-full transition-all duration-500 group-hover:scale-105 group-hover:blur-sm"
+                      className="w-full transition-all duration-700 group-hover:scale-105 group-hover:opacity-70 group-hover:blur-sm"
                       src={
                         category.projects?.projectImage
                           ? urlFor(category.projects.projectImage)
@@ -104,15 +104,15 @@ export default function HomePageCategory({
                   after:left-0 after:top-12 after:h-0.5 after:bg-black after:content-[''] group-hover:after:w-full md:mb-6 md:mt-6 md:text-3xl 
                   md:after:top-16"
                   > */}
-                  {/* <h2 className="relative mb-4 mt-4 w-fit text-3xl font-medium text-gray-400 transition-all duration-500  group-hover:opacity-0 group-hover:invert">
+                  <h2 className="relative mb-4 mt-6 w-fit text-center text-3xl uppercase text-black transition-all duration-500 group-hover:opacity-0 group-hover:invert">
                     {category.name}
-                  </h2> */}
+                  </h2>
                 </div>
               </Link>
             </div>
           );
         })}
       </div>
-    </div>
+    </section>
   );
 }

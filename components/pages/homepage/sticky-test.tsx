@@ -34,11 +34,11 @@ export default async function StickyTest() {
   return (
     <>
       <div className="grid min-h-[calc(100vh-40px)] auto-rows-auto grid-cols-12 pt-16">
-        <div className="col-span-6 col-start-1 2xl:col-span-3">
-          {/* <h2 className="col-start-1 text-4xl font-normal leading-snug lg:text-4xl lg:leading-snug xl:text-5xl xl:leading-11 pb-12 tracking-tighter">
+        {/* <div className="col-span-6 col-start-1 2xl:col-span-3"> */}
+        {/* <h2 className="col-start-1 text-4xl font-normal leading-snug lg:text-4xl lg:leading-snug xl:text-5xl xl:leading-11 pb-12 tracking-tighter">
             is an Antwerp and Mortehan based contemporary artist.
           </h2> */}
-        </div>
+        {/* </div> */}
 
         <Image
           // className="h-[calc(100vh-64px)] w-screen object-cover"
