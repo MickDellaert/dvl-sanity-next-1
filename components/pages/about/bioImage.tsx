@@ -1,22 +1,41 @@
 "use client";
 
 import useImageUrlBuilder from "@/app/hooks/useImageUrlBuilder";
+import {
+  SanityImageCrop,
+  SanityImageHotspot,
+  SanityImageDimensions,
+} from "@/sanity.types";
 import Image from "next/image";
 
-export default function BioImage({ data }: { data: { portrait?: string } }) {
+type BioImageProps = {
+  data: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  dimensions: SanityImageDimensions | null;
+};
+
+export default function BioImage({ data, dimensions }: BioImageProps) {
   const { urlFor } = useImageUrlBuilder();
+
+  const width = dimensions?.width ?? 1000;
+  const height = dimensions?.height ?? 1000;
+  console.log(width);
 
   return (
     <Image
-      src={
-        data?.portrait
-          ? urlFor(data?.portrait).width(1000).height(1000).url()
-          : ""
-      }
+      src={data ? urlFor(data).width(width).height(height).url() : ""}
       alt=""
       width={1000}
       height={1000}
-      className="top-20 col-span-4 col-start-1 mt-16 self-start"
+      className=""
     />
   );
 }

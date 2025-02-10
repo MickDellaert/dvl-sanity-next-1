@@ -15,10 +15,16 @@ export default async function Bio() {
     notFound();
   }
 
+  const { portrait, dimensions } = bioDavidData;
+
+  // console.log(portraitMetadata);
+
   return (
     <div className="relative grid grid-cols-12 gap-x-20">
       <StickyTitle stickyTitle="About" />
-      <BioImage data={bioDavidData} />
+      <div className="top-20 col-span-4 col-start-1 mt-16 self-start">
+        {portrait && <BioImage data={portrait} dimensions={dimensions} />}
+      </div>
       <div className="sticky top-16 col-span-5 col-start-7 mt-16 self-start text-3xl leading-10">
         <div className="mb-8">
           {bioDavidData?.description && (

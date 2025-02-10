@@ -13,6 +13,7 @@ import { sanityFetch } from "@/sanity/lib/live";
 import { homePageQuery } from "@/sanity/lib/queries";
 import HomepageExhibition from "./homepage-exhibition";
 import HomePageHeaderImage from "./homepage-header-image";
+import HomePageSeries from "./homepage-series";
 
 export default async function HomePage() {
   const builder = imageUrlBuilder(client);
@@ -39,7 +40,8 @@ export default async function HomePage() {
   return (
     <>
       <HomePageHeaderImage />
-      <HomePageCategory homepageCategories={homepageCategories} />
+      {/* <HomePageCategory homepageCategories={homepageCategories} /> */}
+      <HomePageSeries />
       <HomepageExhibition homepageExpo={homepageExpo} />
     </>
   );

@@ -33,6 +33,20 @@ export const homePageQuery = defineQuery(`
   },
 }`);
 
+export const homePageSeriesQuery = defineQuery(`
+  *[_type == "homepage"][0]{
+    homepageCategories[]->{
+      _id,
+      name, 
+      "slug": slug.current,
+      projects[0]->{
+      projectImage, 
+      "projectImageDimensions": projectImage.asset->metadata.dimensions, 
+      "projectImageMetadata": projectImage.asset->metadata, 
+      "projectImagePalette": projectImage.asset->metadata.palette.darkVibrant.background}
+    }
+  }`);
+
 export const homepageHeaderQuery = defineQuery(`
   *[_type == "homepage"][0]{
     "homepageMainImageAsset": homepageMainImageSingle.asset->metadata, 
@@ -111,7 +125,8 @@ export const aboutDavidQuery = defineQuery(
 );
 
 export const bioDavidQuery = defineQuery(
-  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, description, portrait}`,
+  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{
+  _id, description, portrait, "dimensions":portrait.asset->metadata.dimensions}`,
 );
 
 export const contactDavidQuery = defineQuery(
