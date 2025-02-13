@@ -15,7 +15,7 @@ export default defineField({
       name: "start",
       title: "Start",
       options: {
-        dateFormat: "DD-MM-YYYY",
+        dateFormat: "DD/MM/YYYY",
       },
     }),
     defineField({
@@ -23,7 +23,7 @@ export default defineField({
       name: "end",
       title: "End",
       options: {
-        dateFormat: "DD-MM-YYYY",
+        dateFormat: "DD/MM/YYYY",
       },
     }),
   ],

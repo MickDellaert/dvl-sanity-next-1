@@ -6,6 +6,7 @@ import StickyTitle from "../homepage/sticky-title";
 import Contact from "./contact";
 import Education from "./education";
 import Bio from "./bio";
+import AboutDavidExhibitions from "./about-david-exhibitions";
 
 export default function About({
   aboutDavidData,
@@ -39,14 +40,7 @@ export default function About({
         </div>
       </div> */}
       <Education />
-      <div className="relative mt-24 grid grid-cols-12 gap-x-20">
-        <StickyTitle stickyTitle="Exhibitions & Publications" />
-        <div className="col-span-4 col-start-7 text-xl [&_li:last-child]:mb-0 [&_li>*:first-child]:text-2xl [&_li]:mb-4">
-          {aboutDavidData?.educationText && (
-            <PortableText value={aboutDavidData.educationText} />
-          )}
-        </div>
-      </div>
+      <AboutDavidExhibitions />
       <Contact />
     </div>
   );

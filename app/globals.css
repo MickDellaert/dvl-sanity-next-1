@@ -65,6 +65,10 @@ body {
   padding-bottom: 65%;
 }
 
+.pswp__container {
+  /* transition: transform var(--pswp-transition-duration) ease; */
+}
+
 /* .pswp__default-caption {
   display: flex;
   flex-direction: column;
@@ -99,7 +103,7 @@ body {
 /* Style your items */
 .my-masonry-grid_column > div {
   /* change div to reference your elements you put in <Masonry> */
-  margin-bottom: 120px;
+  margin-bottom: 80px;
 }
 
 .my-masonry-grid_column > div > img {

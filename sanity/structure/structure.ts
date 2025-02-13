@@ -75,7 +75,13 @@ export const structure: StructureResolver = (S) =>
                     ),
                 ),
               S.documentTypeListItem("category").title("Series"),
-              S.documentTypeListItem("exhibition").title("Exhibitions"),
+              S.documentTypeListItem("exhibition")
+                .title("Exhibitions")
+                .child(
+                  S.documentTypeList("exhibition").filter(
+                    '_type == "exhibition" && artist[]->identity.firstName match "David" && artist[]->identity.lastName match "Van Loon"',
+                  ),
+                ),
               S.divider(),
               S.listItem()
                 .schemaType("person")

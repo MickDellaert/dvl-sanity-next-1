@@ -15,8 +15,6 @@ export default function NavLinksMobile({ menuItems }: NavProps) {
   const [openMenu, setOpenMenu] = useState(false);
   const pathname = usePathname();
 
-  console.log(pathname);
-
   const toggleMenu = () => {
     setOpenMenu(!openMenu);
   };

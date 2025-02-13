@@ -32,6 +32,12 @@ export const homePageQuery = defineQuery(`
   "dimensions": photos[].asset->metadata.dimensions,
   },
 }`);
+export const homepageHeaderQuery = defineQuery(`
+  *[_type == "homepage"][0]{
+    "homepageMainImageAsset": homepageMainImageSingle.asset->metadata, 
+    homepageMainImage,
+    homepageMainImageSingle,
+  }`);
 
 export const homePageSeriesQuery = defineQuery(`
   *[_type == "homepage"][0]{
@@ -47,12 +53,24 @@ export const homePageSeriesQuery = defineQuery(`
     }
   }`);
 
-export const homepageHeaderQuery = defineQuery(`
-  *[_type == "homepage"][0]{
-    "homepageMainImageAsset": homepageMainImageSingle.asset->metadata, 
-    homepageMainImage,
-    homepageMainImageSingle,
-  }`);
+export const homePageExhibitionQuery = defineQuery(`
+    *[_type == "homepage"][0]{
+      "homepageExpo": exhibitions[]->{
+      _id,
+      name,
+      poster,
+      "posterDimensions": poster.asset->metadata.dimensions,
+      description,
+      date,
+      gallery,
+      photos,
+      "images": photos[]{
+      asset,
+      "ref":asset._ref,
+      "imageDimensions":asset->metadata.dimensions
+      },
+      },
+    }`);
 
 export const projectsQuery = defineQuery(`
 *[_type == "project"]
@@ -135,6 +153,13 @@ export const contactDavidQuery = defineQuery(
 
 export const educationDavidQuery = defineQuery(
   `*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, educationText}`,
+);
+export const exhibitionDavidQuery = defineQuery(
+  `*[_type == "exhibition" && artist[]->identity.firstName match "David" && artist[]->identity.lastName match "Van Loon"][]{_id, date, name, gallery->{name, address}, tagline, description}`,
+);
+
+export const exhibitionWithoutFilterQuery = defineQuery(
+  `*[_type == "exhibition"][]{_id, date, name, gallery->{name, address}, tagline, description}`,
 );
 
 export const pagesQuery = groq`

@@ -17,15 +17,16 @@ export default async function Bio() {
 
   const { portrait, dimensions } = bioDavidData;
 
-  // console.log(portraitMetadata);
-
   return (
     <div className="relative grid grid-cols-12 gap-x-20">
       <StickyTitle stickyTitle="About" />
       <div className="top-20 col-span-4 col-start-1 mt-16 self-start">
         {portrait && <BioImage data={portrait} dimensions={dimensions} />}
       </div>
-      <div className="sticky top-16 col-span-5 col-start-7 mt-16 self-start text-3xl leading-10">
+      <div
+        className="sticky top-16 col-span-5 col-start-7 mt-24 self-start text-3xl leading-10
+                   before:absolute before:-top-8 before:left-0 before:h-1 before:w-12 before:bg-black before:content-['']"
+      >
         <div className="mb-8">
           {bioDavidData?.description && (
             <PortableText value={bioDavidData.description} />

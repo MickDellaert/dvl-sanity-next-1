@@ -21,8 +21,6 @@ export default async function HomePageHeaderImage() {
     notFound();
   }
 
-  console.log(homepageHeaderImage);
-
   const { homepageMainImageSingle } = homepageHeaderImage;
 
   return (

@@ -27,7 +27,6 @@ export default function BioImage({ data, dimensions }: BioImageProps) {
 
   const width = dimensions?.width ?? 1000;
   const height = dimensions?.height ?? 1000;
-  console.log(width);
 
   return (
     <Image

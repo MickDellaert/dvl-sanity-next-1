@@ -56,17 +56,9 @@ export default function ExhibitionListen() {
     return <p>Error</p>;
   }
 
-  // console.log(exhibitionData);
-  // console.log(currentDoc);
-  // console.log(exhibitionData[0].artists);
-
   const matchingExhibition = exhibitionData.filter((exhibition) =>
     exhibition.artists.some((artist) => artist._id === currentDoc),
   );
-
-  console.log(matchingExhibition);
-
-  console.log(process.env.NEXT_PUBLIC_VERCEL_URL);
 
   return matchingExhibition.length > 0 ? (
     <Stack space={1}>

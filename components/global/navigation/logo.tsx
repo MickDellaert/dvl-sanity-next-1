@@ -15,8 +15,6 @@ import { usePathname } from "next/navigation";
 export default function Logo() {
   const path = usePathname();
 
-  console.log(path);
-
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     // target: ref,
