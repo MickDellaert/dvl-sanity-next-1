@@ -7,6 +7,7 @@ import Contact from "./contact";
 import Education from "./education";
 import Bio from "./bio";
 import AboutDavidExhibitions from "./about-david-exhibitions";
+import AboutDavidEducation from "./about-David-education";
 
 export default function About({
   aboutDavidData,
@@ -39,7 +40,8 @@ export default function About({
           </div>
         </div>
       </div> */}
-      <Education />
+      {/* <Education /> */}
+      <AboutDavidEducation />
       <AboutDavidExhibitions />
       <Contact />
     </div>

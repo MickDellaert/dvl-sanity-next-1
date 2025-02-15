@@ -364,7 +364,37 @@
           "type": "objectAttribute",
           "value": {
             "type": "inline",
-            "name": "duration"
+            "name": "durationEducation"
+          },
+          "optional": true
+        }
+      }
+    }
+  },
+  {
+    "name": "durationEducation",
+    "type": "type",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "durationEducation"
+          }
+        },
+        "start": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "end": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
           },
           "optional": true
         }

@@ -40,14 +40,14 @@ export default async function HomepageExhibitions() {
           <React.Fragment key={expo._id}>
             <div
               key={expo._id}
-              className="sticky top-40 flex w-5/12 flex-col gap-4 self-start "
+              className="tracking-general sticky top-40 flex w-5/12 flex-col gap-4 self-start"
             >
               <div className="flex w-fit flex-col">
                 {/* <h2 className="py-4 text-5xl">—</h2> */}
 
                 <h2
-                  className="relative mt-8 flex flex-row text-5xl
-                before:absolute before:-top-8 before:left-0 before:h-1 before:w-12 before:bg-black before:content-['']"
+                  className="relative mt-8 flex
+                flex-row text-5xl before:absolute before:-top-8 before:left-0 before:h-1 before:w-12 before:bg-black before:content-['']"
                 >
                   {expo.name}
                 </h2>

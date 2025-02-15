@@ -1,4 +1,3 @@
-import HomePageCategory from "@/components/pages/homepage/homepage-category";
 // import { getHomePageData } from "@/sanity/lib/queryLoaders";
 
 import Image from "next/image";

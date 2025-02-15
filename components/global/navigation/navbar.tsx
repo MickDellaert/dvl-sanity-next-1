@@ -26,11 +26,11 @@ export default async function NavBar() {
     <div className="mt-6 flex h-16 flex-row items-center justify-between gap-8 px-8 md:px-16">
       <Link
         href="/"
-        className="text-3xl font-semibold uppercase tracking-widest"
+        className="text-3xl"
       >
         DVL
       </Link>
-      <div className=" flex gap-8 text-lg font-medium uppercase tracking-widest">
+      <div className=" flex gap-8 text-lg">
         {menuItems.map((setting) => {
           const href = resolveHref(setting._type, setting.slug);
 

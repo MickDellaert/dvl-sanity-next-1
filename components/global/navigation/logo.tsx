@@ -31,15 +31,12 @@ export default function Logo() {
   );
 
   return (
-    <div className="w-5/12 2xl:w-4/12">
+    <div className="tracking-title w-5/12 2xl:w-4/12">
       {/* <Link href="/" className="text-2xl font-medium uppercase tracking-wider md:text-3xl"> */}
       {/* <Link href="/" className="text-4xl font-medium md:text-4xl mix-blend-difference invert z-20">
         David Van Loon
       </Link> */}
-      <Link
-        href="/"
-        className="leading-12 z-20 text-5xl font-normal tracking-tight"
-      >
+      <Link href="/" className="leading-12 z-20 text-5xl">
         {path === "/" ? (
           <motion.h1
             initial={{ fontSize: initialFontSize }}
@@ -60,7 +57,7 @@ export default function Logo() {
         <motion.h2
           ref={ref}
           style={{ opacity: opacity, fontSize: fontSize }}
-          className="leading-12 pb-12 text-5xl font-normal tracking-tight"
+          className="leading-12 pb-12 text-5xl"
         >
           is an Antwerp and Mortehan based contemporary artist.
         </motion.h2>

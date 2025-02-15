@@ -39,10 +39,10 @@ export default function ProjectsGalleryPhotoswipeClient({
           columnClassName="my-masonry-grid_column"
         >
           {projects?.map((project, i) => (
-            <div key={i} className="mb-16 inline-block lg:mb-0">
+            <div key={i} className="!mb-24 inline-block lg:mb-0">
               <PhotoswipeItem project={project} />
-              <div className="mt-4 text-xs">
-                <h2 className="mb-1 text-sm font-medium">
+              <div className="">
+                <h2 className="text-base tracking-tighter">
                   {project.projectTitle}
                 </h2>
               </div>

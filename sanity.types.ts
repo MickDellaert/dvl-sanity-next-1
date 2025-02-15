@@ -73,7 +73,13 @@ export type Education = {
   schoolName?: string;
   schoolDirection?: string;
   schoolAddress?: AddressObject;
-  duration?: Duration;
+  duration?: DurationEducation;
+};
+
+export type DurationEducation = {
+  _type: "durationEducation";
+  start?: string;
+  end?: string;
 };
 
 export type Exhibition = {
@@ -598,6 +604,7 @@ export type AllSanitySchemaTypes =
   | SanityFileAsset
   | Geopoint
   | Education
+  | DurationEducation
   | Exhibition
   | Gallery
   | Duration
@@ -1112,9 +1119,23 @@ export type EducationDavidQueryResult = {
     _key: string;
   }> | null;
 } | null;
+// Variable: educationDavidQueryAlt
+// Query: *[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, "education": education[]{duration, schoolDirection, schoolName, schoolAddress}}
+export type EducationDavidQueryAltResult = {
+  _id: string;
+  education: Array<{
+    duration: DurationEducation | null;
+    schoolDirection: string | null;
+    schoolName: string | null;
+    schoolAddress: AddressObject | null;
+  }> | null;
+} | null;
 // Variable: exhibitionDavidQuery
+// Query: *[_type == "exhibition" && artist[]->identity.firstName match "David" && artist[]->identity.lastName match "Van Loon"][]{_id, date, name, gallery->{name, address}, tagline, description}
+export type ExhibitionDavidQueryResult = Array<never>;
+// Variable: exhibitionWithoutFilterQuery
 // Query: *[_type == "exhibition"][]{_id, date, name, gallery->{name, address}, tagline, description}
-export type ExhibitionDavidQueryResult = Array<{
+export type ExhibitionWithoutFilterQueryResult = Array<{
   _id: string;
   date: Duration | null;
   name: string | null;
@@ -1142,12 +1163,6 @@ export type ExhibitionDavidQueryResult = Array<{
     _key: string;
   }> | null;
 }>;
-// Variable: exhibitionTestQuery
-// Query: *[_type == "exhibition" && artist[]->identity.firstName match "David"][]{_id, name}
-export type ExhibitionTestQueryResult = Array<never>;
-// Variable: exhibitionTestTwoQuery
-// Query: *[_type == "exhibition" && person[]->identity.firstName match "David"][]{_id, name}
-export type ExhibitionTestTwoQueryResult = Array<never>;
 // Variable: pagesQuery
 // Query: *[_type == "page"]{  _id,   title,   "slug":slug.current,   content}
 export type PagesQueryResult = Array<{
@@ -1234,9 +1249,9 @@ declare module "@sanity/client" {
     '*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{\n  _id, description, portrait, "dimensions":portrait.asset->metadata.dimensions}': BioDavidQueryResult;
     '*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, contact, address}': ContactDavidQueryResult;
     '*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, educationText}': EducationDavidQueryResult;
-    '*[_type == "exhibition"][]{_id, date, name, gallery->{name, address}, tagline, description}': ExhibitionDavidQueryResult;
-    '*[_type == "exhibition" && artist[]->identity.firstName match "David"][]{_id, name}': ExhibitionTestQueryResult;
-    '*[_type == "exhibition" && person[]->identity.firstName match "David"][]{_id, name}': ExhibitionTestTwoQueryResult;
+    '*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, "education": education[]{duration, schoolDirection, schoolName, schoolAddress}}': EducationDavidQueryAltResult;
+    '*[_type == "exhibition" && artist[]->identity.firstName match "David" && artist[]->identity.lastName match "Van Loon"][]{_id, date, name, gallery->{name, address}, tagline, description}': ExhibitionDavidQueryResult;
+    '*[_type == "exhibition"][]{_id, date, name, gallery->{name, address}, tagline, description}': ExhibitionWithoutFilterQueryResult;
     '\n*[_type == "page"]{\n  _id, \n  title, \n  "slug":slug.current, \n  content\n}': PagesQueryResult;
     '\n*[_type == "page" && slug.current == $slug][0]{\n  _id, \n  title, \n  "slug":slug.current, \n  content\n}': PageQueryResult;
     '\n*[_type == "settings"][0]{\n  menuItems[]->{_type, "slug": slug.current, title}\n}': SettingsQueryResult;

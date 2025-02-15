@@ -15,15 +15,18 @@ const config: Config = {
       fontFamily: {
         // sans: ["var(--font-montserrat)", "sans-serif"],
         sans: ["var(--font-dmSans)", "sans-serif"],
+        golosText: ["var(--font-golosText)", "sans-serif"],
+        publicSans: ["var(--font-publicSans)", "sans-serif"],
+      },
+      letterSpacing: {
+        tightest: "-.15em", // Custom tighter spacing
+        subTitle: "-.075em", // Custom tighter spacing
+        title: "-.15em", // Custom tighter spacing
+        general: "-0.075em",
+        // widest: '.25em',     // Custom wider spacing
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [require("@tailwindcss/typography")],
 };
 export default config;
-
-
-
-

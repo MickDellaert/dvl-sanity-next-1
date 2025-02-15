@@ -154,6 +154,10 @@ export const contactDavidQuery = defineQuery(
 export const educationDavidQuery = defineQuery(
   `*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, educationText}`,
 );
+export const educationDavidQueryAlt = defineQuery(
+  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, "education": education[]{duration, schoolDirection, schoolName, schoolAddress}}`,
+);
+
 export const exhibitionDavidQuery = defineQuery(
   `*[_type == "exhibition" && artist[]->identity.firstName match "David" && artist[]->identity.lastName match "Van Loon"][]{_id, date, name, gallery->{name, address}, tagline, description}`,
 );

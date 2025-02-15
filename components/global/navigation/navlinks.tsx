@@ -16,7 +16,7 @@ export default function NavLinks({ menuItems }: NavProps) {
     <>
       <div
         // className={`flex gap-8 text-lg font-medium uppercase tracking-widest`}
-        className={`flex gap-8 text-lg font-medium`}
+        className={`flex gap-8 text-xl font-medium`}
       >
         {menuItems.map((setting) => {
           const href = resolveHref(setting._type, setting.slug);
@@ -27,8 +27,8 @@ export default function NavLinks({ menuItems }: NavProps) {
 
           return (
             <Link
-              className={`${pathname === href || pathname.includes(href) ? "underline decoration-2 underline-offset-8 bg-white mix-blend-difference invert" : ""} 
-              decoration-2 underline-offset-8 hover:underline hover:bg-white hover:mix-blend-difference hover:invert`}
+              className={`${pathname === href || pathname.includes(href) ? "bg-white underline decoration-2 underline-offset-8 mix-blend-difference invert" : ""} 
+              decoration-2 underline-offset-8 hover:bg-white hover:underline hover:mix-blend-difference hover:invert`}
               key={setting.title}
               href={href}
               prefetch={true}

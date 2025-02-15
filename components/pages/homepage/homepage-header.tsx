@@ -1,5 +1,3 @@
-import HomePageCategory from "@/components/pages/homepage/homepage-category";
-
 import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
 import { client } from "@/sanity/lib/client";

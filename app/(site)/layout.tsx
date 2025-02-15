@@ -14,7 +14,7 @@ export default async function RootLayout({
 }) {
   return (
     // <div className={`tracking-tight`}>
-    <>
+    <div className="tracking-general">
       <NavbarWrapper />
       <main className="px-8 pt-16">{children}</main>
       <Footer />
@@ -26,7 +26,7 @@ export default async function RootLayout({
         </>
       )}
       <Analytics />
-    </>
+    </div>
     // </div>
   );
 }

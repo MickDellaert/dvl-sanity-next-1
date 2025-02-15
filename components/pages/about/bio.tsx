@@ -20,12 +20,12 @@ export default async function Bio() {
   return (
     <div className="relative grid grid-cols-12 gap-x-20">
       <StickyTitle stickyTitle="About" />
-      <div className="top-20 col-span-4 col-start-1 mt-16 self-start">
+      <div className="sticky top-32 col-span-5 col-start-1 mt-16 self-start">
         {portrait && <BioImage data={portrait} dimensions={dimensions} />}
       </div>
       <div
-        className="sticky top-16 col-span-5 col-start-7 mt-24 self-start text-3xl leading-10
-                   before:absolute before:-top-8 before:left-0 before:h-1 before:w-12 before:bg-black before:content-['']"
+        className="sticky top-16 col-span-5 col-start-7 mt-28 self-start text-3xl leading-10
+                   before:absolute before:-top-12 before:left-0 before:h-[4px] before:w-16 before:bg-black before:content-['']"
       >
         <div className="mb-8">
           {bioDavidData?.description && (
