@@ -30,15 +30,15 @@ export default async function AboutDavidExhibitions() {
   console.log(exhibitionDavidData);
 
   return (
-    <div className="relative mt-24 grid grid-cols-12 gap-x-20 gap-y-2">
+    <div className="relative mt-24 grid grid-cols-12 gap-x-20 gap-y-2 pb-16">
       <StickyTitle stickyTitle="Exhibitions & Publications" />
-      <div className="col-span-6 col-start-7 [&_li:last-child]:mb-0 [&_li]:mb-4 ">
+      <div className="col-span-7 col-start-6 [&_li:last-child]:mb-0 [&_li]:mb-4 ">
         {exhibitionDavidData?.map((exhibition, i) => (
           <div
             key={i}
             className="mb-2 flex flex-row border-b border-black pb-2"
           >
-            <div className="flex w-4/12 flex-col justify-center text-3xl">
+            <div className="flex w-6/12 flex-col justify-center pl-32 pr-32 text-3xl">
               <h3>{formatDate(exhibition.date?.start)}</h3>
               <h3>
                 {formatDate(exhibition.date?.end) == "2025"

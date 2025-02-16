@@ -17,9 +17,10 @@ export default function About({
   const { urlFor } = useImageUrlBuilder();
 
   return (
-    <div className="">
-      <Bio />
-      {/* <div className="relative grid grid-cols-12 gap-x-20">
+    <>
+      <div className="relative z-20 border-b-2 border-black bg-gray-50 pb-20">
+        <Bio />
+        {/* <div className="relative grid grid-cols-12 gap-x-20">
         <StickyTitle stickyTitle="About" />
         <Image
           src={
@@ -40,10 +41,11 @@ export default function About({
           </div>
         </div>
       </div> */}
-      {/* <Education /> */}
-      <AboutDavidEducation />
-      <AboutDavidExhibitions />
+        {/* <Education /> */}
+        <AboutDavidEducation />
+        <AboutDavidExhibitions />
+      </div>
       <Contact />
-    </div>
+    </>
   );
 }

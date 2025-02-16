@@ -17,7 +17,7 @@ export default async function RootLayout({
     <div className="tracking-general">
       <NavbarWrapper />
       <main className="px-8 pt-16">{children}</main>
-      <Footer />
+      {/* <Footer /> */}
       <SanityLive />
       {(await draftMode()).isEnabled && (
         <>

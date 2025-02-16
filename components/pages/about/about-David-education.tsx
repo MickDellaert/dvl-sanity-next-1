@@ -30,13 +30,13 @@ export default async function AboutDavidEducation() {
   return (
     <div className="relative mt-24 grid grid-cols-12 gap-x-20">
       <StickyTitle stickyTitle="Education" />
-      <div className="col-span-5 col-start-7 [&_li:last-child]:mb-0 [&_li]:mb-4 ">
+      <div className="col-span-7 col-start-6 [&_li:last-child]:mb-0 [&_li]:mb-4 ">
         {educationDavidAltData.education?.map((education, i) => (
           <div
             key={i}
             className="mb-2 flex flex-row border-b border-black pb-2"
           >
-            <div className="flex w-4/12 flex-col justify-center text-3xl">
+            <div className="flex w-6/12 flex-col justify-center pl-32 pr-32 text-3xl">
               <h3>{formatDate(education.duration?.start)}</h3>
               <h3>
                 {formatDate(education.duration?.end) == "2025"
