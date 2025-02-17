@@ -14,9 +14,9 @@ export default async function RootLayout({
 }) {
   return (
     // <div className={`tracking-tight`}>
-    <div className="tracking-general">
+    <div className="tabular-nums tracking-tighter">
       <NavbarWrapper />
-      <main className="px-8 pt-16">{children}</main>
+      <main className="pt-16">{children}</main>
       {/* <Footer /> */}
       <SanityLive />
       {(await draftMode()).isEnabled && (

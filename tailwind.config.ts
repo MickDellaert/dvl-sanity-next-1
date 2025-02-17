@@ -17,6 +17,7 @@ const config: Config = {
         sans: ["var(--font-dmSans)", "sans-serif"],
         golosText: ["var(--font-golosText)", "sans-serif"],
         publicSans: ["var(--font-publicSans)", "sans-serif"],
+        manrope: ["var(--font-manrope)", "sans-serif"],
       },
       letterSpacing: {
         tightest: "-.15em", // Custom tighter spacing

@@ -8,7 +8,7 @@ import {
 } from "@/sanity.types";
 import Image from "next/image";
 
-type BioImageProps = {
+type AboutImageProps = {
   data: {
     asset?: {
       _ref: string;
@@ -22,7 +22,7 @@ type BioImageProps = {
   dimensions: SanityImageDimensions | null;
 };
 
-export default function BioImage({ data, dimensions }: BioImageProps) {
+export default function AboutImage({ data, dimensions }: AboutImageProps) {
   const { urlFor } = useImageUrlBuilder();
 
   const width = dimensions?.width ?? 1000;

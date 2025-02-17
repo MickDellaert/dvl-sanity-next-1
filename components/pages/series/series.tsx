@@ -21,7 +21,7 @@ export default function Series({
 }) {
   return (
     <>
-      <div className="flex flex-col justify-center">
+      <div className="flex flex-col justify-center px-8">
         {/* <h1 className="sticky top-14 col-span-2 self-start text-4xl">
           — Series
         </h1> */}

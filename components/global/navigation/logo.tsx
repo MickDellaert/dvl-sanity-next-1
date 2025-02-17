@@ -31,7 +31,7 @@ export default function Logo() {
   );
 
   return (
-    <div className="tracking-title w-5/12 2xl:w-4/12">
+    <div className="w-10/12 lg:w-5/12 2xl:w-4/12">
       {/* <Link href="/" className="text-2xl font-medium uppercase tracking-wider md:text-3xl"> */}
       {/* <Link href="/" className="text-4xl font-medium md:text-4xl mix-blend-difference invert z-20">
         David Van Loon
@@ -57,7 +57,7 @@ export default function Logo() {
         <motion.h2
           ref={ref}
           style={{ opacity: opacity, fontSize: fontSize }}
-          className="leading-12 pb-12 text-5xl"
+          className="pb-12 text-5xl leading-[1.1]"
         >
           is an Antwerp and Mortehan based contemporary artist.
         </motion.h2>

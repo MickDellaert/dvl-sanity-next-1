@@ -38,6 +38,7 @@ export default async function AboutDavidEducation() {
           >
             <div className="flex w-6/12 flex-col justify-center pl-32 pr-32 text-3xl">
               <h3>{formatDate(education.duration?.start)}</h3>
+              {/* <h3> — </h3> */}
               <h3>
                 {formatDate(education.duration?.end) == "2025"
                   ? "Present"

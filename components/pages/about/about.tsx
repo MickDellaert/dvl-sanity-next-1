@@ -17,8 +17,8 @@ export default function About({
   const { urlFor } = useImageUrlBuilder();
 
   return (
-    <>
-      <div className="relative z-20 border-b-2 border-black bg-gray-50 pb-20">
+    <div className="">
+      <div className="relative z-30 border-b-2 bg-gray-50 px-8 pb-20">
         <Bio />
         {/* <div className="relative grid grid-cols-12 gap-x-20">
         <StickyTitle stickyTitle="About" />
@@ -46,6 +46,6 @@ export default function About({
         <AboutDavidExhibitions />
       </div>
       <Contact />
-    </>
+    </div>
   );
 }

@@ -23,7 +23,7 @@ export default async function Page(props: { params: Params }) {
 
   return (
     <>
-      <main className="mt-40 min-h-screen px-8 md:px-16">
+      <main className="mt-40 min-h-screen">
         <div>{`${slug} page`}</div>
         {/* {pageData.map((page) => (
         <div key={page._id}>
