@@ -24,7 +24,7 @@ export default async function HomePageSeries() {
   return (
     <section>
       <HomepageSeriesTitle />
-      <div className="mt-32 grid grid-cols-12 content-center justify-center gap-x-2 gap-y-24 lg:mt-64 lg:gap-x-4 lg:gap-y-48">
+      <div className="mt-32 grid grid-cols-12 content-center justify-center gap-x-2 gap-y-20 lg:mt-64 lg:gap-x-4 lg:gap-y-48">
         {homepageCategories?.map((category) => {
           return <HomepageSerieTest category={category} key={category._id} />;
         })}

@@ -33,7 +33,7 @@ export default async function HomepageExhibitions() {
   console.log(homepageData);
 
   return (
-    <section className="mt-60">
+    <section className="mt-28 md:mt-60">
       <StickyTitle stickyTitle="Exhibition" />
       <div className="relative grid grid-cols-12 gap-x-4 md:gap-x-24">
         {homepageExpo?.map((expo) => (
@@ -62,7 +62,7 @@ export default async function HomepageExhibitions() {
                 {/* <h2 className="text-5xl">—</h2> */}
               </div>
             </div>
-            <div className="col-span-12 ml-auto flex flex-col gap-8 md:col-span-6 md:col-start-7 ">
+            <div className="col-span-12 ml-auto flex flex-col gap-10 md:col-span-6 md:col-start-7">
               {expo.poster && (
                 <Image
                   src={urlFor(expo.poster)
@@ -78,7 +78,7 @@ export default async function HomepageExhibitions() {
               )}
 
               {expo.images?.map((image) => (
-                <div key={image.ref} className=" self-end">
+                <div key={image.ref} className="self-end px-10 md:px-0">
                   <Image
                     src={
                       image
