@@ -30,7 +30,7 @@ export default function NavLinksMobile({ menuItems }: NavProps) {
   }, [pathname]);
 
   return (
-    <>
+    <div className="relative z-40">
       {!openMenu && (
         <button
           className="relative z-50 h-8 w-8 pb-1 text-3xl leading-[8px]"
@@ -41,14 +41,14 @@ export default function NavLinksMobile({ menuItems }: NavProps) {
       )}
       {openMenu && (
         <button
-          className="relative z-50 h-8 w-8 pb-1 text-3xl leading-[8px]"
+          className=" relative z-50 h-8 w-8 pb-1 text-3xl leading-[8px]"
           onClick={toggleMenu}
         >
           x
         </button>
       )}
       <div
-        className={`flex w-full flex-col justify-center gap-8 pb-12 pt-24 text-center text-lg`}
+        className={`flex h-[80dvh] w-full flex-col justify-end gap-4  bg-gray-100 pb-24 pl-4 pt-24 text-4xl lg:pl-8`}
         style={
           openMenu
             ? { display: "flex", position: "fixed", top: 0, left: 0 }
@@ -77,6 +77,6 @@ export default function NavLinksMobile({ menuItems }: NavProps) {
           );
         })}
       </div>
-    </>
+    </div>
   );
 }

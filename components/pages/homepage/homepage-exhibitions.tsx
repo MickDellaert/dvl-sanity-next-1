@@ -35,34 +35,34 @@ export default async function HomepageExhibitions() {
   return (
     <section className="mt-60">
       <StickyTitle stickyTitle="Exhibition" />
-      <div className="relative flex justify-between gap-x-24">
+      <div className="relative flex-col justify-between gap-x-12 lg:gap-x-24">
         {homepageExpo?.map((expo) => (
           <React.Fragment key={expo._id}>
             <div
               key={expo._id}
-              className="sticky top-40 flex w-5/12 flex-col gap-4 self-start"
+              className="w-12/12 sticky top-40 mb-8 flex flex-col gap-4 self-start lg:flex-row"
             >
               <div className="flex w-fit flex-col">
                 {/* <h2 className="py-4 text-5xl">—</h2> */}
 
                 <h2
-                  className="relative mt-8 flex
-                flex-row text-5xl before:absolute before:-top-8 before:left-0 before:h-1 before:w-12 before:bg-black before:content-['']"
+                  className="relative mb-0 mt-8 flex flex-row
+                text-4xl before:absolute before:-top-8 before:left-0 before:h-1 before:w-12 before:bg-black before:content-[''] lg:mb-4 lg:text-5xl"
                 >
                   {expo.name}
                 </h2>
               </div>
-              <div className="flex gap-4 text-4xl">
+              <div className="flex flex-row flex-wrap gap-4 text-2xl leading-4 lg:text-4xl lg:leading-6">
                 <h2>{formatDate(expo.date?.start)}</h2> <h3>—</h3>
                 <h2>{formatDate(expo.date?.end)}</h2>
               </div>
               {/* <h2 className="text-5xl">—</h2> */}
-              <div className="mt-4 text-2xl leading-9">
+              <div className="mt-0 text-xl leading-7 lg:mt-4 lg:text-2xl lg:leading-9">
                 {expo.description && <PortableText value={expo.description} />}
                 {/* <h2 className="text-5xl">—</h2> */}
               </div>
             </div>
-            <div className="flex w-8/12 flex-col gap-8">
+            <div className="bg-red w-12/12 flex flex-col gap-8">
               {expo.poster && (
                 <Image
                   src={urlFor(expo.poster)

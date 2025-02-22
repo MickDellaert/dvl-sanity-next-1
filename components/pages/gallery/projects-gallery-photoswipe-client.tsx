@@ -30,7 +30,7 @@ export default function ProjectsGalleryPhotoswipeClient({
   }
 
   return (
-    <div className="px-8">
+    <>
       <StickyTitle stickyTitle="Gallery" />
       <PhotoswipeGallery projects={projects}>
         <Masonry
@@ -50,6 +50,6 @@ export default function ProjectsGalleryPhotoswipeClient({
           ))}
         </Masonry>
       </PhotoswipeGallery>
-    </div>
+    </>
   );
 }

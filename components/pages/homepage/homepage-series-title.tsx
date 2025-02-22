@@ -13,7 +13,7 @@ export default function HomepageSeriesTitle() {
 
   return (
     <div className="sticky top-8 z-20 -mt-[104px] flex flex-row items-center mix-blend-difference invert">
-      <div className="flex flex-col text-4xl ">
+      <div className="flex flex-col text-4xl">
         <motion.h2 style={{ opacity: opacity }}>Scroll down for</motion.h2>
         <h2 className="leading-8">Painting Series</h2>
       </div>
