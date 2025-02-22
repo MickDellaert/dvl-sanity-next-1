@@ -35,12 +35,12 @@ export default async function HomepageExhibitions() {
   return (
     <section className="mt-60">
       <StickyTitle stickyTitle="Exhibition" />
-      <div className="relative flex-col justify-between gap-x-12 lg:gap-x-24">
+      <div className="relative flex-col gap-x-12 lg:flex-row lg:justify-between lg:gap-x-24">
         {homepageExpo?.map((expo) => (
           <React.Fragment key={expo._id}>
             <div
               key={expo._id}
-              className="w-12/12 sticky top-40 mb-8 flex flex-col gap-4 self-start lg:flex-row"
+              className="w-12/12 top-40 mb-8 flex flex-col gap-4 self-start lg:sticky lg:w-5/12"
             >
               <div className="flex w-fit flex-col">
                 {/* <h2 className="py-4 text-5xl">—</h2> */}
@@ -62,7 +62,7 @@ export default async function HomepageExhibitions() {
                 {/* <h2 className="text-5xl">—</h2> */}
               </div>
             </div>
-            <div className="bg-red w-12/12 flex flex-col gap-8">
+            <div className="w-12/12 ml-auto flex flex-col gap-8 lg:w-6/12">
               {expo.poster && (
                 <Image
                   src={urlFor(expo.poster)

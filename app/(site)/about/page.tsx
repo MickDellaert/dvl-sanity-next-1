@@ -1,17 +1,13 @@
-import About from "@/components/pages/about/about";
-import { sanityFetch } from "@/sanity/lib/live";
-import { aboutDavidQuery } from "@/sanity/lib/queries";
-import { notFound } from "next/navigation";
-import React from "react";
+import AboutDavidEducationGrid from "@/components/pages/about/about-David-education-grid";
+import AboutDavidExhibitionGrid from "@/components/pages/about/about-David-exhibtion-grid";
+import Bio from "@/components/pages/about/bio";
 
 export default async function Page() {
-  const { data: aboutDavidData } = await sanityFetch({
-    query: aboutDavidQuery,
-  });
-
-  if (!aboutDavidData) {
-    notFound();
-  }
-
-  return <About aboutDavidData={aboutDavidData} />;
+  return (
+    <>
+      <Bio />
+      <AboutDavidEducationGrid />
+      <AboutDavidExhibitionGrid />
+    </>
+  );
 }

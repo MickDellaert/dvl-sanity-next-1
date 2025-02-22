@@ -11,6 +11,8 @@ import {
 } from "framer-motion";
 
 import { usePathname } from "next/navigation";
+import { useMediaQuery } from "react-responsive";
+import { DeviceSize } from "./device-size";
 
 export default function Logo() {
   const path = usePathname();
@@ -21,9 +23,11 @@ export default function Logo() {
     offset: ["start start", "end start"],
   });
 
-  const initialFontSize = "52px";
+  const isMobile = useMediaQuery({ maxWidth: DeviceSize.lg });
+  const initialFontSize = isMobile ? "46px" : "52px";
 
   const opacity = useTransform(scrollYProgress, [0, 0.06], [1, 0]);
+
   const fontSize = useTransform(
     scrollYProgress,
     [0, 0.06],
@@ -36,11 +40,12 @@ export default function Logo() {
       {/* <Link href="/" className="text-4xl font-medium md:text-4xl mix-blend-difference invert z-20">
         David Van Loon
       </Link> */}
-      <Link href="/" className="leading-12 relative z-[1000] text-5xl ">
+      <Link href="/" className="leading-12 relative z-[1000] text-5xl">
         {path === "/" ? (
           <motion.h1
             initial={{ fontSize: initialFontSize }}
             style={{ fontSize: fontSize }}
+            className="inline align-top"
           >
             David Van Loon
           </motion.h1>
@@ -48,6 +53,7 @@ export default function Logo() {
           <motion.h1
             initial={{ fontSize: initialFontSize }}
             animate={{ fontSize: "36px" }}
+            className="inline align-top"
           >
             David Van Loon
           </motion.h1>
@@ -57,9 +63,9 @@ export default function Logo() {
         <motion.h2
           ref={ref}
           style={{ opacity: opacity, fontSize: fontSize }}
-          className="pb-12 text-5xl leading-[1.1]"
+          className="inline pb-12 align-top text-5xl leading-[1.1]"
         >
-          is an Antwerp and Mortehan based contemporary artist.
+          {""} is an Antwerp and Mortehan based contemporary artist.
         </motion.h2>
       )}
     </div>

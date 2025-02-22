@@ -44,10 +44,10 @@ export default async function Contact() {
             Contact
           </h2>
         </div> */}
-        <div className="grid grid-cols-12 content-end gap-x-0 gap-y-12 text-3xl lg:gap-x-20 lg:text-4xl">
+        <div className="grid grid-cols-12 content-end gap-x-0 gap-y-8 text-2xl lg:gap-x-20 lg:text-4xl">
           <div className="col-span-12 col-start-1 lg:col-span-6">
             <div className="relative flex h-full flex-col justify-between pt-8 before:absolute before:left-0 before:top-0 before:h-[4px] before:w-16 before:bg-black before:content-['']">
-              <div className="relative flex flex-col gap-y-6 ">
+              <div className="relative flex flex-col gap-y-4">
                 <h3 className="">{contactDavidData.contact?.email}</h3>
                 <h3 className="">{contactDavidData.contact?.mobileNumber}</h3>
                 <h3 className="leading-tight">
@@ -57,7 +57,7 @@ export default async function Contact() {
                   {contactDavidData.address?.[0]?.city}
                 </h3>
               </div>
-              <div className="mt-16 flex gap-x-12 text-lg tracking-tight lg:text-xl">
+              <div className="mb-4 mt-8 flex gap-x-12 text-base tracking-tight lg:text-xl">
                 <h4>© 2025 David van Loon — website by MD</h4>
               </div>
             </div>
