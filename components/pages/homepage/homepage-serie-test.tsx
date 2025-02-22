@@ -52,7 +52,7 @@ export default function HomepageSerieTest({
     >
       <Link className="" href={`series/${category.slug}`}>
         <div className="group inline-block text-left md:block">
-          <div className="relative max-h-[40svh] justify-center md:max-h-full">
+          <div className="relative max-h-[50svh] justify-center md:max-h-full">
             <motion.div
               style={{
                 backgroundColor:
@@ -90,7 +90,7 @@ export default function HomepageSerieTest({
               alt="alt"
               width={400}
               height={400}
-              className="max-h-[40svh] w-full object-contain md:max-h-full "
+              className="max-h-[50svh] w-full object-contain md:max-h-full "
             />
           </div>
           <h2 className="mt-3 text-lg uppercase tracking-tight transition-all duration-700 group-hover:opacity-0 md:mt-6 md:text-3xl">
