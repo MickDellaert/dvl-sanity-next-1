@@ -8,7 +8,7 @@ export default async function NavbarWrapper() {
 
   return (
     // <nav className="fixed top-0 z-50 h-20 w-full bg-white">
-    <nav className="fixed left-0 top-0 z-50 h-16 w-full px-4 pt-8 lg:px-8">
+    <nav className="px-x fixed left-0 right-6 top-0 z-50 h-16 w-full pr-[6%] pt-6 mix-blend-difference invert md:px-8 md:pt-8">
       <NavbarContainer menuItems={menuItems} />
     </nav>
   );

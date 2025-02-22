@@ -40,7 +40,7 @@ const publicSans = Public_Sans({
 
 const manrope = Manrope({
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
   variable: "--font-manrope",
 });
@@ -60,7 +60,7 @@ export default function RootLayout({
       lang="en"
       className={`${publicSans.variable} ${golosText.variable} ${manrope.variable}`}
     >
-      <body className="font-manrope mx-auto mt-0 min-h-screen bg-gray-50 font-medium tracking-tight">
+      <body className="mx-auto mt-0 min-h-screen bg-gray-50 font-manrope font-medium tracking-tight">
         {children}
       </body>
     </html>

@@ -25,7 +25,7 @@ export default function NavbarContainer({ menuItems }: NavProps) {
       <div className="hidden lg:block">
         <NavLinks menuItems={menuItems} />
       </div>
-      <div className="block lg:hidden">
+      <div className="block lg:hidden ">
         <NavLinksMobile menuItems={menuItems} />
       </div>
     </div>

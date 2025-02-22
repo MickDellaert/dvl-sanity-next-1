@@ -26,6 +26,9 @@ const config: Config = {
         general: "-0.075em",
         // widest: '.25em',     // Custom wider spacing
       },
+      padding: {
+        x: "6%",
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],
