@@ -1,12 +1,22 @@
 import React from "react";
 import HomePageHeaderImage from "./homepage-header-image";
-import HomepageSeriesTitleScroll from "./homepage-series-title-scroll";
+import { homepageHeaderQuery } from "@/sanity/lib/queries";
+import { notFound } from "next/navigation";
+import { sanityFetch } from "@/sanity/lib/live";
 
-export default function HomepageHeaderSection() {
+export default async function HomepageHeaderSection() {
+  const { data: homepageHeaderImage } = await sanityFetch({
+    query: homepageHeaderQuery,
+  });
+
+  if (!homepageHeaderImage) {
+    notFound();
+  }
+
+  const { homepageMainImageSingle } = homepageHeaderImage;
   return (
-    <div className="flex h-full items-end">
-      <HomepageSeriesTitleScroll />
-      <HomePageHeaderImage />
+    <div className="">
+      <HomePageHeaderImage homepageMainImage={homepageMainImageSingle} />
     </div>
   );
 }
