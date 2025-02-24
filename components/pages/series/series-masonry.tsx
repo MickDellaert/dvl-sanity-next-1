@@ -74,7 +74,7 @@ export default function SeriesMasonry({
       ) : (
         <SeriesSkeleton />
       )} */}
-        <div key={category._id}>
+        <div key={category._id} className="flex flex-col items-center">
           <ThemeProvider theme={getCustomTheme(theme)}>
             <Masonry
               columns={{ xs: 1, lg: 2 }}

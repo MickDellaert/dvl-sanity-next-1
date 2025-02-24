@@ -78,7 +78,7 @@ export default async function HomepageExhibitions() {
               )}
 
               {expo.images?.map((image) => (
-                <div key={image.ref} className="self-end px-10 md:px-0">
+                <div key={image.ref} className="self-end px-6 md:px-0">
                   <Image
                     src={
                       image

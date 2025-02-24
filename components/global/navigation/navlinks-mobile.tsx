@@ -71,7 +71,8 @@ export default function NavLinksMobile({ menuItems }: NavProps) {
 
             return (
               <Link
-                className={`${pathname === href ? "underline decoration-2 underline-offset-8" : ""} hover:font-bold hover:tracking-[-0.045em]`}
+                className={`${pathname === href || pathname.includes(href) ? "bg-white underline decoration-2 underline-offset-8 mix-blend-difference invert" : ""} 
+              decoration-2 underline-offset-8 hover:bg-white hover:underline hover:mix-blend-difference hover:invert`}
                 key={setting.title}
                 href={href}
                 onClick={() => onRoute(href)}

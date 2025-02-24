@@ -30,7 +30,7 @@ export default function Series({
         {categoryData.map((category) => (
           <section
             key={category._id}
-            className="mb-40 mt-16 h-fit justify-between md:flex md:flex-row"
+            className="mb-24 mt-16 h-fit justify-between md:flex md:flex-row"
           >
             <div className="top-32 w-full self-start md:sticky md:mb-0 md:w-4/12 xl:w-3/12">
               <SeriesDescription category={category} />

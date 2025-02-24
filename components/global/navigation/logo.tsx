@@ -56,7 +56,7 @@ export default function Logo() {
           <motion.h1
             initial={{ fontSize: initialFontSize }}
             style={{ fontSize: fontSize }}
-            className="inline align-top tracking-tight hover:font-bold hover:tracking-[-0.045em]"
+            className="inline align-top tracking-tight"
           >
             David van Loon
           </motion.h1>

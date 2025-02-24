@@ -74,7 +74,7 @@ export default function HomePageHeaderImage({
         style={{
           minHeight: `${height - 64}px`,
           paddingBottom: `${paddingBottom}px`,
-          transition: "height 0.3s ease-out",
+          transition: "0.3s ease-out",
         }}
       >
         <Image

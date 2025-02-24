@@ -1,6 +1,5 @@
 "use client";
 
-import category from "@/sanity/schemas/documents/category-schema";
 import Link from "next/link";
 import Image from "next/image";
 import {

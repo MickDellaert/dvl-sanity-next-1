@@ -46,7 +46,7 @@ export default function PhotoswipeItem({
     >
       {({ ref, open }) => (
         <Image
-          className="bg-gray-100"
+          className="max-h-[44svh] w-full bg-gray-100 object-contain md:max-h-full "
           ref={ref}
           onClick={open}
           src={project.projectImage || "placeholder.jpg"}
