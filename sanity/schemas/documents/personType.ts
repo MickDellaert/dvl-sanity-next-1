@@ -1,5 +1,6 @@
 import { defineField, defineType, defineArrayMember } from "sanity";
 import ExhibitionListen from "../components/ExhibitionListen";
+import { rule } from "postcss";
 
 export const personType = defineType({
   name: "person",
@@ -10,6 +11,7 @@ export const personType = defineType({
       name: "portrait",
       title: "Portrait",
       type: "image",
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "identity",
@@ -30,6 +32,7 @@ export const personType = defineType({
       title: "Description",
       of: [defineArrayMember({ type: "block" })],
       description: "A longer bio of the artist, here you can use rich text",
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "address",
@@ -42,28 +45,28 @@ export const personType = defineType({
       title: "Contact",
       type: "contactObjectNew",
     }),
-    defineField({
-      name: "personExhibitions",
-      title: "Exhibitions",
-      type: "array",
-      of: [
-        defineArrayMember({ type: "reference", to: { type: "exhibition" } }),
-      ],
-      components: { input: ExhibitionListen },
-    }),
+    // defineField({
+    //   name: "personExhibitions",
+    //   title: "Exhibitions",
+    //   type: "array",
+    //   of: [
+    //     defineArrayMember({ type: "reference", to: { type: "exhibition" } }),
+    //   ],
+    //   components: { input: ExhibitionListen },
+    // }),
     defineField({
       name: "education",
       title: "Education",
       type: "array",
       of: [defineArrayMember({ type: "education" })],
     }),
-    defineField({
-      name: "educationText",
-      title: "Education Text",
-      type: "array",
-      of: [defineArrayMember({ type: "block" })],
-      description: "Education history, but in rich text",
-    }),
+    // defineField({
+    //   name: "educationText",
+    //   title: "Education Text",
+    //   type: "array",
+    //   of: [defineArrayMember({ type: "block" })],
+    //   description: "Education history, but in rich text",
+    // }),
   ],
   preview: {
     select: {
