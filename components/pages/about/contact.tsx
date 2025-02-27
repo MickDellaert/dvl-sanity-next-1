@@ -21,13 +21,13 @@ export default async function Contact() {
     query: contactDavidQuery,
   });
 
-  // if (!contactDavidData) {
-  //   notFound();
-  // }
+  if (!contactDavidData) {
+    notFound();
+  }
 
-  // if (!contactIllustration) {
-  //   notFound();
-  // }
+  if (!contactIllustration) {
+    notFound();
+  }
 
   const { projectImage, dimensions } = contactIllustration[0];
 
