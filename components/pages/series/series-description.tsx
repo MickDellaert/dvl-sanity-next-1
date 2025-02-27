@@ -18,7 +18,7 @@ export default function SeriesDescription({
 }) {
   return (
     category && (
-      <div key={category._id} className="">
+      <div key={category._id} className="mb-24 text-center md:text-left">
         <h2 className="h-fit align-text-top text-5xl">—</h2>
         <h2 className="mb-4 text-3xl uppercase">{category.name}</h2>
         <div className="text-lg leading-relaxed">

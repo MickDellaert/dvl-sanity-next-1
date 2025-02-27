@@ -11,48 +11,60 @@ import {
 } from "framer-motion";
 
 import { usePathname } from "next/navigation";
+import { useMediaQuery } from "react-responsive";
+import { DeviceSize } from "./device-size";
+import { useEffect, useState } from "react";
 
 export default function Logo() {
   const path = usePathname();
 
-  console.log(path);
-
   const ref = useRef(null);
+
   const { scrollYProgress } = useScroll({
     // target: ref,
     offset: ["start start", "end start"],
   });
 
-  const initialFontSize = "52px";
+  const [hasMounted, setHasMounted] = useState(false);
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  const isMobile = useMediaQuery({ maxWidth: DeviceSize.md });
+
+  const initialFontSize = isMobile ? "40px" : "52px";
+  const targetFontSize = isMobile ? "30px" : "36px";
 
   const opacity = useTransform(scrollYProgress, [0, 0.06], [1, 0]);
+
   const fontSize = useTransform(
     scrollYProgress,
     [0, 0.06],
-    [initialFontSize, "36px"],
+    [initialFontSize, targetFontSize],
   );
 
+  if (!hasMounted) return null;
+
   return (
-    <div className="w-5/12 2xl:w-4/12">
+    <div className="w-10/12 text-balance leading-[1] md:w-8/12 xl:w-5/12 2xl:w-4/12">
       {/* <Link href="/" className="text-2xl font-medium uppercase tracking-wider md:text-3xl"> */}
       {/* <Link href="/" className="text-4xl font-medium md:text-4xl mix-blend-difference invert z-20">
         David Van Loon
       </Link> */}
-      <Link
-        href="/"
-        className="leading-12 z-20 text-5xl font-normal tracking-tight"
-      >
+      <Link href="/" className="relative z-[1000] ">
         {path === "/" ? (
           <motion.h1
             initial={{ fontSize: initialFontSize }}
             style={{ fontSize: fontSize }}
+            className="inline align-top tracking-tight"
           >
-            David Van Loon
+            David van Loon
           </motion.h1>
         ) : (
           <motion.h1
             initial={{ fontSize: initialFontSize }}
-            animate={{ fontSize: "36px" }}
+            animate={{ fontSize: targetFontSize }}
+            className="inline align-top"
           >
             David Van Loon
           </motion.h1>
@@ -62,9 +74,9 @@ export default function Logo() {
         <motion.h2
           ref={ref}
           style={{ opacity: opacity, fontSize: fontSize }}
-          className="leading-12 pb-12 text-5xl font-normal tracking-tight"
+          className="inline pb-12 align-top"
         >
-          is an Antwerp and Mortehan based contemporary artist.
+          {""} is an Antwerp and Mortehan based contemporary artist.
         </motion.h2>
       )}
     </div>

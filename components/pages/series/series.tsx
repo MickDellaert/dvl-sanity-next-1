@@ -21,26 +21,26 @@ export default function Series({
 }) {
   return (
     <>
-      <div className="flex flex-col justify-center">
-        {/* <h1 className="sticky top-14 col-span-2 self-start text-4xl">
+      {/* <div className="flex flex-col justify-center"> */}
+      {/* <h1 className="sticky top-14 col-span-2 self-start text-4xl">
           — Series
         </h1> */}
-        <StickyTitle stickyTitle="Series" />
+      <StickyTitle stickyTitle="Series" />
 
-        {categoryData.map((category) => (
-          <section
-            key={category._id}
-            className="mb-40 mt-16 h-fit justify-between md:flex md:flex-row"
-          >
-            <div className="top-32 w-full self-start md:sticky md:mb-0 md:w-4/12 xl:w-3/12">
-              <SeriesDescription category={category} />
-            </div>
-            <div className="top-32 -mb-20 -mr-0 w-full md:sticky md:w-8/12 lg:-mr-[80px]">
-              <SeriesMasonry category={category} />
-            </div>
-          </section>
-        ))}
-      </div>
+      {categoryData.map((category) => (
+        <section
+          key={category._id}
+          className="mb-24 mt-16 h-fit justify-between md:flex md:flex-row"
+        >
+          <div className="top-32 w-full self-start md:sticky md:mb-0 md:w-4/12 xl:w-3/12">
+            <SeriesDescription category={category} />
+          </div>
+          <div className="top-32 -mb-20 -mr-0 w-full md:sticky md:w-8/12 lg:-mr-[40px]">
+            <SeriesMasonry category={category} />
+          </div>
+        </section>
+      ))}
+      {/* </div> */}
 
       {/* <ThemeProvider theme={getCustomTheme(theme)}>
         {categoryData.map((category) => (

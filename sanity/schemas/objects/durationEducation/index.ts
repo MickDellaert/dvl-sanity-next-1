@@ -4,7 +4,7 @@ import { DurationInput } from "./DurationInput";
 
 export default defineField({
   type: "object",
-  name: "duration",
+  name: "durationEducation",
   title: "Duration",
   components: {
     input: DurationInput,
@@ -15,7 +15,7 @@ export default defineField({
       name: "start",
       title: "Start",
       options: {
-        dateFormat: "DD/MM/YYYY",
+        dateFormat: "YYYY",
       },
     }),
     defineField({
@@ -23,7 +23,7 @@ export default defineField({
       name: "end",
       title: "End",
       options: {
-        dateFormat: "DD/MM/YYYY",
+        dateFormat: "YYYY",
       },
     }),
   ],

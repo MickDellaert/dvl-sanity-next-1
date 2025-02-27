@@ -23,7 +23,7 @@ export const educationObject = defineType({
     defineField({
       name: "duration",
       title: "Duration",
-      type: "duration",
+      type: "durationEducation",
     }),
   ],
 });

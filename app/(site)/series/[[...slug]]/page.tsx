@@ -41,8 +41,6 @@ export default async function Page(props: { params: Params }) {
       params: { slug },
     });
 
-    console.log(categoryDataOrder);
-
     if (!categoryDataOrder.find((e) => e.slug === slug.toString())) {
       notFound();
     }
@@ -53,10 +51,6 @@ export default async function Page(props: { params: Params }) {
     const { data: categoryData } = await sanityFetch({
       query: categoryQuery,
     });
-
-    console.log(categoryData);
-
-    console.log(categoryData[0].projects);
 
     if (!categoryData) {
       notFound();

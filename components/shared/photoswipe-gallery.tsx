@@ -37,10 +37,12 @@ const galleryOptions = {
   arrowNextSVG: leftArrowSVGString,
   closeSVG: closeSVGString,
   zoomSVG: zoomSVGString,
-  mainClass: "pswp--custom-icon-colors",
+  // mainClass: "pswp--custom-icon-colors",
+  mainClass: "pswp--crossfade",
 
   gallery: "#gallery--custom-icon-colors",
   children: "a",
+  // showHideOpacity: true,
 
   // arrowPrev: false,
   // arrowNext: false,

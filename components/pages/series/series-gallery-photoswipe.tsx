@@ -23,12 +23,16 @@ export default function SeriesGalleryPhotoswipe({
     <PhotoswipeGallery projects={projects}>
       <>
         {projects?.map((project, i) => (
-          <div key={i} className="inline-block">
-            <PhotoswipeItem project={project} />
-            <div className="mt-4 text-xs">
-              <h2 className="mb-1 text-sm font-medium">
-                {project.projectTitle}
-              </h2>
+          <div key={i} className="lmd flex flex-col items-center">
+            <div className="!mb-24 ">
+              <div className="relative mx-auto inline-block max-h-[44svh] justify-center md:max-h-full">
+                <PhotoswipeItem project={project} />
+                <div className="mt-4 text-xs">
+                  <h2 className="mb-1 text-sm font-medium">
+                    {project.projectTitle}
+                  </h2>
+                </div>
+              </div>
             </div>
           </div>
         ))}

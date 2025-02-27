@@ -36,13 +36,9 @@ export default function CategoryListenCopy({
   const { urlFor } = useImageUrlBuilder();
   // const currentDoc = useFormValue(["_id"]);
   const currentDoc = documentId;
-  // console.log(document);
-  // console.log(options);
 
   const schema = useSchema();
   const { routerPanesState, groupIndex, handleEditReference } = usePaneRouter();
-
-  console.log(routerPanesState);
 
   const {
     data: categoryData,
@@ -85,9 +81,6 @@ export default function CategoryListenCopy({
   const matchingCategory = categoryData.find((category) =>
     category.projects.some((project) => project._id === currentDoc),
   );
-
-  // console.log(process.env.NEXT_PUBLIC_VERCEL_URL);
-  console.log(categoryDataTest);
 
   // const schemaType = schema.get(categoryDataTest[0]._type);
 

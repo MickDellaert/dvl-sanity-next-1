@@ -18,6 +18,7 @@ import { exhibitionType } from "./documents/exhibitionType";
 import duration from "./objects/duration";
 import { educationObject } from "./objects/educationObject";
 import { galleryType } from "./documents/galleryType";
+import durationEducation from "./objects/durationEducation";
 
 export const schemaTypes: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -37,6 +38,7 @@ export const schemaTypes: { types: SchemaTypeDefinition[] } = {
     identityObject,
     exhibitionType,
     duration,
+    durationEducation,
     educationObject,
     galleryType,
   ],

@@ -13,7 +13,7 @@ type Projects = {
   projects: Project[];
 };
 
-export default function ProjectsGalleryPhotoswipeClient({
+export default function Gallery({
   projects,
 }: {
   projects: ProjectsQueryResult;
@@ -39,12 +39,18 @@ export default function ProjectsGalleryPhotoswipeClient({
           columnClassName="my-masonry-grid_column"
         >
           {projects?.map((project, i) => (
-            <div key={i} className="!mb-24 inline-block lg:mb-0">
-              <PhotoswipeItem project={project} />
-              <div className="">
-                <h2 className="text-base tracking-tighter">
-                  {project.projectTitle}
-                </h2>
+            <div
+              key={i}
+              className="
+            !mb-24 inline-block cursor-pointer lg:mb-0"
+            >
+              <div className="relative max-h-[44svh] justify-center md:max-h-full">
+                <PhotoswipeItem project={project} />
+                <div className="">
+                  <h2 className="mt-2 text-base tracking-tighter">
+                    {project.projectTitle}
+                  </h2>
+                </div>
               </div>
             </div>
           ))}

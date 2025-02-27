@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
 import { client } from "@/sanity/lib/client";
@@ -5,38 +7,83 @@ import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { notFound } from "next/navigation";
 import { sanityFetch } from "@/sanity/lib/live";
 import { homepageHeaderQuery } from "@/sanity/lib/queries";
+import { useEffect, useState } from "react";
+import {
+  internalGroqTypeReferenceTo,
+  SanityImageCrop,
+  SanityImageHotspot,
+} from "@/sanity.types";
 
-export default async function HomePageHeaderImage() {
+type HomepageMainImage = {
+  homepageMainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+};
+
+export default function HomePageHeaderImage({
+  homepageMainImage,
+}: HomepageMainImage) {
   const builder = imageUrlBuilder(client);
 
   function urlFor(source: SanityImageSource) {
     return builder.image(source);
   }
 
-  const { data: homepageHeaderImage } = await sanityFetch({
-    query: homepageHeaderQuery,
-  });
+  const [height, setHeight] = useState(0);
+  const [width, setWidth] = useState(0);
 
-  if (!homepageHeaderImage) {
-    notFound();
-  }
+  useEffect(() => {
+    const updateSize = () => {
+      setHeight(window.innerHeight);
+      setWidth(window.innerWidth);
+    };
 
-  console.log(homepageHeaderImage);
+    updateSize(); // Set initial values
+    window.addEventListener("resize", updateSize);
 
-  const { homepageMainImageSingle } = homepageHeaderImage;
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+
+  const paddingBottom =
+    width > 1024 ? 32 : width > 768 ? height * 0.16 : height * 0.16;
+
+  // const { data: homepageHeaderImage } = await sanityFetch({
+  //   query: homepageHeaderQuery,
+  // });
+
+  // if (!homepageHeaderImage) {
+  //   notFound();
+  // }
+
+  // const { homepageMainImageSingle } = homepageHeaderImage;
 
   return (
     <>
-      <div className="flex min-h-[calc(100vh-64px)] w-full auto-rows-auto grid-cols-12 pb-8">
+      <div
+        // className="relative z-10 flex min-h-[calc(100dvh-64px)] w-full auto-rows-auto grid-cols-12 pb-[14dvh] md:pb-[16dvh] lg:pb-8"
+        className="relative z-10 flex w-full auto-rows-auto grid-cols-12 lg:pb-8"
+        style={{
+          minHeight: `${height - 64}px`,
+          paddingBottom: `${paddingBottom}px`,
+          transition: "0.3s ease-out",
+        }}
+      >
         <Image
-          className="ml-auto w-7/12 self-end"
-          src={
-            homepageMainImageSingle ? urlFor(homepageMainImageSingle).url() : ""
-          }
-          alt={homepageMainImageSingle?.alt || "default alt text"}
+          className="ml-auto w-full self-end lg:w-8/12 2xl:w-7/12"
+          src={homepageMainImage ? urlFor(homepageMainImage).url() : ""}
+          alt={homepageMainImage?.alt || "default alt text"}
           width={1000}
           height={1000}
-          key={homepageMainImageSingle?.asset?._ref}
+          key={homepageMainImage?.asset?._ref}
         />
       </div>
     </>

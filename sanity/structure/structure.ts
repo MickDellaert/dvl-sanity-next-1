@@ -13,18 +13,18 @@ export const structure: StructureResolver = (S) =>
   S.list()
     .title("Content")
     .items([
-      S.listItem()
-        .title("Settings")
-        .child(
-          S.list()
-            .title("settings")
-            .items([
-              S.documentListItem()
-                .title("Menu Items")
-                .schemaType("settings")
-                .id("4612500c-17eb-4b4c-9f2f-ada4a653d7eb"),
-            ]),
-        ),
+      // S.listItem()
+      //   .title("Settings")
+      //   .child(
+      //     S.list()
+      //       .title("settings")
+      //       .items([
+      //         S.documentListItem()
+      //           .title("Menu Items")
+      //           .schemaType("settings")
+      //           .id("4612500c-17eb-4b4c-9f2f-ada4a653d7eb"),
+      //       ]),
+      //   ),
       S.listItem()
         .title("David Van Loon")
         .id("davidvanloon")
@@ -75,7 +75,13 @@ export const structure: StructureResolver = (S) =>
                     ),
                 ),
               S.documentTypeListItem("category").title("Series"),
-              S.documentTypeListItem("exhibition").title("Exhibitions"),
+              S.documentTypeListItem("exhibition")
+                .title("Exhibitions")
+                .child(
+                  S.documentTypeList("exhibition").filter(
+                    '_type == "exhibition" && artist[]->identity.firstName match "David" && artist[]->identity.lastName match "Van Loon"',
+                  ),
+                ),
               S.divider(),
               S.listItem()
                 .schemaType("person")

@@ -32,13 +32,45 @@ export const homePageQuery = defineQuery(`
   "dimensions": photos[].asset->metadata.dimensions,
   },
 }`);
-
 export const homepageHeaderQuery = defineQuery(`
   *[_type == "homepage"][0]{
     "homepageMainImageAsset": homepageMainImageSingle.asset->metadata, 
     homepageMainImage,
     homepageMainImageSingle,
   }`);
+
+export const homePageSeriesQuery = defineQuery(`
+  *[_type == "homepage"][0]{
+    homepageCategories[]->{
+      _id,
+      name, 
+      "slug": slug.current,
+      projects[0]->{
+      projectImage, 
+      "projectImageDimensions": projectImage.asset->metadata.dimensions, 
+      "projectImageMetadata": projectImage.asset->metadata, 
+      "projectImagePalette": projectImage.asset->metadata.palette.darkVibrant.background}
+    }
+  }`);
+
+export const homePageExhibitionQuery = defineQuery(`
+    *[_type == "homepage"][0]{
+      "homepageExpo": exhibitions[]->{
+      _id,
+      name,
+      poster,
+      "posterDimensions": poster.asset->metadata.dimensions,
+      description,
+      date,
+      gallery,
+      photos,
+      "images": photos[]{
+      asset,
+      "ref":asset._ref,
+      "imageDimensions":asset->metadata.dimensions
+      },
+      },
+    }`);
 
 export const projectsQuery = defineQuery(`
 *[_type == "project"]
@@ -111,7 +143,8 @@ export const aboutDavidQuery = defineQuery(
 );
 
 export const bioDavidQuery = defineQuery(
-  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, description, portrait}`,
+  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{
+  _id, description, portrait, "dimensions":portrait.asset->metadata.dimensions}`,
 );
 
 export const contactDavidQuery = defineQuery(
@@ -120,6 +153,17 @@ export const contactDavidQuery = defineQuery(
 
 export const educationDavidQuery = defineQuery(
   `*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, educationText}`,
+);
+export const educationDavidQueryAlt = defineQuery(
+  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, "education": education[]{duration, schoolDirection, schoolName, schoolAddress}}`,
+);
+
+export const exhibitionDavidQuery = defineQuery(
+  `*[_type == "exhibition" && artist[]->identity.firstName match "David" && artist[]->identity.lastName match "Van Loon"][]{_id, date, name, gallery->{name, address}, tagline, description}`,
+);
+
+export const exhibitionWithoutFilterQuery = defineQuery(
+  `*[_type == "exhibition"][]{_id, date, name, gallery->{name, address}, tagline, description}`,
 );
 
 export const pagesQuery = groq`
