@@ -35,10 +35,10 @@ export default async function Contact() {
 
   return (
     <>
-      <h2 className="px-x sticky top-12 z-30 mt-4 self-start text-3xl leading-10 mix-blend-difference invert md:left-8 md:top-16 md:px-8 md:text-4xl">
+      <h2 className="sticky top-12 z-30 mt-4 self-start px-x text-3xl leading-10 mix-blend-difference invert md:left-8 md:top-16 md:px-8 md:text-4xl">
         Contact
       </h2>
-      <div className="px-x sticky bottom-0 left-0 flex min-h-[100dvh] w-full flex-col justify-end bg-gray-200 pb-12 md:px-8">
+      <div className="sticky bottom-0 left-0 flex min-h-[100dvh] w-full flex-col justify-end bg-gray-200 px-x pb-12 md:px-8">
         {/* <div className="z-30 mb-6 h-24 bg-green-200">
           <h2 className="sticky top-16 w-fit self-start whitespace-nowrap pt-1 text-4xl leading-10 mix-blend-difference invert">
             Contact

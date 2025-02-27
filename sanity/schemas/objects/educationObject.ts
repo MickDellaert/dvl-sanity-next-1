@@ -6,13 +6,13 @@ export const educationObject = defineType({
   type: "object",
   fields: [
     defineField({
-      name: "schoolName",
-      title: "School Name",
+      name: "schoolDirection",
+      title: "School Direction",
       type: "string",
     }),
     defineField({
-      name: "schoolDirection",
-      title: "School Direction",
+      name: "schoolName",
+      title: "School Name",
       type: "string",
     }),
     defineField({

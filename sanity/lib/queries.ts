@@ -139,27 +139,27 @@ export const singleCategoryOrder = defineQuery(`
 }`);
 
 export const aboutDavidQuery = defineQuery(
-  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, identity, description, portrait, educationText}`,
+  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{_id, identity, description, portrait, educationText}`,
 );
 
 export const bioDavidQuery = defineQuery(
-  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{
+  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{
   _id, description, portrait, "dimensions":portrait.asset->metadata.dimensions}`,
 );
 
 export const contactDavidQuery = defineQuery(
-  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, contact, address}`,
+  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{_id, contact, address}`,
 );
 
 export const educationDavidQuery = defineQuery(
-  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, educationText}`,
+  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{_id, educationText}`,
 );
 export const educationDavidQueryAlt = defineQuery(
-  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, "education": education[]{duration, schoolDirection, schoolName, schoolAddress}}`,
+  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{_id, "education": education[]{duration, schoolDirection, schoolName, schoolAddress}}`,
 );
 
 export const exhibitionDavidQuery = defineQuery(
-  `*[_type == "exhibition" && artist[]->identity.firstName match "David" && artist[]->identity.lastName match "Van Loon"][]{_id, date, name, gallery->{name, address}, tagline, description}`,
+  `*[_type == "exhibition" && artist[]->identity.firstName match "David" && artist[]->identity.lastName match "van Loon"][]{_id, date, name, gallery->{name, address}, tagline, description}`,
 );
 
 export const exhibitionWithoutFilterQuery = defineQuery(

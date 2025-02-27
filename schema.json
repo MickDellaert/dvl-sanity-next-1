@@ -338,14 +338,14 @@
             "value": "education"
           }
         },
-        "schoolName": {
+        "schoolDirection": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
           },
           "optional": true
         },
-        "schoolDirection": {
+        "schoolName": {
           "type": "objectAttribute",
           "value": {
             "type": "string"

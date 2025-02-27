@@ -70,8 +70,8 @@ export type Geopoint = {
 
 export type Education = {
   _type: "education";
-  schoolName?: string;
   schoolDirection?: string;
+  schoolName?: string;
   schoolAddress?: AddressObject;
   duration?: DurationEducation;
 };
@@ -998,7 +998,7 @@ export type SingleCategoryOrderResult = Array<{
   }> | null;
 }>;
 // Variable: aboutDavidQuery
-// Query: *[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, identity, description, portrait, educationText}
+// Query: *[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{_id, identity, description, portrait, educationText}
 export type AboutDavidQueryResult = {
   _id: string;
   identity: IdentityObject | null;
@@ -1051,7 +1051,7 @@ export type AboutDavidQueryResult = {
   }> | null;
 } | null;
 // Variable: bioDavidQuery
-// Query: *[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{  _id, description, portrait, "dimensions":portrait.asset->metadata.dimensions}
+// Query: *[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{  _id, description, portrait, "dimensions":portrait.asset->metadata.dimensions}
 export type BioDavidQueryResult = {
   _id: string;
   description: Array<{
@@ -1086,7 +1086,7 @@ export type BioDavidQueryResult = {
   dimensions: SanityImageDimensions | null;
 } | null;
 // Variable: contactDavidQuery
-// Query: *[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, contact, address}
+// Query: *[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{_id, contact, address}
 export type ContactDavidQueryResult = {
   _id: string;
   contact: ContactObjectNew | null;
@@ -1097,7 +1097,7 @@ export type ContactDavidQueryResult = {
   > | null;
 } | null;
 // Variable: educationDavidQuery
-// Query: *[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, educationText}
+// Query: *[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{_id, educationText}
 export type EducationDavidQueryResult = {
   _id: string;
   educationText: Array<{
@@ -1120,7 +1120,7 @@ export type EducationDavidQueryResult = {
   }> | null;
 } | null;
 // Variable: educationDavidQueryAlt
-// Query: *[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, "education": education[]{duration, schoolDirection, schoolName, schoolAddress}}
+// Query: *[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{_id, "education": education[]{duration, schoolDirection, schoolName, schoolAddress}}
 export type EducationDavidQueryAltResult = {
   _id: string;
   education: Array<{
@@ -1131,7 +1131,7 @@ export type EducationDavidQueryAltResult = {
   }> | null;
 } | null;
 // Variable: exhibitionDavidQuery
-// Query: *[_type == "exhibition" && artist[]->identity.firstName match "David" && artist[]->identity.lastName match "Van Loon"][]{_id, date, name, gallery->{name, address}, tagline, description}
+// Query: *[_type == "exhibition" && artist[]->identity.firstName match "David" && artist[]->identity.lastName match "van Loon"][]{_id, date, name, gallery->{name, address}, tagline, description}
 export type ExhibitionDavidQueryResult = Array<never>;
 // Variable: exhibitionWithoutFilterQuery
 // Query: *[_type == "exhibition"][]{_id, date, name, gallery->{name, address}, tagline, description}
@@ -1245,12 +1245,12 @@ declare module "@sanity/client" {
     '\n*[_type == "category"]{\n  _id, \n  name,\n  seriesDescription, \n  "slug": slug.current, \n  "projects" : projects[]->{\n  _id,\n  "projectImage" : projectImage.asset->url, \n  "projectImageDimensions": projectImage.asset->metadata.dimensions,\n  projectTitle,\n  projectDescription, \n  date, \n  material, \n  size\n  }\n}': CategoryQueryResult;
     '\n*[_type == "category" && slug.current == $slug][0]{\n  _id, \n  name, \n  seriesDescription, \n  "slug": slug.current, \n  "projects" : projects[]->{\n    _id,\n    "projectImage" : projectImage.asset->url, \n    "projectImageDimensions": projectImage.asset->metadata.dimensions,\n    projectTitle,\n    projectDescription, \n    date, \n    material, \n    size\n  }\n}': SingleCategoryResult;
     '\n*[_type == "category" ] | order((slug.current match $slug) desc){\n  _id, \n  name, \n  seriesDescription, \n  "slug": slug.current, \n  "projects" : projects[]->{\n    _id,\n    "projectImage" : projectImage.asset->url, \n    "projectImageDimensions": projectImage.asset->metadata.dimensions,\n    projectTitle,\n    projectDescription, \n    date, \n    material, \n    size\n  }\n}': SingleCategoryOrderResult;
-    '*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, identity, description, portrait, educationText}': AboutDavidQueryResult;
-    '*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{\n  _id, description, portrait, "dimensions":portrait.asset->metadata.dimensions}': BioDavidQueryResult;
-    '*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, contact, address}': ContactDavidQueryResult;
-    '*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, educationText}': EducationDavidQueryResult;
-    '*[_type == "person" && identity.firstName == "David" && identity.lastName == "Van Loon"][0]{_id, "education": education[]{duration, schoolDirection, schoolName, schoolAddress}}': EducationDavidQueryAltResult;
-    '*[_type == "exhibition" && artist[]->identity.firstName match "David" && artist[]->identity.lastName match "Van Loon"][]{_id, date, name, gallery->{name, address}, tagline, description}': ExhibitionDavidQueryResult;
+    '*[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{_id, identity, description, portrait, educationText}': AboutDavidQueryResult;
+    '*[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{\n  _id, description, portrait, "dimensions":portrait.asset->metadata.dimensions}': BioDavidQueryResult;
+    '*[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{_id, contact, address}': ContactDavidQueryResult;
+    '*[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{_id, educationText}': EducationDavidQueryResult;
+    '*[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{_id, "education": education[]{duration, schoolDirection, schoolName, schoolAddress}}': EducationDavidQueryAltResult;
+    '*[_type == "exhibition" && artist[]->identity.firstName match "David" && artist[]->identity.lastName match "van Loon"][]{_id, date, name, gallery->{name, address}, tagline, description}': ExhibitionDavidQueryResult;
     '*[_type == "exhibition"][]{_id, date, name, gallery->{name, address}, tagline, description}': ExhibitionWithoutFilterQueryResult;
     '\n*[_type == "page"]{\n  _id, \n  title, \n  "slug":slug.current, \n  content\n}': PagesQueryResult;
     '\n*[_type == "page" && slug.current == $slug][0]{\n  _id, \n  title, \n  "slug":slug.current, \n  content\n}': PageQueryResult;
