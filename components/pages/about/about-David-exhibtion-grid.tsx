@@ -35,7 +35,7 @@ export default async function AboutDavidExhibitionGrid() {
                   : formatDate(exhibition.date?.end, dateFormat)}
               </h3>
             </div>
-            <div className="col-span-8 content-center">
+            <div className="col-span-8 content-center lg:col-span-4">
               <h3 className="text-2xl">{exhibition.name}</h3>
               <div className="flex w-fit flex-row justify-start text-xl">
                 <h3 className="whitespace-pre-wrap">
