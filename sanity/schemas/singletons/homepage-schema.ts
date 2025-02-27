@@ -23,21 +23,21 @@ const homepage = defineType({
       title: "Homepage Description",
       type: "string",
     }),
-    // defineField(
-    //   {
-    //     name: "homepageMainImage",
-    //     title: "Homepage Main Image",
-    //     type: "array",
-    //     of: [
-    //       defineArrayMember({
-    //         type: "image",
-    //         options: { hotspot: true },
-    //         fields: [{ name: "alt", title: "Alt", type: "string" }],
-    //       }),
-    //     ],
-    //   },
-    //   { strict: false },
-    // ),
+    defineField(
+      {
+        name: "homepageMainImage",
+        title: "Homepage Main Image",
+        type: "array",
+        of: [
+          defineArrayMember({
+            type: "image",
+            options: { hotspot: true },
+            fields: [{ name: "alt", title: "Alt", type: "string" }],
+          }),
+        ],
+      },
+      { strict: false },
+    ),
 
     defineField(
       {
