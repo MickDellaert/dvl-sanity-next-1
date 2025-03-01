@@ -7,7 +7,7 @@ import { Project } from "@/sanity/types";
 import React from "react";
 
 import Masonry from "react-masonry-css";
-import StickyTitle from "../homepage/sticky-title";
+import StickyTitle from "../../shared/sticky-title";
 
 type Projects = {
   projects: Project[];

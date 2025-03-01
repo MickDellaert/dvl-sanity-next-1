@@ -2,9 +2,9 @@ import { sanityFetch } from "@/sanity/lib/live";
 import { contactDavidQuery } from "@/sanity/lib/queries";
 import { notFound } from "next/navigation";
 import React from "react";
-import StickyTitle from "../homepage/sticky-title";
+import StickyTitle from "../shared/sticky-title";
 import { PortableText } from "next-sanity";
-import AboutImage from "./about-image";
+import AboutImage from "../pages/about/about-david-image";
 
 export default async function Contact() {
   const { data: contactIllustration } = await sanityFetch({

@@ -9,6 +9,7 @@ import { notFound } from "next/navigation";
 import SeriesFilter from "@/components/pages/series/series-filter";
 import { sanityFetch } from "@/sanity/lib/live";
 import { categoryQuery, singleCategoryOrder } from "@/sanity/lib/queries";
+import SeriesGrid from "@/components/pages/series/series-grid";
 
 // const DynamicProjectsGallery = dynamic(() => import("@/components/pages/series/projects-gallery"), { ssr: false });
 
@@ -73,7 +74,8 @@ export default async function Page(props: { params: Params }) {
       {/* <main className="mx-auto w-[98%] px-4"> */}
       {/* <ButtonTest /> */}
       {/* <SeriesFilter categoryData={data}/> */}
-      <Series categoryData={data} />
+      {/* <Series categoryData={data} /> */}
+      <SeriesGrid categoryData={data} />
       {/* </main> */}
     </>
   );

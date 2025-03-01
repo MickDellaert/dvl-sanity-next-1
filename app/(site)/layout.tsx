@@ -6,7 +6,7 @@ import { SanityLive } from "@/sanity/lib/live";
 
 import Footer from "@/components/global/footer";
 import NavbarWrapper from "@/components/global/navigation/navbar-wrapper";
-import Contact from "@/components/pages/about/contact";
+import Contact from "@/components/global/contact";
 
 export default async function RootLayout({
   children,

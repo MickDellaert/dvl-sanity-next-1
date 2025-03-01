@@ -27,8 +27,10 @@ export default function NavLinks({ menuItems }: NavProps) {
 
           return (
             <Link
-              className={`${pathname === href || pathname.includes(href) ? "bg-white underline decoration-2 underline-offset-8 mix-blend-difference invert" : ""} 
-              decoration-2 underline-offset-8 hover:bg-white hover:underline hover:mix-blend-difference hover:invert`}
+              // className={`${pathname === href || pathname.includes(href) ? "bg-white underline decoration-2 underline-offset-8 mix-blend-difference invert" : ""}
+              // decoration-2 underline-offset-8 hover:bg-white hover:underline hover:mix-blend-difference hover:invert`}
+              className={`${pathname === href || pathname.includes(href) ? "text-gray-500" : ""} 
+               hover:text-black`}
               key={setting.title}
               href={href}
               prefetch={true}

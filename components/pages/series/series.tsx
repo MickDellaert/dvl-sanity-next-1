@@ -8,7 +8,7 @@ import React from "react";
 import SeriesDescription from "./series-description";
 import SeriesMasonry from "./series-masonry";
 import { CategoryQueryResult } from "@/sanity.types";
-import StickyTitle from "../homepage/sticky-title";
+import StickyTitle from "../../shared/sticky-title";
 
 type CategoryData = {
   categoryData: Category[];

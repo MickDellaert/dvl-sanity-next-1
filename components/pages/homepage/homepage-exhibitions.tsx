@@ -3,7 +3,7 @@ import { HomePageQueryResult } from "@/sanity.types";
 import Image from "next/image";
 import React from "react";
 import { PortableText } from "@portabletext/react";
-import StickyTitle from "./sticky-title";
+import StickyTitle from "../../shared/sticky-title";
 import { sanityFetch } from "@/sanity/lib/live";
 import { homePageExhibitionQuery } from "@/sanity/lib/queries";
 import { notFound } from "next/navigation";

@@ -11,15 +11,15 @@ const project = defineType({
     { name: "artworkData", title: "Artwork Data", options: { columns: 2 } },
   ],
   fields: [
-    defineField({
-      name: "category",
-      title: "Series",
-      type: "reference",
-      to: [{ type: "category" }],
-      components: {
-        field: CategoryListen,
-      },
-    }),
+    // defineField({
+    //   name: "category",
+    //   title: "Series",
+    //   type: "reference",
+    //   to: [{ type: "category" }],
+    //   components: {
+    //     field: CategoryListen,
+    //   },
+    // }),
     defineField(
       {
         name: "projectImage",
@@ -42,14 +42,14 @@ const project = defineType({
       title: "Artwork Title",
       type: "string",
     }),
-    defineField({
-      name: "slug",
-      title: "Slug",
-      type: "slug",
-      options: { source: "projectTitle" },
-      description: "Used in the url of the page for navigation",
-      // validation: (rule) => rule.required(),
-    }),
+    // defineField({
+    //   name: "slug",
+    //   title: "Slug",
+    //   type: "slug",
+    //   options: { source: "projectTitle" },
+    //   description: "Used in the url of the page for navigation",
+    //   // validation: (rule) => rule.required(),
+    // }),
     defineField({
       name: "artist",
       title: "Artist",
@@ -100,6 +100,7 @@ const project = defineType({
     projectTitle: "Artwork title",
     material: "oil on canvas",
     date: "1912-12-12",
+    artist: [{ _ref: "e4cef25b-39e1-4311-afbc-3f642086d59a" }],
   },
 
   preview: {

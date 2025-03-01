@@ -1,6 +1,5 @@
 "use client";
 
-import category from "@/sanity/schemas/documents/category-schema";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -10,12 +9,9 @@ import {
   SanityImageHotspot,
   SanityImageMetadata,
 } from "@/sanity.types";
-import { client } from "@/sanity/lib/client";
-import imageUrlBuilder from "@sanity/image-url";
-import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+
 import useImageUrlBuilder from "@/app/hooks/useImageUrlBuilder";
 import { motion } from "framer-motion";
-import duration from "@/sanity/schemas/objects/duration";
 
 type HomepageCategory = {
   _id: string;
@@ -49,13 +45,13 @@ export default function HomepageSerie({
 
   return (
     <div
-      className="col-span-12 md:col-span-5 md:col-start-2 md:last:col-span-6 
+      className="col-span-12 flex justify-center md:col-span-5 md:col-start-2 md:block md:last:col-span-6 
     md:last:col-start-4 md:[&:nth-child(4n+2)]:col-span-3 md:[&:nth-child(4n+2)]:col-start-9 md:[&:nth-child(4n+3)]:col-span-5 md:[&:nth-child(4n+3)]:col-start-1
     md:[&:nth-child(4n+4)]:col-span-5 md:[&:nth-child(4n+4)]:col-start-8"
     >
       <Link className="" href={`series/${category.slug}`}>
-        <div className="group cursor-pointer">
-          <div className="relative z-10 overflow-hidden bg-gray-900">
+        <div className="group inline-block text-left md:block">
+          <div className="relative max-h-[44svh] justify-center md:max-h-full">
             <motion.div
               style={{
                 backgroundColor:
@@ -76,38 +72,27 @@ export default function HomepageSerie({
             >
               {category.name}
             </h2>
-            <motion.div className="">
-              <Image
-                // className="w-full transition-all duration-700 group-hover:scale-105 group-hover:opacity-70 group-hover:blur-sm"
-                className="w-full"
-                src={
-                  category.projects?.projectImage
-                    ? urlFor(category.projects.projectImage)
-                        .width(
-                          category.projects.projectImageDimensions?.width ||
-                            400,
-                        )
-                        .height(
-                          category.projects.projectImageDimensions?.height ||
-                            400,
-                        )
-                        .fit("crop")
-                        .url()
-                    : "https://placehold.co/400x400/png"
-                }
-                alt="alt"
-                width={400}
-                height={400}
-                // style={{
-                //   backgroundColor:
-                //     category.projects?.projectImagePalette ??
-                //     "transparent",
-                // }}
-              />
-            </motion.div>
+            <Image
+              src={
+                category.projects?.projectImage
+                  ? urlFor(category.projects.projectImage)
+                      .width(
+                        category.projects.projectImageDimensions?.width || 400,
+                      )
+                      .height(
+                        category.projects.projectImageDimensions?.height || 400,
+                      )
+                      .fit("crop")
+                      .url()
+                  : "https://placehold.co/400x400/png"
+              }
+              alt="alt"
+              width={400}
+              height={400}
+              className="max-h-[44svh] w-full object-contain md:max-h-full "
+            />
           </div>
-
-          <h2 className="relative mb-4 mt-4 w-fit text-center text-2xl uppercase text-black transition-all duration-700 group-hover:opacity-0 group-hover:invert">
+          <h2 className="mt-3 text-lg uppercase tracking-tight transition-all duration-700 group-hover:opacity-0 md:mt-6 md:text-3xl">
             {category.name}
           </h2>
         </div>

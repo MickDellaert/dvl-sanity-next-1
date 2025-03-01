@@ -22,7 +22,7 @@ type AboutImageProps = {
   dimensions: SanityImageDimensions | null;
 };
 
-export default function AboutImage({ data, dimensions }: AboutImageProps) {
+export default function AboutDavidImage({ data, dimensions }: AboutImageProps) {
   const { urlFor } = useImageUrlBuilder();
 
   const width = dimensions?.width ?? 1000;

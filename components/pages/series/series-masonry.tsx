@@ -11,7 +11,7 @@ import { Category } from "@/sanity/types";
 import Masonry from "@mui/lab/Masonry";
 import { Theme, ThemeOptions, useTheme } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material";
-import ProjectsGalleryPhotoswipeSeries from "@/components/pages/series/series-gallery-photoswipe";
+import SeriesGalleryPhotoswipe from "@/components/pages/series/series-gallery-photoswipe";
 import { useState, useEffect } from "react";
 import SeriesSkeleton from "./series-skeleton";
 import { SingleCategoryResult } from "@/sanity.types";
@@ -66,7 +66,7 @@ export default function SeriesMasonry({
               defaultSpacing={10}
             >
               {category.projects && (
-                <ProjectsGalleryPhotoswipeSeries projects={category.projects} />
+                <SeriesGalleryPhotoswipe projects={category.projects} />
               )}
             </Masonry>
           </ThemeProvider>
@@ -74,23 +74,23 @@ export default function SeriesMasonry({
       ) : (
         <SeriesSkeleton />
       )} */}
-        <div key={category._id} className="flex flex-col items-center">
-          <ThemeProvider theme={getCustomTheme(theme)}>
-            <Masonry
-              columns={{ xs: 1, lg: 2 }}
-              spacing={{ xs: 0, lg: 10 }}
-              defaultHeight={1200}
-              // defaultColumns={2}
-              defaultSpacing={10}
-            >
-              {category.projects ? (
-                <ProjectsGalleryPhotoswipeSeries projects={category.projects} />
-              ) : (
-                <p>No projects available</p>
-              )}
-            </Masonry>
-          </ThemeProvider>
-        </div>
+        {/* <div key={category._id} className="flex flex-col items-center"> */}
+        <ThemeProvider theme={getCustomTheme(theme)}>
+          <Masonry
+            columns={{ xs: 1, lg: 2 }}
+            spacing={{ xs: 0, lg: 10 }}
+            defaultHeight={1200}
+            // defaultColumns={2}
+            defaultSpacing={10}
+          >
+            {category.projects ? (
+              <SeriesGalleryPhotoswipe projects={category.projects} />
+            ) : (
+              <p>No projects available</p>
+            )}
+          </Masonry>
+        </ThemeProvider>
+        {/* </div> */}
       </>
     )
   );
