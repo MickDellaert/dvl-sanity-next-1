@@ -2,22 +2,18 @@ import {
   getCategoriesData,
   getCategoryDataOrder,
 } from "@/sanity/lib/queryLoaders";
-// import dynamic from "next/dynamic";
-import Series from "@/components/pages/series/series";
 import { notFound } from "next/navigation";
-// import Masonry from "@mui/lab/Masonry";
-import SeriesFilter from "@/components/pages/series/series-filter";
 import { sanityFetch } from "@/sanity/lib/live";
 import { categoryQuery, singleCategoryOrder } from "@/sanity/lib/queries";
-import SeriesGrid from "@/components/pages/series/series-grid";
+import Series from "@/components/pages/series/series";
+// import Masonry from "@mui/lab/Masonry";
+// import SeriesFilter from "@/components/pages/series/series-filter";
 
-// const DynamicProjectsGallery = dynamic(() => import("@/components/pages/series/projects-gallery"), { ssr: false });
-
-type paramProps = {
-  params: {
-    slug: string;
-  };
-};
+// type paramProps = {
+//   params: {
+//     slug: string;
+//   };
+// };
 
 type Params = Promise<{ slug: string }>;
 
@@ -56,6 +52,7 @@ export default async function Page(props: { params: Params }) {
     if (!categoryData) {
       notFound();
     }
+
     data = categoryData;
   }
 
@@ -75,7 +72,7 @@ export default async function Page(props: { params: Params }) {
       {/* <ButtonTest /> */}
       {/* <SeriesFilter categoryData={data}/> */}
       {/* <Series categoryData={data} /> */}
-      <SeriesGrid categoryData={data} />
+      <Series categoryData={data} />
       {/* </main> */}
     </>
   );

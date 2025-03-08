@@ -1,36 +1,38 @@
 "use client";
 
-import React from "react";
 import { SingleCategoryResult } from "@/sanity.types";
-import MasonryWrapper from "./masonry-wrapper";
 import PhotoswipeGallery from "@/components/shared/photoswipe-gallery";
 import PhotoswipeItem from "@/components/shared/photoswipe-item";
 
-export default function SeriesMasonry({
+export default function SeriesNoMasonry({
   category,
 }: {
   category: SingleCategoryResult;
 }) {
   return (
     category && (
-      <MasonryWrapper>
+      <>
         {category.projects ? (
           <PhotoswipeGallery projects={category.projects}>
             <>
               {category.projects?.map((project) => (
-                <PhotoswipeItem
+                <div
                   key={project._id}
-                  project={project}
-                  caption={project.projectTitle}
-                  className="flex flex-col gap-2"
-                />
+                  className="mb-28 flex flex-col items-center justify-center md:mx-auto md:block "
+                >
+                  <PhotoswipeItem
+                    project={project}
+                    caption={project.projectTitle}
+                    className="max-h-[44svh] md:max-h-full"
+                  />
+                </div>
               ))}
             </>
           </PhotoswipeGallery>
         ) : (
           <p>No projects available</p>
         )}
-      </MasonryWrapper>
+      </>
     )
   );
 }

@@ -1,18 +1,17 @@
-// import {
-//   getCategoriesData,
-//   getCategoryDataOrder,
-// } from "@/sanity/lib/queryLoaders";
+"use client";
 
-import { Category } from "@/sanity/types";
 import React from "react";
 import SeriesDescription from "./series-description";
-import SeriesMasonry from "./series-masonry";
 import { CategoryQueryResult } from "@/sanity.types";
 import StickyTitle from "../../shared/sticky-title";
+import dynamic from "next/dynamic";
+import SeriesSkeleton from "./series-skeleton";
+import SeriesNoMasonry from "./series-no-masonry";
 
-type CategoryData = {
-  categoryData: Category[];
-};
+const DynamicSeriesMasonry = dynamic(() => import("./series-masonry"), {
+  ssr: false,
+  loading: () => <SeriesSkeleton />,
+});
 
 export default function Series({
   categoryData,
@@ -20,59 +19,23 @@ export default function Series({
   categoryData: CategoryQueryResult;
 }) {
   return (
-    <>
-      {/* <div className="flex flex-col justify-center"> */}
-      {/* <h1 className="sticky top-14 col-span-2 self-start text-4xl">
-          — Series
-        </h1> */}
+    <div className="relative">
       <StickyTitle stickyTitle="Series" />
-
-      {categoryData.map((category) => (
-        <section
-          key={category._id}
-          className="mb-24 mt-16 h-fit justify-between md:flex md:flex-row"
-        >
-          <div className="top-32 w-full self-start md:sticky md:mb-0 md:w-4/12 xl:w-3/12">
-            <SeriesDescription category={category} />
-          </div>
-          <div className="top-32 -mb-20 -mr-0 w-full md:sticky md:w-8/12 lg:-mr-[40px]">
-            <SeriesMasonry category={category} />
-          </div>
-        </section>
-      ))}
-      {/* </div> */}
-
-      {/* <ThemeProvider theme={getCustomTheme(theme)}>
+      <div className="flex flex-col gap-y-28 md:gap-y-64">
         {categoryData.map((category) => (
-          <React.Fragment key={category._id}>
-            <section className="mt:0 flex flex-col justify-center md:mt-32">
-              <div className="justify-between pb-8 md:flex md:flex-row md:pb-40">
-                <div className="top-32 mb-16 w-full self-start md:sticky md:mb-0 md:w-4/12 xl:w-3/12">
-                  <h2 className="mb-4 text-3xl font-semibold tracking-widest">
-                    {category.name}
-                  </h2>
-                  <div className="text-sm leading-relaxed">
-                    <PortableText value={category.seriesDescription} />
-                  </div>
-                </div>
-                <div className="top-32 -mr-0 w-full md:sticky md:w-8/12 lg:-mr-[80px]">
-                  <Masonry
-                    columns={{ xs: 1, lg: 2 }}
-                    spacing={{ xs: 0, lg: 10 }}
-                    defaultHeight={1200}
-                    // defaultColumns={2}
-                    defaultSpacing={10}
-                  >
-                    <ProjectsGalleryPhotoswipeSeries
-                      projects={category.projects}
-                    />
-                  </Masonry>
-                </div>
-              </div>
-            </section>
-          </React.Fragment>
+          <section key={category._id} className="grid grid-cols-12">
+            <div className="top-32 col-span-12 col-start-1 mb-32 self-start md:sticky md:col-span-3 md:mb-0">
+              <SeriesDescription category={category} />
+            </div>
+            <div className="top-32 col-span-12 -mb-10 hidden h-fit md:sticky md:col-span-7 md:col-start-6 md:block">
+              <DynamicSeriesMasonry category={category} />
+            </div>
+            <div className="top-32 col-span-12 md:hidden">
+              <SeriesNoMasonry category={category} />
+            </div>
+          </section>
         ))}
-      </ThemeProvider> */}
-    </>
+      </div>
+    </div>
   );
 }

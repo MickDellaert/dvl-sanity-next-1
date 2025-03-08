@@ -31,8 +31,6 @@ export default async function Contact() {
 
   const { projectImage, dimensions } = contactIllustration[0];
 
-  console.log(contactIllustration);
-
   return (
     <>
       <h2 className="sticky top-12 z-30 mt-4 self-start px-x text-3xl leading-10 mix-blend-difference invert md:left-8 md:top-16 md:px-8 md:text-4xl">

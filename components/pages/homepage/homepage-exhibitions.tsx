@@ -30,7 +30,6 @@ export default async function HomepageExhibitions() {
   };
 
   const { homepageExpo } = homepageData;
-  console.log(homepageData);
 
   return (
     <section className="mt-28 md:mt-60">

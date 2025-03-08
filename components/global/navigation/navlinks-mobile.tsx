@@ -63,7 +63,7 @@ export default function NavLinksMobile({ menuItems }: NavProps) {
           {menuItems.map((setting) => {
             const href = resolveHref(setting._type, setting.slug);
 
-            console.log(href);
+            // console.log(href);
 
             if (!href) {
               return null;

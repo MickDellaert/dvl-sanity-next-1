@@ -19,8 +19,6 @@ export default async function AboutDavidEducation() {
     notFound();
   }
 
-  console.log(educationDavidAltData);
-
   return (
     <div className="relative mt-24 grid grid-cols-12 lg:gap-x-20">
       <StickyTitle stickyTitle="Education" />

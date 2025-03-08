@@ -11,6 +11,11 @@ type NavProps = {
 
 export default function NavLinks({ menuItems }: NavProps) {
   const pathname = usePathname();
+  const navItems = [
+    { title: "series", slug: "series", _type: "page" },
+    { title: "gallery", slug: "gallery", _type: "page" },
+    { title: "about", slug: "about", _type: "page" },
+  ];
 
   return (
     <>
@@ -18,7 +23,7 @@ export default function NavLinks({ menuItems }: NavProps) {
         // className={`flex gap-8 text-lg font-medium uppercase tracking-widest`}
         className={`flex gap-8 text-xl font-medium`}
       >
-        {menuItems.map((setting) => {
+        {navItems.map((setting) => {
           const href = resolveHref(setting._type, setting.slug);
 
           if (!href) {

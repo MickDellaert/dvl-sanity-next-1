@@ -1,4 +1,6 @@
 "use client";
+
+import { twMerge } from "tailwind-merge";
 import Image from "next/image";
 import "photoswipe/dist/photoswipe.css";
 import { Project } from "@/sanity/types";
@@ -9,6 +11,8 @@ import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import "photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css";
 import PhotoSwipeDynamicCaption from "photoswipe-dynamic-caption-plugin";
 import { ProjectsQueryResult, SanityImageDimensions } from "@/sanity.types";
+
+import { useState } from "react";
 
 type Props = {
   project: ProjectsQueryResult;
@@ -27,11 +31,17 @@ type ProjectQueryResult = {
 
 export default function PhotoswipeItem({
   project,
+  className,
+  caption,
 }: {
   project: ProjectQueryResult;
+  className?: string;
+  caption?: string | null;
 }) {
   const id = useId();
   const handle = useFullScreenHandle();
+
+  const [isLoaded, setIsLoaded] = useState(false);
 
   return (
     <Item
@@ -45,15 +55,23 @@ export default function PhotoswipeItem({
                 <p style='color:black; text-shadow:2px 2px 5px white;'>${project.material}</p>`}
     >
       {({ ref, open }) => (
-        <Image
-          className="max-h-[44svh] w-full object-contain md:max-h-full "
-          ref={ref}
-          onClick={open}
-          src={project.projectImage || "placeholder.jpg"}
-          alt={project.projectTitle || "Default project title"}
-          width={1000}
-          height={1000}
-        />
+        <figure className={twMerge("inline-block", className)}>
+          <Image
+            className={"h-full w-full object-contain "}
+            ref={ref}
+            onClick={open}
+            src={project.projectImage || "placeholder.jpg"}
+            alt={project.projectTitle || "Default project title"}
+            width={project?.projectImageDimensions?.width}
+            height={project?.projectImageDimensions?.height}
+            onLoadingComplete={() => {
+              setIsLoaded(true);
+            }}
+          />
+          {isLoaded && caption && (
+            <figcaption className="mt-2">{caption}</figcaption>
+          )}
+        </figure>
       )}
     </Item>
   );

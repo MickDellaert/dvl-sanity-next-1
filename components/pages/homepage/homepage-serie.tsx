@@ -89,7 +89,7 @@ export default function HomepageSerie({
               alt="alt"
               width={400}
               height={400}
-              className="max-h-[44svh] w-full object-contain md:max-h-full "
+              className="max-h-[44svh] w-full object-contain md:max-h-full"
             />
           </div>
           <h2 className="mt-3 text-lg uppercase tracking-tight transition-all duration-700 group-hover:opacity-0 md:mt-6 md:text-3xl">

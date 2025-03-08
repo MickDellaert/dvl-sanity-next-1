@@ -1,6 +1,6 @@
-import AboutDavidExhibition from "@/components/pages/about/about-david-exhibtion";
 import AboutDavidBio from "@/components/pages/about/about-david-bio";
 import AboutDavidEducation from "@/components/pages/about/about-david-education";
+import AboutDavidExhibition from "@/components/pages/about/about-david-exhibition";
 
 export default async function Page() {
   return (

@@ -28,8 +28,6 @@ export default function AboutDavidImage({ data, dimensions }: AboutImageProps) {
   const width = dimensions?.width ?? 1000;
   const height = dimensions?.height ?? 1000;
 
-  console.log(data);
-
   return (
     <Image
       src={data ? urlFor(data).width(width).height(height).url() : ""}
