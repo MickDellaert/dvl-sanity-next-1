@@ -69,7 +69,9 @@ export default function PhotoswipeItem({
             }}
           />
           {isLoaded && caption && (
-            <figcaption className="mt-2">{caption}</figcaption>
+            <figcaption className="mt-2 text-sm md:text-base">
+              {caption}
+            </figcaption>
           )}
         </figure>
       )}

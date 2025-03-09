@@ -24,8 +24,8 @@ export default async function AboutDavidBio() {
         )}
       </div>
       <div
-        className="relative col-span-12 col-start-1 mt-16 self-start bg-gray-50 pt-8 text-2xl before:absolute before:left-0 before:top-0 before:h-[4px] before:w-16
-                   before:bg-black before:content-[''] lg:sticky lg:top-16 lg:order-3 lg:col-span-5 lg:col-start-7 lg:text-3xl lg:leading-snug"
+        className="relative col-span-12 col-start-1 mt-16 self-start bg-gray-50 pt-8 text-xl before:absolute before:left-0 before:top-0 before:h-[4px] before:w-16 before:bg-black
+                   before:content-[''] md:text-2xl lg:sticky lg:top-16 lg:order-3 lg:col-span-5 lg:col-start-7 lg:text-3xl lg:leading-snug"
       >
         <div className="mb-8">
           {bioDavidData?.description && (

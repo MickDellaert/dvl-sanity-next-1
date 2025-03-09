@@ -56,12 +56,12 @@ export default async function HomepageExhibitions() {
                 <h2>{formatDate(expo.date?.end)}</h2>
               </div>
               {/* <h2 className="text-5xl">—</h2> */}
-              <div className="mt-0 text-xl leading-7 lg:mt-4 lg:text-2xl lg:leading-9">
+              <div className="mt-0 text-lg leading-snug lg:mt-4 lg:text-2xl lg:leading-9">
                 {expo.description && <PortableText value={expo.description} />}
                 {/* <h2 className="text-5xl">—</h2> */}
               </div>
             </div>
-            <div className="col-span-12 ml-auto flex flex-col gap-10 md:col-span-6 md:col-start-7">
+            <div className="col-span-12 ml-auto flex flex-col gap-7 md:col-span-6 md:col-start-7">
               {expo.poster && (
                 <Image
                   src={urlFor(expo.poster)
@@ -72,12 +72,12 @@ export default async function HomepageExhibitions() {
                   alt=""
                   width={500}
                   height={500}
-                  className="mb-20 self-start"
+                  className="mb-16 self-start"
                 />
               )}
 
               {expo.images?.map((image) => (
-                <div key={image.ref} className="self-end px-6 md:px-0">
+                <div key={image.ref} className="self-end px-5 md:px-0">
                   <Image
                     src={
                       image
