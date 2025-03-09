@@ -52,7 +52,7 @@ export default function NavLinksMobile({ menuItems }: NavProps) {
         </button>
       )}
       <div
-        className={`z-40 flex h-[50svh] w-full flex-col justify-end bg-gray-200 px-6 pb-12 md:pb-16`}
+        className={`z-40 flex h-[50svh] w-full flex-col justify-end bg-stone-200 px-6 pb-12 md:pb-16`}
         style={
           openMenu
             ? { display: "flex", position: "fixed", top: 0, left: 0 }

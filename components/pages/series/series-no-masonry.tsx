@@ -23,7 +23,7 @@ export default function SeriesNoMasonry({
                   <PhotoswipeItem
                     project={project}
                     caption={project.projectTitle}
-                    className="max-h-[40svh] md:max-h-full"
+                    className="max-h-80"
                   />
                 </div>
               ))}
