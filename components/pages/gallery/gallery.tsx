@@ -42,9 +42,9 @@ export default function Gallery({
             <div
               key={i}
               className="
-            !mb-24 inline-block cursor-pointer lg:mb-0"
+            !mb-16 inline-block cursor-pointer lg:mb-0"
             >
-              <div className="relative max-h-[44svh] justify-center md:max-h-full">
+              <div className="relative justify-center md:max-h-full">
                 <PhotoswipeItem project={project} />
                 <div className="">
                   <h2 className="mt-2 text-base tracking-tighter">

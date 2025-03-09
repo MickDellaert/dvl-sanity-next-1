@@ -45,21 +45,24 @@ export default function NavLinksMobile({ menuItems }: NavProps) {
       )}
       {openMenu && (
         <button
-          className=" relative z-50 h-8 w-8 pb-1 text-3xl leading-[8px]"
+          className="relative z-50 h-8 w-8 pb-1 text-3xl leading-[8px]"
           onClick={toggleMenu}
         >
           x
         </button>
       )}
       <div
-        className={`flex h-[50svh] w-full flex-col justify-end bg-gray-100 px-4 pb-16`}
+        className={`z-40 flex h-[50svh] w-full flex-col justify-end bg-gray-200 px-6 pb-12 md:pb-16`}
         style={
           openMenu
             ? { display: "flex", position: "fixed", top: 0, left: 0 }
             : { display: "none", position: "static" }
         }
       >
-        <div className="relative mt-24 flex flex-col gap-y-4 pt-8 text-4xl before:absolute before:left-0 before:top-0 before:h-[4px] before:w-16 before:bg-black before:content-['']">
+        <div
+          className="relative mt-24 flex flex-col gap-y-4 pt-8 text-3xl"
+          // before:absolute before:left-0 before:top-0 before:h-[4px] before:w-16 before:bg-black before:content-['']"
+        >
           {menuItems.map((setting) => {
             const href = resolveHref(setting._type, setting.slug);
 
@@ -71,8 +74,11 @@ export default function NavLinksMobile({ menuItems }: NavProps) {
 
             return (
               <Link
-                className={`${pathname === href || pathname.includes(href) ? "bg-white underline decoration-2 underline-offset-8 mix-blend-difference invert" : ""} 
-              decoration-2 underline-offset-8 hover:bg-white hover:underline hover:mix-blend-difference hover:invert`}
+                //   className={`${pathname === href || pathname.includes(href) ? "bg-white underline decoration-2 underline-offset-8 mix-blend-difference invert" : ""}
+                // decoration-2 underline-offset-8 hover:bg-white hover:underline hover:mix-blend-difference hover:invert`}
+
+                className={`${pathname === href || pathname.includes(href) ? "text-gray-500" : ""} 
+              hover:text-black`}
                 key={setting.title}
                 href={href}
                 onClick={() => onRoute(href)}

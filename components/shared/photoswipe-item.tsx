@@ -55,9 +55,9 @@ export default function PhotoswipeItem({
                 <p style='color:black; text-shadow:2px 2px 5px white;'>${project.material}</p>`}
     >
       {({ ref, open }) => (
-        <figure className={twMerge("inline-block", className)}>
+        <figure className={twMerge("inline-block")}>
           <Image
-            className={"h-full w-full object-contain "}
+            className={twMerge("h-full w-full object-contain", className)}
             ref={ref}
             onClick={open}
             src={project.projectImage || "placeholder.jpg"}

@@ -18,12 +18,12 @@ export default function SeriesNoMasonry({
               {category.projects?.map((project) => (
                 <div
                   key={project._id}
-                  className="mb-28 flex flex-col items-center justify-center md:mx-auto md:block "
+                  className="mb-20 flex flex-col items-center justify-center md:mx-auto md:block"
                 >
                   <PhotoswipeItem
                     project={project}
                     caption={project.projectTitle}
-                    className="max-h-[44svh] md:max-h-full"
+                    className="max-h-[40svh] md:max-h-full"
                   />
                 </div>
               ))}
