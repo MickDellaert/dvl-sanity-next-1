@@ -13,7 +13,17 @@ export default function SeriesMasonry({
 }) {
   return (
     category && (
-      <MasonryWrapper>
+      <MasonryWrapper
+        columns={{ xs: 1, lg: 2 }}
+        spacing={{ xs: 0, lg: 10 }}
+        sx={{
+          "& > *": {
+            mb: { xs: 8, sm: 8 },
+          },
+          width: "auto",
+          pt: 6,
+        }}
+      >
         {category.projects ? (
           <PhotoswipeGallery projects={category.projects}>
             <>

@@ -27,7 +27,7 @@ const config: Config = {
         // widest: '.25em',     // Custom wider spacing
       },
       padding: {
-        x: "6%",
+        x: "24px",
       },
     },
   },

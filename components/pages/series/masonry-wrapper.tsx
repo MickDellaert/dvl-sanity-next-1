@@ -1,12 +1,13 @@
 "use client";
 
-import Masonry from "@mui/lab/Masonry";
+import Masonry, { MasonryProps } from "@mui/lab/Masonry";
 import {
   Theme,
   ThemeOptions,
   useTheme,
   createTheme,
   ThemeProvider,
+  SxProps,
 } from "@mui/material";
 import { ReactNode } from "react";
 
@@ -26,27 +27,29 @@ const getCustomTheme = (theme: Theme | ThemeOptions | undefined) =>
 
 type MasonryWrapperProps = {
   children: ReactNode;
+  columns?: MasonryProps["columns"];
+  spacing?: MasonryProps["spacing"];
+  sx?: SxProps<Theme>;
 };
 
-export default function MasonryWrapper({ children }: MasonryWrapperProps) {
+export default function MasonryWrapper({
+  children,
+  columns,
+  spacing,
+  sx,
+}: MasonryWrapperProps) {
   const theme = useTheme();
 
   return (
     <ThemeProvider theme={getCustomTheme(theme)}>
       <Masonry
-        columns={{ xs: 1, lg: 2 }}
-        spacing={{ xs: 0, lg: 10 }}
+        columns={columns}
+        spacing={spacing}
         defaultHeight={1200}
         defaultSpacing={10}
         // columnSpacing={{xs: 20}}
         // defaultColumns={2}
-        sx={{
-          "& > *": {
-            mb: { xs: 8, sm: 8 },
-          },
-          width: "auto",
-          pt: 6,
-        }}
+        sx={sx}
       >
         {children || <div />}
       </Masonry>

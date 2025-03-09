@@ -2,7 +2,8 @@ import ProjectsGalleryPhotoswipeClient from "../../../components/pages/gallery/p
 import { notFound } from "next/navigation";
 import { sanityFetch } from "@/sanity/lib/live";
 import { projectsQuery } from "@/sanity/lib/queries";
-import Gallery from "@/components/pages/gallery/gallery";
+import GalleryMasonry from "@/components/pages/gallery/gallery-masonry";
+import GalleryMobile from "@/components/pages/gallery/gallery-mobile";
 
 export default async function page() {
   const { data: projects } = await sanityFetch({ query: projectsQuery });
@@ -13,8 +14,12 @@ export default async function page() {
 
   return (
     <>
-      {/* <ProjectsGalleryPhotoswipeClient projects={projects} /> */}
-      <Gallery projects={projects} />
+      <div className="hidden md:block">
+        <GalleryMasonry projects={projects} />
+      </div>
+      <div className="flex flex-col gap-y-20 md:hidden">
+        <GalleryMobile projects={projects} />
+      </div>
     </>
   );
 }
