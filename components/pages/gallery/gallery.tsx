@@ -1,61 +1,33 @@
 "use client";
 
-import PhotoswipeGallery from "@/components/shared/photoswipe-gallery";
-import PhotoswipeItem from "@/components/shared/photoswipe-item";
 import { ProjectsQueryResult } from "@/sanity.types";
-import { Project } from "@/sanity/types";
-import React from "react";
+import GalleryMasonry from "./gallery-masonry";
+import GalleryMobile from "./gallery-mobile";
+import dynamic from "next/dynamic";
+import GallerySkeleton from "./gallery-skeleton";
 
-import Masonry from "react-masonry-css";
-import StickyTitle from "../../shared/sticky-title";
-
-type Projects = {
-  projects: Project[];
-};
+const DynamicGalleryMasonry = dynamic(() => import("./gallery-masonry"), {
+  ssr: false,
+  loading: () => <GallerySkeleton />,
+});
 
 export default function Gallery({
   projects,
 }: {
   projects: ProjectsQueryResult;
 }) {
-  const breakpointColumnsObj = {
-    default: 4,
-    1100: 3,
-    700: 2,
-    500: 1,
-  };
-
   if (!projects) {
     return null;
   }
 
   return (
     <>
-      <StickyTitle stickyTitle="Gallery" />
-      <PhotoswipeGallery projects={projects}>
-        <Masonry
-          breakpointCols={breakpointColumnsObj}
-          className="my-masonry-grid mt-20"
-          columnClassName="my-masonry-grid_column"
-        >
-          {projects?.map((project, i) => (
-            <div
-              key={i}
-              className="
-            !mb-16 inline-block cursor-pointer lg:mb-0"
-            >
-              <div className="relative justify-center md:max-h-full">
-                <PhotoswipeItem project={project} />
-                <div className="">
-                  <h2 className="mt-2 text-base tracking-tighter">
-                    {project.projectTitle}
-                  </h2>
-                </div>
-              </div>
-            </div>
-          ))}
-        </Masonry>
-      </PhotoswipeGallery>
+      <div className="hidden md:block">
+        <DynamicGalleryMasonry projects={projects} />
+      </div>
+      <div className="flex flex-col gap-y-20 md:hidden">
+        <GalleryMobile projects={projects} />
+      </div>
     </>
   );
 }

@@ -32,7 +32,8 @@ export default function SeriesMasonry({
                   key={project._id}
                   project={project}
                   caption={project.projectTitle}
-                  className="flex flex-col gap-2"
+                  className=""
+                  figureClassName="flex flex-col"
                 />
               ))}
             </>

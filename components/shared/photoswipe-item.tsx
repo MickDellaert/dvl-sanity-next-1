@@ -32,10 +32,12 @@ type ProjectQueryResult = {
 export default function PhotoswipeItem({
   project,
   className,
+  figureClassName,
   caption,
 }: {
   project: ProjectQueryResult;
   className?: string;
+  figureClassName?: string;
   caption?: string | null;
 }) {
   const id = useId();
@@ -55,7 +57,7 @@ export default function PhotoswipeItem({
                 <p style='color:black; text-shadow:2px 2px 5px white;'>${project.material}</p>`}
     >
       {({ ref, open }) => (
-        <figure className={twMerge("inline-block")}>
+        <figure className={twMerge("inline-block", figureClassName)}>
           <Image
             className={twMerge("h-full w-full object-contain", className)}
             ref={ref}

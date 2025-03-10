@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function SeriesSkeleton() {
   return (
     <div className="grid grid-cols-1 justify-items-center gap-20 md:grid-cols-2">

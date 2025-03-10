@@ -37,6 +37,7 @@ export default function GalleryMasonry({
                 project={project}
                 caption={project.projectTitle}
                 className=""
+                figureClassName="flex flex-col"
               />
             ))}
           </>
