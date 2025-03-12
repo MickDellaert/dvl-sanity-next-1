@@ -10,20 +10,21 @@ export const personType = defineType({
       name: "portrait",
       title: "Portrait",
       type: "image",
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "identity",
       title: "Identity",
       type: "identityObject",
     }),
-    defineField({
-      type: "text",
-      name: "tagLine",
-      title: "Tagline",
-      validation: (rule) => rule.max(100),
-      rows: 2,
-      description: "A concise bio of the artist, max 100 characters",
-    }),
+    // defineField({
+    //   type: "text",
+    //   name: "tagLine",
+    //   title: "Tagline",
+    //   validation: (rule) => rule.max(100),
+    //   rows: 2,
+    //   description: "A concise bio of the artist, max 100 characters",
+    // }),
     defineField({
       type: "array",
       name: "description",
@@ -42,28 +43,28 @@ export const personType = defineType({
       title: "Contact",
       type: "contactObjectNew",
     }),
-    defineField({
-      name: "personExhibitions",
-      title: "Exhibitions",
-      type: "array",
-      of: [
-        defineArrayMember({ type: "reference", to: { type: "exhibition" } }),
-      ],
-      components: { input: ExhibitionListen },
-    }),
+    // defineField({
+    //   name: "personExhibitions",
+    //   title: "Exhibitions",
+    //   type: "array",
+    //   of: [
+    //     defineArrayMember({ type: "reference", to: { type: "exhibition" } }),
+    //   ],
+    //   components: { input: ExhibitionListen },
+    // }),
     defineField({
       name: "education",
       title: "Education",
       type: "array",
       of: [defineArrayMember({ type: "education" })],
     }),
-    defineField({
-      name: "educationText",
-      title: "Education Text",
-      type: "array",
-      of: [defineArrayMember({ type: "block" })],
-      description: "Education history, but in rich text",
-    }),
+    // defineField({
+    //   name: "educationText",
+    //   title: "Education Text",
+    //   type: "array",
+    //   of: [defineArrayMember({ type: "block" })],
+    //   description: "Education history, but in rich text",
+    // }),
   ],
   preview: {
     select: {

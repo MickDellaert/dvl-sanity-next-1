@@ -1,13 +1,13 @@
-import AboutDavidEducationGrid from "@/components/pages/about/about-David-education-grid";
-import AboutDavidExhibitionGrid from "@/components/pages/about/about-David-exhibtion-grid";
-import Bio from "@/components/pages/about/bio";
+import AboutDavidBio from "@/components/pages/about/about-david-bio";
+import AboutDavidEducation from "@/components/pages/about/about-david-education";
+import AboutDavidExhibition from "@/components/pages/about/about-david-exhibition";
 
 export default async function Page() {
   return (
-    <>
-      <Bio />
-      <AboutDavidEducationGrid />
-      <AboutDavidExhibitionGrid />
-    </>
+    <div className="flex flex-col gap-y-24 pb-12">
+      <AboutDavidBio />
+      <AboutDavidEducation />
+      <AboutDavidExhibition />
+    </div>
   );
 }

@@ -6,7 +6,7 @@ import { SanityLive } from "@/sanity/lib/live";
 
 import Footer from "@/components/global/footer";
 import NavbarWrapper from "@/components/global/navigation/navbar-wrapper";
-import Contact from "@/components/pages/about/contact";
+import Contact from "@/components/global/contact";
 
 export default async function RootLayout({
   children,
@@ -17,7 +17,7 @@ export default async function RootLayout({
     // <div className={`tracking-tight`}>
     <div className="tabular-nums tracking-tighter">
       <NavbarWrapper />
-      <main className="relative z-30 bg-gray-50 px-x pb-40 pt-16 md:px-8">
+      <main className="relative z-30 bg-stone-50 px-x pb-16 pt-12 md:px-8 md:pb-40">
         {children}
       </main>
       <Contact />

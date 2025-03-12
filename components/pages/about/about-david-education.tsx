@@ -5,10 +5,10 @@ import {
 } from "@/sanity/lib/queries";
 import { notFound } from "next/navigation";
 import React from "react";
-import StickyTitle from "../homepage/sticky-title";
+import StickyTitle from "../../shared/sticky-title";
 import { formatDate } from "@/sanity/lib/utils";
 
-export default async function AboutDavidEducationGrid() {
+export default async function AboutDavidEducation() {
   const dateFormat: Intl.DateTimeFormatOptions = { year: "numeric" };
 
   const { data: educationDavidAltData } = await sanityFetch({
@@ -18,8 +18,6 @@ export default async function AboutDavidEducationGrid() {
   if (!educationDavidAltData) {
     notFound();
   }
-
-  console.log(educationDavidAltData);
 
   return (
     <div className="relative mt-24 grid grid-cols-12 lg:gap-x-20">

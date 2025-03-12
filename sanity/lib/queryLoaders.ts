@@ -10,6 +10,7 @@ import {
   testQuery,
   singleCategory,
   singleCategoryOrder,
+  homepageTestQuery,
 } from "./queries";
 import next from "next";
 import { sanityFetch } from "./live";
@@ -18,9 +19,9 @@ import { sanityFetch } from "./live";
 //   return sanityFetch({ query: homePageQuery, params: {} });
 // }
 
-// export async function getHomePageDataTest() {
-//   return client.fetch(homePageQueryTest);
-// }
+export async function getHomePageDataTest() {
+  return client.fetch(homepageTestQuery);
+}
 
 // export async function getProjectsData(): Promise<Project[]> {
 //   return client.fetch(projectsQuery, {}, { next: { tags: ["projects"] } });

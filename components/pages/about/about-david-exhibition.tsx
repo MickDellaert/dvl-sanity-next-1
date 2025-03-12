@@ -1,11 +1,11 @@
 import { sanityFetch } from "@/sanity/lib/live";
 import { exhibitionDavidQuery } from "@/sanity/lib/queries";
 import { notFound } from "next/navigation";
-import StickyTitle from "../homepage/sticky-title";
+import StickyTitle from "../../shared/sticky-title";
 import { formatDate } from "@/sanity/lib/utils";
 import { ExhibitionWithoutFilterQueryResult } from "@/sanity.types";
 
-export default async function AboutDavidExhibitionGrid() {
+export default async function AboutDavidExhibition() {
   const dateFormat: Intl.DateTimeFormatOptions = { year: "numeric" };
 
   const { data: exhibitionDavidData } = (await sanityFetch({

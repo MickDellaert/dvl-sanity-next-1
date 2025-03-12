@@ -194,3 +194,18 @@ export const testQuery = groq`
     }
   }
 `;
+
+export const homepageTestQuery = groq`
+*[_type == "homepage"][0]{
+  _id, homepageTitle, 
+  "slug": slug.current, 
+  homepageDescription, 
+  // "homepageMainImage": homepageMainImage.asset->url, 
+  homepageMainImage,
+  homepageMainImageSingle,
+  "homepageCategories": homepageCategories[]->{
+    name, 
+    "slug": slug.current,
+    projects[0]->{projectImage, "projectImageDimensions": projectImage.asset->metadata.dimensions}
+  }
+}`;

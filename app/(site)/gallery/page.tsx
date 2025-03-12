@@ -11,10 +11,5 @@ export default async function page() {
     notFound();
   }
 
-  return (
-    <>
-      {/* <ProjectsGalleryPhotoswipeClient projects={projects} /> */}
-      <Gallery projects={projects} />
-    </>
-  );
+  return <Gallery projects={projects} />;
 }

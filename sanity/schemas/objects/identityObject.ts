@@ -38,6 +38,9 @@ export const identityObject = defineType({
       name: "birthDate",
       title: "Date of Birth",
       type: "date",
+      options: {
+        dateFormat: "DD/MM/YYYY",
+      },
       fieldset: "birthFieldset",
     }),
     defineField({

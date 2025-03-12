@@ -43,42 +43,65 @@ export default function Logo() {
     [initialFontSize, targetFontSize],
   );
 
-  if (!hasMounted) return null;
+  // if (!hasMounted)
+  //   return (
+  //     <div className="w-10/12 text-balance text-[40px] leading-[1] md:w-8/12 md:text-[52px] xl:w-5/12 2xl:w-4/12">
+  //       {/* <Link href="/" className="text-2xl font-medium uppercase tracking-wider md:text-3xl"> */}
+  //       {/* <Link href="/" className="text-4xl font-medium md:text-4xl mix-blend-difference invert z-20">
+  //     David Van Loon
+  //   </Link> */}
+  //       <Link href="/" className="relative z-[1000] ">
+  //         {path === "/" ? (
+  //           <h1 className="inline align-top  ">David van Loon</h1>
+  //         ) : (
+  //           <h1 className="inline align-top  ">David Van Loon</h1>
+  //         )}
+  //       </Link>
+  //       {path === "/" && (
+  //         <h2 ref={ref} className="inline pb-12 align-top">
+  //           {""} is an Antwerp and Mortehan based contemporary artist.
+  //         </h2>
+  //       )}
+  //     </div>
+  //   );
 
-  return (
-    <div className="w-10/12 text-balance leading-[1] md:w-8/12 xl:w-5/12 2xl:w-4/12">
-      {/* <Link href="/" className="text-2xl font-medium uppercase tracking-wider md:text-3xl"> */}
-      {/* <Link href="/" className="text-4xl font-medium md:text-4xl mix-blend-difference invert z-20">
+  if (!hasMounted) return <div></div>;
+
+  if (hasMounted)
+    return (
+      <div className="w-10/12 text-balance leading-[1] md:w-8/12 xl:w-5/12 2xl:w-4/12">
+        {/* <Link href="/" className="text-2xl font-medium uppercase tracking-wider md:text-3xl"> */}
+        {/* <Link href="/" className="text-4xl font-medium md:text-4xl mix-blend-difference invert z-20">
         David Van Loon
       </Link> */}
-      <Link href="/" className="relative z-[1000] ">
-        {path === "/" ? (
-          <motion.h1
-            initial={{ fontSize: initialFontSize }}
-            style={{ fontSize: fontSize }}
-            className="inline align-top tracking-tight"
+        <Link href="/" className="relative z-[1000] ">
+          {path === "/" ? (
+            <motion.h1
+              initial={{ fontSize: initialFontSize }}
+              style={{ fontSize: fontSize }}
+              className="inline align-top"
+            >
+              David van Loon
+            </motion.h1>
+          ) : (
+            <motion.h1
+              initial={{ fontSize: initialFontSize }}
+              animate={{ fontSize: targetFontSize }}
+              className="inline align-top"
+            >
+              David Van Loon
+            </motion.h1>
+          )}
+        </Link>
+        {path === "/" && (
+          <motion.h2
+            ref={ref}
+            style={{ opacity: opacity, fontSize: fontSize }}
+            className="inline pb-12 align-top"
           >
-            David van Loon
-          </motion.h1>
-        ) : (
-          <motion.h1
-            initial={{ fontSize: initialFontSize }}
-            animate={{ fontSize: targetFontSize }}
-            className="inline align-top"
-          >
-            David Van Loon
-          </motion.h1>
+            {""} is an Antwerp and Mortehan based contemporary artist.
+          </motion.h2>
         )}
-      </Link>
-      {path === "/" && (
-        <motion.h2
-          ref={ref}
-          style={{ opacity: opacity, fontSize: fontSize }}
-          className="inline pb-12 align-top"
-        >
-          {""} is an Antwerp and Mortehan based contemporary artist.
-        </motion.h2>
-      )}
-    </div>
-  );
+      </div>
+    );
 }
