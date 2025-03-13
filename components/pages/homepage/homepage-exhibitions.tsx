@@ -52,8 +52,8 @@ export default async function HomepageExhibitions() {
                 </h2>
               </div>
               <div className="flex flex-row flex-wrap gap-4 text-2xl leading-4 lg:text-4xl lg:leading-6">
-                <h2>{formatDate(expo.date?.start)}</h2> <h3>—</h3>
-                <h2>{formatDate(expo.date?.end)}</h2>
+                <h3>{formatDate(expo.date?.start)}</h3> <h3>—</h3>
+                <h3>{formatDate(expo.date?.end)}</h3>
               </div>
               {/* <h2 className="text-5xl">—</h2> */}
               <div className="mt-0 text-lg leading-snug lg:mt-4 lg:text-2xl lg:leading-9">

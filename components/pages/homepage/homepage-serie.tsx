@@ -66,12 +66,12 @@ export default function HomepageSerie({
               // className="absolute z-50 h-full w-full transition-all duration-700 group-hover:opacity-40 "
               className="absolute z-40 h-full w-full"
             ></motion.div>
-            <h2
+            <h3
               className="absolute left-1/2 top-1/2 z-50 mb-4 mt-4 w-fit -translate-x-1/2 -translate-y-1/2 text-center text-5xl uppercase
            text-white opacity-0 transition-all duration-700 group-hover:opacity-90 "
             >
               {category.name}
-            </h2>
+            </h3>
             <Image
               src={
                 category.projects?.projectImage
@@ -89,12 +89,12 @@ export default function HomepageSerie({
               alt="alt"
               width={400}
               height={400}
-              className="max-h-[44svh] w-full object-contain md:max-h-full"
+              className="max-h-80 w-full object-contain md:max-h-full"
             />
           </div>
-          <h2 className="mt-3 text-lg uppercase tracking-tight transition-all duration-700 group-hover:opacity-0 md:mt-6 md:text-3xl">
+          <h3 className="mt-3 text-lg uppercase tracking-tight transition-all duration-700 group-hover:opacity-0 md:mt-6 md:text-3xl">
             {category.name}
-          </h2>
+          </h3>
         </div>
       </Link>
     </div>
