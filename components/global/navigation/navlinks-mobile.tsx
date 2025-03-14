@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation";
 import { resolveHref } from "@/sanity/lib/utils";
 import { useEffect, useState } from "react";
 import Hamburger from "./hamburger";
+import HamburgerButton from "./hamburgerButton";
+import { motion } from "framer-motion";
 
 type NavProps = {
   menuItems: MenuItem[];
@@ -38,29 +40,35 @@ export default function NavLinksMobile({ menuItems }: NavProps) {
 
   return (
     <div className="">
-      {!openMenu && (
-        <button className="relative top-1 z-50 h-7 w-7" onClick={toggleMenu}>
-          <Hamburger />
-        </button>
+      {/* {!openMenu && (
+        // <button className="relative top-1 z-50 w-8" onClick={toggleMenu}>
+        //   <Hamburger />
+        // </button>
+        <HamburgerButton onClick={toggleMenu} />
       )}
       {openMenu && (
-        <button
-          className="relative z-50 h-8 w-8 pb-1 text-3xl leading-[8px]"
-          onClick={toggleMenu}
-        >
-          x
-        </button>
-      )}
-      <div
-        className={`z-40 flex h-[50svh] w-full flex-col justify-end bg-stone-200 px-6 pb-12 md:pb-16`}
-        style={
-          openMenu
-            ? { display: "flex", position: "fixed", top: 0, left: 0 }
-            : { display: "none", position: "static" }
-        }
+        // <button
+        //   className="relative z-50 h-8 w-8 pb-1 text-3xl leading-[8px]"
+        //   onClick={toggleMenu}
+        // >
+        //   x
+        // </button>
+        <HamburgerButton onClick={toggleMenu} />
+      )} */}
+      <HamburgerButton onClick={toggleMenu} openMenu={openMenu} />
+
+      <motion.div
+        className={`fixed left-0 top-0 z-40 flex h-[60svh] w-full flex-col justify-end bg-stone-200 px-6 pb-64 md:pb-64`}
+        // style={
+        //   openMenu
+        //     ? { display: "flex", position: "fixed", top: 0, left: 0 }
+        //     : { display: "none", position: "static" }
+        // }
+        animate={openMenu ? "open" : "closed"}
+        variants={{ open: { opacity: 100 }, closed: { opacity: 0 } }}
       >
         <div
-          className="relative mt-24 flex flex-col gap-y-4 pt-8 text-3xl"
+          className="relative mt-16 flex flex-col gap-y-3 pt-8 text-3xl"
           // before:absolute before:left-0 before:top-0 before:h-[4px] before:w-16 before:bg-black before:content-['']"
         >
           {menuItems.map((setting) => {
@@ -89,7 +97,7 @@ export default function NavLinksMobile({ menuItems }: NavProps) {
             );
           })}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

@@ -34,12 +34,12 @@ export default async function HomepageExhibitions() {
   return (
     <section className="mt-28 md:mt-60">
       <StickyTitle stickyTitle="Exhibition" />
-      <div className="relative grid grid-cols-12 gap-x-4 md:gap-x-24">
+      <div className="relative grid grid-cols-12 gap-x-4 xl:gap-x-24">
         {homepageExpo?.map((expo) => (
           <React.Fragment key={expo._id}>
             <div
               key={expo._id}
-              className="top-40 col-span-12 mb-8 flex flex-col gap-4 self-start md:sticky md:col-span-6"
+              className="md:col-span- top-40 col-span-12 mb-8 flex flex-col gap-4 self-start md:sticky"
             >
               <div className="flex w-fit flex-col">
                 {/* <h2 className="py-4 text-5xl">—</h2> */}
@@ -72,7 +72,7 @@ export default async function HomepageExhibitions() {
                   alt=""
                   width={500}
                   height={500}
-                  className="mb-16 self-start"
+                  className="mb-16 self-start bg-stone-200"
                 />
               )}
 
