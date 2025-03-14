@@ -66,6 +66,7 @@ export default function NavLinksMobile({ menuItems }: NavProps) {
         // }
         animate={openMenu ? "open" : "closed"}
         variants={{ open: { opacity: 100 }, closed: { opacity: 0 } }}
+        initial={false as unknown as undefined}
       >
         <div
           className="relative mt-40 flex flex-col gap-y-3 pt-8 text-3xl
