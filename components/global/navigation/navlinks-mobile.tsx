@@ -58,7 +58,7 @@ export default function NavLinksMobile({ menuItems }: NavProps) {
       <HamburgerButton onClick={toggleMenu} openMenu={openMenu} />
 
       <motion.div
-        className={`fixed left-0 top-0 z-40 flex h-[60svh] w-full flex-col justify-end bg-stone-200 px-6 pb-64 md:pb-64`}
+        className={`fixed left-0 top-0 z-40 flex h-dvh w-full flex-col bg-stone-200 px-6 pb-64 md:pb-64`}
         // style={
         //   openMenu
         //     ? { display: "flex", position: "fixed", top: 0, left: 0 }
@@ -68,8 +68,8 @@ export default function NavLinksMobile({ menuItems }: NavProps) {
         variants={{ open: { opacity: 100 }, closed: { opacity: 0 } }}
       >
         <div
-          className="relative mt-16 flex flex-col gap-y-3 pt-8 text-3xl"
-          // before:absolute before:left-0 before:top-0 before:h-[4px] before:w-16 before:bg-black before:content-['']"
+          className="relative mt-40 flex flex-col gap-y-3 pt-8 text-3xl
+          before:absolute before:left-0 before:top-0 before:h-[4px] before:w-16 before:bg-black before:content-['']"
         >
           {menuItems.map((setting) => {
             const href = resolveHref(setting._type, setting.slug);
