@@ -1,7 +1,6 @@
 "use client";
 
 import { ProjectsQueryResult } from "@/sanity.types";
-import GalleryMasonry from "./gallery-masonry";
 import GalleryMobile from "./gallery-mobile";
 import dynamic from "next/dynamic";
 import GallerySkeleton from "./gallery-skeleton";
@@ -16,9 +15,9 @@ export default function Gallery({
 }: {
   projects: ProjectsQueryResult;
 }) {
-  if (!projects) {
-    return null;
-  }
+  // if (!projects) {
+  //   return null;
+  // }
 
   return (
     <>

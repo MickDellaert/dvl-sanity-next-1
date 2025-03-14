@@ -94,13 +94,13 @@ export default function Logo() {
           )}
         </Link>
         {path === "/" && (
-          <motion.h2
+          <motion.h1
             ref={ref}
             style={{ opacity: opacity, fontSize: fontSize }}
             className="inline pb-12 align-top"
           >
             {""} is an Antwerp and Mortehan based contemporary artist.
-          </motion.h2>
+          </motion.h1>
         )}
       </div>
     );

@@ -58,7 +58,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${publicSans.variable} ${golosText.variable} ${manrope.variable}`}
+      className={`${publicSans.variable} ${golosText.variable} ${manrope.variable} overflow-x-hidden`}
     >
       <body className="mx-auto mt-0 min-h-screen bg-gray-50 font-manrope font-medium tracking-tight">
         {children}

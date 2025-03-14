@@ -22,7 +22,7 @@ export function Projects() {
             height={400}
           />
 
-          <h2>{project.projectTitle}</h2>
+          <h3>{project.projectTitle}</h3>
           {project.projectDescription && (
             <PortableText value={project.projectDescription} />
           )}

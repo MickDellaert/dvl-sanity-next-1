@@ -14,7 +14,7 @@ export const formatDate = (
   dateString: string | undefined,
   options: Intl.DateTimeFormatOptions,
 ): string => {
-  if (!dateString) return ""; // Handle empty or undefined dates
+  if (!dateString) return "";
   const date = new Date(dateString);
   return new Intl.DateTimeFormat("nl-BE", options).format(date);
 };

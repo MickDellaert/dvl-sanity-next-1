@@ -51,7 +51,7 @@ export default function HomepageSerie({
     >
       <Link className="" href={`series/${category.slug}`}>
         <div className="group inline-block text-left md:block">
-          <div className="relative max-h-[44svh] justify-center md:max-h-full">
+          <div className="relative justify-center md:max-h-full">
             <motion.div
               style={{
                 backgroundColor:
@@ -66,35 +66,35 @@ export default function HomepageSerie({
               // className="absolute z-50 h-full w-full transition-all duration-700 group-hover:opacity-40 "
               className="absolute z-40 h-full w-full"
             ></motion.div>
-            <h2
-              className="absolute left-1/2 top-1/2 z-50 mb-4 mt-4 w-fit -translate-x-1/2 -translate-y-1/2 text-center text-5xl uppercase
-           text-white opacity-0 transition-all duration-700 group-hover:opacity-90 "
+            <h3
+              className="absolute left-1/2 top-1/2 z-50 mb-4 mt-4 hidden w-fit -translate-x-1/2 -translate-y-1/2 text-center text-5xl uppercase text-white
+           opacity-0 transition-all duration-700 group-hover:opacity-90 md:block "
             >
               {category.name}
-            </h2>
-            <Image
-              src={
-                category.projects?.projectImage
-                  ? urlFor(category.projects.projectImage)
-                      .width(
-                        category.projects.projectImageDimensions?.width || 400,
-                      )
-                      .height(
-                        category.projects.projectImageDimensions?.height || 400,
-                      )
-                      .fit("crop")
-                      .url()
-                  : "https://placehold.co/400x400/png"
-              }
-              alt="alt"
-              width={400}
-              height={400}
-              className="max-h-[44svh] w-full object-contain md:max-h-full"
-            />
+            </h3>
+            {category.projects?.projectImage ? (
+              <Image
+                src={urlFor(category.projects.projectImage)
+                  .width(category.projects.projectImageDimensions?.width || 800)
+                  .height(
+                    category.projects.projectImageDimensions?.height || 800,
+                  )
+                  .fit("crop")
+                  .url()}
+                alt="alt"
+                width={800}
+                height={800}
+                className="max-h-80 w-full object-contain md:max-h-full"
+              />
+            ) : (
+              <div className="flex aspect-square flex-col items-center justify-center bg-stone-200">
+                <p>series image not available</p>
+              </div>
+            )}
           </div>
-          <h2 className="mt-3 text-lg uppercase tracking-tight transition-all duration-700 group-hover:opacity-0 md:mt-6 md:text-3xl">
+          <h3 className="mt-3 text-lg uppercase tracking-tight transition-all duration-700 group-hover:opacity-0 md:mt-6 md:text-3xl">
             {category.name}
-          </h2>
+          </h3>
         </div>
       </Link>
     </div>
