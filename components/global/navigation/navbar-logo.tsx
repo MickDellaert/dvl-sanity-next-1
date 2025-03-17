@@ -2,20 +2,14 @@
 
 import Link from "next/link";
 import React, { useRef } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useMotionValueEvent,
-  useSpring,
-} from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 import { usePathname } from "next/navigation";
 import { useMediaQuery } from "react-responsive";
 import { DeviceSize } from "./device-size";
 import { useEffect, useState } from "react";
 
-export default function Logo() {
+export default function NavbarLogo() {
   const path = usePathname();
 
   const ref = useRef(null);
@@ -79,7 +73,7 @@ export default function Logo() {
             <motion.h1
               initial={{ fontSize: initialFontSize }}
               style={{ fontSize: fontSize }}
-              className="inline align-top"
+              className="z-50 inline align-top "
             >
               David van Loon
             </motion.h1>
@@ -87,7 +81,7 @@ export default function Logo() {
             <motion.h1
               initial={{ fontSize: initialFontSize }}
               animate={{ fontSize: targetFontSize }}
-              className="inline align-top"
+              className="z-50 inline align-top "
             >
               David Van Loon
             </motion.h1>

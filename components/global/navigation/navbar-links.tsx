@@ -9,7 +9,7 @@ type NavProps = {
   menuItems: MenuItem[];
 };
 
-export default function NavLinks({ menuItems }: NavProps) {
+export default function NavbarLinks({ menuItems }: NavProps) {
   const pathname = usePathname();
   const navItems = [
     { title: "series", slug: "series", _type: "page" },

@@ -6,7 +6,7 @@ interface HamburgerButtonProps {
   openMenu: boolean;
 }
 
-export default function HamburgerButton({
+export default function NavbarHamburger({
   onClick,
   openMenu,
 }: HamburgerButtonProps) {

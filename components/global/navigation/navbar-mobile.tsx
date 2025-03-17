@@ -3,14 +3,14 @@
 import { MenuItem } from "@/sanity/types";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import HamburgerButton from "./hamburgerButton";
-import NavLinksMobileNew from "./navlinks-mobile";
+import NavbarHamburger from "./navbar-hamburger";
+import NavLinksMobile from "./navbar-links-mobile";
 
 type NavProps = {
   menuItems: MenuItem[];
 };
 
-export default function NavLinksMobile({ menuItems }: NavProps) {
+export default function NavbarMobile({ menuItems }: NavProps) {
   const [hasMounted, setHasMounted] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
   const pathname = usePathname();
@@ -37,8 +37,8 @@ export default function NavLinksMobile({ menuItems }: NavProps) {
 
   return (
     <>
-      <HamburgerButton onClick={toggleMenu} openMenu={openMenu} />
-      <NavLinksMobileNew
+      <NavbarHamburger onClick={toggleMenu} openMenu={openMenu} />
+      <NavLinksMobile
         openMenu={openMenu}
         pathname={pathname}
         onRouteCheckAction={onRouteCheck}
