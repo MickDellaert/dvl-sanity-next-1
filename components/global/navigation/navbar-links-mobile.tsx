@@ -12,7 +12,7 @@ type NavProps = {
   onRouteCheckAction: (href: string) => void;
 };
 
-export default function NavLinksMobile({
+export default function NavbarLinksMobile({
   menuItems,
   openMenu,
   pathname,
