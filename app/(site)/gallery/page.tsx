@@ -1,16 +1,14 @@
-import { getProjectsData } from "@/sanity/lib/queryLoaders";
-// import Masonry from "@mui/lab/Masonry";
-import { revalidateTag } from "next/cache";
-import ProjectsGalleryPhotoswipeClient from "../../../components/pages/gallery/projects-gallery-photoswipe-client";
+import { notFound } from "next/navigation";
+import { sanityFetch } from "@/sanity/lib/live";
+import { projectsQuery } from "@/sanity/lib/queries";
+import Gallery from "@/components/pages/gallery/gallery";
 
 export default async function page() {
+  const { data: projects } = await sanityFetch({ query: projectsQuery });
 
-  const projects = await getProjectsData();
-  // revalidateTag("projects");
+  if (!projects) {
+    notFound();
+  }
 
-  return (
-    <main className="mx-auto mt-40 w-[90%] md:max-w-screen-2xl">
-      <ProjectsGalleryPhotoswipeClient projects={projects} />
-    </main>
-  );
+  return <Gallery projects={projects} />;
 }

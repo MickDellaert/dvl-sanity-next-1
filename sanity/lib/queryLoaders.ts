@@ -10,30 +10,36 @@ import {
   testQuery,
   singleCategory,
   singleCategoryOrder,
+  homepageTestQuery,
 } from "./queries";
 import next from "next";
+import { sanityFetch } from "./live";
 
-export async function getHomePageData(): Promise<HomePage> {
-  return client.fetch(homePageQuery);
+// export async function getHomePageData() {
+//   return sanityFetch({ query: homePageQuery, params: {} });
+// }
+
+export async function getHomePageDataTest() {
+  return client.fetch(homepageTestQuery);
 }
 
 // export async function getProjectsData(): Promise<Project[]> {
 //   return client.fetch(projectsQuery, {}, { next: { tags: ["projects"] } });
 // }
 
-export async function getProjectsData(): Promise<Project[]> {
+export async function getProjectsData() {
   return client.fetch(projectsQuery);
 }
 
-export async function getCategoryData(slug: string): Promise<Category> {
+export async function getCategoryData(slug: string) {
   return client.fetch(singleCategory, { slug });
 }
 
-export async function getCategoryDataOrder(slug: string): Promise<Category[]> {
+export async function getCategoryDataOrder(slug: string) {
   return client.fetch(singleCategoryOrder, { slug });
 }
 
-export async function getCategoriesData(): Promise<Category[]> {
+export async function getCategoriesData() {
   return client.fetch(categoryQuery);
 }
 

@@ -1,18 +1,21 @@
-import ButtonTest from "@/components/pages/series/button-test";
-import { getCategoriesData, getCategoryDataOrder } from "@/sanity/lib/queryLoaders";
-import dynamic from "next/dynamic";
-import Series from "@/components/pages/series/series";
+import {
+  getCategoriesData,
+  getCategoryDataOrder,
+} from "@/sanity/lib/queryLoaders";
 import { notFound } from "next/navigation";
-import Masonry from "@mui/lab/Masonry";
-import SeriesFilter from "@/components/pages/series/series-filter";
+import { sanityFetch } from "@/sanity/lib/live";
+import { categoryQuery, singleCategoryOrder } from "@/sanity/lib/queries";
+import Series from "@/components/pages/series/series";
+// import Masonry from "@mui/lab/Masonry";
+// import SeriesFilter from "@/components/pages/series/series-filter";
 
-// const DynamicProjectsGallery = dynamic(() => import("@/components/pages/series/projects-gallery"), { ssr: false });
+// type paramProps = {
+//   params: {
+//     slug: string;
+//   };
+// };
 
-type paramProps = {
-  params: {
-    slug: string;
-  };
-};
+type Params = Promise<{ slug: string }>;
 
 export async function generateStaticParams() {
   const categories = await getCategoriesData();
@@ -22,24 +25,34 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function Page({ params }: paramProps) {
-  const { slug } = params;
+export default async function Page(props: { params: Params }) {
+  const params = await props.params;
+  const slug = params.slug;
 
   let data;
 
   if (slug) {
-    const categoryDataOrder = await getCategoryDataOrder(slug);
+    // const categoryDataOrder = await getCategoryDataOrder(slug);
+    const { data: categoryDataOrder } = await sanityFetch({
+      query: singleCategoryOrder,
+      params: { slug },
+    });
 
     if (!categoryDataOrder.find((e) => e.slug === slug.toString())) {
       notFound();
     }
     data = categoryDataOrder;
   } else {
-    const categoryData = await getCategoriesData();
+    // const categoryData = await getCategoriesData();
+
+    const { data: categoryData } = await sanityFetch({
+      query: categoryQuery,
+    });
 
     if (!categoryData) {
       notFound();
     }
+
     data = categoryData;
   }
 
@@ -54,11 +67,13 @@ export default async function Page({ params }: paramProps) {
 
   return (
     <>
-      <main className="w-[90%] md:max-w-screen-2xl mx-auto">
-        {/* <ButtonTest /> */}
-        <SeriesFilter categoryData={data}/>
-        <Series categoryData={data} />
-      </main>
+      {/* <main className="w-[90%] md:max-w-screen-2xl mx-auto"> */}
+      {/* <main className="mx-auto w-[98%] px-4"> */}
+      {/* <ButtonTest /> */}
+      {/* <SeriesFilter categoryData={data}/> */}
+      {/* <Series categoryData={data} /> */}
+      <Series categoryData={data} />
+      {/* </main> */}
     </>
   );
 }

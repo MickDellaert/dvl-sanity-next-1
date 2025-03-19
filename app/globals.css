@@ -2,34 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@layer base {
+  h2 {
+    @apply text-3xl;
+    @apply md:text-4xl;
+  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-} */
-
 body {
-  /* color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb)); */
 }
 
 .pswp__bg {
   background-color: white !important;
 }
 
+.pswp--custom-icons {
+  --pswp-icon-color: #00fffc !important; /* Primary icon color */
+  --pswp-icon-color-secondary: #ff0000; /* Secondary color */
+}
+
+/* Hide the default shadow */
+.pswp__icn-shadow {
+  display: none;
+}
+
+/* Resize the icons */
+.pswp__button {
+  width: 50px;
+  height: 50px;
+}
+
+/* Style the arrows */
+.pswp__button--arrow {
+  opacity: 0.8;
+}
+
+.pswp__button--arrow:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
 /* .pswp__content {
   width: 100vw !important;
 } */
@@ -38,6 +49,35 @@ body {
   width: 100%;
   /* height: 0; */
   padding-bottom: 65%;
+}
+
+.pswp__container {
+  /* transition: transform var(--pswp-transition-duration) ease;
+  transition: transform 2500ms ease; */
+  /* visibility: hidden; */
+  /* transition: opacity 1s ease-in-out !important; Adjust duration as needed */
+}
+
+/* Ensure all slides are stacked */
+.pswp__item {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.8s ease-in-out !important;
+}
+
+/* Hide slides that are not active */
+.pswp__item[aria-hidden="true"] {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+/* Ensure active slide is visible */
+.pswp__item:not([aria-hidden="true"]) {
+  opacity: 1 !important;
+  z-index: 1;
 }
 
 /* .pswp__default-caption {
@@ -59,28 +99,28 @@ body {
   color: black !important;
 } */
 
-.my-masonry-grid {
-  display: -webkit-box; /* Not needed if autoprefixing */
-  display: -ms-flexbox; /* Not needed if autoprefixing */
+/* .my-masonry-grid {
+  display: -webkit-box; 
+  display: -ms-flexbox; 
   display: flex;
-  margin-left: -5%; /* gutter size offset */
+  margin-left: -80px; 
   width: auto;
 }
 .my-masonry-grid_column {
-  padding-left: 5%; /* gutter size */
+  padding-left: 80px;
   background-clip: padding-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Style your items */
 .my-masonry-grid_column > div {
-  /* change div to reference your elements you put in <Masonry> */
-  margin-bottom: 80px;
+  margin-bottom: 40px;
 }
 
 .my-masonry-grid_column > div > img {
-  /* change div to reference your elements you put in <Masonry> */
-  margin-bottom: 16px;
-}
+  margin-bottom: 12px;
+} */
 
 @media screen and (max-width: 640px) {
   .pswp__dynamic-caption--mobile {
@@ -92,11 +132,11 @@ body {
     /* display: none !important; */
   }
 
-  .pswp__button--arrow{
+  .pswp__button--arrow {
     visibility: hidden !important;
   }
 
-  .pswp__img{
+  .pswp__img {
     /* top: -20px !important */
   }
 }

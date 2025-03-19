@@ -14,13 +14,13 @@ export default function SeriesFilter({ categoryData }: CategoryData) {
     <>
       <div
         className="top-[80px] z-30 mt-[80px] flex w-full flex-col justify-end gap-9
-         bg-white pb-20 text-left text-xs font-medium tracking-widest text-neutral-500 
+         bg-gray-50 pb-20 text-left text-xs font-medium tracking-widest text-neutral-500 
          md:sticky md:mt-0 md:h-10 md:flex-row md:pb-4 md:text-base"
       >
         {categoryData.map((category) => (
           <button
             key={category._id}
-            className=" h-1 md:h-auto"
+            className="h-1 md:h-auto"
             onClick={() => {
               router.push(`/series/${category.slug}`);
             }}

@@ -1,87 +1,13 @@
-import HomePageCategory from "@/components/pages/homepage/homepage-category";
-import { getHomePageData } from "@/sanity/lib/queryLoaders";
-
-import Image from "next/image";
-import imageUrlBuilder from "@sanity/image-url";
-import { client } from "@/sanity/lib/client";
-import { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import Subtitle from "@/components/shared/subtitle";
+import HomepageExhibitions from "./homepage-exhibitions";
+import HomepageHeaderSection from "./homepage-header-section";
+import HomePageSeries from "./homepage-series";
 
 export default async function HomePage() {
-  const builder = imageUrlBuilder(client);
-
-  function urlFor(source: SanityImageSource) {
-    return builder.image(source);
-  }
-
-  const homePageData = await getHomePageData();
-
-  const {
-    title,
-    homepageDescription,
-    homepageMainImage,
-    homepageMainImageSingle,
-    homepageCategories,
-  } = homePageData;
-
-  console.log(homepageMainImageSingle);
-
   return (
-    <div className="pt-8">
-      <h1>{title}</h1>
-
-      {/* <h2 className="self-start text-4xl">{homepageDescription}</h2> */}
-      <h2 className="self-start text-4xl font-medium leading-snug md:text-5xl md:leading-snug lg:w-2/3">
-        Antwerp and Mortehan based contemporary artist.
-      </h2>
-
-      <Image
-        // className="h-[calc(100vh-64px)] w-screen object-cover"
-        className="mt-20 w-full"
-        src={urlFor(homepageMainImageSingle).url()}
-        alt={homepageMainImageSingle.alt}
-        width={1000}
-        height={1000}
-      />
-
-      {/* <div className="mt-24 grid grid-cols-12"> */}
-        {/* <h1 className="font-sans w-full text-center text-8xl font-semibold uppercase tracking-widest text-white absolute left-1/2 top-1/2 -translate-y-24 -translate-x-1/2">
-          David Van Loon
-        </h1> */}
-        {/* <Image
-          // className="h-[calc(100vh-64px)] w-screen object-cover"
-          className="w-full"
-          src={urlFor(homepageMainImage)
-            .width(1000)
-            .height(1000)
-            .fit("crop")
-            .url()}
-          alt={homepageMainImage.alt}
-          width={1000}
-          height={1000}
-        /> */}
-
-        {/* {homepageMainImage.map((mainImage, index) => (
-          <div
-            key={index}
-            className="odd:col-span-7 even:col-span-4 even:col-start-9 "
-          >
-            <Image
-              // className="h-[calc(100vh-64px)] w-screen object-cover"
-              className="w-full"
-              // src={urlFor(mainImage).width(1000).height(1000).fit("crop").url()}
-              src={urlFor(mainImage).url()}
-              alt={mainImage.alt}
-              width={400}
-              height={400}
-            />
-          </div>
-        ))} */}
-      {/* </div> */}
-
-      <Subtitle subtitle={"Painting Series"} />
-      <HomePageCategory homepageCategories={homepageCategories} />
-      <Subtitle subtitle={"Upcoming Exhibitions"} />
-    </div>
+    <>
+      <HomepageHeaderSection />
+      <HomePageSeries />
+      <HomepageExhibitions />
+    </>
   );
 }

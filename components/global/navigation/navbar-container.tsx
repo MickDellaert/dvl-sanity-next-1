@@ -1,31 +1,26 @@
-"use client";
-
-import { useMediaQuery } from "react-responsive";
-import { DeviceSize } from "./device-size";
-
-import NavLinks from "./navlinks";
-import NavLinksMobile from "./navlinks-mobile";
+import NavLinks from "./navbar-links";
 import { MenuItem } from "@/sanity/types";
-import Logo from "./logo";
+import Logo from "./navbar-logo";
+import NavMobile from "./navbar-mobile";
+import NavbarLinksMobile from "./navbar-links-mobile";
+import NavbarHamburger from "./navbar-hamburger";
 
 type NavProps = {
   menuItems: MenuItem[];
 };
 
 export default function NavbarContainer({ menuItems }: NavProps) {
-  const isMobile = useMediaQuery({ maxWidth: DeviceSize.lg });
-
   return (
-    <div className="flex flex-row items-center justify-between pt-6 mx-auto sm:mx-8 lg:mx-16 md:pr-0 w-[90%] sm:pr-0">
-      <Logo />
-      {/* {!isMobile && <NavLinks menuItems={menuItems} />}
-      {isMobile && <NavLinksMobile menuItems={menuItems} />} */}
-      <div className="hidden lg:block">
-        <NavLinks menuItems={menuItems} />
+    <>
+      <div className="items-top fixed left-0 top-0 z-50 flex h-20 w-full flex-row justify-between px-x pt-6 md:px-8 md:pt-8">
+        <Logo />
+        <div className="hidden lg:block">
+          <NavLinks menuItems={menuItems} />
+        </div>
+        <div className="block lg:hidden">
+          <NavMobile menuItems={menuItems} />
+        </div>
       </div>
-      <div className="block lg:hidden">
-        <NavLinksMobile menuItems={menuItems} />
-      </div>
-    </div>
+    </>
   );
 }

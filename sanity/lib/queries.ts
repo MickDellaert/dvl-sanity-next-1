@@ -1,6 +1,6 @@
-import { groq } from "next-sanity";
+import { groq, defineQuery } from "next-sanity";
 
-export const homePageQuery = groq`
+export const homePageQuery = defineQuery(`
 *[_type == "homepage"][0]{
   _id, homepageTitle, 
   "slug": slug.current, 
@@ -9,13 +9,70 @@ export const homePageQuery = groq`
   homepageMainImage,
   homepageMainImageSingle,
   "homepageCategories": homepageCategories[]->{
+    _id,
     name, 
     "slug": slug.current,
     projects[0]->{projectImage, "projectImageDimensions": projectImage.asset->metadata.dimensions}
-  }
-}`;
+  },
+  "homepageExpo": exhibitions[]->{
+  _id,
+  name,
+  poster,
+  "posterDimensions": poster.asset->metadata.dimensions,
+  description,
+  date,
+  gallery,
+  photos,
+  "images": photos[]{
+  asset->{
+  _id,
+  url,
+  metadata{ dimensions} }
+  },
+  "dimensions": photos[].asset->metadata.dimensions,
+  },
+}`);
+export const homepageHeaderQuery = defineQuery(`
+  *[_type == "homepage"][0]{
+    "homepageMainImageAsset": homepageMainImageSingle.asset->metadata, 
+    homepageMainImage,
+    homepageMainImageSingle,
+  }`);
 
-export const projectsQuery = groq`
+export const homePageSeriesQuery = defineQuery(`
+  *[_type == "homepage"][0]{
+    homepageCategories[]->{
+      _id,
+      name, 
+      "slug": slug.current,
+      projects[0]->{
+      projectImage, 
+      "projectImageDimensions": projectImage.asset->metadata.dimensions, 
+      "projectImageMetadata": projectImage.asset->metadata, 
+      "projectImagePalette": projectImage.asset->metadata.palette.darkVibrant.background}
+    }
+  }`);
+
+export const homePageExhibitionQuery = defineQuery(`
+    *[_type == "homepage"][0]{
+      "homepageExpo": exhibitions[]->{
+      _id,
+      name,
+      poster,
+      "posterDimensions": poster.asset->metadata.dimensions,
+      description,
+      date,
+      gallery,
+      photos,
+      "images": photos[]{
+      asset,
+      "ref":asset._ref,
+      "imageDimensions":asset->metadata.dimensions
+      },
+      },
+    }`);
+
+export const projectsQuery = defineQuery(`
 *[_type == "project"]
    {_id,
    "projectImage": projectImage.asset->url, 
@@ -25,15 +82,16 @@ export const projectsQuery = groq`
    date, 
    material, 
    size
-  }`;
+  }`);
 
-export const categoryQuery = groq`
+export const categoryQuery = defineQuery(`
 *[_type == "category"]{
   _id, 
   name,
   seriesDescription, 
   "slug": slug.current, 
   "projects" : projects[]->{
+  _id,
   "projectImage" : projectImage.asset->url, 
   "projectImageDimensions": projectImage.asset->metadata.dimensions,
   projectTitle,
@@ -42,15 +100,16 @@ export const categoryQuery = groq`
   material, 
   size
   }
-}`;
+}`);
 
-export const singleCategory = groq`
+export const singleCategory = defineQuery(`
 *[_type == "category" && slug.current == $slug][0]{
   _id, 
   name, 
   seriesDescription, 
   "slug": slug.current, 
   "projects" : projects[]->{
+    _id,
     "projectImage" : projectImage.asset->url, 
     "projectImageDimensions": projectImage.asset->metadata.dimensions,
     projectTitle,
@@ -59,16 +118,16 @@ export const singleCategory = groq`
     material, 
     size
   }
-}`;
+}`);
 
-
-export const singleCategoryOrder = groq`
+export const singleCategoryOrder = defineQuery(`
 *[_type == "category" ] | order((slug.current match $slug) desc){
   _id, 
   name, 
   seriesDescription, 
   "slug": slug.current, 
   "projects" : projects[]->{
+    _id,
     "projectImage" : projectImage.asset->url, 
     "projectImageDimensions": projectImage.asset->metadata.dimensions,
     projectTitle,
@@ -77,7 +136,35 @@ export const singleCategoryOrder = groq`
     material, 
     size
   }
-}`;
+}`);
+
+export const aboutDavidQuery = defineQuery(
+  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{_id, identity, description, portrait, educationText}`,
+);
+
+export const bioDavidQuery = defineQuery(
+  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{
+  _id, description, portrait, "dimensions":portrait.asset->metadata.dimensions}`,
+);
+
+export const contactDavidQuery = defineQuery(
+  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{_id, contact, address}`,
+);
+
+export const educationDavidQuery = defineQuery(
+  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{_id, educationText}`,
+);
+export const educationDavidQueryAlt = defineQuery(
+  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{_id, "education": education[]{duration, schoolDirection, schoolName, schoolAddress}}`,
+);
+
+export const exhibitionDavidQuery = defineQuery(
+  `*[_type == "exhibition" && artist[]->identity.firstName match "David" && artist[]->identity.lastName match "van Loon"][]{_id, date, name, gallery->{name, address}, tagline, description}`,
+);
+
+export const exhibitionWithoutFilterQuery = defineQuery(
+  `*[_type == "exhibition"][]{_id, date, name, gallery->{name, address}, tagline, description}`,
+);
 
 export const pagesQuery = groq`
 *[_type == "page"]{
@@ -108,4 +195,17 @@ export const testQuery = groq`
   }
 `;
 
-
+export const homepageTestQuery = groq`
+*[_type == "homepage"][0]{
+  _id, homepageTitle, 
+  "slug": slug.current, 
+  homepageDescription, 
+  // "homepageMainImage": homepageMainImage.asset->url, 
+  homepageMainImage,
+  homepageMainImageSingle,
+  "homepageCategories": homepageCategories[]->{
+    name, 
+    "slug": slug.current,
+    projects[0]->{projectImage, "projectImageDimensions": projectImage.asset->metadata.dimensions}
+  }
+}`;

@@ -22,6 +22,13 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/(site)/backup/page.-seriestsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+    // "app/(site)/backup/page.-seriestsx",
+    // "./global.d.ts"
+  ],
+  "exclude": ["node_modules", "./app/unused"]
 }
