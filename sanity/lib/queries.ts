@@ -81,7 +81,8 @@ export const projectsQuery = defineQuery(`
    projectDescription, 
    date, 
    material, 
-   size
+   size,
+   soldStatus
   }`);
 
 export const categoryQuery = defineQuery(`
