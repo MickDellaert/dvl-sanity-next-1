@@ -99,7 +99,8 @@ export const categoryQuery = defineQuery(`
   projectDescription, 
   date, 
   material, 
-  size
+  size,
+  soldStatus
   }
 }`);
 
@@ -117,7 +118,8 @@ export const singleCategory = defineQuery(`
     projectDescription, 
     date, 
     material, 
-    size
+    size,
+    soldStatus
   }
 }`);
 
@@ -135,7 +137,8 @@ export const singleCategoryOrder = defineQuery(`
     projectDescription, 
     date, 
     material, 
-    size
+    size,
+    soldStatus
   }
 }`);
 

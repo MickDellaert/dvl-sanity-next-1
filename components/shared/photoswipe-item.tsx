@@ -26,8 +26,8 @@ type ProjectQueryResult = {
   projectDescription: null;
   date: string | null;
   material: string | null;
-  size: { width: string; height: string };
-  soldStatus: boolean;
+  size: { width?: string | undefined; height?: string | undefined } | null;
+  soldStatus: boolean | null;
 };
 
 export default function PhotoswipeItem({
@@ -56,12 +56,12 @@ export default function PhotoswipeItem({
       height={project?.projectImageDimensions?.height}
       alt={project.projectTitle || "Default project title"}
       caption={`<div style='color:black; text-shadow:2px 2px 5px white;'>
-                  <p>${project.projectTitle}</p>
-                  <p>${project.date}</p>
-                  <p>${project.material}</p>
-                  <p>${project.size.width} x ${project.size.width} cm</p>
-                  ${project.soldStatus ? "<p><em>sold</em></p>" : ""}
-                </div>`.trim()}
+        <p>${project.projectTitle}</p>
+        <p>${project.date}</p>
+        <p>${project.material}</p>
+        <p>${project.size ? `${project.size.width} x ${project.size.height} cm` : "No size available"}</p>
+        ${project.soldStatus ? "<p><em>sold</em></p>" : ""}
+      </div>`.trim()}
     >
       {({ ref, open }) => (
         <figure className={twMerge("inline-block", figureClassName)}>
