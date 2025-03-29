@@ -5,6 +5,8 @@ import React from "react";
 import StickyTitle from "../shared/sticky-title";
 import { PortableText } from "next-sanity";
 import AboutImage from "../pages/about/about-david-image";
+import Link from "next/link";
+import { SiFacebook, SiInstagram } from "@icons-pack/react-simple-icons";
 
 export default async function Contact() {
   const { data: contactDavidData } = await sanityFetch({
@@ -34,12 +36,30 @@ export default async function Contact() {
               <div className="relative flex flex-col gap-y-4">
                 <h3 className="">{contactDavidData.contact?.email}</h3>
                 <h3 className="">{contactDavidData.contact?.mobileNumber}</h3>
-                <h3 className="leading-tight">
-                  {contactDavidData.address?.[0]?.street}{" "}
-                  {contactDavidData.address?.[0]?.number}, <br />
-                  {contactDavidData.address?.[0]?.postalCode}{" "}
-                  {contactDavidData.address?.[0]?.city}
-                </h3>
+                {/* {contactDavidData.address && (
+                  <h3 className="leading-tight">
+                    {contactDavidData.address?.[0]?.street}{" "}
+                    {contactDavidData.address?.[0]?.number}, <br />
+                    {contactDavidData.address?.[0]?.postalCode}{" "}
+                    {contactDavidData.address?.[0]?.city}
+                  </h3>
+                )} */}
+                <div className="flex flex-row gap-4">
+                  <Link
+                    href={"https://www.instagram.com/osloco/"}
+                    target="_blank"
+                  >
+                    <SiInstagram />
+                  </Link>
+                  <Link
+                    href={
+                      "https://www.facebook.com/profile.php?id=61572319984075&locale=nl_BE"
+                    }
+                    target="_blank"
+                  >
+                    <SiFacebook />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
