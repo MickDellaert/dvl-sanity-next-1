@@ -99,7 +99,7 @@ export default function NavbarLogo({
             className="inline pb-12 align-top"
           >
             {/* {""} is an Antwerp and Mortehan based contemporary artist. */}
-            {` is an ${homepageDescription}`}
+            {` ${homepageDescription}`}
           </motion.h1>
         )}
       </div>
