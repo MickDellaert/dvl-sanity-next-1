@@ -9,7 +9,12 @@ import { useMediaQuery } from "react-responsive";
 import { DeviceSize } from "./device-size";
 import { useEffect, useState } from "react";
 
-export default function NavbarLogo() {
+export default function NavbarLogo({
+  homepageDescription,
+}: {
+  homepageDescription: string;
+}) {
+  console.log(homepageDescription);
   const path = usePathname();
 
   const ref = useRef(null);
@@ -26,7 +31,7 @@ export default function NavbarLogo() {
 
   const isMobile = useMediaQuery({ maxWidth: DeviceSize.md });
 
-  const initialFontSize = isMobile ? "40px" : "52px";
+  const initialFontSize = isMobile ? "48px" : "60px";
   const targetFontSize = isMobile ? "30px" : "36px";
 
   const opacity = useTransform(scrollYProgress, [0, 0.06], [1, 0]);
@@ -93,7 +98,8 @@ export default function NavbarLogo() {
             style={{ opacity: opacity, fontSize: fontSize }}
             className="inline pb-12 align-top"
           >
-            {""} is an Antwerp and Mortehan based contemporary artist.
+            {/* {""} is an Antwerp and Mortehan based contemporary artist. */}
+            {` is an ${homepageDescription}`}
           </motion.h1>
         )}
       </div>

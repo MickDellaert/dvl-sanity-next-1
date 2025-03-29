@@ -2,6 +2,7 @@
 
 import { structure } from "./sanity/structure/structure";
 import { CogIcon } from "@sanity/icons";
+import { media } from "sanity-plugin-media";
 /**
  * This configuration is used to for the Sanity Studio that’s mounted on the `\app\studio\[[...index]]\page.tsx` route
  */
@@ -26,6 +27,7 @@ export default defineConfig({
   // Add and edit the content schema in the './sanity/schema' folder
   // schema,
   plugins: [
+    media(),
     singletonTools(),
     structureTool({ structure }),
     visionTool({ defaultApiVersion: apiVersion }),

@@ -1,8 +1,8 @@
 "use client";
 
 import { MenuItem } from "@/sanity/types";
-import Logo from "./navbar-logo";
-import NavMobile from "./navbar-mobile";
+import NavbarLogo from "./navbar-logo";
+// import NavMobile from "./navbar-mobile";
 import NavbarLinks from "./navbar-links";
 import NavbarLinksMobile from "./navbar-links-mobile";
 import NavbarHamburger from "./navbar-hamburger";
@@ -11,9 +11,13 @@ import { useState, useEffect } from "react";
 
 type NavProps = {
   menuItems: MenuItem[];
+  homepageDescription: string;
 };
 
-export default function NavbarContainer({ menuItems }: NavProps) {
+export default function NavbarContainer({
+  menuItems,
+  homepageDescription,
+}: NavProps) {
   const [hasMounted, setHasMounted] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
   const pathname = usePathname();
@@ -42,7 +46,7 @@ export default function NavbarContainer({ menuItems }: NavProps) {
       <div
         className={`items-top fixed left-0 top-0 z-50 flex h-20 w-full flex-row justify-between px-x pt-6  md:px-8 md:pt-8 ${openMenu ? "" : "mix-blend-difference invert"}`}
       >
-        <Logo />
+        <NavbarLogo homepageDescription={homepageDescription} />
         <div className="hidden lg:block">
           <NavbarLinks menuItems={menuItems} />
         </div>

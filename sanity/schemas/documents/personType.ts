@@ -59,6 +59,17 @@ export const personType = defineType({
       of: [defineArrayMember({ type: "education" })],
     }),
     // defineField({
+    //   name: "contactIllustration",
+    //   title: "Contact Illustration",
+    //   type: "reference",
+    //   to: [{ type: "project" }],
+    // }),
+    defineField({
+      name: "contactIllustration",
+      title: "Contact Illustration",
+      type: "image",
+    }),
+    // defineField({
     //   name: "educationText",
     //   title: "Education Text",
     //   type: "array",
