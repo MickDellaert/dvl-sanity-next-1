@@ -51,9 +51,9 @@ export async function getPagesData(): Promise<Page[]> {
   return client.fetch(pagesQuery);
 }
 
-export async function getSettings(): Promise<Setting> {
-  return client.fetch(settingsQuery);
-}
+// export async function getSettings(): Promise<Setting> {
+//   return client.fetch(settingsQuery);
+// }
 
 export async function getTest(): Promise<Test> {
   return client.fetch(testQuery);

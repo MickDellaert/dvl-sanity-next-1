@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 export default function NavbarLogo({
   homepageDescription,
 }: {
-  homepageDescription: string;
+  homepageDescription: string | null;
 }) {
   console.log(homepageDescription);
   const path = usePathname();

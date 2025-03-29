@@ -67,10 +67,12 @@ export default async function Contact() {
             <h4>© 2025 David van Loon — website by MD</h4>
           </div>
           <div className="order-2 col-span-12 col-start-1 content-end items-end md:col-span-8 md:col-start-1 lg:col-span-6 lg:col-start-7 lg:row-span-2">
-            <AboutImage
-              data={contactIllustration}
-              dimensions={imageDimensions}
-            />
+            {contactIllustration && (
+              <AboutImage
+                data={contactIllustration}
+                dimensions={imageDimensions}
+              />
+            )}
           </div>
         </div>
       </div>

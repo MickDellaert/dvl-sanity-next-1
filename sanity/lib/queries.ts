@@ -192,10 +192,10 @@ export const pageQuery = groq`
   content
 }`;
 
-export const settingsQuery = groq`
+export const settingsQuery = defineQuery(`
 *[_type == "settings"][0]{
   menuItems[]->{_type, "slug": slug.current, title}
-}`;
+}`);
 
 export const testQuery = groq`
   *[_type == "settingsTest"]{

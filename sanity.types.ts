@@ -246,6 +246,17 @@ export type Person = {
       _key: string;
     } & Education
   >;
+  contactIllustration?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
 };
 
 export type ContactObjectNew = {
@@ -558,6 +569,15 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
+export type MediaTag = {
+  _id: string;
+  _type: "media.tag";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: Slug;
+};
+
 export type Slug = {
   _type: "slug";
   current?: string;
@@ -593,6 +613,7 @@ export type AllSanitySchemaTypes =
   | SanityImageAsset
   | SanityAssetSourceData
   | SanityImageMetadata
+  | MediaTag
   | Slug;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries.ts
@@ -741,6 +762,11 @@ export type HomepageHeaderQueryResult = {
     alt?: string;
     _type: "image";
   } | null;
+} | null;
+// Variable: homepageDescriptionQuery
+// Query: *[_type == "homepage"][0]{      homepageDescription,    }
+export type HomepageDescriptionQueryResult = {
+  homepageDescription: string | null;
 } | null;
 // Variable: homePageSeriesQuery
 // Query: *[_type == "homepage"][0]{    homepageCategories[]->{      _id,      name,       "slug": slug.current,      projects[0]->{      projectImage,       "projectImageDimensions": projectImage.asset->metadata.dimensions,       "projectImageMetadata": projectImage.asset->metadata,       "projectImagePalette": projectImage.asset->metadata.palette.darkVibrant.background}    }  }
@@ -1040,7 +1066,7 @@ export type BioDavidQueryResult = {
   dimensions: SanityImageDimensions | null;
 } | null;
 // Variable: contactDavidQuery
-// Query: *[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{_id, contact, address}
+// Query: *[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{  _id, contact, address, contactIllustration, "imageDimensions":contactIllustration.asset->metadata.dimensions}
 export type ContactDavidQueryResult = {
   _id: string;
   contact: ContactObjectNew | null;
@@ -1049,6 +1075,18 @@ export type ContactDavidQueryResult = {
       _key: string;
     } & AddressObject
   > | null;
+  contactIllustration: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  imageDimensions: SanityImageDimensions | null;
 } | null;
 // Variable: educationDavidQuery
 // Query: *[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{_id, educationText}
@@ -1228,6 +1266,7 @@ declare module "@sanity/client" {
   interface SanityQueries {
     '\n*[_type == "homepage"][0]{\n  _id, homepageTitle, \n  "slug": slug.current, \n  homepageDescription, \n  // "homepageMainImage": homepageMainImage.asset->url, \n  homepageMainImage,\n  homepageMainImageSingle,\n  "homepageCategories": homepageCategories[]->{\n    _id,\n    name, \n    "slug": slug.current,\n    projects[0]->{projectImage, "projectImageDimensions": projectImage.asset->metadata.dimensions}\n  },\n  "homepageExpo": exhibitions[]->{\n  _id,\n  name,\n  poster,\n  "posterDimensions": poster.asset->metadata.dimensions,\n  description,\n  date,\n  gallery,\n  photos,\n  "images": photos[]{\n  asset->{\n  _id,\n  url,\n  metadata{ dimensions} }\n  },\n  "dimensions": photos[].asset->metadata.dimensions,\n  },\n}': HomePageQueryResult;
     '\n  *[_type == "homepage"][0]{\n    "homepageMainImageAsset": homepageMainImageSingle.asset->metadata, \n    homepageMainImage,\n    homepageMainImageSingle,\n  }': HomepageHeaderQueryResult;
+    '\n    *[_type == "homepage"][0]{\n      homepageDescription,\n    }': HomepageDescriptionQueryResult;
     '\n  *[_type == "homepage"][0]{\n    homepageCategories[]->{\n      _id,\n      name, \n      "slug": slug.current,\n      projects[0]->{\n      projectImage, \n      "projectImageDimensions": projectImage.asset->metadata.dimensions, \n      "projectImageMetadata": projectImage.asset->metadata, \n      "projectImagePalette": projectImage.asset->metadata.palette.darkVibrant.background}\n    }\n  }': HomePageSeriesQueryResult;
     '\n    *[_type == "homepage"][0]{\n      "homepageExpo": exhibitions[]->{\n      _id,\n      name,\n      poster,\n      "posterDimensions": poster.asset->metadata.dimensions,\n      description,\n      date,\n      gallery,\n      photos,\n      "images": photos[]{\n      asset,\n      "ref":asset._ref,\n      "imageDimensions":asset->metadata.dimensions\n      },\n      },\n    }': HomePageExhibitionQueryResult;
     '\n*[_type == "project"]\n   {_id,\n   "projectImage": projectImage.asset->url, \n   "projectImageDimensions": projectImage.asset->metadata.dimensions,\n   projectTitle, \n   projectDescription, \n   date, \n   material, \n   size,\n   soldStatus\n  }': ProjectsQueryResult;
@@ -1236,7 +1275,7 @@ declare module "@sanity/client" {
     '\n*[_type == "category" ] | order((slug.current match $slug) desc){\n  _id, \n  name, \n  seriesDescription, \n  "slug": slug.current, \n  "projects" : projects[]->{\n    _id,\n    "projectImage" : projectImage.asset->url, \n    "projectImageDimensions": projectImage.asset->metadata.dimensions,\n    projectTitle,\n    projectDescription, \n    date, \n    material, \n    size,\n    soldStatus\n  }\n}': SingleCategoryOrderResult;
     '*[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{_id, identity, description, portrait, educationText}': AboutDavidQueryResult;
     '*[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{\n  _id, description, portrait, "dimensions":portrait.asset->metadata.dimensions}': BioDavidQueryResult;
-    '*[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{_id, contact, address}': ContactDavidQueryResult;
+    '*[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{\n  _id, contact, address, contactIllustration, "imageDimensions":contactIllustration.asset->metadata.dimensions}': ContactDavidQueryResult;
     '*[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{_id, educationText}': EducationDavidQueryResult;
     '*[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{_id, "education": education[]{duration, schoolDirection, schoolName, schoolAddress}}': EducationDavidQueryAltResult;
     '*[_type == "exhibition" && artist[]->identity.firstName match "David" && artist[]->identity.lastName match "van Loon"][]{_id, date, name, gallery->{name, address}, tagline, description}': ExhibitionDavidQueryResult;
