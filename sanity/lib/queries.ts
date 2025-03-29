@@ -39,6 +39,11 @@ export const homepageHeaderQuery = defineQuery(`
     homepageMainImageSingle,
   }`);
 
+export const homepageDescriptionQuery = defineQuery(`
+    *[_type == "homepage"][0]{
+      homepageDescription,
+    }`);
+
 export const homePageSeriesQuery = defineQuery(`
   *[_type == "homepage"][0]{
     homepageCategories[]->{
@@ -152,7 +157,8 @@ export const bioDavidQuery = defineQuery(
 );
 
 export const contactDavidQuery = defineQuery(
-  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{_id, contact, address}`,
+  `*[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{
+  _id, contact, address, contactIllustration, "imageDimensions":contactIllustration.asset->metadata.dimensions}`,
 );
 
 export const educationDavidQuery = defineQuery(

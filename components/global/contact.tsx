@@ -1,5 +1,5 @@
 import { sanityFetch } from "@/sanity/lib/live";
-import { contactDavidQuery } from "@/sanity/lib/queries";
+import { aboutDavidQuery, contactDavidQuery } from "@/sanity/lib/queries";
 import { notFound } from "next/navigation";
 import React from "react";
 import StickyTitle from "../shared/sticky-title";
@@ -7,16 +7,6 @@ import { PortableText } from "next-sanity";
 import AboutImage from "../pages/about/about-david-image";
 
 export default async function Contact() {
-  const { data: contactIllustration } = await sanityFetch({
-    query: `
-*[_type == "project" && projectTitle == "The Inventor"]
-   {_id,
-   projectImage,
-   "dimensions":projectImage.asset->metadata.dimensions 
-
-  }`,
-  });
-
   const { data: contactDavidData } = await sanityFetch({
     query: contactDavidQuery,
   });
@@ -25,11 +15,7 @@ export default async function Contact() {
     notFound();
   }
 
-  if (!contactIllustration) {
-    notFound();
-  }
-
-  const { projectImage, dimensions } = contactIllustration[0];
+  const { contactIllustration, imageDimensions } = contactDavidData;
 
   return (
     <>
@@ -61,7 +47,10 @@ export default async function Contact() {
             <h4>© 2025 David van Loon — website by MD</h4>
           </div>
           <div className="order-2 col-span-12 col-start-1 content-end items-end md:col-span-8 md:col-start-1 lg:col-span-6 lg:col-start-7 lg:row-span-2">
-            <AboutImage data={projectImage} dimensions={dimensions} />
+            <AboutImage
+              data={contactIllustration}
+              dimensions={imageDimensions}
+            />
           </div>
         </div>
       </div>
