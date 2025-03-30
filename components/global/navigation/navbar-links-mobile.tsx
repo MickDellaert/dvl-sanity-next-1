@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { resolveHref } from "@/sanity/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 type MenuItem = {
   _type: "homepage" | "page";
@@ -12,7 +13,6 @@ type MenuItem = {
 
 type NavProps = {
   menuItems: MenuItem[] | null;
-  pathname: string;
   openMenu: boolean;
   onRouteCheckAction: (href: string) => void;
 };
@@ -27,9 +27,15 @@ const navItems = [
 export default function NavbarLinksMobile({
   menuItems,
   openMenu,
-  pathname,
   onRouteCheckAction,
 }: NavProps) {
+  const useFirstPathSegment = () => {
+    const pathname = usePathname();
+    const firstPathSegment = pathname.split("/").filter(Boolean)[0];
+    return firstPathSegment ? `/${firstPathSegment}` : "/";
+  };
+
+  const firstPathSegment = useFirstPathSegment();
   return (
     <AnimatePresence>
       {openMenu && (
@@ -56,7 +62,7 @@ export default function NavbarLinksMobile({
 
               return (
                 <Link
-                  className={`${pathname === href || pathname.includes(href) ? "text-gray-500" : ""} 
+                  className={`${firstPathSegment === href ? "text-gray-500" : ""} 
             hover:text-black`}
                   key={setting.title}
                   href={href}

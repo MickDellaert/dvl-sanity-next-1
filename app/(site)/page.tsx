@@ -1,5 +1,6 @@
 import HomePage from "@/components/pages/homepage/homepage";
 import HomepageExhibitions from "@/components/pages/homepage/homepage-exhibitions";
+import HomepageExhibitionsNew from "@/components/pages/homepage/homepage-exhibitions-new";
 import HomepageHeaderSection from "@/components/pages/homepage/homepage-header-section";
 import HomePageSeries from "@/components/pages/homepage/homepage-series";
 
@@ -9,7 +10,7 @@ export default async function Home() {
       {/* <HomePageHeaderImage /> */}
       <HomepageHeaderSection />
       <HomePageSeries />
-      <HomepageExhibitions />
+      <HomepageExhibitionsNew />
     </>
   );
 }
