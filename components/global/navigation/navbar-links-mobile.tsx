@@ -1,16 +1,28 @@
 "use client";
 
-import { MenuItem } from "@/sanity/types";
 import Link from "next/link";
 import { resolveHref } from "@/sanity/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 
+type MenuItem = {
+  _type: "homepage" | "page";
+  slug: string | null;
+  title: string | null;
+};
+
 type NavProps = {
-  menuItems: MenuItem[];
+  menuItems: MenuItem[] | null;
   pathname: string;
   openMenu: boolean;
   onRouteCheckAction: (href: string) => void;
 };
+
+const navItems = [
+  { title: "home", slug: "/", _type: "page" },
+  { title: "series", slug: "series", _type: "page" },
+  { title: "gallery", slug: "gallery", _type: "page" },
+  { title: "about", slug: "about", _type: "page" },
+];
 
 export default function NavbarLinksMobile({
   menuItems,
@@ -33,8 +45,10 @@ export default function NavbarLinksMobile({
             className="relative mt-40 flex flex-col gap-y-3 pt-8 text-3xl
         before:absolute before:left-0 before:top-0 before:h-[4px] before:w-16 before:bg-black before:content-['']"
           >
-            {menuItems.map((setting) => {
-              const href = resolveHref(setting._type, setting.slug);
+            {menuItems?.map((setting) => {
+              const href = setting.slug
+                ? resolveHref(setting._type, setting.slug)
+                : null;
 
               if (!href) {
                 return null;

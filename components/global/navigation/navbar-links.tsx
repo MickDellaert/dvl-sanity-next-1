@@ -1,17 +1,23 @@
 "use client";
 
-import { MenuItem } from "@/sanity/types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { resolveHref } from "@/sanity/lib/utils";
 
+type MenuItem = {
+  _type: "homepage" | "page";
+  slug: string | null;
+  title: string | null;
+};
+
 type NavProps = {
-  menuItems: MenuItem[];
+  menuItems: MenuItem[] | null;
 };
 
 export default function NavbarLinks({ menuItems }: NavProps) {
   const pathname = usePathname();
   const navItems = [
+    { title: "home", slug: "/", _type: "page" },
     { title: "series", slug: "series", _type: "page" },
     { title: "gallery", slug: "gallery", _type: "page" },
     { title: "about", slug: "about", _type: "page" },
@@ -23,8 +29,10 @@ export default function NavbarLinks({ menuItems }: NavProps) {
         // className={`flex gap-8 text-lg font-medium uppercase tracking-widest`}
         className={`flex gap-8 text-xl font-medium`}
       >
-        {navItems.map((setting) => {
-          const href = resolveHref(setting._type, setting.slug);
+        {menuItems?.map((setting) => {
+          const href = setting.slug
+            ? resolveHref(setting._type, setting.slug)
+            : null;
 
           if (!href) {
             return null;
@@ -34,7 +42,7 @@ export default function NavbarLinks({ menuItems }: NavProps) {
             <Link
               // className={`${pathname === href || pathname.includes(href) ? "bg-white underline decoration-2 underline-offset-8 mix-blend-difference invert" : ""}
               // decoration-2 underline-offset-8 hover:bg-white hover:underline hover:mix-blend-difference hover:invert`}
-              className={`${pathname === href || pathname.includes(href) ? "text-gray-500" : ""} 
+              className={`${pathname === href ? "text-gray-500" : ""} 
                hover:text-black`}
               key={setting.title}
               href={href}

@@ -1,6 +1,6 @@
 "use client";
 
-import { MenuItem } from "@/sanity/types";
+// import { MenuItem } from "@/sanity/types";
 import NavbarLogo from "./navbar-logo";
 // import NavMobile from "./navbar-mobile";
 import NavbarLinks from "./navbar-links";
@@ -9,9 +9,15 @@ import NavbarHamburger from "./navbar-hamburger";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
+type MenuItem = {
+  _type: "homepage" | "page";
+  slug: string | null;
+  title: string | null;
+};
+
 type NavProps = {
-  menuItems: MenuItem[];
-  homepageDescription: string;
+  menuItems: MenuItem[] | null;
+  homepageDescription: string | null;
 };
 
 export default function NavbarContainer({
