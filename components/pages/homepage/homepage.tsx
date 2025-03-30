@@ -1,4 +1,5 @@
 import HomepageExhibitions from "./homepage-exhibitions";
+import HomepageExhibitionsNew from "./homepage-exhibitions-new";
 import HomepageHeaderSection from "./homepage-header-section";
 import HomePageSeries from "./homepage-series";
 
@@ -7,7 +8,7 @@ export default async function HomePage() {
     <>
       <HomepageHeaderSection />
       <HomePageSeries />
-      <HomepageExhibitions />
+      <HomepageExhibitionsNew />
     </>
   );
 }

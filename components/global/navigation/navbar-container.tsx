@@ -47,6 +47,7 @@ export default function NavbarContainer({
   }, [pathname]);
 
   if (!hasMounted) return null;
+
   return (
     <>
       <div
@@ -68,7 +69,6 @@ export default function NavbarContainer({
           <NavbarHamburger onClick={toggleMenu} openMenu={openMenu} />
           <NavbarLinksMobile
             openMenu={openMenu}
-            pathname={pathname}
             onRouteCheckAction={onRouteCheck}
             menuItems={menuItems}
           />
