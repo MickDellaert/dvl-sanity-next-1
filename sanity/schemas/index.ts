@@ -1,15 +1,9 @@
 import { type SchemaTypeDefinition } from "sanity";
-import homepage from "./singletons/homepage-schema";
-import project from "./documents/project-schema";
-import category from "./documents/category-schema";
-import page from "./documents/page-schema";
-import settings from "./singletons/settings-schema";
-// import person from "./documents/person-schema";
-import contact from "./documents/contact-schema";
-import aboutpage from "./documents/aboutpage-schema";
-import contactObject from "./documents/contact-schema-object";
-import singletonTest from "./singletons/singletontest-schema";
-import testSchema from "./singletons/test";
+import homepage from "./singletons/homepageType";
+import project from "./documents/projectType";
+import category from "./documents/categoryType";
+import page from "./documents/pageType";
+import settings from "./singletons/settingsType";
 import { addressObject } from "./objects/addressObject";
 import { personType } from "./documents/personType";
 import { contactObjectNew } from "./objects/contactObject";
@@ -27,11 +21,6 @@ export const schemaTypes: { types: SchemaTypeDefinition[] } = {
     category,
     page,
     settings,
-    // person,
-    contact,
-    aboutpage,
-    contactObject,
-    singletonTest,
     personType,
     addressObject,
     contactObjectNew,

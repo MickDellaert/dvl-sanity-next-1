@@ -42,4 +42,6 @@ app/(site)/lightgallery
 app/(site)/backup
 components/unused
 backup
+sanity/schemas/documents/notused
+
 
