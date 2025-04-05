@@ -2,7 +2,7 @@ import {
   defineLocations,
   PresentationPluginOptions,
 } from "sanity/presentation";
-import project from "../schemas/documents/project-schema";
+import project from "../schemas/documents/projectType";
 
 export const resolve: PresentationPluginOptions["resolve"] = {
   locations: {
