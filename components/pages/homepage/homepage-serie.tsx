@@ -46,7 +46,7 @@ export default function HomepageSerie({
   return (
     <div
       className="col-span-12 flex justify-center md:col-span-5 md:col-start-2 md:block md:last:col-span-6 
-    md:last:col-start-4 md:[&:nth-child(4n+2)]:col-span-3 md:[&:nth-child(4n+2)]:col-start-9 md:[&:nth-child(4n+3)]:col-span-5 md:[&:nth-child(4n+3)]:col-start-1
+    md:last:col-start-4 md:[&:nth-child(4n+2)]:col-span-4 md:[&:nth-child(4n+2)]:col-start-9 md:[&:nth-child(4n+3)]:col-span-5 md:[&:nth-child(4n+3)]:col-start-1
     md:[&:nth-child(4n+4)]:col-span-5 md:[&:nth-child(4n+4)]:col-start-8"
     >
       <Link className="" href={`series/${category.slug}`}>

@@ -120,15 +120,10 @@ export const structure: StructureResolver = (S) =>
           S.list()
             .title("3 Art Park Content")
             .items([
-              S.listItem()
-                .title("3 Art Park page")
-                .id("3artpark")
-                .child(
-                  S.document()
-                    .title("3ArtPark")
-                    .schemaType("homepage")
-                    .documentId("52195575-f6eb-4dda-b2dd-77162a618ec3"),
-                ),
+              S.listItem().title("3 Art Park page").id("3artpark").child(
+                S.document().title("3ArtPark").schemaType("threeArtPark"),
+                // .documentId("52195575-f6eb-4dda-b2dd-77162a618ec3"),
+              ),
               S.divider(),
               S.documentTypeListItem("project")
                 .title("3 Art Park Artworks")
