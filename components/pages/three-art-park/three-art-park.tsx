@@ -1,7 +1,99 @@
-import React from 'react'
+import SanityImage from "@/components/shared/sanity-image";
+import StickyTitle from "@/components/shared/sticky-title";
+import { sanityFetch } from "@/sanity/lib/live";
+import { threeArtParkQuery } from "@/sanity/lib/queries";
+import { PortableText } from "next-sanity";
+import { notFound } from "next/navigation";
+import ThreeArtParkExpo from "./three-art-park-expo";
 
-export default function ThreeArtPark() {
+const getColSpan = (i: number) => {
+  if (i === 0) return "col-span-3 col-start-10 row-span-2";
+  if (i === 1) return "col-span-7 col-start-1 row-span-2";
+  if (i === 2) return "col-span-3 col-start-9 row-span-2";
+  return "col-span-2";
+};
+
+export default async function ThreeArtPark() {
+  const { data: threeArtParkData } = await sanityFetch({
+    query: threeArtParkQuery,
+  });
+
+  if (!threeArtParkData) {
+    notFound();
+  }
+
+  console.log(threeArtParkData);
+
   return (
-    <div>ThreeArtPark</div>
-  )
+    <div className="relative min-h-screen ">
+      {/* <SanityImage
+        data={threeArtParkData.threeArtLogos[1]}
+        dimensions={{
+          _type: "sanity.imageDimensions",
+          width: 1200,
+          height: 1200,
+        }}
+      /> */}
+      <div className="mb-40">
+        <StickyTitle stickyTitle="3 ART PARK" />
+        <div className="mb-40 mt-24 grid auto-rows-auto grid-cols-12 gap-4 gap-y-32">
+          <div className="col-span-5 col-start-2 pt-8">
+            <p className="text-4xl leading-tight 2xl:text-[48px] 2xl:leading-tight">
+              {threeArtParkData.titleText}
+            </p>
+          </div>
+          {/* <div className="col-span-12 grid grid-cols-12 gap-12 [&>div:first-child]:col-span-4"> */}
+          {threeArtParkData.threeArtIllustrations?.map(
+            (threeArtIllustration, i: number) => {
+              const overlayImage =
+                i === 1 && threeArtParkData.threeArtLogos
+                  ? threeArtParkData.threeArtLogos[0]
+                  : null;
+
+              return (
+                <div key={i} className={`${getColSpan(i)} relative`}>
+                  <SanityImage
+                    data={threeArtIllustration}
+                    dimensions={threeArtIllustration.imageDimensions}
+                  />
+
+                  {overlayImage && (
+                    <div className="pointer-events-none absolute -right-28 -top-60 z-10 h-72 w-72">
+                      <SanityImage
+                        data={overlayImage}
+                        dimensions={{
+                          _type: "sanity.imageDimensions",
+                          width: 1200,
+                          height: 1200,
+                        }}
+                      />
+                    </div>
+                  )}
+                </div>
+              );
+            },
+          )}
+          {/* </div> */}
+          <div className="relative col-span-5 col-start-3 pt-20 text-2xl leading-snug 2xl:text-3xl 2xl:leading-snug">
+            {threeArtParkData.description && (
+              <PortableText value={threeArtParkData.description} />
+            )}
+            {threeArtParkData?.threeArtLogos?.[2] && (
+              <div className="pointer-events-none absolute -left-60 -top-20 z-10 h-52 w-52 -rotate-6">
+                <SanityImage
+                  data={threeArtParkData.threeArtLogos[2]}
+                  dimensions={{
+                    _type: "sanity.imageDimensions",
+                    width: 1200,
+                    height: 1200,
+                  }}
+                />
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+      <ThreeArtParkExpo />
+    </div>
+  );
 }
