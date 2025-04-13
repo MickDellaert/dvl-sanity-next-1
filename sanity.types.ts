@@ -39,28 +39,6 @@ export type SanityImageDimensions = {
   aspectRatio?: number;
 };
 
-export type SanityFileAsset = {
-  _id: string;
-  _type: "sanity.fileAsset";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  originalFilename?: string;
-  label?: string;
-  title?: string;
-  description?: string;
-  altText?: string;
-  sha1hash?: string;
-  extension?: string;
-  mimeType?: string;
-  size?: number;
-  assetId?: string;
-  uploadId?: string;
-  path?: string;
-  url?: string;
-  source?: SanityAssetSourceData;
-};
-
 export type Geopoint = {
   _type: "geopoint";
   lat?: number;
@@ -211,6 +189,37 @@ export type Exhibition = {
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "gallery";
   };
+  video?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
+    };
+    _type: "file";
+  };
+};
+
+export type SanityFileAsset = {
+  _id: string;
+  _type: "sanity.fileAsset";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  originalFilename?: string;
+  label?: string;
+  title?: string;
+  description?: string;
+  altText?: string;
+  sha1hash?: string;
+  extension?: string;
+  mimeType?: string;
+  size?: number;
+  assetId?: string;
+  uploadId?: string;
+  path?: string;
+  url?: string;
+  source?: SanityAssetSourceData;
 };
 
 export type Gallery = {
@@ -580,12 +589,12 @@ export type AllSanitySchemaTypes =
   | SanityImagePaletteSwatch
   | SanityImagePalette
   | SanityImageDimensions
-  | SanityFileAsset
   | Geopoint
   | ThreeArtPark
   | Education
   | DurationEducation
   | Exhibition
+  | SanityFileAsset
   | Gallery
   | Duration
   | AddressObject
@@ -1188,9 +1197,9 @@ export type ThreeArtParkQueryResult = {
   }> | null;
 } | null;
 // Variable: threeArtParkExhibitionQuery
-// Query: *[_type == "threeArtPark"][0]{          "homepageExpo": exhibitions[]->{          _id,          name,          poster,          "posterDimensions": poster.asset->metadata.dimensions,          description,          date,          gallery,          photos,          "images": photos[]{          asset,          "ref":asset._ref,          "imageDimensions":asset->metadata.dimensions          },          },        }
+// Query: *[_type == "threeArtPark"][0]{          "threeArtParkExpo": exhibitions[]->{          _id,          name,          poster,          "posterDimensions": poster.asset->metadata.dimensions,          description,          date,          gallery,          photos,          "images": photos[]{          asset,          "ref":asset._ref,          "imageDimensions":asset->metadata.dimensions          },          "video": video.asset->url,          },        }
 export type ThreeArtParkExhibitionQueryResult = {
-  homepageExpo: Array<{
+  threeArtParkExpo: Array<{
     _id: string;
     name: string | null;
     poster: {
@@ -1252,6 +1261,7 @@ export type ThreeArtParkExhibitionQueryResult = {
       ref: string | null;
       imageDimensions: SanityImageDimensions | null;
     }> | null;
+    video: string | null;
   }> | null;
 } | null;
 // Variable: pagesQuery
@@ -1382,7 +1392,7 @@ declare module "@sanity/client" {
     '*[_type == "exhibition"][]{_id, date, name, gallery->{name, address}, tagline, description}': ExhibitionWithoutFilterQueryResult;
     '\n  *[_type == "settings"][0]{\n    menuItems[]->{_type, "slug": slug.current, title}\n  }': SettingsQueryResult;
     '\n  *[_type == "threeArtPark"][0]{\n      title, \n      titleText, \n      description, \n      threeArtIllustrations[]{\n      asset,\n      "ref":asset._ref,\n      "imageDimensions":asset->metadata.dimensions\n      },\n      threeArtLogos[]{\n      asset,\n      "ref":asset._ref,\n      "imageDimensions":asset->metadata.dimensions\n      }\n      }': ThreeArtParkQueryResult;
-    '\n        *[_type == "threeArtPark"][0]{\n          "homepageExpo": exhibitions[]->{\n          _id,\n          name,\n          poster,\n          "posterDimensions": poster.asset->metadata.dimensions,\n          description,\n          date,\n          gallery,\n          photos,\n          "images": photos[]{\n          asset,\n          "ref":asset._ref,\n          "imageDimensions":asset->metadata.dimensions\n          },\n          },\n        }': ThreeArtParkExhibitionQueryResult;
+    '\n        *[_type == "threeArtPark"][0]{\n          "threeArtParkExpo": exhibitions[]->{\n          _id,\n          name,\n          poster,\n          "posterDimensions": poster.asset->metadata.dimensions,\n          description,\n          date,\n          gallery,\n          photos,\n          "images": photos[]{\n          asset,\n          "ref":asset._ref,\n          "imageDimensions":asset->metadata.dimensions\n          },\n          "video": video.asset->url,\n          },\n        }': ThreeArtParkExhibitionQueryResult;
     '\n*[_type == "page"]{\n  _id, \n  title, \n  "slug":slug.current, \n  content\n}': PagesQueryResult;
     '\n*[_type == "page" && slug.current == $slug][0]{\n  _id, \n  title, \n  "slug":slug.current, \n  content\n}': PageQueryResult;
     '\n  *[_type == "settingsTest"]{\n    menuItems[]->{\n      homepageTitle, title\n    }\n  }\n': TestQueryResult;

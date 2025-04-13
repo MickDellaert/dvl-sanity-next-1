@@ -18,7 +18,7 @@ export default function SeriesMasonry({
         spacing={{ xs: 0, lg: 10 }}
         sx={{
           "& > *": {
-            mb: { xs: 8, sm: 8 },
+            mb: { xs: 8, sm: 10 },
           },
           width: "auto",
           pt: 6,

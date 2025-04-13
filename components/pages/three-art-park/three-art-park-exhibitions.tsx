@@ -22,6 +22,8 @@ export default async function ThreeArtParkExhibitions() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { urlFor } = useImageUrlBuilder();
 
+  console.log(threeArtParkExpoData);
+
   const formatDate = (dateString: string | undefined) => {
     if (!dateString) return ""; // Handle empty or undefined dates
     const date = new Date(dateString);
@@ -32,29 +34,30 @@ export default async function ThreeArtParkExhibitions() {
     }).format(date);
   };
 
-  const { homepageExpo } = threeArtParkExpoData;
+  const { threeArtParkExpo } = threeArtParkExpoData;
 
   return (
     <section className="mt-28 md:mt-60">
       <StickyTitle stickyTitle="3 ART PARK Exhibition" />
-      <div className="relative grid grid-cols-12 gap-x-4 xl:gap-x-24">
-        {homepageExpo?.map((expo) => (
+      <div className="relative grid grid-cols-12 gap-x-4 xl:gap-x-4">
+        {threeArtParkExpo?.map((expo) => (
           <React.Fragment key={expo._id}>
             <div
               key={expo._id}
-              className="md:col-span- top-40 col-span-12 mb-8 flex flex-col gap-4 self-start md:sticky"
+              className="top-40 col-span-12 mb-8 flex flex-col gap-4 self-start md:sticky md:col-span-4"
             >
               <div className="flex w-fit flex-col">
                 {/* <h2 className="py-4 text-5xl">—</h2> */}
 
                 <h2
-                  className="relative mb-0 mt-8 flex flex-row
-                text-4xl before:absolute before:-top-8 before:left-0 before:h-1 before:w-12 before:bg-black before:content-[''] lg:mb-4 lg:text-5xl"
+                  className="relative mb-0 mt-8 flex flex-row text-4xl 
+                lg:text-4xl"
+                  // before:absolute before:-top-8 before:left-0 before:h-1 before:w-12 before:bg-black before:content-['']
                 >
                   {expo.name}
                 </h2>
               </div>
-              <div className="flex flex-row flex-wrap gap-4 text-2xl leading-4 lg:text-4xl lg:leading-6">
+              <div className="flex flex-row flex-wrap gap-4 text-2xl leading-4 lg:text-3xl lg:leading-6">
                 <h3>{formatDate(expo.date?.start)}</h3> <h3>—</h3>
                 <h3>{formatDate(expo.date?.end)}</h3>
               </div>
@@ -64,22 +67,37 @@ export default async function ThreeArtParkExhibitions() {
                 {/* <h2 className="text-5xl">—</h2> */}
               </div>
             </div>
-            <div className="col-span-12 ml-auto flex flex-col gap-7 md:col-span-6 md:col-start-7">
-              {expo.poster && (
-                <Image
-                  src={urlFor(expo.poster)
-                    .width(expo.posterDimensions?.width || 500)
-                    .height(expo.posterDimensions?.height || 500)
-                    .fit("crop")
-                    .url()}
-                  alt=""
-                  width={500}
-                  height={500}
-                  className="mb-16 self-start bg-stone-200"
-                />
-              )}
+            <div className="col-span-12 grid grid-cols-subgrid gap-4 md:col-span-7 md:col-start-6">
+              <div className="col-span-7 grid grid-cols-subgrid gap-12">
+                {expo.poster && (
+                  <Image
+                    src={urlFor(expo.poster)
+                      .width(expo.posterDimensions?.width || 500)
+                      .height(expo.posterDimensions?.height || 500)
+                      .fit("crop")
+                      .url()}
+                    alt=""
+                    width={500}
+                    height={500}
+                    className="col-span-3 mb-16 self-start bg-stone-200"
+                  />
+                )}
 
-              {expo.images?.map((image) => (
+                <video
+                  autoPlay
+                  controls
+                  muted
+                  loop
+                  playsInline
+                  width="100% "
+                  className="col-span-4"
+                >
+                  <source src={expo.video || undefined} type="video/mp4" />
+                  Je browser ondersteunt dit videotype niet.
+                </video>
+              </div>
+
+              {/* {expo.images?.map((image) => (
                 <div key={image.ref} className="self-end px-5 md:px-0">
                   <Image
                     src={
@@ -97,7 +115,7 @@ export default async function ThreeArtParkExhibitions() {
                     className=""
                   />
                 </div>
-              ))}
+              ))} */}
             </div>
           </React.Fragment>
         ))}

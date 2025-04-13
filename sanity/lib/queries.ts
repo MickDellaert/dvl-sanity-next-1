@@ -201,7 +201,7 @@ export const threeArtParkQuery = defineQuery(`
 
 export const threeArtParkExhibitionQuery = defineQuery(`
         *[_type == "threeArtPark"][0]{
-          "homepageExpo": exhibitions[]->{
+          "threeArtParkExpo": exhibitions[]->{
           _id,
           name,
           poster,
@@ -215,6 +215,7 @@ export const threeArtParkExhibitionQuery = defineQuery(`
           "ref":asset._ref,
           "imageDimensions":asset->metadata.dimensions
           },
+          "video": video.asset->url,
           },
         }`);
 
