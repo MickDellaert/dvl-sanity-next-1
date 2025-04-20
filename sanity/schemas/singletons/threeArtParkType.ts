@@ -29,7 +29,17 @@ export const threeArtParkType = defineType({
     }),
     defineField({
       name: "threeArtLogos",
-      title: "Logo's",
+      title: "Three Art Park Logo's",
+      type: "array",
+      of: [
+        defineArrayMember({
+          type: "image",
+        }),
+      ],
+    }),
+    defineField({
+      name: "threeArtSponsorLogos",
+      title: "Sponsor Logo's",
       type: "array",
       of: [
         defineArrayMember({

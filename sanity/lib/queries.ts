@@ -219,6 +219,15 @@ export const threeArtParkExhibitionQuery = defineQuery(`
           },
         }`);
 
+export const threeArtParkSponsorQuery = defineQuery(`
+  *[_type == "threeArtPark"][0]{
+    threeArtSponsorLogos[]{
+    asset,
+    "ref":asset._ref,
+    "imageDimensions":asset->metadata.dimensions
+    }
+  }`);
+
 export const pagesQuery = groq`
 *[_type == "page"]{
   _id, 

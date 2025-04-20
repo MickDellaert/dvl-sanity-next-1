@@ -22,9 +22,14 @@ type SanityImageProps = {
     _type?: "image";
   };
   dimensions: SanityImageDimensions | null;
+  className?: string;
 };
 
-export default function SanityImage({ data, dimensions }: SanityImageProps) {
+export default function SanityImage({
+  data,
+  dimensions,
+  className,
+}: SanityImageProps) {
   const { urlFor } = useImageUrlBuilder();
 
   const width = dimensions?.width ?? 1000;
@@ -38,7 +43,7 @@ export default function SanityImage({ data, dimensions }: SanityImageProps) {
       alt=""
       width={1000}
       height={1000}
-      className=""
+      className={className}
     />
   );
 }

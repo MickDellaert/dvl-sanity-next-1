@@ -96,6 +96,18 @@ export type ThreeArtPark = {
     _type: "image";
     _key: string;
   }>;
+  threeArtSponsorLogos?: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+    _key: string;
+  }>;
   exhibitions?: Array<{
     _ref: string;
     _type: "reference";
@@ -1264,6 +1276,20 @@ export type ThreeArtParkExhibitionQueryResult = {
     video: string | null;
   }> | null;
 } | null;
+// Variable: threeArtParkSponsorQuery
+// Query: *[_type == "threeArtPark"][0]{    threeArtSponsorLogos[]{    asset,    "ref":asset._ref,    "imageDimensions":asset->metadata.dimensions    }  }
+export type ThreeArtParkSponsorQueryResult = {
+  threeArtSponsorLogos: Array<{
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    } | null;
+    ref: string | null;
+    imageDimensions: SanityImageDimensions | null;
+  }> | null;
+} | null;
 // Variable: pagesQuery
 // Query: *[_type == "page"]{  _id,   title,   "slug":slug.current,   content}
 export type PagesQueryResult = Array<{
@@ -1393,6 +1419,7 @@ declare module "@sanity/client" {
     '\n  *[_type == "settings"][0]{\n    menuItems[]->{_type, "slug": slug.current, title}\n  }': SettingsQueryResult;
     '\n  *[_type == "threeArtPark"][0]{\n      title, \n      titleText, \n      description, \n      threeArtIllustrations[]{\n      asset,\n      "ref":asset._ref,\n      "imageDimensions":asset->metadata.dimensions\n      },\n      threeArtLogos[]{\n      asset,\n      "ref":asset._ref,\n      "imageDimensions":asset->metadata.dimensions\n      }\n      }': ThreeArtParkQueryResult;
     '\n        *[_type == "threeArtPark"][0]{\n          "threeArtParkExpo": exhibitions[]->{\n          _id,\n          name,\n          poster,\n          "posterDimensions": poster.asset->metadata.dimensions,\n          description,\n          date,\n          gallery,\n          photos,\n          "images": photos[]{\n          asset,\n          "ref":asset._ref,\n          "imageDimensions":asset->metadata.dimensions\n          },\n          "video": video.asset->url,\n          },\n        }': ThreeArtParkExhibitionQueryResult;
+    '\n  *[_type == "threeArtPark"][0]{\n    threeArtSponsorLogos[]{\n    asset,\n    "ref":asset._ref,\n    "imageDimensions":asset->metadata.dimensions\n    }\n  }': ThreeArtParkSponsorQueryResult;
     '\n*[_type == "page"]{\n  _id, \n  title, \n  "slug":slug.current, \n  content\n}': PagesQueryResult;
     '\n*[_type == "page" && slug.current == $slug][0]{\n  _id, \n  title, \n  "slug":slug.current, \n  content\n}': PageQueryResult;
     '\n  *[_type == "settingsTest"]{\n    menuItems[]->{\n      homepageTitle, title\n    }\n  }\n': TestQueryResult;

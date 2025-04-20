@@ -10,6 +10,7 @@ import {
   threeArtParkExhibitionQuery,
 } from "@/sanity/lib/queries";
 import { notFound } from "next/navigation";
+import SanityImage from "@/components/shared/sanity-image";
 
 export default async function ThreeArtParkExhibitions() {
   const { data: threeArtParkExpoData } = await sanityFetch({
@@ -50,8 +51,7 @@ export default async function ThreeArtParkExhibitions() {
                 {/* <h2 className="py-4 text-5xl">—</h2> */}
 
                 <h2
-                  className="relative mb-0 mt-8 flex flex-row text-4xl 
-                lg:text-4xl"
+                  className="relative mb-0 mt-8 flex flex-row text-4xl lg:text-4xl"
                   // before:absolute before:-top-8 before:left-0 before:h-1 before:w-12 before:bg-black before:content-['']
                 >
                   {expo.name}
@@ -62,13 +62,13 @@ export default async function ThreeArtParkExhibitions() {
                 <h3>{formatDate(expo.date?.end)}</h3>
               </div>
               {/* <h2 className="text-5xl">—</h2> */}
-              <div className="mt-0 text-lg leading-snug lg:mt-4 lg:text-2xl lg:leading-9">
+              <div className="mt-0 text-lg leading-snug lg:mt-4 lg:text-xl lg:leading-9">
                 {expo.description && <PortableText value={expo.description} />}
                 {/* <h2 className="text-5xl">—</h2> */}
               </div>
             </div>
-            <div className="col-span-12 grid grid-cols-subgrid gap-4 md:col-span-7 md:col-start-6">
-              <div className="col-span-7 grid grid-cols-subgrid gap-12">
+            <div className="col-span-12 grid grid-cols-subgrid gap-4 md:col-span-8 md:col-start-5">
+              <div className="col-span-8 grid grid-cols-subgrid gap-x-12 gap-y-20">
                 {expo.poster && (
                   <Image
                     src={urlFor(expo.poster)
@@ -79,7 +79,7 @@ export default async function ThreeArtParkExhibitions() {
                     alt=""
                     width={500}
                     height={500}
-                    className="col-span-3 mb-16 self-start bg-stone-200"
+                    className="col-span-3 col-start-2 mb-16 self-start bg-stone-200 drop-shadow-2xl"
                   />
                 )}
 
@@ -90,11 +90,26 @@ export default async function ThreeArtParkExhibitions() {
                   loop
                   playsInline
                   width="100% "
-                  className="col-span-4"
+                  className="col-span-4 col-start-5"
                 >
                   <source src={expo.video || undefined} type="video/mp4" />
                   Je browser ondersteunt dit videotype niet.
                 </video>
+                {expo.images?.map((expoImage) => (
+                  <SanityImage
+                    key={expoImage.ref}
+                    data={expoImage}
+                    dimensions={expoImage.imageDimensions}
+                    className={`col-span-4 h-full w-full object-cover ${
+                      expoImage.imageDimensions?.height &&
+                      expoImage.imageDimensions?.width &&
+                      expoImage.imageDimensions.height >
+                        expoImage.imageDimensions.width
+                        ? "row-span-2"
+                        : ""
+                    }`}
+                  />
+                ))}
               </div>
 
               {/* {expo.images?.map((image) => (
