@@ -5,6 +5,7 @@ import { sanityFetch } from "@/sanity/lib/live";
 import { bioDavidQuery } from "@/sanity/lib/queries";
 import { notFound } from "next/navigation";
 import AboutDavidImage from "./about-david-image";
+import SanityImage from "@/components/shared/sanity-image";
 
 export default async function AboutDavidBio() {
   const { data: bioDavidData } = await sanityFetch({ query: bioDavidQuery });
@@ -22,8 +23,8 @@ export default async function AboutDavidBio() {
         className="relative order-last col-span-12 col-start-1 mt-16 self-start 
       lg:sticky lg:top-32 lg:order-2 lg:col-span-4 lg:col-start-1 2xl:col-span-3"
       >
-        {portrait && (
-          <AboutDavidImage data={portrait} dimensions={dimensions} />
+        {portrait?.asset && (
+          <SanityImage data={portrait} dimensions={dimensions} />
         )}
       </div>
       <div

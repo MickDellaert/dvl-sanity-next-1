@@ -70,6 +70,14 @@ export const exhibitionType = defineType({
       type: "reference",
       to: { type: "gallery" },
     }),
+    defineField({
+      name: "video",
+      title: "Video",
+      type: "file",
+      options: {
+        accept: "video/*",
+      },
+    }),
     // defineField({
     //   type: "addressObject",
     //   name: "address",

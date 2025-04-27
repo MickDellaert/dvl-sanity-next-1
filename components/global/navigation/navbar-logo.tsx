@@ -14,7 +14,6 @@ export default function NavbarLogo({
 }: {
   homepageDescription: string | null;
 }) {
-  console.log(homepageDescription);
   const path = usePathname();
 
   const ref = useRef(null);

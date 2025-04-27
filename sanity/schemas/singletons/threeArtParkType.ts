@@ -5,6 +5,7 @@ export const threeArtParkType = defineType({
   title: "3 Art Park",
   type: "document",
   fields: [
+    defineField({ name: "title", title: "title", type: "text" }),
     defineField({
       name: "titleText",
       title: "Title Text",
@@ -28,13 +29,29 @@ export const threeArtParkType = defineType({
     }),
     defineField({
       name: "threeArtLogos",
-      title: "Logo's",
+      title: "Three Art Park Logo's",
       type: "array",
       of: [
         defineArrayMember({
           type: "image",
         }),
       ],
+    }),
+    defineField({
+      name: "threeArtSponsorLogos",
+      title: "Sponsor Logo's",
+      type: "array",
+      of: [
+        defineArrayMember({
+          type: "image",
+        }),
+      ],
+    }),
+    defineField({
+      name: "exhibitions",
+      title: "Home Page Exhibitions",
+      type: "array",
+      of: [{ type: "reference", to: { type: "exhibition" } }],
     }),
   ],
 });

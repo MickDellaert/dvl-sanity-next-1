@@ -1,4 +1,5 @@
 import { groq, defineQuery } from "next-sanity";
+import { defineEnableDraftMode } from "next-sanity/draft-mode";
 
 export const homePageQuery = defineQuery(`
 *[_type == "homepage"][0]{
@@ -176,6 +177,57 @@ export const exhibitionWithoutFilterQuery = defineQuery(
   `*[_type == "exhibition"][]{_id, date, name, gallery->{name, address}, tagline, description}`,
 );
 
+export const settingsQuery = defineQuery(`
+  *[_type == "settings"][0]{
+    menuItems[]->{_type, "slug": slug.current, title}
+  }`);
+
+export const threeArtParkQuery = defineQuery(`
+  *[_type == "threeArtPark"][0]{
+      title, 
+      titleText, 
+      description, 
+      threeArtIllustrations[]{
+      asset,
+      "ref":asset._ref,
+      "imageDimensions":asset->metadata.dimensions
+      },
+      threeArtLogos[]{
+      asset,
+      "ref":asset._ref,
+      "imageDimensions":asset->metadata.dimensions
+      }
+      }`);
+
+export const threeArtParkExhibitionQuery = defineQuery(`
+        *[_type == "threeArtPark"][0]{
+          "threeArtParkExpo": exhibitions[]->{
+          _id,
+          name,
+          poster,
+          "posterDimensions": poster.asset->metadata.dimensions,
+          description,
+          date,
+          gallery,
+          photos,
+          "images": photos[]{
+          asset,
+          "ref":asset._ref,
+          "imageDimensions":asset->metadata.dimensions
+          },
+          "video": video.asset->url,
+          },
+        }`);
+
+export const threeArtParkSponsorQuery = defineQuery(`
+  *[_type == "threeArtPark"][0]{
+    threeArtSponsorLogos[]{
+    asset,
+    "ref":asset._ref,
+    "imageDimensions":asset->metadata.dimensions
+    }
+  }`);
+
 export const pagesQuery = groq`
 *[_type == "page"]{
   _id, 
@@ -191,11 +243,6 @@ export const pageQuery = groq`
   "slug":slug.current, 
   content
 }`;
-
-export const settingsQuery = defineQuery(`
-*[_type == "settings"][0]{
-  menuItems[]->{_type, "slug": slug.current, title}
-}`);
 
 export const testQuery = groq`
   *[_type == "settingsTest"]{
