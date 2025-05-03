@@ -34,7 +34,12 @@ export default async function Contact() {
           <div className="order-1 col-span-12 col-start-1 lg:col-span-6">
             <div className="relative flex h-full flex-col justify-between pt-8 before:absolute before:left-0 before:top-0 before:h-[4px] before:w-16 before:bg-black before:content-['']">
               <div className="relative flex flex-col gap-y-4">
-                <h3 className="">{contactDavidData.contact?.email}</h3>
+                <a
+                  href={`mailto:${contactDavidData.contact?.email}`}
+                  className=""
+                >
+                  {contactDavidData.contact?.email}
+                </a>
                 <h3 className="">{contactDavidData.contact?.mobileNumber}</h3>
                 {/* {contactDavidData.address && (
                   <h3 className="leading-tight">
@@ -48,17 +53,32 @@ export default async function Contact() {
                   <Link
                     href={"https://www.instagram.com/osloco/"}
                     target="_blank"
+                    className="flex gap-2"
                   >
-                    <SiInstagram />
+                    {/* <SiInstagram /> */}
+                    Instagram
+                    <svg
+                      className="h-auto w-7"
+                      // width="9"
+                      // height="8"
+                      viewBox="0 0 9 8"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M8.49966 1.01851C8.50988 0.742553 8.29446 0.510563 8.01851 0.500342L3.52159 0.33379C3.24564 0.32357 3.01365 0.538989 3.00343 0.814942C2.99321 1.09089 3.20862 1.32288 3.48458 1.33311L7.48184 1.48115L7.33379 5.47841C7.32357 5.75436 7.53899 5.98635 7.81494 5.99657C8.09089 6.0068 8.32288 5.79138 8.3331 5.51542L8.49966 1.01851ZM1.34023 7.8664L8.34023 1.3664L7.65977 0.633603L0.659774 7.1336L1.34023 7.8664Z"
+                        fill="black"
+                      ></path>
+                    </svg>
                   </Link>
-                  <Link
+                  {/* <Link
                     href={
                       "https://www.facebook.com/profile.php?id=61572319984075&locale=nl_BE"
                     }
                     target="_blank"
                   >
                     <SiFacebook />
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
             </div>

@@ -49,7 +49,7 @@ export const threeArtParkType = defineType({
     }),
     defineField({
       name: "exhibitions",
-      title: "Home Page Exhibitions",
+      title: "Three Art Park Exhibitions",
       type: "array",
       of: [{ type: "reference", to: { type: "exhibition" } }],
     }),

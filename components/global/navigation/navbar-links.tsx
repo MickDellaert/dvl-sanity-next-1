@@ -33,7 +33,7 @@ export default function NavbarLinks({ menuItems }: NavProps) {
     <>
       <div
         // className={`flex gap-8 text-lg font-medium uppercase tracking-widest`}
-        className={`flex gap-8 text-xl font-medium`}
+        className={`flex gap-8 whitespace-nowrap text-xl font-medium`}
       >
         {menuItems?.map((setting) => {
           const href = setting.slug
