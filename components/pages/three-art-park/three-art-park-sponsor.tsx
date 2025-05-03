@@ -13,9 +13,8 @@ export default async function ThreeArtParkSponsor() {
     notFound();
   }
 
-  console.log(threeArtSponsors);
   return (
-    <div className="flex h-8 items-center gap-8 xl:h-16">
+    <div className="flex h-8 items-center gap-2 md:gap-8 xl:h-16">
       {threeArtSponsors?.threeArtSponsorLogos?.map((threeArtSponsor, i) => (
         <SanityImage
           key={i}

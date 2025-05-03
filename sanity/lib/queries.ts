@@ -187,6 +187,22 @@ export const threeArtParkQuery = defineQuery(`
       title, 
       titleText, 
       description, 
+       "threeArtParkExpo": exhibitions[]->{
+          _id,
+          name,
+          poster,
+          "posterDimensions": poster.asset->metadata.dimensions,
+          description,
+          date,
+          gallery,
+          photos,
+          "images": photos[]{
+          asset,
+          "ref":asset._ref,
+          "imageDimensions":asset->metadata.dimensions
+          },
+          "video": video.asset->url,
+          },
       threeArtIllustrations[]{
       asset,
       "ref":asset._ref,
