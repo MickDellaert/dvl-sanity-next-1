@@ -22,7 +22,7 @@ export default function ThreeArtParkExhibitions({
   threeArtParkData: ThreeArtParkQueryResult;
 }) {
   return (
-    <section className="mt-28 md:mt-60">
+    <section className="mt-24 md:mt-60">
       <StickyTitle stickyTitle="3AP Past Exhibition" />
       <div className="relative grid grid-cols-12 gap-x-4 xl:gap-x-4">
         {threeArtParkData?.threeArtParkExpo?.map((expo) => (

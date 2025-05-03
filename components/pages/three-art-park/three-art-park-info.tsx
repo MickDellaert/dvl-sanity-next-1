@@ -8,9 +8,9 @@ const getColSpan = (i: number) => {
   if (i === 0)
     return "md:order-2 col-span-5 col-start-1 mt-12 md:mt-0 order-3 row-span-2 md:col-span-3 md:col-start-10 md:row-span-2";
   if (i === 1)
-    return "col-span-12 col-start-1 order-2 md:order-3 md:col-span-7 md:col-start-1 md:row-span-2 mt-12";
+    return "col-span-11 col-start-1 order-2 md:order-3 md:col-span-7 md:col-start-1 md:row-span-2 mt-12";
   if (i === 2)
-    return "md:col-span-3 col-span-5 col-start-8 order-4 md:order-4 md:col-start-9 md:row-span-2";
+    return "md:col-span-3 col-span-6 col-start-7 order-4 md:order-4 md:col-start-9 md:row-span-2";
   if (i === 3)
     return "md:col-span-4 md:order-5 col-span-5 col-start-7 order-5 md:col-start-2 md:row-span-3 md:mt-20 ";
   return "col-span-2";
@@ -22,9 +22,9 @@ export default async function ThreeArtParkInfo({
   threeArtParkData: ThreeArtParkQueryResult;
 }) {
   return (
-    <div className="mb-40">
+    <div className="">
       <StickyTitle stickyTitle="3 ART PARK" />
-      <div className="mb-40 mt-12 grid auto-rows-auto grid-cols-12 gap-2 gap-y-8 md:mt-24 md:gap-y-20 xl:gap-4 xl:gap-y-40">
+      <div className="mb-28 mt-12 grid auto-rows-auto grid-cols-12 gap-1 gap-y-8 md:mb-40 md:mt-24 md:gap-y-20 xl:gap-4 xl:gap-y-40">
         <div className="relative col-span-12 col-start-1 md:order-1 md:col-span-5 md:col-start-4 md:pt-8">
           <p
             lang="nl"
@@ -79,13 +79,13 @@ export default async function ThreeArtParkInfo({
         {/* </div> */}
         <div
           lang="nl"
-          className="prose relative order-6 col-span-11 col-start-2 mt-12 hyphens-auto text-lg leading-normal text-black md:order-6 md:col-span-5 md:col-start-7 md:-mt-12 xl:ml-12 xl:pr-8 2xl:text-2xl 2xl:leading-normal"
+          className="prose relative order-6 col-span-12 col-start-1 mt-12 hyphens-auto text-lg leading-normal text-black md:order-6 md:col-span-5 md:col-start-7 md:-mt-12 xl:ml-12 xl:pr-8 2xl:text-2xl 2xl:leading-normal"
         >
           {threeArtParkData?.description && (
             <PortableText value={threeArtParkData.description} />
           )}
           {threeArtParkData?.threeArtLogos?.[2] && (
-            <div className="pointer-events-none absolute -left-4 -top-56 z-10 h-40 w-40 -rotate-6 md:-left-64 md:-top-72 md:h-60 md:w-60">
+            <div className="pointer-events-none absolute -left-0 -top-56 z-10 h-40 w-40 -rotate-6 md:-left-64 md:-top-72 md:h-60 md:w-60">
               <SanityImage
                 data={threeArtParkData.threeArtLogos[2]}
                 dimensions={{
@@ -96,7 +96,7 @@ export default async function ThreeArtParkInfo({
               />
             </div>
           )}
-          <div className="mt-20">
+          <div className="mt-12 md:mt-20">
             <p className="mb-4 text-sm md:text-lg">In samenwerking met:</p>
             <ThreeArtParkSponsor />
           </div>
