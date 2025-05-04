@@ -53,7 +53,10 @@ export default function NavbarContainer({
       <div
         className={`items-top fixed left-0 top-0 z-50 flex h-20 w-full flex-row justify-between px-x pt-6  md:px-8 md:pt-8 ${openMenu ? "" : "mix-blend-difference invert"}`}
       >
-        <NavbarLogo homepageDescription={homepageDescription} />
+        <NavbarLogo
+          homepageDescription={homepageDescription}
+          openMenu={openMenu}
+        />
         <div className="hidden lg:block">
           <NavbarLinks menuItems={menuItems} />
         </div>

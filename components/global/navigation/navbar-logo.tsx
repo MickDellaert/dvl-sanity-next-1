@@ -11,8 +11,10 @@ import { useEffect, useState } from "react";
 
 export default function NavbarLogo({
   homepageDescription,
+  openMenu,
 }: {
   homepageDescription: string | null;
+  openMenu: boolean;
 }) {
   const path = usePathname();
 
@@ -73,7 +75,7 @@ export default function NavbarLogo({
         David Van Loon
       </Link> */}
         <Link href="/" className="relative z-[1000] ">
-          {path === "/" ? (
+          {/* {path === "/" ? (
             <motion.h1
               initial={{ fontSize: initialFontSize }}
               style={{ fontSize: fontSize }}
@@ -89,7 +91,22 @@ export default function NavbarLogo({
             >
               David Van Loon
             </motion.h1>
-          )}
+          )} */}
+
+          <motion.h1
+            initial={{ fontSize: initialFontSize }}
+            animate={path === "/" ? undefined : { fontSize: targetFontSize }}
+            style={path === "/" ? { fontSize: fontSize } : undefined}
+            className="z-50 inline align-top"
+          >
+            {openMenu
+              ? "David van Loon"
+              : path === "/"
+                ? "David van Loon"
+                : path === "/3-art-park"
+                  ? "3 Art Park"
+                  : "David Van Loon"}
+          </motion.h1>
         </Link>
         {path === "/" && (
           <motion.h1
