@@ -23,7 +23,7 @@ export default function ThreeArtParkExhibitions({
 }) {
   return (
     <section className="mt-24 md:mt-60">
-      <StickyTitle stickyTitle="3AP Past Exhibition" />
+      <StickyTitle stickyTitle="Recent Exhibition" />
       <div className="relative grid grid-cols-12 gap-x-4 xl:gap-x-4">
         {threeArtParkData?.threeArtParkExpo?.map((expo) => (
           <React.Fragment key={expo._id}>

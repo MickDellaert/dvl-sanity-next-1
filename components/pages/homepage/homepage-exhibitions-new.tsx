@@ -35,7 +35,7 @@ export default async function HomepageExhibitionsNew() {
   return (
     <section className="mt-28 md:mt-60">
       <StickyTitle stickyTitle="Exhibition" />
-      <div className="relative flex flex-col gap-y-4 md:gap-y-12 xl:gap-y-40">
+      <div className="relative flex flex-col gap-y-20 md:gap-y-12 xl:gap-y-40">
         {homepageExpo?.map((expo) => (
           <section key={expo._id} className="grid grid-cols-12">
             <div
