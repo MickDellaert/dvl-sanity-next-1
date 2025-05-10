@@ -1,27 +1,37 @@
 import SanityImage from "@/components/shared/sanity-image";
-import { sanityFetch } from "@/sanity/lib/live";
-import { threeArtParkSponsorQuery } from "@/sanity/lib/queries";
-import { notFound } from "next/navigation";
+import {
+  internalGroqTypeReferenceTo,
+  SanityImageDimensions,
+} from "@/sanity.types";
 import React from "react";
 
-export default async function ThreeArtParkSponsor() {
-  const { data: threeArtSponsors } = await sanityFetch({
-    query: threeArtParkSponsorQuery,
-  });
+type threeArtSponsorLogos = Array<{
+  asset: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+  } | null;
+  ref: string | null;
+  imageDimensions: SanityImageDimensions | null;
+}> | null;
 
-  if (!threeArtSponsors) {
-    notFound();
-  }
-
+export default function ThreeArtParkSponsor({
+  threeArtSponsorLogos,
+}: {
+  threeArtSponsorLogos: threeArtSponsorLogos;
+}) {
   return (
     <div className="flex h-8 items-center gap-2 md:gap-8 xl:h-16">
-      {threeArtSponsors?.threeArtSponsorLogos?.map((threeArtSponsor, i) => (
-        <SanityImage
-          key={i}
-          data={threeArtSponsor}
-          dimensions={threeArtSponsor.imageDimensions}
-          className="h-full w-auto"
-        />
+      {threeArtSponsorLogos?.map((threeArtSponsor, i) => (
+        <>
+          <SanityImage
+            key={i}
+            data={threeArtSponsor}
+            dimensions={threeArtSponsor.imageDimensions}
+            className="h-full w-auto"
+          />
+        </>
       ))}
     </div>
   );

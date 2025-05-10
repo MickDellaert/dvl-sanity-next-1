@@ -13,6 +13,7 @@ import PhotoSwipeDynamicCaption from "photoswipe-dynamic-caption-plugin";
 import { ProjectsQueryResult, SanityImageDimensions } from "@/sanity.types";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 type Props = {
   project: ProjectsQueryResult;
@@ -22,6 +23,7 @@ type ProjectQueryResult = {
   _id: string;
   projectImage: string | null;
   projectImageDimensions: SanityImageDimensions | null;
+  projectImagePalette: string | null;
   projectTitle: string | null;
   projectDescription: null;
   date: string | null;
@@ -46,7 +48,6 @@ export default function PhotoswipeItem({
 
   const [isLoaded, setIsLoaded] = useState(false);
 
-  console.log(project);
 
   return (
     <Item
@@ -64,19 +65,55 @@ export default function PhotoswipeItem({
       </div>`.trim()}
     >
       {({ ref, open }) => (
-        <figure className={twMerge("inline-block", figureClassName)}>
-          <Image
-            className={twMerge("h-full w-full object-contain", className)}
-            ref={ref}
-            onClick={open}
-            src={project.projectImage || "placeholder.jpg"}
-            alt={project.projectTitle || "Default project title"}
-            width={project?.projectImageDimensions?.width}
-            height={project?.projectImageDimensions?.height}
-            onLoadingComplete={() => {
-              setIsLoaded(true);
-            }}
-          />
+        <figure
+          // style={{ backgroundColor: project.projectImagePalette }}
+          className={twMerge("inline-block ", figureClassName)}
+        >
+          <div className="relative overflow-hidden">
+            {/* <motion.div
+              style={{
+                backgroundColor: project.projectImagePalette ?? "transparent",
+                opacity: 0,
+              }}
+              initial={{ opacity: 1 }}
+              whileInView={{ opacity: 0 }}
+              viewport={{ margin: "-100px", once: true }}
+              transition={{ duration: 0.7 }}
+              whileHover={{ opacity: 0.4 }}
+              // className="absolute z-50 h-full w-full transition-all duration-700 group-hover:opacity-40 "
+              className="absolute z-0 h-full w-full"
+            ></motion.div> */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ margin: "-100px", once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <Image
+                className={twMerge(
+                  "relative h-full w-full cursor-pointer object-contain transition-all duration-500 hover:scale-105 hover:opacity-70",
+                  className,
+                )}
+                ref={ref}
+                onClick={open}
+                src={project.projectImage || "placeholder.jpg"}
+                alt={project.projectTitle || "Default project title"}
+                width={project?.projectImageDimensions?.width}
+                height={project?.projectImageDimensions?.height}
+                onLoadingComplete={() => {
+                  setIsLoaded(true);
+                }}
+              />
+            </motion.div>
+            <motion.div
+              style={{ backgroundColor: project.projectImagePalette || "" }}
+              className="absolute left-0 top-0 -z-10 h-full w-full opacity-50"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ margin: "-20px", once: true }}
+              transition={{ duration: 0.7 }}
+            ></motion.div>
+          </div>
           {isLoaded && caption && (
             <figcaption className="mt-2 text-sm md:text-base">
               {caption}

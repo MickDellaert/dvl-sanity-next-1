@@ -83,6 +83,7 @@ export const projectsQuery = defineQuery(`
    {_id,
    "projectImage": projectImage.asset->url, 
    "projectImageDimensions": projectImage.asset->metadata.dimensions,
+  "projectImagePalette": projectImage.asset->metadata.palette.darkVibrant.background,
    projectTitle, 
    projectDescription, 
    date, 
@@ -212,7 +213,12 @@ export const threeArtParkQuery = defineQuery(`
       asset,
       "ref":asset._ref,
       "imageDimensions":asset->metadata.dimensions
-      }
+      },
+      threeArtSponsorLogos[]{
+      asset,
+      "ref":asset._ref,
+      "imageDimensions":asset->metadata.dimensions
+    }
       }`);
 
 export const threeArtParkExhibitionQuery = defineQuery(`

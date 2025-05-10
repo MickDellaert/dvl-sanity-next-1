@@ -25,8 +25,6 @@ export default async function Navbar() {
 
   const menuItems = settingsData.menuItems;
 
-  console.log(menuItems);
-
   return (
     <NavbarContainer
       menuItems={menuItems}

@@ -1,8 +1,11 @@
+"use client";
+
 import SanityImage from "@/components/shared/sanity-image";
 import StickyTitle from "@/components/shared/sticky-title";
 import { PortableText } from "next-sanity";
 import ThreeArtParkSponsor from "./three-art-park-sponsor";
 import { ThreeArtParkQueryResult } from "@/sanity.types";
+import { motion } from "framer-motion";
 
 const colSpanMap: Record<number, string> = {
   0: "md:order-2 col-span-5 col-start-1 mt-12 md:mt-0 order-3 md:col-span-3 md:col-start-10 md:row-span-2",
@@ -13,7 +16,14 @@ const colSpanMap: Record<number, string> = {
 
 const getColSpan = (i: number) => colSpanMap[i] ?? "col-span-2";
 
-export default async function ThreeArtParkInfo({
+const inViewVariant = {
+  initial: { opacity: 0 },
+  whileInView: { opacity: 1 },
+  viewport: { margin: "-100px", once: true },
+  transition: { duration: 0.7 },
+};
+
+export default function ThreeArtParkInfo({
   threeArtParkData,
 }: {
   threeArtParkData: ThreeArtParkQueryResult;
@@ -22,7 +32,10 @@ export default async function ThreeArtParkInfo({
     <div className="">
       <StickyTitle stickyTitle="About" />
       <div className="mb-28 mt-12 grid auto-rows-auto grid-cols-12 gap-1 gap-y-16 md:mb-40 md:mt-24 md:gap-y-20 xl:gap-4 xl:gap-y-40">
-        <div className="relative col-span-11 col-start-1 md:order-1 md:col-span-5 md:col-start-4 md:pt-8">
+        <motion.div
+          {...inViewVariant}
+          className="relative col-span-11 col-start-1 md:order-1 md:col-span-5 md:col-start-4 md:pt-8"
+        >
           <p
             lang="nl"
             className="text-3xl leading-tight 2xl:text-[52px] 2xl:leading-[60px]"
@@ -41,19 +54,24 @@ export default async function ThreeArtParkInfo({
               />
             </div>
           )}
-        </div>
+        </motion.div>
         {threeArtParkData?.threeArtIllustrations?.map(
           (threeArtIllustration, i: number) => (
-            <div key={i} className={`${getColSpan(i)} relative`}>
+            <motion.div
+              {...inViewVariant}
+              key={i}
+              className={`${getColSpan(i)} relative`}
+            >
               <SanityImage
                 data={threeArtIllustration}
                 dimensions={threeArtIllustration.imageDimensions}
               />
-            </div>
+            </motion.div>
           ),
         )}
 
-        <div
+        <motion.div
+          {...inViewVariant}
           lang="nl"
           className="prose relative order-6 col-span-12 col-start-1 mt-12 hyphens-auto text-lg leading-normal text-black md:order-6 md:col-span-5 md:col-start-7 md:-mt-12 xl:ml-12 xl:pr-8 2xl:text-2xl 2xl:leading-normal"
         >
@@ -74,9 +92,13 @@ export default async function ThreeArtParkInfo({
           )}
           <div className="mt-12 md:mt-20">
             <p className="mb-4 text-sm md:text-lg">In samenwerking met:</p>
-            <ThreeArtParkSponsor />
+            <ThreeArtParkSponsor
+              threeArtSponsorLogos={
+                threeArtParkData?.threeArtSponsorLogos ?? []
+              }
+            />
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
