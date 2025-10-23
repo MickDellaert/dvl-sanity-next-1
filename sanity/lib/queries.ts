@@ -13,7 +13,7 @@ export const homePageQuery = defineQuery(`
     _id,
     name, 
     "slug": slug.current,
-    projects[0]->{projectImage, "projectImageDimensions": projectImage.asset->metadata.dimensions}
+    projects[0]->{projectImage, "projectImageDimensions": projectImage.asset->metadata.dimensions,"projectImagePalette": projectImage.asset->metadata.palette.darkVibrant.background}
   },
   "homepageExpo": exhibitions[]->{
   _id,
@@ -83,6 +83,7 @@ export const projectsQuery = defineQuery(`
    {_id,
    "projectImage": projectImage.asset->url, 
    "projectImageDimensions": projectImage.asset->metadata.dimensions,
+  "projectImagePalette": projectImage.asset->metadata.palette.darkVibrant.background,
    projectTitle, 
    projectDescription, 
    date, 
@@ -101,6 +102,7 @@ export const categoryQuery = defineQuery(`
   _id,
   "projectImage" : projectImage.asset->url, 
   "projectImageDimensions": projectImage.asset->metadata.dimensions,
+  "projectImagePalette": projectImage.asset->metadata.palette.darkVibrant.background,
   projectTitle,
   projectDescription, 
   date, 
@@ -120,6 +122,7 @@ export const singleCategory = defineQuery(`
     _id,
     "projectImage" : projectImage.asset->url, 
     "projectImageDimensions": projectImage.asset->metadata.dimensions,
+    "projectImagePalette": projectImage.asset->metadata.palette.darkVibrant.background,
     projectTitle,
     projectDescription, 
     date, 
@@ -139,6 +142,7 @@ export const singleCategoryOrder = defineQuery(`
     _id,
     "projectImage" : projectImage.asset->url, 
     "projectImageDimensions": projectImage.asset->metadata.dimensions,
+    "projectImagePalette": projectImage.asset->metadata.palette.darkVibrant.background,
     projectTitle,
     projectDescription, 
     date, 
@@ -212,7 +216,12 @@ export const threeArtParkQuery = defineQuery(`
       asset,
       "ref":asset._ref,
       "imageDimensions":asset->metadata.dimensions
-      }
+      },
+      threeArtSponsorLogos[]{
+      asset,
+      "ref":asset._ref,
+      "imageDimensions":asset->metadata.dimensions
+    }
       }`);
 
 export const threeArtParkExhibitionQuery = defineQuery(`
@@ -279,6 +288,7 @@ export const homepageTestQuery = groq`
   "homepageCategories": homepageCategories[]->{
     name, 
     "slug": slug.current,
-    projects[0]->{projectImage, "projectImageDimensions": projectImage.asset->metadata.dimensions}
+    projects[0]->{projectImage, "projectImageDimensions": projectImage.asset->metadata.dimensions,   "projectImagePalette": projectImage.asset->metadata.palette.darkVibrant.background,
+}
   }
 }`;

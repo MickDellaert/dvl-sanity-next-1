@@ -69,7 +69,12 @@ export default function NavbarLogo({
 
   if (hasMounted)
     return (
-      <div className="w-10/12 text-balance leading-[1] md:w-8/12 xl:w-5/12 2xl:w-4/12">
+      <motion.div
+        className="w-10/12 text-balance leading-[1] md:w-8/12 xl:w-5/12 2xl:w-4/12"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         {/* <Link href="/" className="text-2xl font-medium uppercase tracking-wider md:text-3xl"> */}
         {/* <Link href="/" className="text-4xl font-medium md:text-4xl mix-blend-difference invert z-20">
         David Van Loon
@@ -105,7 +110,7 @@ export default function NavbarLogo({
                 ? "David van Loon"
                 : path === "/3-art-park"
                   ? "3 Art Park"
-                  : "David Van Loon"}
+                  : "David van Loon"}
           </motion.h1>
         </Link>
         {path === "/" && (
@@ -118,6 +123,6 @@ export default function NavbarLogo({
             {` ${homepageDescription}`}
           </motion.h1>
         )}
-      </div>
+      </motion.div>
     );
 }
