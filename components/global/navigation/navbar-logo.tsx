@@ -110,7 +110,7 @@ export default function NavbarLogo({
                 ? "David van Loon"
                 : path === "/3-art-park"
                   ? "3 Art Park"
-                  : "David Van Loon"}
+                  : "David van Loon"}
           </motion.h1>
         </Link>
         {path === "/" && (

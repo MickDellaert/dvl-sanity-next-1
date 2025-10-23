@@ -24,14 +24,13 @@ export default function ThreeArtParkSponsor({
   return (
     <div className="flex h-8 items-center gap-2 md:gap-8 xl:h-16">
       {threeArtSponsorLogos?.map((threeArtSponsor, i) => (
-        <>
+        <React.Fragment key={i}>
           <SanityImage
-            key={i}
             data={threeArtSponsor}
             dimensions={threeArtSponsor.imageDimensions}
             className="h-full w-auto"
           />
-        </>
+        </React.Fragment>
       ))}
     </div>
   );

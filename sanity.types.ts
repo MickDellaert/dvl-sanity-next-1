@@ -628,7 +628,7 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/lib/queries.ts
 // Variable: homePageQuery
-// Query: *[_type == "homepage"][0]{  _id, homepageTitle,   "slug": slug.current,   homepageDescription,   // "homepageMainImage": homepageMainImage.asset->url,   homepageMainImage,  homepageMainImageSingle,  "homepageCategories": homepageCategories[]->{    _id,    name,     "slug": slug.current,    projects[0]->{projectImage, "projectImageDimensions": projectImage.asset->metadata.dimensions}  },  "homepageExpo": exhibitions[]->{  _id,  name,  poster,  "posterDimensions": poster.asset->metadata.dimensions,  description,  date,  gallery,  photos,  "images": photos[]{  asset->{  _id,  url,  metadata{ dimensions} }  },  "dimensions": photos[].asset->metadata.dimensions,  },}
+// Query: *[_type == "homepage"][0]{  _id, homepageTitle,   "slug": slug.current,   homepageDescription,   // "homepageMainImage": homepageMainImage.asset->url,   homepageMainImage,  homepageMainImageSingle,  "homepageCategories": homepageCategories[]->{    _id,    name,     "slug": slug.current,    projects[0]->{projectImage, "projectImageDimensions": projectImage.asset->metadata.dimensions,"projectImagePalette": projectImage.asset->metadata.palette.darkVibrant.background}  },  "homepageExpo": exhibitions[]->{  _id,  name,  poster,  "posterDimensions": poster.asset->metadata.dimensions,  description,  date,  gallery,  photos,  "images": photos[]{  asset->{  _id,  url,  metadata{ dimensions} }  },  "dimensions": photos[].asset->metadata.dimensions,  },}
 export type HomePageQueryResult = {
   _id: string;
   homepageTitle: null;
@@ -677,6 +677,7 @@ export type HomePageQueryResult = {
         _type: "image";
       } | null;
       projectImageDimensions: SanityImageDimensions | null;
+      projectImagePalette: string | null;
     } | null;
   }> | null;
   homepageExpo: Array<{
@@ -889,7 +890,7 @@ export type ProjectsQueryResult = Array<{
   soldStatus: boolean | null;
 }>;
 // Variable: categoryQuery
-// Query: *[_type == "category"]{  _id,   name,  seriesDescription,   "slug": slug.current,   "projects" : projects[]->{  _id,  "projectImage" : projectImage.asset->url,   "projectImageDimensions": projectImage.asset->metadata.dimensions,  projectTitle,  projectDescription,   date,   material,   size,  soldStatus  }}
+// Query: *[_type == "category"]{  _id,   name,  seriesDescription,   "slug": slug.current,   "projects" : projects[]->{  _id,  "projectImage" : projectImage.asset->url,   "projectImageDimensions": projectImage.asset->metadata.dimensions,  "projectImagePalette": projectImage.asset->metadata.palette.darkVibrant.background,  projectTitle,  projectDescription,   date,   material,   size,  soldStatus  }}
 export type CategoryQueryResult = Array<{
   _id: string;
   name: string | null;
@@ -916,6 +917,7 @@ export type CategoryQueryResult = Array<{
     _id: string;
     projectImage: string | null;
     projectImageDimensions: SanityImageDimensions | null;
+    projectImagePalette: string | null;
     projectTitle: string | null;
     projectDescription: null;
     date: string | null;
@@ -928,7 +930,7 @@ export type CategoryQueryResult = Array<{
   }> | null;
 }>;
 // Variable: singleCategory
-// Query: *[_type == "category" && slug.current == $slug][0]{  _id,   name,   seriesDescription,   "slug": slug.current,   "projects" : projects[]->{    _id,    "projectImage" : projectImage.asset->url,     "projectImageDimensions": projectImage.asset->metadata.dimensions,    projectTitle,    projectDescription,     date,     material,     size,    soldStatus  }}
+// Query: *[_type == "category" && slug.current == $slug][0]{  _id,   name,   seriesDescription,   "slug": slug.current,   "projects" : projects[]->{    _id,    "projectImage" : projectImage.asset->url,     "projectImageDimensions": projectImage.asset->metadata.dimensions,    "projectImagePalette": projectImage.asset->metadata.palette.darkVibrant.background,    projectTitle,    projectDescription,     date,     material,     size,    soldStatus  }}
 export type SingleCategoryResult = {
   _id: string;
   name: string | null;
@@ -955,6 +957,7 @@ export type SingleCategoryResult = {
     _id: string;
     projectImage: string | null;
     projectImageDimensions: SanityImageDimensions | null;
+    projectImagePalette: string | null;
     projectTitle: string | null;
     projectDescription: null;
     date: string | null;
@@ -967,7 +970,7 @@ export type SingleCategoryResult = {
   }> | null;
 } | null;
 // Variable: singleCategoryOrder
-// Query: *[_type == "category" ] | order((slug.current match $slug) desc){  _id,   name,   seriesDescription,   "slug": slug.current,   "projects" : projects[]->{    _id,    "projectImage" : projectImage.asset->url,     "projectImageDimensions": projectImage.asset->metadata.dimensions,    projectTitle,    projectDescription,     date,     material,     size,    soldStatus  }}
+// Query: *[_type == "category" ] | order((slug.current match $slug) desc){  _id,   name,   seriesDescription,   "slug": slug.current,   "projects" : projects[]->{    _id,    "projectImage" : projectImage.asset->url,     "projectImageDimensions": projectImage.asset->metadata.dimensions,    "projectImagePalette": projectImage.asset->metadata.palette.darkVibrant.background,    projectTitle,    projectDescription,     date,     material,     size,    soldStatus  }}
 export type SingleCategoryOrderResult = Array<{
   _id: string;
   name: string | null;
@@ -994,6 +997,7 @@ export type SingleCategoryOrderResult = Array<{
     _id: string;
     projectImage: string | null;
     projectImageDimensions: SanityImageDimensions | null;
+    projectImagePalette: string | null;
     projectTitle: string | null;
     projectDescription: null;
     date: string | null;
@@ -1419,7 +1423,7 @@ export type PageQueryResult = {
 // Query: *[_type == "settingsTest"]{    menuItems[]->{      homepageTitle, title    }  }
 export type TestQueryResult = Array<never>;
 // Variable: homepageTestQuery
-// Query: *[_type == "homepage"][0]{  _id, homepageTitle,   "slug": slug.current,   homepageDescription,   // "homepageMainImage": homepageMainImage.asset->url,   homepageMainImage,  homepageMainImageSingle,  "homepageCategories": homepageCategories[]->{    name,     "slug": slug.current,    projects[0]->{projectImage, "projectImageDimensions": projectImage.asset->metadata.dimensions}  }}
+// Query: *[_type == "homepage"][0]{  _id, homepageTitle,   "slug": slug.current,   homepageDescription,   // "homepageMainImage": homepageMainImage.asset->url,   homepageMainImage,  homepageMainImageSingle,  "homepageCategories": homepageCategories[]->{    name,     "slug": slug.current,    projects[0]->{projectImage, "projectImageDimensions": projectImage.asset->metadata.dimensions,   "projectImagePalette": projectImage.asset->metadata.palette.darkVibrant.background,}  }}
 export type HomepageTestQueryResult = {
   _id: string;
   homepageTitle: null;
@@ -1467,6 +1471,7 @@ export type HomepageTestQueryResult = {
         _type: "image";
       } | null;
       projectImageDimensions: SanityImageDimensions | null;
+      projectImagePalette: string | null;
     } | null;
   }> | null;
 } | null;
@@ -1475,15 +1480,15 @@ export type HomepageTestQueryResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '\n*[_type == "homepage"][0]{\n  _id, homepageTitle, \n  "slug": slug.current, \n  homepageDescription, \n  // "homepageMainImage": homepageMainImage.asset->url, \n  homepageMainImage,\n  homepageMainImageSingle,\n  "homepageCategories": homepageCategories[]->{\n    _id,\n    name, \n    "slug": slug.current,\n    projects[0]->{projectImage, "projectImageDimensions": projectImage.asset->metadata.dimensions}\n  },\n  "homepageExpo": exhibitions[]->{\n  _id,\n  name,\n  poster,\n  "posterDimensions": poster.asset->metadata.dimensions,\n  description,\n  date,\n  gallery,\n  photos,\n  "images": photos[]{\n  asset->{\n  _id,\n  url,\n  metadata{ dimensions} }\n  },\n  "dimensions": photos[].asset->metadata.dimensions,\n  },\n}': HomePageQueryResult;
+    '\n*[_type == "homepage"][0]{\n  _id, homepageTitle, \n  "slug": slug.current, \n  homepageDescription, \n  // "homepageMainImage": homepageMainImage.asset->url, \n  homepageMainImage,\n  homepageMainImageSingle,\n  "homepageCategories": homepageCategories[]->{\n    _id,\n    name, \n    "slug": slug.current,\n    projects[0]->{projectImage, "projectImageDimensions": projectImage.asset->metadata.dimensions,"projectImagePalette": projectImage.asset->metadata.palette.darkVibrant.background}\n  },\n  "homepageExpo": exhibitions[]->{\n  _id,\n  name,\n  poster,\n  "posterDimensions": poster.asset->metadata.dimensions,\n  description,\n  date,\n  gallery,\n  photos,\n  "images": photos[]{\n  asset->{\n  _id,\n  url,\n  metadata{ dimensions} }\n  },\n  "dimensions": photos[].asset->metadata.dimensions,\n  },\n}': HomePageQueryResult;
     '\n  *[_type == "homepage"][0]{\n    "homepageMainImageAsset": homepageMainImageSingle.asset->metadata, \n    homepageMainImage,\n    homepageMainImageSingle,\n  }': HomepageHeaderQueryResult;
     '\n    *[_type == "homepage"][0]{\n      homepageDescription,\n    }': HomepageDescriptionQueryResult;
     '\n  *[_type == "homepage"][0]{\n    homepageCategories[]->{\n      _id,\n      name, \n      "slug": slug.current,\n      projects[0]->{\n      projectImage, \n      "projectImageDimensions": projectImage.asset->metadata.dimensions, \n      "projectImageMetadata": projectImage.asset->metadata, \n      "projectImagePalette": projectImage.asset->metadata.palette.darkVibrant.background}\n    }\n  }': HomePageSeriesQueryResult;
     '\n    *[_type == "homepage"][0]{\n      "homepageExpo": exhibitions[]->{\n      _id,\n      name,\n      poster,\n      "posterDimensions": poster.asset->metadata.dimensions,\n      description,\n      date,\n      gallery,\n      photos,\n      "images": photos[]{\n      asset,\n      "ref":asset._ref,\n      "imageDimensions":asset->metadata.dimensions\n      },\n      },\n    }': HomePageExhibitionQueryResult;
     '\n*[_type == "project"]\n   {_id,\n   "projectImage": projectImage.asset->url, \n   "projectImageDimensions": projectImage.asset->metadata.dimensions,\n  "projectImagePalette": projectImage.asset->metadata.palette.darkVibrant.background,\n   projectTitle, \n   projectDescription, \n   date, \n   material, \n   size,\n   soldStatus\n  }': ProjectsQueryResult;
-    '\n*[_type == "category"]{\n  _id, \n  name,\n  seriesDescription, \n  "slug": slug.current, \n  "projects" : projects[]->{\n  _id,\n  "projectImage" : projectImage.asset->url, \n  "projectImageDimensions": projectImage.asset->metadata.dimensions,\n  projectTitle,\n  projectDescription, \n  date, \n  material, \n  size,\n  soldStatus\n  }\n}': CategoryQueryResult;
-    '\n*[_type == "category" && slug.current == $slug][0]{\n  _id, \n  name, \n  seriesDescription, \n  "slug": slug.current, \n  "projects" : projects[]->{\n    _id,\n    "projectImage" : projectImage.asset->url, \n    "projectImageDimensions": projectImage.asset->metadata.dimensions,\n    projectTitle,\n    projectDescription, \n    date, \n    material, \n    size,\n    soldStatus\n  }\n}': SingleCategoryResult;
-    '\n*[_type == "category" ] | order((slug.current match $slug) desc){\n  _id, \n  name, \n  seriesDescription, \n  "slug": slug.current, \n  "projects" : projects[]->{\n    _id,\n    "projectImage" : projectImage.asset->url, \n    "projectImageDimensions": projectImage.asset->metadata.dimensions,\n    projectTitle,\n    projectDescription, \n    date, \n    material, \n    size,\n    soldStatus\n  }\n}': SingleCategoryOrderResult;
+    '\n*[_type == "category"]{\n  _id, \n  name,\n  seriesDescription, \n  "slug": slug.current, \n  "projects" : projects[]->{\n  _id,\n  "projectImage" : projectImage.asset->url, \n  "projectImageDimensions": projectImage.asset->metadata.dimensions,\n  "projectImagePalette": projectImage.asset->metadata.palette.darkVibrant.background,\n  projectTitle,\n  projectDescription, \n  date, \n  material, \n  size,\n  soldStatus\n  }\n}': CategoryQueryResult;
+    '\n*[_type == "category" && slug.current == $slug][0]{\n  _id, \n  name, \n  seriesDescription, \n  "slug": slug.current, \n  "projects" : projects[]->{\n    _id,\n    "projectImage" : projectImage.asset->url, \n    "projectImageDimensions": projectImage.asset->metadata.dimensions,\n    "projectImagePalette": projectImage.asset->metadata.palette.darkVibrant.background,\n    projectTitle,\n    projectDescription, \n    date, \n    material, \n    size,\n    soldStatus\n  }\n}': SingleCategoryResult;
+    '\n*[_type == "category" ] | order((slug.current match $slug) desc){\n  _id, \n  name, \n  seriesDescription, \n  "slug": slug.current, \n  "projects" : projects[]->{\n    _id,\n    "projectImage" : projectImage.asset->url, \n    "projectImageDimensions": projectImage.asset->metadata.dimensions,\n    "projectImagePalette": projectImage.asset->metadata.palette.darkVibrant.background,\n    projectTitle,\n    projectDescription, \n    date, \n    material, \n    size,\n    soldStatus\n  }\n}': SingleCategoryOrderResult;
     '*[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{_id, identity, description, portrait, educationText}': AboutDavidQueryResult;
     '*[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{\n  _id, description, portrait, "dimensions":portrait.asset->metadata.dimensions}': BioDavidQueryResult;
     '*[_type == "person" && identity.firstName == "David" && identity.lastName == "van Loon"][0]{\n  _id, contact, address, contactIllustration, "imageDimensions":contactIllustration.asset->metadata.dimensions}': ContactDavidQueryResult;
@@ -1498,6 +1503,6 @@ declare module "@sanity/client" {
     '\n*[_type == "page"]{\n  _id, \n  title, \n  "slug":slug.current, \n  content\n}': PagesQueryResult;
     '\n*[_type == "page" && slug.current == $slug][0]{\n  _id, \n  title, \n  "slug":slug.current, \n  content\n}': PageQueryResult;
     '\n  *[_type == "settingsTest"]{\n    menuItems[]->{\n      homepageTitle, title\n    }\n  }\n': TestQueryResult;
-    '\n*[_type == "homepage"][0]{\n  _id, homepageTitle, \n  "slug": slug.current, \n  homepageDescription, \n  // "homepageMainImage": homepageMainImage.asset->url, \n  homepageMainImage,\n  homepageMainImageSingle,\n  "homepageCategories": homepageCategories[]->{\n    name, \n    "slug": slug.current,\n    projects[0]->{projectImage, "projectImageDimensions": projectImage.asset->metadata.dimensions}\n  }\n}': HomepageTestQueryResult;
+    '\n*[_type == "homepage"][0]{\n  _id, homepageTitle, \n  "slug": slug.current, \n  homepageDescription, \n  // "homepageMainImage": homepageMainImage.asset->url, \n  homepageMainImage,\n  homepageMainImageSingle,\n  "homepageCategories": homepageCategories[]->{\n    name, \n    "slug": slug.current,\n    projects[0]->{projectImage, "projectImageDimensions": projectImage.asset->metadata.dimensions,   "projectImagePalette": projectImage.asset->metadata.palette.darkVibrant.background,\n}\n  }\n}': HomepageTestQueryResult;
   }
 }

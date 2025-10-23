@@ -97,7 +97,7 @@ export default function HomepageSerie({
                   opacity-0 md:block md:text-4xl xl:text-5xl"
               variants={imageTextHover}
             >
-              View {category.name}
+              {category.name}
             </motion.h3>
             {category.projects?.projectImage ? (
               <motion.div className="z-30" whileHover="animate">

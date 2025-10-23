@@ -48,7 +48,6 @@ export default function PhotoswipeItem({
 
   const [isLoaded, setIsLoaded] = useState(false);
 
-
   return (
     <Item
       original={project.projectImage || "placeholder.jpg"}
@@ -100,7 +99,7 @@ export default function PhotoswipeItem({
                 alt={project.projectTitle || "Default project title"}
                 width={project?.projectImageDimensions?.width}
                 height={project?.projectImageDimensions?.height}
-                onLoadingComplete={() => {
+                onLoad={() => {
                   setIsLoaded(true);
                 }}
               />
