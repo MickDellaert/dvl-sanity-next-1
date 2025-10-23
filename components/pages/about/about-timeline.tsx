@@ -35,13 +35,32 @@ export default async function AboutTimeline<T>({
                        after:-bottom-2 after:left-0 after:h-[1px] after:w-full after:bg-black after:content-[''] lg:col-span-7"
           >
             <div className="col-span-4 col-start-1 content-center gap-x-2 text-2xl leading-tight md:text-3xl lg:col-span-2 lg:col-start-2">
-              <h3>{formatDate(getStartDate(item), dateFormat)}</h3>
-              {/* <h3> — </h3> */}
-              <h3>
-                {formatDate(getEndDate(item), dateFormat) == "2025"
-                  ? "Present"
-                  : formatDate(getEndDate(item), dateFormat)}
-              </h3>
+              {(() => {
+                const start = getStartDate(item);
+                const end = getEndDate(item);
+
+                if (!start) return null;
+
+                const startYear = new Date(start).getFullYear();
+                const endYear = end ? new Date(end).getFullYear() : null;
+
+                if (startYear && endYear && startYear === endYear) {
+                  return <h3>{formatDate(start, { year: "numeric" })}</h3>;
+                }
+
+                return (
+                  <>
+                    <h3>{formatDate(start, { year: "numeric" })}</h3>
+                    {endYear && (
+                      <h3>
+                        {endYear === new Date().getFullYear()
+                          ? "Present"
+                          : formatDate(end, { year: "numeric" })}
+                      </h3>
+                    )}
+                  </>
+                );
+              })()}
             </div>
             <div className="col-span-8 content-center lg:col-span-4">
               <h3 className="text-lg md:text-2xl">{getTitleContent(item)}</h3>
