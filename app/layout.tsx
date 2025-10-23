@@ -47,6 +47,7 @@ const manrope = Manrope({
 });
 
 const gaId = process.env.NEXT_PUBLIC_GA_ID;
+console.log(gaId);
 
 export const metadata: Metadata = {
   title: "David van Loon",
