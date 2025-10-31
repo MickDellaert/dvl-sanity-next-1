@@ -14,7 +14,9 @@ export default async function RootLayout({
   return (
     // <div className={`tracking-tight`}>
     <div className="tabular-nums tracking-tighter">
-      <Navbar />
+      <header>
+        <Navbar />
+      </header>
       <main className="relative z-30 bg-stone-50 px-x pb-16 pt-12 text-stone-950 md:px-8 md:pb-40">
         {children}
       </main>
