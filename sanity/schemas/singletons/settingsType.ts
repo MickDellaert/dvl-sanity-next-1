@@ -29,6 +29,7 @@ const settings = defineType({
               {
                 type: "page",
               },
+              { type: "section" },
             ],
           },
         ],

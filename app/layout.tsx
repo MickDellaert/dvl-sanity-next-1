@@ -7,6 +7,7 @@ import { Public_Sans } from "next/font/google";
 import { Manrope } from "next/font/google";
 
 import "./globals.css";
+import SmoothScroll from "@/components/global/smoothscroll";
 
 // const Inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -75,7 +76,7 @@ export default function RootLayout({
       className={`${publicSans.variable} ${golosText.variable} ${manrope.variable} overflow-x-hidden`}
     >
       <body className="mx-auto mt-0 min-h-screen bg-gray-50 font-manrope font-medium tracking-tight">
-        {children}
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
       {gaId && <GoogleAnalytics gaId={gaId} />}
     </html>
