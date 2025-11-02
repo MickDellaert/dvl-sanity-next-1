@@ -26,11 +26,11 @@ export const structure: StructureResolver = (S) =>
             ]),
         ),
       S.listItem()
-        .title("David Van Loon")
+        .title("David van Loon")
         .id("davidvanloon")
         .child(
           S.list()
-            .title("David Van Loon content")
+            .title("David van Loon content")
             .items([
               S.listItem()
                 .title("Homepage")
