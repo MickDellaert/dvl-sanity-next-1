@@ -1,8 +1,4 @@
 export function resolveHref(hrefType: string, slug: string) {
-  if (slug === "contact") {
-    return "#contact"; // scrollt naar footer op dezelfde pagina
-  }
-
   switch (hrefType) {
     case "homepage":
       return "/";

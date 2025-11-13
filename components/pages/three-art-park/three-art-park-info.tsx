@@ -5,7 +5,10 @@ import StickyTitle from "@/components/shared/sticky-title";
 import { PortableText } from "next-sanity";
 import ThreeArtParkSponsor from "./three-art-park-sponsor";
 import { ThreeArtParkQueryResult } from "@/sanity.types";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
+
+import { motion, useScroll, useTransform } from "motion/react";
+import { useRef } from "react";
 
 const colSpanMap: Record<number, string> = {
   0: "md:order-2 col-span-5 col-start-1 mt-12 md:mt-0 order-3 md:col-span-3 md:col-start-10 md:row-span-2",
@@ -28,12 +31,38 @@ export default function ThreeArtParkInfo({
 }: {
   threeArtParkData: ThreeArtParkQueryResult;
 }) {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 50%", "end start"],
+  });
+
+  // const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  // const ySlow = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+
+  // const amplitude = 20; // standaard beweging in %
+  // const speedFactor = 0.2; // <1 = trager, 1 = normaal, >1 = sneller
+  // const ySlow = useTransform(
+  //   scrollYProgress,
+  //   [0, 1],
+  //   [`0%`, `${amplitude * speedFactor}%`], // start bij 0%, gaat naar 10% in dit geval
+  // );
+
+  const ySlow = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [`0%`, `80%`], // bijvoorbeeld, 8% omhoog bij scroll
+  );
+
+  const rotate = useTransform(scrollYProgress, [0, 1], ["-25deg", "-5deg"]);
+
   return (
-    <div className="">
+    <div ref={ref} className="">
       <StickyTitle stickyTitle="About" />
       <div className="mb-28 mt-12 grid auto-rows-auto grid-cols-12 gap-1 gap-y-16 md:mb-40 md:mt-24 md:gap-y-20 xl:gap-4 xl:gap-y-40">
         <motion.div
           {...inViewVariant}
+          style={{ y: ySlow }}
           className="relative col-span-11 col-start-1 md:order-1 md:col-span-5 md:col-start-4 md:pt-8"
         >
           <p
@@ -56,18 +85,28 @@ export default function ThreeArtParkInfo({
           )}
         </motion.div>
         {threeArtParkData?.threeArtIllustrations?.map(
-          (threeArtIllustration, i: number) => (
-            <motion.div
-              {...inViewVariant}
-              key={i}
-              className={`${getColSpan(i)} relative`}
-            >
-              <SanityImage
-                data={threeArtIllustration}
-                dimensions={threeArtIllustration.imageDimensions}
-              />
-            </motion.div>
-          ),
+          (threeArtIllustration, i: number) => {
+            const amplitude = 5 + i * 2;
+            const y = useTransform(
+              scrollYProgress,
+              [0, 1],
+              [`${amplitude}%`, `-${amplitude}%`],
+            );
+
+            return (
+              <motion.div
+                {...inViewVariant}
+                key={i}
+                className={`${getColSpan(i)} relative`}
+                style={{ y }}
+              >
+                <SanityImage
+                  data={threeArtIllustration}
+                  dimensions={threeArtIllustration.imageDimensions}
+                />
+              </motion.div>
+            );
+          },
         )}
 
         <motion.div
@@ -79,7 +118,10 @@ export default function ThreeArtParkInfo({
             <PortableText value={threeArtParkData.description} />
           )}
           {threeArtParkData?.threeArtLogos?.[2] && (
-            <div className="pointer-events-none absolute -left-0 -top-56 z-10 h-40 w-40 -rotate-6 md:-left-64 md:-top-72 md:h-60 md:w-60">
+            <motion.div
+              className="pointer-events-none absolute -left-0 -top-56 z-10 h-40 w-40 -rotate-12 md:-left-64 md:-top-72 md:h-60 md:w-60"
+              style={{ rotate, originX: 0.5, originY: 0.5 }}
+            >
               <SanityImage
                 data={threeArtParkData.threeArtLogos[2]}
                 dimensions={{
@@ -88,7 +130,7 @@ export default function ThreeArtParkInfo({
                   height: 1200,
                 }}
               />
-            </div>
+            </motion.div>
           )}
           <div className="mt-12 md:mt-20">
             <p className="mb-4 text-sm md:text-lg">In samenwerking met:</p>
