@@ -3,23 +3,26 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { resolveHref } from "@/sanity/lib/utils";
+import LenisNavTest from "./lenis-nav-test";
 
 type MenuItem = {
-  _type: "homepage" | "page";
+  _type: "homepage" | "page" | "section";
   slug: string | null;
   title: string | null;
 };
 
 type NavProps = {
-  menuItems: MenuItem[] | null;
+  menuItems?: MenuItem[] | null;
 };
 
-const navItems = [
-  { title: "home", slug: "/", _type: "page" },
-  { title: "series", slug: "series", _type: "page" },
-  { title: "gallery", slug: "gallery", _type: "page" },
-  { title: "about", slug: "about", _type: "page" },
+const testMenuItems: MenuItem[] = [
+  { _type: "homepage", slug: "home", title: "Home" },
+  { _type: "page", slug: "series", title: "Series" },
+  { _type: "page", slug: "gallery", title: "Gallery" },
+  { _type: "page", slug: "about", title: "About" },
+  { _type: "section", slug: "contact", title: "Contact" },
 ];
+
 export default function NavbarLinks({ menuItems }: NavProps) {
   const useFirstPathSegment = () => {
     const pathname = usePathname();
@@ -29,36 +32,49 @@ export default function NavbarLinks({ menuItems }: NavProps) {
 
   const firstPathSegment = useFirstPathSegment();
 
+  const handleSectionClick = (slug: string) => {
+    const el = document.getElementById(slug);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <>
-      <div
-        // className={`flex gap-8 text-lg font-medium uppercase tracking-widest`}
-        className={`flex gap-8 whitespace-nowrap text-xl font-medium`}
-      >
-        {menuItems?.map((setting) => {
-          const href = setting.slug
-            ? resolveHref(setting._type, setting.slug)
-            : null;
+    <div className="flex gap-8 whitespace-nowrap text-xl font-medium">
+      {menuItems?.map((item) => {
+        if (!item.slug) return null;
 
-          if (!href) {
-            return null;
-          }
-
+        // Section links scrollen
+        if (item._type === "section") {
           return (
-            <Link
-              // className={`${pathname === href || pathname.includes(href) ? "bg-white underline decoration-2 underline-offset-8 mix-blend-difference invert" : ""}
-              // decoration-2 underline-offset-8 hover:bg-white hover:underline hover:mix-blend-difference hover:invert`}
-              className={`${firstPathSegment === href ? "text-gray-500" : ""} 
-               hover:text-black`}
-              key={setting.title}
-              href={href}
-              prefetch={true}
+            <a
+              key={item.title}
+              href={`#${item.slug}`}
+              onClick={(e) => {
+                e.preventDefault();
+                handleSectionClick(item.slug!);
+              }}
+              className="hover:text-black"
             >
-              {setting.title}
-            </Link>
+              {item.title}
+            </a>
           );
-        })}
-      </div>
-    </>
+        }
+
+        // Normale pagina links met Next.js Link
+        const href = resolveHref(item._type, item.slug);
+        return (
+          <Link
+            key={item.title}
+            href={href || "/"}
+            prefetch={true}
+            className={`${firstPathSegment === href ? "text-gray-500" : ""} hover:text-black`}
+          >
+            {item.title}
+          </Link>
+        );
+      })}
+      {/* <LenisNavTest /> */}
+    </div>
   );
 }

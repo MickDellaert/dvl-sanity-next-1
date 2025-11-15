@@ -40,23 +40,23 @@ export default function HomePageHeaderImage({
     return builder.image(source);
   }
 
-  const [height, setHeight] = useState(0);
-  const [width, setWidth] = useState(0);
+  // const [height, setHeight] = useState(0);
+  // const [width, setWidth] = useState(0);
 
-  useEffect(() => {
-    const updateSize = () => {
-      setHeight(window.innerHeight);
-      setWidth(window.innerWidth);
-    };
+  // useEffect(() => {
+  //   const updateSize = () => {
+  //     setHeight(window.innerHeight);
+  //     setWidth(window.innerWidth);
+  //   };
 
-    updateSize(); // Set initial values
-    window.addEventListener("resize", updateSize);
+  //   updateSize(); // Set initial values
+  //   window.addEventListener("resize", updateSize);
 
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
+  //   return () => window.removeEventListener("resize", updateSize);
+  // }, []);
 
-  const paddingBottom =
-    width > 1024 ? 32 : width > 768 ? height * 0.16 : height * 0.16;
+  // const paddingBottom =
+  //   width > 1024 ? 32 : width > 768 ? height * 0.16 : height * 0.16;
 
   // const { data: homepageHeaderImage } = await sanityFetch({
   //   query: homepageHeaderQuery,

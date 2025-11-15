@@ -1,4 +1,4 @@
-import { defineType, defineField } from "sanity";
+import { defineField, defineType } from "sanity";
 
 export const section = defineType({
   name: "section",
@@ -12,9 +12,12 @@ export const section = defineType({
     }),
     defineField({
       name: "slug",
-      title: "Slug / ID",
-      type: "string",
-      description: "Unieke identifier voor deze sectie, bv 'contact'",
+      title: "Slug",
+      type: "slug",
+      options: {
+        source: "title",
+        maxLength: 96,
+      },
     }),
   ],
 });
