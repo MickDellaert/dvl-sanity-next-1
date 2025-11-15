@@ -63,7 +63,7 @@ export default function ThreeArtParkInfo({
         <motion.div
           {...inViewVariant}
           style={{ y: ySlow }}
-          className="relative col-span-11 col-start-1 md:order-1 md:col-span-5 md:col-start-4 md:pt-8"
+          className="relative z-20 col-span-11 col-start-1 md:order-1 md:col-span-5 md:col-start-4 md:pt-8"
         >
           <p
             lang="nl"
@@ -72,7 +72,7 @@ export default function ThreeArtParkInfo({
             {threeArtParkData?.titleText}
           </p>
           {threeArtParkData?.threeArtLogos?.[0] && (
-            <div className="pointer-events-none absolute -bottom-44 -right-8 z-10 h-44 w-44 -rotate-0 md:-left-72 md:-top-4 md:h-64 md:w-64">
+            <div className="pointer-events-none absolute -bottom-44 -right-8 z-50 h-44 w-44 -rotate-0 md:-left-72 md:-top-4 md:h-64 md:w-64">
               <SanityImage
                 data={threeArtParkData.threeArtLogos[0]}
                 dimensions={{
@@ -87,6 +87,7 @@ export default function ThreeArtParkInfo({
         {threeArtParkData?.threeArtIllustrations?.map(
           (threeArtIllustration, i: number) => {
             const amplitude = 5 + i * 2;
+            // eslint-disable-next-line react-hooks/rules-of-hooks
             const y = useTransform(
               scrollYProgress,
               [0, 1],

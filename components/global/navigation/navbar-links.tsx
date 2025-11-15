@@ -74,7 +74,7 @@ export default function NavbarLinks({ menuItems }: NavProps) {
           </Link>
         );
       })}
-      <LenisNavTest />
+      {/* <LenisNavTest /> */}
     </div>
   );
 }
