@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { resolveHref } from "@/sanity/lib/utils";
 import LenisNavTest from "./lenis-nav-test";
+// import { Link } from "next-view-transitions";
 
 type MenuItem = {
   _type: "homepage" | "page" | "section";

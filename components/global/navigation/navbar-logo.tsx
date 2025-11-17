@@ -102,7 +102,7 @@ export default function NavbarLogo({
             initial={{ fontSize: initialFontSize }}
             animate={path === "/" ? undefined : { fontSize: targetFontSize }}
             style={path === "/" ? { fontSize: fontSize } : undefined}
-            className="z-50 inline align-top"
+            className="z-50 inline text-balance align-top"
           >
             {openMenu
               ? "David van Loon"
@@ -117,7 +117,7 @@ export default function NavbarLogo({
           <motion.h1
             ref={ref}
             style={{ opacity: opacity, fontSize: fontSize }}
-            className="inline pb-12 align-top"
+            className="inline text-balance pb-12 align-top"
           >
             {/* {""} is an Antwerp and Mortehan based contemporary artist. */}
             {` ${homepageDescription}`}

@@ -48,7 +48,7 @@ export default function NavbarLinksMobile({
           exit={{ opacity: 0 }}
         >
           <div
-            className="relative mt-40 flex flex-col gap-y-6 pt-8 text-3xl
+            className="relative mt-40 flex flex-col gap-y-10 pt-16 text-3xl
         before:absolute before:left-0 before:top-0 before:h-[4px] before:w-16 before:bg-black before:content-['']"
           >
             {menuItems?.map((setting) => {
