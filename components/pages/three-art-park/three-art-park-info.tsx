@@ -61,7 +61,7 @@ export default function ThreeArtParkInfo({
       <StickyTitle stickyTitle="About" />
       <div className="mb-28 mt-12 grid auto-rows-auto grid-cols-12 gap-1 gap-y-16 md:mb-40 md:mt-24 md:gap-y-20 xl:gap-4 xl:gap-y-40">
         <motion.div
-          {...inViewVariant}
+          // {...inViewVariant}
           style={{ y: ySlow }}
           className="relative z-20 col-span-11 col-start-1 md:order-1 md:col-span-5 md:col-start-4 md:pt-8"
         >
@@ -111,7 +111,7 @@ export default function ThreeArtParkInfo({
         )}
 
         <motion.div
-          {...inViewVariant}
+          // {...inViewVariant}
           lang="nl"
           className="prose relative order-6 col-span-12 col-start-1 mt-12 hyphens-auto text-lg leading-normal text-black md:order-6 md:col-span-5 md:col-start-7 md:-mt-12 xl:ml-12 xl:pr-8 2xl:text-2xl 2xl:leading-normal"
         >
