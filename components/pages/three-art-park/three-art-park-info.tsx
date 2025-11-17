@@ -130,6 +130,7 @@ export default function ThreeArtParkInfo({
                   width: 1200,
                   height: 1200,
                 }}
+                loading="eager"
               />
             </motion.div>
           )}

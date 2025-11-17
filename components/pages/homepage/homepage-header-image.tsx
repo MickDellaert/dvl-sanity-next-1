@@ -71,7 +71,7 @@ export default function HomePageHeaderImage({
   return (
     <>
       <motion.div
-        className="relative z-10 flex min-h-[calc(100dvh-64px)] w-full auto-rows-auto grid-cols-12 pb-[14dvh] md:pb-[16dvh] lg:pb-8"
+        className="relative z-10 flex min-h-[calc(100dvh-64px)] w-full auto-rows-auto grid-cols-12 pb-[14svh] md:pb-[16svh] lg:pb-8"
         // className="relative z-10 flex w-full auto-rows-auto grid-cols-12 lg:pb-8"
         // style={{
         //   minHeight: height === 0 ? "calc(100vh - 120px)" : `${height - 64}px`,
