@@ -87,14 +87,14 @@ export default async function Contact() {
               <p>–</p>
               <div className="flex items-center gap-2">
                 <p>website by </p>
-                <Link
-                  href={"www.mickdellaert.com"}
+                <a
+                  href="https://www.mickdellaert.com"
                   rel="noopener noreferrer"
                   target="_blank"
                   className="pb-1"
                 >
                   <MD10 />
-                </Link>
+                </a>
               </div>
             </div>
           </div>
