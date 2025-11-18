@@ -22,29 +22,20 @@ export default function ThreeArtParkExhibitionsData({
   };
 
   return (
-    <div
-      key={expo._id}
-      className="top-40 col-span-12 mb-8 flex flex-col gap-4 self-start md:sticky md:col-span-4"
-    >
-      <div className="flex w-fit flex-col">
-        {/* <h2 className="py-4 text-5xl">—</h2> */}
-
-        <h2
-          className="relative mb-0 mt-8 flex flex-row text-4xl before:absolute
-                       before:-top-8 before:left-0 before:h-1 before:w-12 before:bg-black before:content-[''] lg:text-4xl"
-        >
-          {expo.name}
-        </h2>
-      </div>
+    <div className="mb-12 flex w-fit flex-col lg:mb-0">
+      <h2
+        className="relative mb-6 mt-8 flex flex-row text-4xl before:absolute
+                       before:-top-8 before:left-0 before:h-1 before:w-12 before:bg-black before:content-[''] lg:text-5xl"
+      >
+        {expo.name}
+      </h2>
       <div className="flex flex-row flex-wrap gap-4 text-2xl leading-4 lg:text-3xl lg:leading-6">
         <h3>{expo.date?.start ? formatDate(expo.date?.start) : ""}</h3>{" "}
         <h3>—</h3>
         <h3>{formatDate(expo.date?.end)}</h3>
       </div>
-      {/* <h2 className="text-5xl">—</h2> */}
-      <div className="mt-0 text-lg leading-snug lg:mt-4 lg:text-xl lg:leading-9">
+      <div className="mt-8 text-lg leading-normal lg:mt-10 lg:text-xl lg:leading-9">
         {expo.description && <PortableText value={expo.description} />}
-        {/* <h2 className="text-5xl">—</h2> */}
       </div>
     </div>
   );

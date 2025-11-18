@@ -6,7 +6,7 @@ import { ProjectsQueryResult } from "@/sanity.types";
 import StickyTitle from "../../shared/sticky-title";
 import MasonryWrapper from "../series/masonry-wrapper";
 
-export default function GalleryMasonry({
+export default function GalleryFlex({
   projects,
 }: {
   projects: ProjectsQueryResult;
@@ -18,17 +18,7 @@ export default function GalleryMasonry({
   return (
     <>
       <StickyTitle stickyTitle="Gallery" />
-      <MasonryWrapper
-        columns={{ xs: 1, md: 2, lg: 3, xl: 4 }}
-        spacing={{ xs: 0, md: 5, lg: 6, xl: 7 }}
-        sx={{
-          "& > *": {
-            mb: { xs: 8, sm: 10, xl: 12 },
-          },
-          width: "auto",
-          pt: 6,
-        }}
-      >
+      <div className="mt-20 grid grid-cols-4 items-end gap-x-12 gap-y-20">
         <PhotoswipeGallery projects={projects}>
           <>
             {projects?.map((project) => (
@@ -42,7 +32,7 @@ export default function GalleryMasonry({
             ))}
           </>
         </PhotoswipeGallery>
-      </MasonryWrapper>
+      </div>
     </>
   );
 }

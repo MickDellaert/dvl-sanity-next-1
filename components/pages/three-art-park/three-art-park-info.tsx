@@ -14,7 +14,7 @@ const colSpanMap: Record<number, string> = {
   0: "md:order-2 col-span-5 col-start-1 mt-12 md:mt-0 order-3 md:col-span-3 md:col-start-10 md:row-span-2",
   1: "col-span-11 col-start-1 order-2 md:order-3 md:col-span-7 md:col-start-1 md:row-span-2 mt-12",
   2: "md:col-span-3 col-span-6 col-start-7 order-4 md:order-4 md:col-start-9 md:row-span-2",
-  3: "md:col-span-4 md:order-5 col-span-7 col-start-5 order-5 md:col-start-2 md:row-span-3 md:mt-20 ",
+  3: "md:col-span-4 md:order-5 col-span-8 col-start-4 order-5 md:col-start-2 md:row-span-3 md:mt-20 ",
 };
 
 const getColSpan = (i: number) => colSpanMap[i] ?? "col-span-2";
@@ -22,7 +22,7 @@ const getColSpan = (i: number) => colSpanMap[i] ?? "col-span-2";
 const inViewVariant = {
   initial: { opacity: 0 },
   whileInView: { opacity: 1 },
-  viewport: { margin: "-100px", once: true },
+  viewport: { margin: "-2%", once: false },
   transition: { duration: 0.7 },
 };
 
@@ -37,6 +37,14 @@ export default function ThreeArtParkInfo({
     offset: ["start 50%", "end start"],
   });
 
+  const ySlow = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [`0%`, `80%`], // bijvoorbeeld, 8% omhoog bij scroll
+  );
+
+  const rotate = useTransform(scrollYProgress, [0, 1], ["-25deg", "-5deg"]);
+
   // const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
   // const ySlow = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
@@ -48,20 +56,12 @@ export default function ThreeArtParkInfo({
   //   [`0%`, `${amplitude * speedFactor}%`], // start bij 0%, gaat naar 10% in dit geval
   // );
 
-  const ySlow = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [`0%`, `80%`], // bijvoorbeeld, 8% omhoog bij scroll
-  );
-
-  const rotate = useTransform(scrollYProgress, [0, 1], ["-25deg", "-5deg"]);
-
   return (
     <div ref={ref} className="">
       <StickyTitle stickyTitle="About" />
       <div className="mb-28 mt-12 grid auto-rows-auto grid-cols-12 gap-1 gap-y-16 md:mb-40 md:mt-24 md:gap-y-20 xl:gap-4 xl:gap-y-40">
         <motion.div
-          // {...inViewVariant}
+          {...inViewVariant}
           style={{ y: ySlow }}
           className="relative z-20 col-span-11 col-start-1 md:order-1 md:col-span-5 md:col-start-4 md:pt-8"
         >
@@ -72,7 +72,7 @@ export default function ThreeArtParkInfo({
             {threeArtParkData?.titleText}
           </p>
           {threeArtParkData?.threeArtLogos?.[0] && (
-            <div className="pointer-events-none absolute -bottom-44 -right-8 z-50 h-44 w-44 -rotate-0 md:-left-72 md:-top-4 md:h-64 md:w-64">
+            <div className="pointer-events-none absolute -bottom-48 -right-8 z-50 w-44 -rotate-0 md:-left-72 md:-top-4 md:h-64 md:w-64">
               <SanityImage
                 data={threeArtParkData.threeArtLogos[0]}
                 dimensions={{
@@ -111,16 +111,16 @@ export default function ThreeArtParkInfo({
         )}
 
         <motion.div
-          // {...inViewVariant}
+          {...inViewVariant}
           lang="nl"
-          className="prose relative order-6 col-span-12 col-start-1 mt-12 hyphens-auto text-lg leading-normal text-black md:order-6 md:col-span-5 md:col-start-7 md:-mt-12 xl:ml-12 xl:pr-8 2xl:text-2xl 2xl:leading-normal"
+          className="prose relative order-6 col-span-12 col-start-1 mt-24 hyphens-auto text-lg leading-normal text-black md:order-6 md:col-span-5 md:col-start-7 md:-mt-12 xl:ml-12 xl:pr-8 2xl:text-2xl 2xl:leading-normal"
         >
           {threeArtParkData?.description && (
             <PortableText value={threeArtParkData.description} />
           )}
           {threeArtParkData?.threeArtLogos?.[2] && (
             <motion.div
-              className="pointer-events-none absolute -left-0 -top-56 z-10 h-40 w-40 -rotate-12 md:-left-64 md:-top-72 md:h-60 md:w-60"
+              className="pointer-events-none absolute -top-60 left-4 z-10 w-44 -rotate-12 md:-left-80 md:-top-72 md:h-72 md:w-72"
               style={{ rotate, originX: 0.5, originY: 0.5 }}
             >
               <SanityImage

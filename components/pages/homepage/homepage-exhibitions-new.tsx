@@ -1,25 +1,17 @@
-import useImageUrlBuilder from "@/app/hooks/useImageUrlBuilder";
-import { HomePageQueryResult } from "@/sanity.types";
-import Image from "next/image";
-import React from "react";
+"use client";
+
+import { HomePageExhibitionQueryResult } from "@/sanity.types";
 import { PortableText } from "@portabletext/react";
 import StickyTitle from "../../shared/sticky-title";
-import { sanityFetch } from "@/sanity/lib/live";
-import { homePageExhibitionQuery } from "@/sanity/lib/queries";
-import { notFound } from "next/navigation";
+import { motion } from "motion/react";
+
 import SanityImage from "@/components/shared/sanity-image";
 
-export default async function HomepageExhibitionsNew() {
-  const { data: homepageData } = await sanityFetch({
-    query: homePageExhibitionQuery,
-  });
-
-  if (!homepageData) {
-    notFound();
-  }
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  // const { urlFor } = useImageUrlBuilder();
-
+export default function HomepageExhibitionsNew({
+  homepageData,
+}: {
+  homepageData: NonNullable<HomePageExhibitionQueryResult>;
+}) {
   const formatDate = (dateString: string | undefined) => {
     if (!dateString) return ""; // Handle empty or undefined dates
     const date = new Date(dateString);
@@ -32,17 +24,21 @@ export default async function HomepageExhibitionsNew() {
 
   const { homepageExpo } = homepageData;
 
+  const inViewVariant = {
+    initial: { opacity: 0 },
+    whileInView: { opacity: 1 },
+    viewport: { margin: "-12%", once: false },
+    transition: { duration: 0.7 },
+  };
+
   return (
     <section className="mt-28 md:mt-60">
       <StickyTitle stickyTitle="Exhibition" />
       <div className="relative flex flex-col gap-y-20 md:gap-y-12 xl:gap-y-40">
         {homepageExpo?.map((expo) => (
           <section key={expo._id} className="grid grid-cols-12">
-            <div
-              key={expo._id}
-              className="top-40 col-span-12 mb-8 flex flex-col gap-4 self-start md:sticky md:col-span-5"
-            >
-              <div className="flex w-fit flex-col">
+            <div className="top-40 col-span-12 mb-8 flex flex-col gap-4 self-start md:sticky md:col-span-5">
+              <motion.div {...inViewVariant} className="flex w-fit flex-col">
                 {/* <h2 className="py-4 text-5xl">—</h2> */}
 
                 <h2
@@ -51,7 +47,7 @@ export default async function HomepageExhibitionsNew() {
                 >
                   {expo.name}
                 </h2>
-              </div>
+              </motion.div>
               <div className="flex flex-row flex-wrap gap-4 text-2xl leading-4 lg:text-4xl lg:leading-6">
                 <h3>{formatDate(expo.date?.start)}</h3> <h3>—</h3>
                 <h3>{formatDate(expo.date?.end)}</h3>
@@ -62,7 +58,10 @@ export default async function HomepageExhibitionsNew() {
                 {/* <h2 className="text-5xl">—</h2> */}
               </div>
             </div>
-            <div className="col-span-12 flex flex-col gap-7 md:col-span-4 md:col-start-9 md:ml-auto">
+            <motion.div
+              {...inViewVariant}
+              className="col-span-12 flex flex-col gap-7 md:col-span-4 md:col-start-9 md:ml-auto"
+            >
               {expo.poster && (
                 // <Image
                 //   src={urlFor(expo.poster)
@@ -104,7 +103,7 @@ export default async function HomepageExhibitionsNew() {
                   />
                 </div>
               ))}
-            </div>
+            </motion.div>
           </section>
         ))}
       </div>

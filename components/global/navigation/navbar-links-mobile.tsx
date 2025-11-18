@@ -40,7 +40,7 @@ export default function NavbarLinksMobile({
     <AnimatePresence>
       {openMenu && (
         <motion.div
-          className={`fixed left-0 top-0 z-40 flex h-dvh w-full flex-col bg-stone-200 px-6 pb-64 md:pb-64`}
+          className={`fixed left-0 top-0 z-40 flex h-dvh w-full flex-col bg-stone-300 px-6 pb-64 md:pb-64`}
           // animate={openMenu ? "open" : "closed"}
           // variants={{ open: { opacity: 100 }, closed: { opacity: 0 } }}
           initial={{ opacity: 0 }}
@@ -48,8 +48,8 @@ export default function NavbarLinksMobile({
           exit={{ opacity: 0 }}
         >
           <div
-            className="relative mt-40 flex flex-col gap-y-10 pt-16 text-3xl
-        before:absolute before:left-0 before:top-0 before:h-[4px] before:w-16 before:bg-black before:content-['']"
+            className="relative mt-[152px] flex flex-col gap-y-10 pt-16 text-3xl
+        before:absolute before:left-0 before:top-0 before:h-1 before:w-12 before:bg-black before:content-['']"
           >
             {menuItems?.map((setting) => {
               const href = setting.slug

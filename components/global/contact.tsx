@@ -1,12 +1,10 @@
 import { sanityFetch } from "@/sanity/lib/live";
-import { aboutDavidQuery, contactDavidQuery } from "@/sanity/lib/queries";
+import { contactDavidQuery } from "@/sanity/lib/queries";
 import { notFound } from "next/navigation";
-import React from "react";
-import StickyTitle from "../shared/sticky-title";
-import { PortableText } from "next-sanity";
 import AboutImage from "../pages/about/about-david-image";
 import Link from "next/link";
 import { SiFacebook, SiInstagram } from "@icons-pack/react-simple-icons";
+import MD10 from "../logo/md-10";
 
 export default async function Contact() {
   const { data: contactDavidData } = await sanityFetch({
@@ -32,7 +30,7 @@ export default async function Contact() {
         </div> */}
         <div className="grid grid-cols-12 content-end gap-x-0 gap-y-8 text-2xl md:gap-x-20 md:text-3xl lg:text-4xl">
           <div className="order-1 col-span-12 col-start-1 lg:col-span-6">
-            <div className="relative flex h-full flex-col justify-between pt-8 before:absolute before:left-0 before:top-0 before:h-[4px] before:w-16 before:bg-black before:content-['']">
+            <div className="relative flex h-full flex-col justify-between pt-8 before:absolute before:left-0 before:top-0 before:h-1 before:w-12 before:bg-black before:content-['']">
               <div className="relative flex flex-col gap-y-4">
                 <a
                   href={`mailto:${contactDavidData.contact?.email}`}
@@ -53,12 +51,12 @@ export default async function Contact() {
                   <Link
                     href={"https://www.instagram.com/osloco/"}
                     target="_blank"
-                    className="flex gap-2"
+                    className="flex gap-1"
                   >
                     {/* <SiInstagram /> */}
                     Instagram
                     <svg
-                      className="h-auto w-7"
+                      className="mt-1 h-auto w-5 md:w-6 xl:w-7"
                       // width="9"
                       // height="8"
                       viewBox="0 0 9 8"
@@ -84,7 +82,21 @@ export default async function Contact() {
             </div>
           </div>
           <div className="order-3 col-span-12 col-start-1 flex items-end gap-x-12 text-base tracking-tight lg:col-span-6 lg:text-xl">
-            <h4>© 2025 David van Loon — website by MD</h4>
+            <div className="flex items-center gap-2">
+              <h4>© 2025 David van Loon</h4>
+              <p>–</p>
+              <div className="flex items-center gap-2">
+                <p>website by </p>
+                <Link
+                  href={"www.mickdellaert.com"}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  className="pb-1"
+                >
+                  <MD10 />
+                </Link>
+              </div>
+            </div>
           </div>
           <div className="order-2 col-span-12 col-start-1 content-end items-end md:col-span-8 md:col-start-1 lg:col-span-6 lg:col-start-7 lg:row-span-2">
             {contactIllustration && (

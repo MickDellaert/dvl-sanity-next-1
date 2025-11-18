@@ -4,6 +4,7 @@ import { ProjectsQueryResult } from "@/sanity.types";
 import GalleryMobile from "./gallery-mobile";
 import dynamic from "next/dynamic";
 import GallerySkeleton from "./gallery-skeleton";
+import GalleryFlex from "./gallery-flex";
 
 const DynamicGalleryMasonry = dynamic(() => import("./gallery-masonry"), {
   ssr: false,
@@ -23,6 +24,7 @@ export default function Gallery({
     <>
       <div className="hidden md:block">
         <DynamicGalleryMasonry projects={projects} />
+        {/* <GalleryFlex projects={projects} /> */}
       </div>
       <div className="flex flex-col gap-y-20 md:hidden">
         <GalleryMobile projects={projects} />
