@@ -20,7 +20,7 @@ const DynamicThreeArtParkExhibitionsImagesMasonry = dynamic(
 const inViewVariant = {
   initial: { opacity: 0 },
   whileInView: { opacity: 1 },
-  viewport: { margin: "-15%", once: false },
+  viewport: { margin: "-12%", once: false },
   transition: { duration: 0.7 },
 };
 
@@ -30,7 +30,7 @@ export default function ThreeArtParkExhibitions({
   threeArtParkData: ThreeArtParkQueryResult;
 }) {
   return (
-    <section className="mt-24 md:mt-60">
+    <section className="mt-32 md:mt-28">
       <StickyTitle stickyTitle="Recent Exhibition" />
       <div className="relative grid grid-cols-12 gap-x-4 xl:gap-x-4">
         {threeArtParkData?.threeArtParkExpo?.map((expo) => (

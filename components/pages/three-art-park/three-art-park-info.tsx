@@ -59,7 +59,7 @@ export default function ThreeArtParkInfo({
   return (
     <div ref={ref} className="">
       <StickyTitle stickyTitle="About" />
-      <div className="mb-28 mt-12 grid auto-rows-auto grid-cols-12 gap-1 gap-y-16 md:mb-40 md:mt-24 md:gap-y-20 xl:gap-4 xl:gap-y-40">
+      <div className="mb-28 mt-12 grid auto-rows-auto grid-cols-12 gap-1 gap-y-16 md:mb-0 md:mt-24 md:gap-y-20 xl:gap-4 xl:gap-y-40">
         <motion.div
           {...inViewVariant}
           style={{ y: ySlow }}
@@ -111,15 +111,17 @@ export default function ThreeArtParkInfo({
         )}
 
         <motion.div
-          {...inViewVariant}
           lang="nl"
           className="prose relative order-6 col-span-12 col-start-1 mt-24 hyphens-auto text-lg leading-normal text-black md:order-6 md:col-span-5 md:col-start-7 md:-mt-12 xl:ml-12 xl:pr-8 2xl:text-2xl 2xl:leading-normal"
         >
           {threeArtParkData?.description && (
-            <PortableText value={threeArtParkData.description} />
+            <motion.div {...inViewVariant}>
+              <PortableText value={threeArtParkData.description} />
+            </motion.div>
           )}
           {threeArtParkData?.threeArtLogos?.[2] && (
             <motion.div
+              {...inViewVariant}
               className="pointer-events-none absolute -top-60 left-4 z-10 w-44 -rotate-12 md:-left-80 md:-top-72 md:h-72 md:w-72"
               style={{ rotate, originX: 0.5, originY: 0.5 }}
             >
