@@ -21,10 +21,10 @@ export default function Series({
   return (
     <div className="">
       <StickyTitle stickyTitle="Series" />
-      <div className="flex flex-col gap-y-12 lg:gap-y-64">
+      <div className="flex flex-col gap-y-12 lg:gap-y-44 2xl:gap-y-48">
         {categoryData.map((category) => (
           <section key={category._id} className="grid grid-cols-12">
-            <div className="top-40 col-span-12 col-start-1 mb-20 self-start md:col-span-10 lg:sticky lg:col-span-3 lg:mb-0">
+            <div className="col-span-12 col-start-1 mb-20 mt-12 self-start md:col-span-10 lg:sticky lg:col-span-3 lg:mb-0">
               <SeriesDescription category={category} />
             </div>
             <div className="top-32 col-span-12 -mb-10 hidden h-fit lg:sticky lg:col-span-7 lg:col-start-6 lg:block">
