@@ -14,7 +14,7 @@ export const LenisProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     lenisRef.current = new Lenis({
-      duration: 0.8,
+      duration: 1,
       easing: (t) => 1 - Math.pow(1 - t, 3),
       lerp: 0.1,
       wheelMultiplier: 1,
