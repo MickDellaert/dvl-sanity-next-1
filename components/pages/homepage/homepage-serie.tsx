@@ -37,19 +37,21 @@ type HomepageCategory = {
   } | null;
 };
 
-const subTitle = {
-  initial: { opacity: 1 },
-  animate: { opacity: 0 },
+const imageTitleVariants = {
+  rest: { opacity: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  hover: { opacity: 1, transition: { duration: 0.7, ease: "easeInOut" } },
 };
 
-const imageTextHover = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1 },
+const overlayVariants = {
+  outOfView: { opacity: 1, transition: { duration: 0 } },
+  inView: { opacity: 0, transition: { duration: 0.7, ease: "easeOut" } },
+  hover: { opacity: 0.6, transition: { duration: 0.7, ease: "easeInOut" } },
 };
 
-const imageColorHover = {
-  initial: { opacity: 0 },
-  animate: { opacity: 0.6 },
+const subTitleVariants = {
+  outOfView: { opacity: 0 },
+  inView: { opacity: 1, transition: { duration: 0.6, ease: "easeOut" } },
+  hover: { opacity: 0, transition: { duration: 0.5, ease: "easeInOut" } },
 };
 
 export default function HomepageSerie({
@@ -67,40 +69,40 @@ export default function HomepageSerie({
       className="col-span-12 flex justify-center md:col-span-5 md:col-start-2 md:block md:last:col-span-6 
     md:last:col-start-4 md:[&:nth-child(4n+2)]:col-span-4 md:[&:nth-child(4n+2)]:col-start-9 md:[&:nth-child(4n+3)]:col-span-5 md:[&:nth-child(4n+3)]:col-start-1
     md:[&:nth-child(4n+4)]:col-span-5 md:[&:nth-child(4n+4)]:col-start-8"
-      // whileHover="animate"
     >
-      <Link className="" href={`series/${category.slug}`}>
+      <Link href={`series/${category.slug}`}>
         <motion.div className="group inline-block text-left md:block">
           <motion.div
-            className="relative z-40 justify-center md:max-h-full"
+            className="relative z-40 md:max-h-full"
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
-            whileHover="animate"
           >
             <motion.div
+              className="absolute z-0 h-full w-full"
               style={{
                 backgroundColor:
                   category.projects?.projectImagePalette ?? "transparent",
-                opacity: 0,
               }}
-              initial={{ opacity: 1 }}
-              whileInView={{ opacity: 0 }}
+              initial="outOfView"
+              whileInView="inView"
+              whileHover="hover"
+              exit="outOfView"
+              variants={overlayVariants}
               viewport={{ margin: "-100px", once: true }}
-              transition={{ duration: 0.7 }}
-              whileHover="animate"
-              // className="absolute z-50 h-full w-full transition-all duration-700 group-hover:opacity-40 "
-              className="absolute z-0 h-full w-full"
-              variants={imageColorHover}
-            ></motion.div>
+            />
+
             <motion.h3
               className="pointer-events-none absolute left-1/2 top-1/2 z-50 mb-4 mt-4 hidden w-fit -translate-x-1/2 -translate-y-1/2 text-center text-3xl uppercase text-white 
                   opacity-0 md:block md:text-4xl xl:text-5xl"
-              variants={imageTextHover}
+              initial="rest"
+              animate={isHovered ? "hover" : "rest"}
+              exit="rest"
+              variants={imageTitleVariants}
             >
               {category.name}
             </motion.h3>
             {category.projects?.projectImage ? (
-              <motion.div className="z-30" whileHover="animate">
+              <motion.div className="z-30">
                 <Image
                   src={urlFor(category.projects.projectImage)
                     .width(
@@ -126,13 +128,11 @@ export default function HomepageSerie({
           <motion.h3
             ref={ref}
             className="mt-3 text-lg uppercase tracking-tight md:mt-6 md:text-3xl"
-            // variants={subTitle}
-            // animate={{ opacity: isHovered ? 0 : 1 }}
-            animate={{ opacity: isHovered ? 0 : isInView ? 1 : 0 }}
-            initial={{ opacity: 0 }}
-            // whileInView={{ opacity: 1 }}
+            initial="outOfView"
+            animate={isHovered ? "hover" : isInView ? "inView" : "outOfView"}
+            exit="outOfView"
             viewport={{ margin: "-20px", once: true }}
-            transition={{ duration: 0.6 }}
+            variants={subTitleVariants}
           >
             {category.name}
           </motion.h3>
