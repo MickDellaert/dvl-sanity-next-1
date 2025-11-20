@@ -73,7 +73,7 @@ export default function HomepageSerie({
       <Link href={`series/${category.slug}`}>
         <motion.div className="group inline-block text-left md:block">
           <motion.div
-            className="relative z-40 md:max-h-full"
+            className="relative z-40 justify-center md:max-h-full"
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
           >
