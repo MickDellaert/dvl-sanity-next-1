@@ -1,4 +1,3 @@
-import * as React from "react";
 const MD10 = (
   props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>,
 ) => (
@@ -6,8 +5,8 @@ const MD10 = (
     xmlns="http://www.w3.org/2000/svg"
     id="Layer_1"
     viewBox="0 0 103.8 65.2"
-    width={40}
-    fill="#181a1b"
+    // width={40}
+    // fill="#181a1b"
     {...props}
   >
     <defs></defs>

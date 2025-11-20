@@ -22,7 +22,7 @@ export default async function Contact() {
       <h2 className="sticky top-12 z-30 mt-4 self-start px-x leading-10 mix-blend-difference invert md:left-8 md:top-16 md:px-8">
         Contact
       </h2>
-      <div className="sticky bottom-0 left-0 flex min-h-[100dvh] w-full flex-col justify-end bg-stone-200 px-x pb-12 md:px-8">
+      <div className="sticky bottom-0 left-0 flex min-h-[100dvh] w-full flex-col justify-end bg-stone-200 px-x pb-6 md:px-8 lg:pb-12">
         {/* <div className="z-30 mb-6 h-24 bg-green-200">
           <h2 className="sticky top-16 w-fit self-start whitespace-nowrap pt-1 text-4xl leading-10 mix-blend-difference invert">
             Contact
@@ -56,7 +56,7 @@ export default async function Contact() {
                     {/* <SiInstagram /> */}
                     Instagram
                     <svg
-                      className="mt-1 h-auto w-5 md:w-6 xl:w-7"
+                      className="mt-1 h-auto w-5 md:w-6 xl:w-6"
                       // width="9"
                       // height="8"
                       viewBox="0 0 9 8"
@@ -85,15 +85,15 @@ export default async function Contact() {
             <div className="flex items-center gap-2">
               <h4>© 2025 David van Loon</h4>
               <p>–</p>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-[6px] lg:gap-2">
                 <p>website by </p>
                 <a
                   href="https://www.mickdellaert.com"
                   rel="noopener noreferrer"
                   target="_blank"
-                  className="pb-1"
+                  className="pb-0.5 lg:pb-1"
                 >
-                  <MD10 />
+                  <MD10 className="w-7 fill-stone-900 lg:w-10" />
                 </a>
               </div>
             </div>
