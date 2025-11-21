@@ -43,7 +43,7 @@ export default function HomepageExhibitionsNew({
 
                 <h2
                   className="relative mb-0 mt-8 flex flex-row text-4xl 
-                before:absolute before:-top-8 before:left-0 before:h-1 before:w-12 before:bg-black before:content-[''] lg:mb-4 lg:text-5xl"
+                before:absolute before:-top-8 before:left-0 before:h-1 before:w-12 before:bg-stone-950 before:content-[''] lg:mb-4 lg:text-5xl"
                 >
                   {expo.name}
                 </h2>

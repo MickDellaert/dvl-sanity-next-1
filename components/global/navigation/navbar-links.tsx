@@ -55,7 +55,7 @@ export default function NavbarLinks({ menuItems }: NavProps) {
                 e.preventDefault();
                 handleSectionClick(item.slug!);
               }}
-              className="hover:text-black"
+              className="hover:text-stone-950"
             >
               {item.title}
             </a>
@@ -69,7 +69,7 @@ export default function NavbarLinks({ menuItems }: NavProps) {
             key={item.title}
             href={href || "/"}
             prefetch={true}
-            className={`${firstPathSegment === href ? "text-gray-500" : ""} hover:text-black`}
+            className={`${firstPathSegment === href ? "text-stone-500" : ""} hover:text-stone-700`}
           >
             {item.title}
           </Link>

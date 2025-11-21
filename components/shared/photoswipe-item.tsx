@@ -55,7 +55,7 @@ export default function PhotoswipeItem({
       width={project?.projectImageDimensions?.width}
       height={project?.projectImageDimensions?.height}
       alt={project.projectTitle || "Default project title"}
-      caption={`<div style='color:black; text-shadow:2px 2px 5px white;'>
+      caption={`<div style='color:#0c0a09; text-shadow:2px 2px 5px white;'>
         <p>${project.projectTitle}</p>
         <p>${project.date}</p>
         <p>${project.material}</p>

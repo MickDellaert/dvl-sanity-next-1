@@ -32,7 +32,7 @@ export default async function AboutTimeline<T>({
           <div
             key={i}
             className="relative col-span-12 grid grid-cols-subgrid after:absolute 
-                       after:-bottom-2 after:left-0 after:h-[1px] after:w-full after:bg-black after:content-[''] lg:col-span-7"
+                       after:-bottom-2 after:left-0 after:h-[1px] after:w-full after:bg-stone-950 after:content-[''] lg:col-span-7"
           >
             <div className="col-span-4 col-start-1 content-center gap-x-2 text-2xl leading-tight md:text-3xl lg:col-span-2 lg:col-start-2">
               {(() => {

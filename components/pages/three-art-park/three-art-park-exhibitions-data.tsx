@@ -25,7 +25,7 @@ export default function ThreeArtParkExhibitionsData({
     <div className="mb-12 flex w-fit flex-col lg:mb-0">
       <h2
         className="relative mb-6 mt-8 flex flex-row text-4xl before:absolute
-                       before:-top-8 before:left-0 before:h-1 before:w-12 before:bg-black before:content-[''] lg:text-5xl"
+                       before:-top-8 before:left-0 before:h-1 before:w-12 before:bg-stone-950 before:content-[''] lg:text-5xl"
       >
         {expo.name}
       </h2>
