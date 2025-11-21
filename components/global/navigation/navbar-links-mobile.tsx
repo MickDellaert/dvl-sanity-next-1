@@ -49,7 +49,7 @@ export default function NavbarLinksMobile({
         >
           <div
             className="relative mt-[152px] flex flex-col gap-y-10 pt-16 text-3xl
-        before:absolute before:left-0 before:top-0 before:h-1 before:w-12 before:bg-black before:content-['']"
+        before:absolute before:left-0 before:top-0 before:h-1 before:w-12 before:bg-stone-950 before:content-['']"
           >
             {menuItems?.map((setting) => {
               const href = setting.slug
@@ -62,8 +62,8 @@ export default function NavbarLinksMobile({
 
               return (
                 <Link
-                  className={`${firstPathSegment === href ? "text-gray-500" : ""} 
-            hover:text-black`}
+                  className={`${firstPathSegment === href ? "text-stone-500" : ""} 
+            hover:text-stone-950`}
                   key={setting.title}
                   href={href}
                   onClick={() => onRouteCheckAction(href)}

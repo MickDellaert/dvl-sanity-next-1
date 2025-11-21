@@ -46,7 +46,7 @@ export default async function ThreeArtParkExhibitions() {
 
                 <h2
                   className="relative mb-0 mt-8 flex flex-row text-4xl lg:text-4xl"
-                  // before:absolute before:-top-8 before:left-0 before:h-1 before:w-12 before:bg-black before:content-['']
+                  // before:absolute before:-top-8 before:left-0 before:h-1 before:w-12 before:bg-stone-950 before:content-['']
                 >
                   {expo.name}
                 </h2>

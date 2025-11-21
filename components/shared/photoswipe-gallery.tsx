@@ -17,12 +17,12 @@ import { ProjectsQueryResult } from "@/sanity.types";
 
 const leftArrowSVGString = `
   <svg aria-hidden="true" class="pswp__icn" viewBox="0 0 476.213 476.213" width="40" height="40">
-    <polygon fill="black" points="476.213,223.107 57.427,223.107 151.82,128.713 130.607,107.5 0,238.106 130.607,368.714 151.82,347.5 
+    <polygon fill="#0c0a09" points="476.213,223.107 57.427,223.107 151.82,128.713 130.607,107.5 0,238.106 130.607,368.714 151.82,347.5 
       57.427,253.107 476.213,253.107 "/>
   </svg>
 `;
 
-const closeSVGString = `<svg aria-hidden="true" class="pswp__icn" width="800px" height="800px" viewBox="-0.5 0 25 25" fill="black" xmlns="http://www.w3.org/2000/svg">
+const closeSVGString = `<svg aria-hidden="true" class="pswp__icn" width="800px" height="800px" viewBox="-0.5 0 25 25" fill="#0c0a09" xmlns="http://www.w3.org/2000/svg">
 <path d="M3 21.32L21 3.32001" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M3 3.32001L21 21.32" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>`;
