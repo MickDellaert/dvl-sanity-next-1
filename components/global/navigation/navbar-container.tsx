@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
 type MenuItem = {
-  _type: "homepage" | "page";
+  _type: "homepage" | "page" | "section";
   slug: string | null;
   title: string | null;
 };

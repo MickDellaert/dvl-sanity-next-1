@@ -46,6 +46,16 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type Section = {
+  _id: string;
+  _type: "section";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+};
+
 export type ThreeArtPark = {
   _id: string;
   _type: "threeArtPark";
@@ -374,6 +384,12 @@ export type Settings = {
         _weak?: boolean;
         [internalGroqTypeReferenceTo]?: "page";
       }
+    | {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "section";
+      }
   >;
 };
 
@@ -602,6 +618,7 @@ export type AllSanitySchemaTypes =
   | SanityImagePalette
   | SanityImageDimensions
   | Geopoint
+  | Section
   | ThreeArtPark
   | Education
   | DurationEducation
@@ -1164,6 +1181,11 @@ export type SettingsQueryResult = {
       }
     | {
         _type: "page";
+        slug: string | null;
+        title: string | null;
+      }
+    | {
+        _type: "section";
         slug: string | null;
         title: string | null;
       }

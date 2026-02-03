@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 
 type MenuItem = {
-  _type: "homepage" | "page";
+  _type: "homepage" | "page" | "section";
   slug: string | null;
   title: string | null;
 };

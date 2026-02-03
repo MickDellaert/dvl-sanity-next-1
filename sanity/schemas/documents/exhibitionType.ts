@@ -1,6 +1,4 @@
-// import { defineArrayMember, defineField, defineType } from "sanity";
-
-import { defineArrayMember, defineField, defineType } from "sanity";
+import { defineArrayMember, defineField, defineType, Rule } from "sanity";
 
 export const exhibitionType = defineType({
   type: "document",
@@ -19,8 +17,7 @@ export const exhibitionType = defineType({
       name: "tagLine",
       title: "Tagline",
       rows: 2,
-      description:
-        "A concise description of the exhibition, max 100 characters",
+      description: "A concise description of the exhibition, max 100 characters",
       validation: (rule) => rule.max(100),
     }),
     defineField({
@@ -28,8 +25,7 @@ export const exhibitionType = defineType({
       name: "description",
       title: "Description",
       of: [defineArrayMember({ type: "block" })],
-      description:
-        "A longer description of the exhibition, here you can use rich text",
+      description: "A longer description of the exhibition, here you can use rich text",
     }),
     defineField({
       type: "duration",
@@ -40,13 +36,23 @@ export const exhibitionType = defineType({
       type: "array",
       name: "artist",
       title: "Artist",
-      of: [{ type: "reference", to: { type: "person" } }],
+      of: [
+        defineArrayMember({
+          type: "reference",
+          to: [{ type: "person" }]
+        })
+      ],
     }),
     defineField({
       type: "array",
       name: "artwork",
       title: "Artworks on Display",
-      of: [{ type: "reference", to: { type: "project" } }],
+      of: [
+        defineArrayMember({
+          type: "reference",
+          to: [{ type: "project" }]
+        })
+      ],
       description: "Images of the actual artworks",
     }),
     defineField({
@@ -60,15 +66,13 @@ export const exhibitionType = defineType({
       name: "photos",
       title: "Photos",
       of: [defineArrayMember({ type: "image" })],
-      description:
-        "Photos of the exhibition installation, opening, atmosphere, crowd,...",
+      description: "Photos of the exhibition installation, opening, atmosphere, crowd,...",
     }),
-
     defineField({
       name: "gallery",
       title: "Gallery",
       type: "reference",
-      to: { type: "gallery" },
+      to: [{ type: "gallery" }],
     }),
     defineField({
       name: "video",
@@ -78,15 +82,5 @@ export const exhibitionType = defineType({
         accept: "video/*",
       },
     }),
-    // defineField({
-    //   type: "addressObject",
-    //   name: "address",
-    //   title: "Address",
-    // }),
-    // defineField({
-    //   type: "contactObjectNew",
-    //   name: "contact",
-    //   title: "Contact",
-    // }),
   ],
 });

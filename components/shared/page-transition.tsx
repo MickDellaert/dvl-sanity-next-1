@@ -11,24 +11,13 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (isFirefox) return; // Skip transitions in Firefox
+    if (isFirefox) return;
 
-    if (!document.startViewTransition) {
-      // TypeScript-compatible fallback
-      document.startViewTransition = ((callback?: any) => {
-        callback?.();
-        return {
-          finished: Promise.resolve(),
-          ready: Promise.resolve(),
-          types: [] as string[],
-          updateCallbackDone: Promise.resolve(),
-          skipTransition: () => {},
-        } as unknown as ViewTransition;
-      }) as typeof document.startViewTransition;
+    if (!('startViewTransition' in document)) {
+      return;
     }
 
-    document.startViewTransition(() => {
-      // App Router rendert automatisch de nieuwe content
+    (document as any).startViewTransition(() => {
     });
   }, [pathname]);
 
