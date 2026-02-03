@@ -5,6 +5,7 @@ import AboutImage from "../pages/about/about-david-image";
 import Link from "next/link";
 import { SiFacebook, SiInstagram } from "@icons-pack/react-simple-icons";
 import MD10 from "../logo/md-10";
+import FooterDate from "./footer-date";
 
 export default async function Contact() {
   const { data: contactDavidData } = await sanityFetch({
@@ -83,7 +84,7 @@ export default async function Contact() {
           </div>
           <div className="order-3 col-span-12 col-start-1 flex items-end gap-x-12 text-base tracking-tight lg:col-span-6 lg:text-xl">
             <div className="flex items-center gap-2">
-              <h4>© 2025 David van Loon</h4>
+              <h4>© <FooterDate /> David van Loon</h4>
               <p>–</p>
               <div className="flex items-center gap-[6px] lg:gap-2">
                 <p>website by </p>

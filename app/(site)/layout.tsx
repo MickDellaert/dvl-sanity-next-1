@@ -1,7 +1,7 @@
 import "../globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { draftMode } from "next/headers";
-import { VisualEditing } from "next-sanity";
+import { VisualEditing } from "next-sanity/visual-editing";
 import { DisableDraftMode } from "@/components/visual-editing/DisableDraftMode";
 import { SanityLive } from "@/sanity/lib/live";
 import Contact from "@/components/global/contact";
